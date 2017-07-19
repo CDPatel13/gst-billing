@@ -15,6 +15,7 @@ namespace GST_Billing
     public partial class Invoice : Form
     {
 
+        BaseModel baseModel = BaseModel.Instance;
         List<int> colIndices = new int[] { 3, 5, 7, 9, 10 }.ToList();
         List<string> listOfCustomers = new List<string>();
         List<string> listAddCharges = new List<string>();
@@ -328,7 +329,7 @@ namespace GST_Billing
                 string custId = "1";
                 sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, totalQnty," +
                           "totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount, totalBillAmount, IsActive)" +
-                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:yyyy-MM-dd HH:mm:ss}", tbTransMode.Text) + "', " + custId + ",'" + userId + "', '" +
+                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:yyyy-MM-dd HH:mm:ss}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
                         tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedText + "', '" + tbShipCode.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
                         lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + lbTotalGst.Text + "', '" + lbTotalFinal.Text + "', 1)";
                 int NoOfRows = m1.Ins_Upd_Del(sqlstr);
@@ -419,6 +420,8 @@ namespace GST_Billing
             
             cbBillName.DataSource = listOfCustomers;
             cbBillName.SelectedIndex = -1;
+            cbBillName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void syncBillingAndShipping()
@@ -428,6 +431,50 @@ namespace GST_Billing
             tbShipGstin.Text = tbBillGstin.Text;
             cbShipState.Text = cbBillState.Text;
             tbShipCode.Text = tbBillCode.Text;
+        }
+
+        private void cbShipState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbShipCode.Text = baseModel.stateCodes[cbShipState.Text];
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
+            bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
+            bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
+            bool state = !String.IsNullOrEmpty(cbShipState.Text) && !String.IsNullOrWhiteSpace(cbShipState.Text);
+            bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
+
+            if (name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
+            {
+                flwPanelButtons.Enabled = true;
+            }
+            else
+            {
+                flwPanelButtons.Enabled = false;
+            }
+        }
+
+        private void tbShipCode_Leave(object sender, EventArgs e)
+        {
+            int code = !String.IsNullOrEmpty(tbShipCode.Text) ? int.Parse(tbShipCode.Text) : 1;
+            string codeStr = String.Format("{0:D2}", code);
+            if (code > 0 && code < 37)
+            {
+                string state = baseModel.stateCodes.FirstOrDefault(x => x.Value == codeStr).Key;
+                cbShipState.SelectedIndex = cbShipState.FindStringExact(state);
+            }
+            else
+            {
+                MessageBox.Show("State code must be between 1 and 36.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cbShipState.SelectedIndex = 1;
+            }
+        }
+
+        private void tbShipCode_Click(object sender, EventArgs e)
+        {
+            tbShipCode.SelectAll();
         }
 
     }
