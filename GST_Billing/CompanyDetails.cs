@@ -30,7 +30,7 @@ namespace GST_Billing
                 string sqlstr = "SELECT * FROM userDetails";
                 DataSet ds = m1.selectData(sqlstr);
 
-                if (ds != null)
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
                     tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
                     tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);

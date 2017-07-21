@@ -20,6 +20,7 @@ namespace GST_Billing
         List<string> listOfCustomers = new List<string>();
         List<string> listAddCharges = new List<string>();
         SqliteDb m1 = new SqliteDb();
+        int custId = 0;
 
         public Invoice()
         {
@@ -326,11 +327,10 @@ namespace GST_Billing
                 int userId = Convert.ToInt32(m1.scaler(sqlstr));
                
                 //, totaCGSTAmount, totalIGSTAmount
-                string custId = "1";
-                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, totalQnty," +
-                          "totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount, totalBillAmount, IsActive)" +
-                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:yyyy-MM-dd HH:mm:ss}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
-                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedText + "', '" + tbShipCode.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
+                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount, totalBillAmount, IsActive)" +
+                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
+                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
                         lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + lbTotalGst.Text + "', '" + lbTotalFinal.Text + "', 1)";
                 int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
@@ -338,12 +338,16 @@ namespace GST_Billing
                 {
                     sqlstr = "select MAX(invoiceId) from invoiceDetails";
                     int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
-
+                    int rowCount = 0;
                     foreach (DataGridViewRow row in dgvProducts.Rows)
-                    {                  
-                        sqlstr = "INSERT INTO invoiceProductDetails(invoiceId, productName, productCode, productQnty, ProductUnit, productUnitPrice, productAmount, productDiscount, productTaxAmount)" +
-                            "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '" + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", " + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
-                        m1.Ins_Upd_Del(sqlstr);
+                    {
+                        if (rowCount < dgvProducts.RowCount - 1)
+                        {
+                            sqlstr = "INSERT INTO invoiceProductDetails(invoiceId, productName, productCode, productQnty, ProductUnit, productUnitPrice, productAmount, productDiscount, productTaxAmount)" +
+                                "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '" + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colRate"].Value.ToString()) + ", " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", " + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
+                            m1.Ins_Upd_Del(sqlstr);
+                            rowCount++;
+                        }
                     }
 
                     foreach (string name in listAddCharges)
@@ -380,10 +384,12 @@ namespace GST_Billing
 
         private void cbBillName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            custId = 0;
             string sqlstr = "SELECT * FROM customerDetails where custname='" + cbBillName.Text + "'";
             DataSet ds = m1.selectData(sqlstr);
             if(ds.Tables[0].Rows.Count > 0)
             {
+                custId = Convert.ToInt32(ds.Tables[0].Rows[0]["custId"]);
                 tbBillAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
                 tbBillGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custgstin"]);
                 cbBillState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);

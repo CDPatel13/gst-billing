@@ -62,7 +62,7 @@ namespace GaneshLogistics.AppCode
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceDetails] (
 	                                invoiceId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	                                invoiceNo	TEXT NOT NULL UNIQUE,
-	                                invoiceDate	DATETIME NOT NULL,
+	                                invoiceDate	TEXT NOT NULL,
 	                                custId	INTEGER NOT NULL,
                                     userId INTEGER NOT NULL,
 	                                shipPartyName	TEXT,
@@ -70,6 +70,9 @@ namespace GaneshLogistics.AppCode
 	                                shipGstIn	TEXT,
 	                                shipState	TEXT NOT NULL,
 	                                shipCode	TEXT,
+                                    sgstPercent	INTEGER NOT NULL,
+                                    cgstPercent	INTEGER NOT NULL,
+                                    igstPercent	INTEGER NOT NULL,
 	                                totalQnty	DECIMAL(6,2),
 	                                totalAmount	DECIMAL(8,2),
 	                                totaDiscount	DECIMAL(8,2),
@@ -87,7 +90,7 @@ namespace GaneshLogistics.AppCode
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceProductDetails] (
 	                                productId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	                                invoiceId	INTEGER NOT NULL,
-	                                productName	TEXT NOT NULL UNIQUE,
+	                                productName	TEXT NOT NULL,
 	                                productCode	TEXT NOT NULL,
 	                                productQnty	DECIMAL(8,2) NOT NULL,
 	                                ProductUnit	TEXT,
