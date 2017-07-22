@@ -1880,7 +1880,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\GST_Billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
+		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\gst-billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
 		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
@@ -2129,6 +2129,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s255">ISMergeModule_</col>
 		<col key="yes" def="i2">Language_</col>
+		<row><td>AlwaysInstall</td><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td></row>
 	</table>
 
 	<table name="ISFeatureSetupPrerequisites">
@@ -2251,6 +2252,7 @@
 		<col def="s255">Name</col>
 		<col def="S255">Destination</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>SAP Crystal Reports runtime engine for .NET Framework 4</td><td/><td/></row>
 	</table>
 
 	<table name="ISMergeModuleCfgValues">
@@ -2267,6 +2269,52 @@
 		<col def="L255">Description</col>
 		<col def="L255">HelpLocation</col>
 		<col def="L255">HelpKeyword</col>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>ForceLargerFonts</td><td>0</td><td>0</td><td/><td/><td>0</td><td>2</td><td>ForceLargerFonts</td><td>Property to determine whether to use a larger font for PDF export. A value of 1 will force it, and a value of 0 (default) will default font.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallACT</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallACT</td><td>Property to determine whether to install the Crystal Reports database driver for PC databases. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallBTRIEVE</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallBTRIEVE</td><td>Property to determine whether to install the Crystal Reports database driver for Pervasive databases. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCDO32</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCDO32</td><td>Property to determine whether to install the Crystal Data Object database driver. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_ADO</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_ADO</td><td>Property to determine whether to install the Crystal Reports database driver for Microsoft ActiveX Data Objects. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_ADOPLUS</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_ADOPLUS</td><td>Property to determine whether to install the Crystal Reports database driver for Microsoft ADO.NET. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_CDO</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_CDO</td><td>Property to determine whether to install the Crystal Reports database driver for Crystal Data Object. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_COM</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_COM</td><td>Property to determine whether to install the Crystal Reports database driver for COM data provider. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_DATASET</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_DATASET</td><td>Property to determine whether to install the Crystal Reports database driver for DataSet provider. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_ODBC</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_ODBC</td><td>Property to determine whether to install the Crystal Reports database driver for ODBC. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_ORACLE</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_ORACLE</td><td>Property to determine whether to install the Crystal Reports database driver for Oracle. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallCRDB_QUERY</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallCRDB_QUERY</td><td>Property to determine whether to install the Crystal Reports database driver for Query Data. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallDAO</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallDAO</td><td>Property to determine whether to install the Crystal Reports database driver for Microsoft Data Access Objects. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallFIELDDEF</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallFIELDDEF</td><td>Property to determine whether to install the Crystal Reports database driver for Field Definitions. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallFILESYSTEM</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallFILESYSTEM</td><td>Property to determine whether to install the Crystal Reports database driver for File System data. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallIBM_DB2</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallIBM_DB2</td><td>Property to determine whether to install the Crystal Reports database driver for DB2 Server. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallINFORMIX</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallINFORMIX</td><td>Property to determine whether to install the Crystal Reports database driver for Informix Online Server. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2BBDE</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2BBDE</td><td>Property to determine whether to install the Crystal Reports database driver for IDAPI. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2BXBSE</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2BXBSE</td><td>Property to determine whether to install the Crystal Reports database driver for xBase. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2IXBSE_DLL</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2IXBSE_DLL</td><td>Property to determine whether to install the Crystal Reports physical database DLL for xBase. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SACL</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SACL</td><td>Property to determine whether to install the Crystal Reports database driver for Public Folder ACL. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SEVT</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SEVT</td><td>Property to determine whether to install the Crystal Reports database driver for NT Event Log. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SEXSR</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SEXSR</td><td>Property to determine whether to install the Crystal Reports database driver for Exchange Server Admin. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SMAPI</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SMAPI</td><td>Property to determine whether to install the Crystal Reports database driver for Exchange Folders and Address Book. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SMSIIS</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SMSIIS</td><td>Property to determine whether to install the Crystal Reports database driver for IIS Log Files. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SOUTLK</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SOUTLK</td><td>Property to determine whether to install the Crystal Reports database driver for Outlook Data. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SREPL</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SREPL</td><td>Property to determine whether to install the Crystal Reports database driver for Exchange Public Folder Replica. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2STRACK</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2STRACK</td><td>Property to determine whether to install the Crystal Reports database driver for Exchange Server Message Tracking Logs. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallP2SWBLG</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallP2SWBLG</td><td>Property to determine whether to install the Crystal Reports database driver for Web Log Files. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallSYBASE</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallSYBASE</td><td>Property to determine whether to install the Crystal Reports database driver for Sybase. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2DMAPI</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2DMAPI</td><td>Property to determine whether to install the export driver for MAPI Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2DNOTES</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2DNOTES</td><td>Property to determine whether to install the export driver for Lotus Notes Database Destination Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2DVIM</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2DVIM</td><td>Property to determine whether to install the export driver for Export to Lotus Notes Mail Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FCR</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FCR</td><td>Property to determine whether to install the export driver for Report Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FHTML</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FHTML</td><td>Property to determine whether to install the export driver for HTML 4.0 Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FODBC</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FODBC</td><td>Property to determine whether to install the export driver for ODBC Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FPDF</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FPDF</td><td>Property to determine whether to install the export driver for PDF Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FREC</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FREC</td><td>Property to determine whether to install the export driver for Records Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FRTF</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FRTF</td><td>Property to determine whether to install the export driver for RTF Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FSEPV</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FSEPV</td><td>Property to determine whether to install the export driver for Separated Export Values Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FTEXT</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FTEXT</td><td>Property to determine whether to install the export driver for Text Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FWORDW</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FWORDW</td><td>Property to determine whether to install the export driver for Word Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FXLS</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FXLS</td><td>Property to determine whether to install the export driver for Excel Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallU2FXML</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallU2FXML</td><td>Property to determine whether to install the export driver for XML Export Format. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>InstallWebViewer</td><td>1</td><td>0</td><td/><td/><td>1</td><td>2</td><td>InstallWebViewer</td><td>Property to control if the Crystal Reports Viewer files is installed or not. A value of 1 (default) will install it, and a value of 0 will disable its installation.</td><td/><td/></row>
+		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>PIDKEY</td><td>none</td><td>0</td><td/><td/><td>none</td><td>0</td><td>Keycode</td><td>Value of a valid keycode to be used with the deployed runtime components.</td><td/><td/></row>
 	</table>
 
 	<table name="ISObject">
@@ -2612,6 +2660,8 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_7F68147C_856D_40E8_AAAA_33A9E00ECFCA_</td><td>Microsoft .NET Framework 4.5 Full.prq</td><td/><td/><td/></row>
+		<row><td>_CF39B148_6CB2_433A_933D_B84642CD61AD_</td><td>Microsoft Visual C++ 2012 Redistributable Package (x64).prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -3857,6 +3907,10 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>_Built1_128C833CD55A4B8598122472798ECE29.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
+		<row><td>_Built1_88EBABD9C0DF41FF86D54709463DAFE2.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
+		<row><td>_Built_D110E8EB070D49C7AA78B871303110F3.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
+		<row><td>_Built_F8E2101CAE2942CF8BEEBFE43F10B78E.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -3989,7 +4043,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{8D1957D5-D43F-42F4-A5D4-690312AD3225}</td></row>
 		<row><td>ISUSSignature</td><td>{17B59535-12D7-4B47-8C29-40A9C08C0DB1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4526,8 +4580,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>gst_bi_1_gst_billing_setup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>gst_bi_1_gst_billing_setup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_F8E2101CAE2942CF8BEEBFE43F10B78E.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_88EBABD9C0DF41FF86D54709463DAFE2.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

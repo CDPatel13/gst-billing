@@ -76,7 +76,7 @@ namespace GST_Billing
             DataSet ds = m1.selectData(sqlstr);
             int NoOfRows = 0;
 
-            if(ds != null)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             { 
                 NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
             }
