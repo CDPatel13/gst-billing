@@ -456,7 +456,8 @@ namespace GST_Billing
 
         private void cbShipState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbShipCode.Text = baseModel.stateCodes[cbShipState.Text];
+            string state = baseModel.ToPascalCase(cbShipState.Text);
+            tbShipCode.Text = baseModel.stateCodes[state];
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
