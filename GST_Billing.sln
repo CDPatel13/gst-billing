@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GST_Billing", "GST_Billing\GST_Billing.csproj", "{F0B2C3F9-09E8-42D6-8415-B2D072754934}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "GST_Billing_Installer", "Setup1\GST_Billing_Installer.isproj", "{2561A85A-04BF-4713-9963-2671CB73B68F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0B2C3F9-09E8-42D6-8415-B2D072754934} = {F0B2C3F9-09E8-42D6-8415-B2D072754934}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
