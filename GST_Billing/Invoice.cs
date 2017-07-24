@@ -16,11 +16,14 @@ namespace GST_Billing
     {
 
         BaseModel baseModel = BaseModel.Instance;
-        List<int> colIndices = new int[] { 3, 5, 7, 9, 10 }.ToList();
+        List<int> colIndices = new int[] { 3, 5, 7}.ToList();
         List<string> listOfCustomers = new List<string>();
         List<string> listAddCharges = new List<string>();
         SqliteDb m1 = new SqliteDb();
         int custId = 0;
+        double sgstFinal = 0;
+        double cgstFinal = 0;
+        double igstFinal = 0;
 
         public Invoice()
         {
@@ -48,15 +51,8 @@ namespace GST_Billing
         /// <param name="e"></param>
         private void cbBillAndShip_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbBillAndShip.Checked)
-            {
-                gbShipping.Enabled = false;
-                syncBillingAndShipping();
-            }
-            else
-            {
-                gbShipping.Enabled = true;
-            }
+            gbShipping.Enabled = !cbBillAndShip.Checked;
+            syncBillingAndShipping();
         }
 
         private void dgvProducts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -85,25 +81,33 @@ namespace GST_Billing
             double taxable = 0;
 
             string tempString;
-
             
             var row = dgvProducts.Rows[rowIndex];
-            tempString = row.Cells["colQty"].Value == null ? String.Empty : row.Cells["colQty"].Value.ToString();
+
+            // To avoid NullPointerException,
+            // TODO : use autocomplete when adding new rows
+            row.Cells["colUnit"].Value = row.Cells["colUnit"].Value == null ? String.Empty : row.Cells["colUnit"].Value.ToString();
+            row.Cells["colSerNo"].Value = row.Cells["colSerNo"].Value == null ? String.Empty : row.Cells["colSerNo"].Value.ToString();
+            row.Cells["colProDes"].Value = row.Cells["colProDes"].Value == null ? String.Empty : row.Cells["colProDes"].Value.ToString();
+            row.Cells["colHsnCode"].Value = row.Cells["colHsnCode"].Value == null ? String.Empty : row.Cells["colHsnCode"].Value.ToString();
+            row.Cells["colDiscount"].Value = row.Cells["colDiscount"].Value == null ? "0.00" : row.Cells["colDiscount"].Value.ToString();            
+            
+            tempString = row.Cells["colQty"].Value == null ? "0.00" : row.Cells["colQty"].Value.ToString();
             quantity = !String.IsNullOrEmpty(tempString) ? float.Parse(tempString) : 0;
 
-            tempString = row.Cells["colRate"].Value == null ? String.Empty : row.Cells["colRate"].Value.ToString();
+            tempString = row.Cells["colRate"].Value == null ? "0.00" : row.Cells["colRate"].Value.ToString();
             rate = !String.IsNullOrEmpty(tempString) ? double.Parse(tempString) : 0;
             
             amount = Math.Round(rate * quantity, 2);
 
-            tempString = row.Cells["colDiscount"].Value == null ? String.Empty : row.Cells["colDiscount"].Value.ToString();
+            tempString = row.Cells["colDiscount"].Value == null ? "0.00" : row.Cells["colDiscount"].Value.ToString();
             discount = !String.IsNullOrEmpty(tempString) ? double.Parse(tempString) : 0;
             
             taxable = Math.Round(amount - discount, 2);
 
             row.Cells["colTaxableVal"].Value = taxable;
             row.Cells["colAmount"].Value = amount;
-
+            
             calculateTotals();
 
         }
@@ -160,13 +164,15 @@ namespace GST_Billing
                 var sgst = !String.IsNullOrEmpty(tbSgst.Text) ? double.Parse(tbSgst.Text) : 0;
                 var cgst = !String.IsNullOrEmpty(tbCgst.Text) ? double.Parse(tbCgst.Text) : 0 ;
 
-                return Math.Round(((sgst + cgst) * taxVal)/100, 2);
+                sgstFinal = Math.Round((sgst * taxVal) / 100, 2);
+                cgstFinal = Math.Round((cgst * taxVal) / 100, 2);
+                return sgstFinal + cgstFinal;
             }
             else
             {
                 var igst = !String.IsNullOrEmpty(tbIgst.Text) ? double.Parse(tbIgst.Text) : 0;
-
-                return Math.Round((igst * taxVal)/100, 2);
+                igstFinal = Math.Round((igst * taxVal)/100, 2);
+                return igstFinal;
             }
         }
 
@@ -296,6 +302,8 @@ namespace GST_Billing
                 tbCgst.Enabled = true;
             }
 
+            calculateTotals();
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -328,10 +336,10 @@ namespace GST_Billing
                
                 //, totaCGSTAmount, totalIGSTAmount
                 sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount, totalBillAmount, IsActive)" +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, IsActive)" +
                         "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
                         tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
-                        lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + lbTotalGst.Text + "', '" + lbTotalFinal.Text + "', 1)";
+                        lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 1)";
                 int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
                 if (NoOfRows > 0)
@@ -344,7 +352,9 @@ namespace GST_Billing
                         if (rowCount < dgvProducts.RowCount - 1)
                         {
                             sqlstr = "INSERT INTO invoiceProductDetails(invoiceId, productName, productCode, productQnty, ProductUnit, productUnitPrice, productAmount, productDiscount, productTaxAmount)" +
-                                "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '" + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colRate"].Value.ToString()) + ", " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", " + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
+                                "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '" 
+                                          + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colRate"].Value.ToString()) + ", " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", " 
+                                          + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
                             m1.Ins_Upd_Del(sqlstr);
                             rowCount++;
                         }
@@ -376,6 +386,8 @@ namespace GST_Billing
                 tbInvoiceNum.Focus();
                 return;
             }
+
+            btnSave_Click(sender, e);
 
             PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
             objPrintInvoice.MdiParent = this.MdiParent;
@@ -432,16 +444,20 @@ namespace GST_Billing
 
         private void syncBillingAndShipping()
         {
-            tbShipName.Text = cbBillName.Text;
-            tbShipAddress.Text = tbBillAddress.Text;
-            tbShipGstin.Text = tbBillGstin.Text;
-            cbShipState.Text = cbBillState.Text;
-            tbShipCode.Text = tbBillCode.Text;
+            if (cbBillAndShip.Checked)
+            {
+                tbShipName.Text = cbBillName.Text;
+                tbShipAddress.Text = tbBillAddress.Text;
+                tbShipGstin.Text = tbBillGstin.Text;
+                cbShipState.Text = cbBillState.Text;
+                tbShipCode.Text = tbBillCode.Text;
+            }
         }
 
         private void cbShipState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbShipCode.Text = baseModel.stateCodes[cbShipState.Text];
+            string state = baseModel.ToPascalCase(cbShipState.Text);
+            tbShipCode.Text = baseModel.stateCodes[state];
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)

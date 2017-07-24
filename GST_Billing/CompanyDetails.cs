@@ -104,7 +104,8 @@ namespace GST_Billing
 
         private void cbState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbCode.Text = baseModel.stateCodes[cbState.Text];
+            string state = baseModel.ToPascalCase(cbState.Text);
+            tbCode.Text = baseModel.stateCodes[state];
         }
 
         private void tbContact_KeyPress(object sender, KeyPressEventArgs e)

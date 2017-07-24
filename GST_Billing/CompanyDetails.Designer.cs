@@ -188,28 +188,28 @@
             // 
             // cbState
             // 
-            this.cbState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbState.DropDownHeight = 100;
             this.cbState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbState.FormattingEnabled = true;
             this.cbState.IntegralHeight = false;
             this.cbState.Items.AddRange(new object[] {
-            "Andaman and Nicobar Islands",
+            "Andaman And Nicobar Islands",
             "Andhra Pradesh",
             "Arunachal Pradesh",
             "Assam",
             "Bihar",
             "Chandigarh",
             "Chattisgarh",
-            "Dadra and Nagar Haveli",
-            "Daman and Diu",
+            "Dadra And Nagar Haveli",
+            "Daman And Diu",
             "Delhi",
             "Goa",
             "Gujarat",
             "Haryana",
             "Himachal Pradesh",
-            "Jammu and Kashmir",
+            "Jammu And Kashmir",
             "Jharkhand",
             "Karnataka",
             "Kerala",

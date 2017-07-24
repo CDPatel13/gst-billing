@@ -5,7 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GST_Billing", "GST_Billing\GST_Billing.csproj", "{F0B2C3F9-09E8-42D6-8415-B2D072754934}"
 EndProject
+<<<<<<< HEAD
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "gst-billing-setup", "gst-billing-setup\gst-billing-setup.isproj", "{6C2B08DD-C66F-482A-871A-C61F65EDF38A}"
+=======
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "GST_Billing_Installer", "Setup1\GST_Billing_Installer.isproj", "{2561A85A-04BF-4713-9963-2671CB73B68F}"
+>>>>>>> 1522851d567ed4375f9147c91e96a44e3760579b
 	ProjectSection(ProjectDependencies) = postProject
 		{F0B2C3F9-09E8-42D6-8415-B2D072754934} = {F0B2C3F9-09E8-42D6-8415-B2D072754934}
 	EndProjectSection
