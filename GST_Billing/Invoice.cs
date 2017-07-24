@@ -213,15 +213,15 @@ namespace GST_Billing
                 gbInvoice.Size = gbInvoice.MinimumSize;
                 tblPanelTotals.Size = tblPanelTotals.MinimumSize;
             }
-            else if (this.Size.Width >= this.MaximumSize.Width)
-            {
-                gbBilling.Size = gbBilling.MaximumSize;
-                gbShipping.Size = gbShipping.MaximumSize;
-                dgvProducts.Size = dgvProducts.MaximumSize;
-                gbInvoice.Size = gbInvoice.MaximumSize;
-                tblPanelTotals.Size = tblPanelTotals.MaximumSize;
-                gbAddCharge.Size = gbAddCharge.MaximumSize;
-            }
+            //else if (this.Size.Width >= this.MaximumSize.Width)
+            //{
+            //    gbBilling.Size = gbBilling.MaximumSize;
+            //    gbShipping.Size = gbShipping.MaximumSize;
+            //    dgvProducts.Size = dgvProducts.MaximumSize;
+            //    gbInvoice.Size = gbInvoice.MaximumSize;
+            //    tblPanelTotals.Size = tblPanelTotals.MaximumSize;
+            //    gbAddCharge.Size = gbAddCharge.MaximumSize;
+            //}
             else
             {
                 gbBilling.Size = gbShipping.Size = new Size((dgvProducts.Size.Width - 5) / 2, gbShipping.Size.Height);
