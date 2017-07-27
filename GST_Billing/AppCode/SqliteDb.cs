@@ -14,7 +14,7 @@ namespace GaneshLogistics.AppCode
     public class SqliteDb
     {
         List<string> CreateTableList = new List<string>();
-        List<string> InsertExpenseDetails = new List<string>();
+        List<string> InsertDetails = new List<string>();
         string ConnectionString = "";//data source=MyDatabase.sqlite
 
         DataTable dt;
@@ -32,13 +32,25 @@ namespace GaneshLogistics.AppCode
         {
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [userDetails] (
 	                                userId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	                                name	TEXT NOT NULL UNIQUE,
+	                                name	TEXT NOT NULL,
+                                    companyname	TEXT NOT NULL,
 	                                address	TEXT NOT NULL,
 	                                email	TEXT,
 	                                phoneNumber	INTEGER NOT NULL,
 	                                gstin	TEXT NOT NULL,
 	                                state	TEXT,
-	                                code	TEXT
+	                                code	TEXT,
+                                    panno	TEXT,
+                                	bankname	TEXT,
+	                                branchname	TEXT,
+	                                accountno	INTEGER,
+	                                ifsccode	TEXT
+                                )");
+
+            CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [paymentTerms] (
+	                                termId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	                                termName	TEXT NOT NULL UNIQUE,
+	                                isActive	BIT(1) DEFAULT 1
                                 )");
 
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [customerDetails] (
@@ -64,15 +76,16 @@ namespace GaneshLogistics.AppCode
 	                                invoiceNo	TEXT NOT NULL UNIQUE,
 	                                invoiceDate	TEXT NOT NULL,
 	                                custId	INTEGER NOT NULL,
-                                    userId INTEGER NOT NULL,
+	                                userId INTEGER NOT NULL,
+                                    termId INTEGER NOT NULL,
 	                                shipPartyName	TEXT,
 	                                shipPartyAddress	TEXT,
 	                                shipGstIn	TEXT,
 	                                shipState	TEXT NOT NULL,
 	                                shipCode	TEXT,
-                                    sgstPercent	INTEGER NOT NULL,
-                                    cgstPercent	INTEGER NOT NULL,
-                                    igstPercent	INTEGER NOT NULL,
+	                                sgstPercent	INTEGER NOT NULL,
+	                                cgstPercent	INTEGER NOT NULL,
+	                                igstPercent	INTEGER NOT NULL,
 	                                totalQnty	DECIMAL(6,2),
 	                                totalAmount	DECIMAL(8,2),
 	                                totaDiscount	DECIMAL(8,2),
@@ -81,10 +94,18 @@ namespace GaneshLogistics.AppCode
 	                                totaCGSTAmount	DECIMAL(8,2),
 	                                totalIGSTAmount	DECIMAL(8,2),
 	                                totalBillAmount	DECIMAL(8,2),
+                                    receivedAmount	DECIMAL(8,2),
+	                                termId INTEGER NOT NULL,
 	                                IsActive	BIT(1) DEFAULT 1,
+	                                FOREIGN KEY (userId) REFERENCES userDetails (userId)
+	                                ON DELETE NO ACTION
+	                                ON UPDATE NO ACTION,
+	                                FOREIGN KEY (termId) REFERENCES paymentTerms (termId)
+	                                ON DELETE NO ACTION
+	                                ON UPDATE NO ACTION,
 	                                FOREIGN KEY(custId) REFERENCES customerDetails ( custId ) 
-                                    ON DELETE NO ACTION 
-                                    ON UPDATE NO ACTION
+	                                ON DELETE NO ACTION 
+	                                ON UPDATE NO ACTION
                                 )");
 
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceProductDetails] (
@@ -112,6 +133,25 @@ namespace GaneshLogistics.AppCode
                                     ON DELETE NO ACTION 
                                     ON UPDATE NO ACTION
                                 )");
+
+            CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceChallanDetails] (
+	                                challanId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	                                invoiceId	INTEGER NOT NULL,
+	                                challanNo	TEXT NOT NULL,	                           
+	                                FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
+					                ON DELETE NO ACTION 
+					                ON UPDATE NO ACTION
+                                )");
+
+
+            string strQuery = "INSERT INTO paymentTerms(termName) VALUES ";
+            InsertDetails.Add("DELETE FROM paymentTerms");
+            InsertDetails.Add(strQuery + "('Immediately')");
+            InsertDetails.Add(strQuery + "('Within 15 days')");
+            InsertDetails.Add(strQuery + "('Within 30 days')");
+            InsertDetails.Add(strQuery + "('Within 45 days')");
+            InsertDetails.Add(strQuery + "('Within 60 days')");
+            InsertDetails.Add(strQuery + "('Others')");
         }
 
         public void CreateDatabase()
@@ -134,7 +174,13 @@ namespace GaneshLogistics.AppCode
                                 {
                                     com.CommandText = strQuery;
                                     com.ExecuteNonQuery();
-                                }                              
+                                }
+
+                                foreach (string strQuery in InsertDetails)
+                                {
+                                    com.CommandText = strQuery;
+                                    com.ExecuteNonQuery();
+                                }
                             }
                             tr.Commit();
                         }
@@ -149,7 +195,7 @@ namespace GaneshLogistics.AppCode
             finally
             {
                 CreateTableList.Clear();
-                InsertExpenseDetails.Clear();
+                InsertDetails.Clear();
             }
         }
 
