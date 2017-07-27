@@ -95,7 +95,6 @@ namespace GaneshLogistics.AppCode
 	                                totalIGSTAmount	DECIMAL(8,2),
 	                                totalBillAmount	DECIMAL(8,2),
                                     receivedAmount	DECIMAL(8,2),
-	                                termId INTEGER NOT NULL,
 	                                IsActive	BIT(1) DEFAULT 1,
 	                                FOREIGN KEY (userId) REFERENCES userDetails (userId)
 	                                ON DELETE NO ACTION
@@ -172,12 +171,14 @@ namespace GaneshLogistics.AppCode
                             {
                                 foreach (string strQuery in CreateTableList)
                                 {
+                                    QueryLogger("-CreateDatabase->" + strQuery);
                                     com.CommandText = strQuery;
                                     com.ExecuteNonQuery();
                                 }
 
                                 foreach (string strQuery in InsertDetails)
                                 {
+                                    QueryLogger("-InsertDetails->" + strQuery);
                                     com.CommandText = strQuery;
                                     com.ExecuteNonQuery();
                                 }
