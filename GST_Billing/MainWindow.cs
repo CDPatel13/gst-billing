@@ -24,18 +24,24 @@ namespace GST_Billing
 
         private void btnEditInvoice_Click(object sender, EventArgs e)
         {
-            // TODO : Edit existing invoice
+            int invoiceToEdit = 0;
+            string custName = String.Empty;
             if(dgvInvoice.SelectedRows.Count > 0)
             {
-                int index = dgvInvoice.SelectedRows[0].Index;
-                dgvInvoice.ClearSelection();
-                dgvInvoice.Rows[index].Selected = true;
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
+                invoiceToEdit = Int32.Parse((string)row.Cells["colInvoiceNum"].Value);
+                custName = (string)row.Cells["colCust"].Value;
             }
         }
 
         private void btnDeleteInvoice_Click(object sender, EventArgs e)
         {
-            // TODO : Delete selected invoice
+            
+            MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            // TODO : Delete selected invoice from database
+
+            dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
@@ -50,6 +56,11 @@ namespace GST_Billing
             // UI : Select first row
             if (dgvInvoice.RowCount > 0)
                 dgvInvoice.Rows[0].Selected = true;
+        }
+
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

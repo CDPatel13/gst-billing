@@ -19,6 +19,8 @@ namespace GST_Billing
         List<int> colIndices = new int[] { 3, 5, 7}.ToList();
         List<string> listOfCustomers = new List<string>();
         List<string> listAddCharges = new List<string>();
+        List<string> challanNumbers = new List<string>();
+
         SqliteDb m1 = new SqliteDb();
         int custId = 0;
         double sgstFinal = 0;
@@ -33,16 +35,21 @@ namespace GST_Billing
         private void Invoice_Load(object sender, EventArgs e)
         {
             loadCustomerDetailsFromDatabase();
-
-            Invoice_ResizeEnd(sender, e);
+            setAdditionalCharges();
+            this.ResizeRedraw = true;
+            this.Refresh();
         }
 
-        void Invoice_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        private void setAdditionalCharges()
         {
-            Home home = new Home();
-            home.Show();
-            //this.Hide();
+            lbAddCharge1.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge2.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge3.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge4.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge5.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge6.DataSource = baseModel.additionalCharges.Values.ToList<string>();
         }
+
         /// <summary>
         /// Check state changed for "Shipping details are same as billing"
         /// if checked, disable the shipping details part
@@ -131,13 +138,12 @@ namespace GST_Billing
             taxableVal += calculateTaxableValue();
             gstAmount = calculateGST(taxableVal);
             amount = Math.Round(amount, 2);
-            total = taxableVal + gstAmount;
+            total = Math.Round(taxableVal + gstAmount, 0);
 
             lbTotalQty.Text = quantity.ToString();
             lbTotalAmount.Text = amount.ToString();
             lbTotalDiscount.Text = discount.ToString();
             lbTotalTaxVal.Text = taxableVal.ToString();
-            lbTotalGst.Text = gstAmount.ToString();
             lbTotalFinal.Text = total.ToString();
 
         }
@@ -146,13 +152,6 @@ namespace GST_Billing
         {
             double result = 0;
 
-            foreach(string name in listAddCharges)
-            {
-                var addChargeTextBox = "tbAdd" + name;
-                var control = tblPnlAddCharge.Controls.Find(addChargeTextBox, true);
-
-                result += !string.IsNullOrEmpty(control[0].Text) ? double.Parse(control[0].Text) : 0;
-            }
 
             return Math.Round(result, 2);
         }
@@ -166,12 +165,19 @@ namespace GST_Billing
 
                 sgstFinal = Math.Round((sgst * taxVal) / 100, 2);
                 cgstFinal = Math.Round((cgst * taxVal) / 100, 2);
+
+                lbTotalSgst.Text = sgstFinal.ToString();
+                lbTotalCgst.Text = cgstFinal.ToString();
+
                 return sgstFinal + cgstFinal;
             }
             else
             {
                 var igst = !String.IsNullOrEmpty(tbIgst.Text) ? double.Parse(tbIgst.Text) : 0;
                 igstFinal = Math.Round((igst * taxVal)/100, 2);
+
+                lbTotalIgst.Text = igstFinal.ToString();
+
                 return igstFinal;
             }
         }
@@ -205,80 +211,15 @@ namespace GST_Billing
 
         private void Invoice_ResizeEnd(object sender, EventArgs e)
         {
-            if (this.Size.Width <= this.MinimumSize.Width)
-            {
-                gbBilling.Size = gbBilling.MinimumSize;
-                gbShipping.Size = gbShipping.MinimumSize;
-                dgvProducts.Size = dgvProducts.MinimumSize;
-                gbInvoice.Size = gbInvoice.MinimumSize;
-                tblPanelTotals.Size = tblPanelTotals.MinimumSize;
-            }
-            //else if (this.Size.Width >= this.MaximumSize.Width)
-            //{
-            //    gbBilling.Size = gbBilling.MaximumSize;
-            //    gbShipping.Size = gbShipping.MaximumSize;
-            //    dgvProducts.Size = dgvProducts.MaximumSize;
-            //    gbInvoice.Size = gbInvoice.MaximumSize;
-            //    tblPanelTotals.Size = tblPanelTotals.MaximumSize;
-            //    gbAddCharge.Size = gbAddCharge.MaximumSize;
-            //}
-            else
-            {
-                gbBilling.Size = gbShipping.Size = new Size((dgvProducts.Size.Width - 5) / 2, gbShipping.Size.Height);
-            }
+            gbBilling.Size = gbShipping.Size = new Size((int)(this.Size.Width / 2) - 26, gbShipping.Size.Height);
 
-            flwPanelButtons.Location = new Point((this.Size.Width/2) - 75, flwPanelButtons.Location.Y);
+            tlpTotals.Size = new Size(this.Size.Width - 33, tlpTotals.Height);
+            gbInvoice.Size = new Size(this.Size.Width - 43, gbInvoice.Height);
+            gbAddCharge.Size = new Size(this.Size.Width - 43, gbAddCharge.Height);
 
-            gbShipping.Location = new Point(gbBilling.Location.X + gbBilling.Size.Width + 5, gbBilling.Location.Y);
-        }
-
-        private void btnAddCharge_Click(object sender, EventArgs e)
-        {
-            string tempCharge = tbAddCharge.Text;
-            if(!String.IsNullOrEmpty(tempCharge) && !String.IsNullOrWhiteSpace(tempCharge))
-            {
-                if(!listAddCharges.Contains(tempCharge))
-                {
-                    Label lbAdd = new Label();
-                    string append = new string(' ', 50 - tempCharge.Length);
-                    lbAdd.Text = append + tempCharge;
-                    lbAdd.Name = "lbAdd" + tempCharge;
-                    Padding margin = lbAdd.Margin;
-                    margin.Top = 5;
-                    lbAdd.Margin = margin;
-                    lbAdd.Dock = DockStyle.Fill;
-
-                    TextBox tbAdd = new TextBox();
-                    tbAdd.Name = "tbAdd" + tempCharge;
-                    tbAdd.Dock = DockStyle.Fill;
-                    tbAdd.KeyPress += column_KeyPress;
-                    tbAdd.TextChanged += tbAdd_TextChanged;
-
-                    this.tblPnlAddCharge.Controls.Add(lbAdd);
-                    this.tblPnlAddCharge.Controls.Add(tbAdd);
-
-                    tblPnlAddCharge.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-                    TableLayoutStyleCollection styles = tblPnlAddCharge.RowStyles;
-                    foreach(RowStyle style in styles)
-                    {
-                        style.SizeType = SizeType.Absolute;
-                        style.Height = 30;
-                    }
-
-                    listAddCharges.Add(tempCharge);
-                }
-            }
-        }
-
-        void tbAdd_TextChanged(object sender, EventArgs e)
-        {
-            calculateTotals();
-        }
-
-        private void tbAddCharge_TextChanged(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(tbAddCharge.Text) && !String.IsNullOrWhiteSpace(tbAddCharge.Text))
-                btnAddCharge.Enabled = true; 
+            Padding margin = flpPanelButtons.Controls[0].Margin;
+            margin.Left = (int)flpPanelButtons.Size.Width / 2 - flpPanelButtons.Controls[0].Width;
+            flpPanelButtons.Controls[0].Margin = margin;
         }
 
         private void tbGst_TextChanged(object sender, EventArgs e)
@@ -306,100 +247,17 @@ namespace GST_Billing
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            //if (!ValidateData()) return;
-            try
-            {
-                string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND IsActive = 1 ";
-                DataSet ds = m1.selectData(sqlstr);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    DialogResult drDuplicateInsert = MessageBox.Show("Invoice no. : " + tbInvoiceNum.Text + " is present in Db.. Do you want to update it?"
-                        , "Alert", MessageBoxButtons.YesNo);
-                    switch (drDuplicateInsert)
-                    {
-                        case DialogResult.Yes:
-                            sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId ='" + ds.Tables[0].Rows[0]["invoiceId"] + "'";
-                            m1.Ins_Upd_Del(sqlstr);
-
-                            sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "'";
-                            m1.Ins_Upd_Del(sqlstr);
-                            break;
-                        case DialogResult.No:
-                            return;
-                    }
-                }
-
-                sqlstr = "select MAX(userId) from userDetails";
-                int userId = Convert.ToInt32(m1.scaler(sqlstr));
-               
-                //, totaCGSTAmount, totalIGSTAmount
-                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, IsActive)" +
-                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
-                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
-                        lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 1)";
-                int NoOfRows = m1.Ins_Upd_Del(sqlstr);
-
-                if (NoOfRows > 0)
-                {
-                    sqlstr = "select MAX(invoiceId) from invoiceDetails";
-                    int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
-                    int rowCount = 0;
-                    foreach (DataGridViewRow row in dgvProducts.Rows)
-                    {
-                        if (rowCount < dgvProducts.RowCount - 1)
-                        {
-                            sqlstr = "INSERT INTO invoiceProductDetails(invoiceId, productName, productCode, productQnty, ProductUnit, productUnitPrice, productAmount, productDiscount, productTaxAmount)" +
-                                "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '" 
-                                          + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colRate"].Value.ToString()) + ", " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", " 
-                                          + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
-                            m1.Ins_Upd_Del(sqlstr);
-                            rowCount++;
-                        }
-                    }
-
-                    foreach (string name in listAddCharges)
-                    {
-                        var addChargeTextBox = "tbAdd" + name;
-                        var control = tblPnlAddCharge.Controls.Find(addChargeTextBox, true);
-                        sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
-                            "VALUES(" + invoiceId + ", '" + name + "', '" + double.Parse(control[0].Text) + "')";
-                        m1.Ins_Upd_Del(sqlstr);
-                    }
-
-                    MessageBox.Show("Invoice created successfully");
-                }
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show("Error :" + e1.Message);
-            }
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            if (tbInvoiceNum.Text == "" || tbInvoiceNum.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Enter Voucher number");
-                tbInvoiceNum.Focus();
-                return;
-            }
-
-            btnSave_Click(sender, e);
-
-            PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
-            objPrintInvoice.MdiParent = this.MdiParent;
-            objPrintInvoice.Show();
-        }
-
         private void cbBillName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            getCustomerDetails(cbBillName.Text);
+        }
+
+        private void getCustomerDetails(string customer)
+        {
             custId = 0;
-            string sqlstr = "SELECT * FROM customerDetails where custname='" + cbBillName.Text + "'";
+            string sqlstr = "SELECT * FROM customerDetails where custname='" + customer + "'";
             DataSet ds = m1.selectData(sqlstr);
-            if(ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 custId = Convert.ToInt32(ds.Tables[0].Rows[0]["custId"]);
                 tbBillAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
@@ -425,7 +283,6 @@ namespace GST_Billing
                 tbShipCode.ResetText();
             }
         }
-
 
         private void loadCustomerDetailsFromDatabase()
         {
@@ -470,11 +327,11 @@ namespace GST_Billing
 
             if (name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
             {
-                flwPanelButtons.Enabled = true;
+                flpPanelButtons.Enabled = true;
             }
             else
             {
-                flwPanelButtons.Enabled = false;
+                flpPanelButtons.Enabled = false;
             }
         }
 
@@ -498,6 +355,122 @@ namespace GST_Billing
         {
             tbShipCode.SelectAll();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //if (!ValidateData()) return;
+            try
+            {
+                string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND IsActive = 1 ";
+                DataSet ds = m1.selectData(sqlstr);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DialogResult drDuplicateInsert = MessageBox.Show("Invoice no. : " + tbInvoiceNum.Text + " is present in Db.. Do you want to update it?"
+                        , "Alert", MessageBoxButtons.YesNo);
+                    switch (drDuplicateInsert)
+                    {
+                        case DialogResult.Yes:
+                            sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId ='" + ds.Tables[0].Rows[0]["invoiceId"] + "'";
+                            m1.Ins_Upd_Del(sqlstr);
+
+                            sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "'";
+                            m1.Ins_Upd_Del(sqlstr);
+                            break;
+                        case DialogResult.No:
+                            return;
+                    }
+                }
+
+                sqlstr = "select MAX(userId) from userDetails";
+                int userId = Convert.ToInt32(m1.scaler(sqlstr));
+
+                //, totaCGSTAmount, totalIGSTAmount
+                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, IsActive)" +
+                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
+                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
+                        lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 1)";
+                int NoOfRows = m1.Ins_Upd_Del(sqlstr);
+
+                if (NoOfRows > 0)
+                {
+                    sqlstr = "select MAX(invoiceId) from invoiceDetails";
+                    int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
+                    int rowCount = 0;
+                    foreach (DataGridViewRow row in dgvProducts.Rows)
+                    {
+                        if (rowCount < dgvProducts.RowCount - 1)
+                        {
+                            sqlstr = "INSERT INTO invoiceProductDetails(invoiceId, productName, productCode, productQnty, ProductUnit, productUnitPrice, productAmount, productDiscount, productTaxAmount)" +
+                                "VALUES(" + invoiceId + ", '" + row.Cells["colProDes"].Value.ToString() + "', '" + row.Cells["colHsnCode"].Value.ToString() + "', " + float.Parse(row.Cells["colQty"].Value.ToString()) + ", '"
+                                          + row.Cells["colUnit"].Value.ToString() + "', " + float.Parse(row.Cells["colRate"].Value.ToString()) + ", " + float.Parse(row.Cells["colAmount"].Value.ToString()) + ", "
+                                          + float.Parse(row.Cells["colDiscount"].Value.ToString()) + ", " + float.Parse(row.Cells["colTaxableVal"].Value.ToString()) + ")";
+                            m1.Ins_Upd_Del(sqlstr);
+                            rowCount++;
+                        }
+                    }
+
+                    foreach (string name in listAddCharges)
+                    {
+                        var addChargeTextBox = "tbAdd" + name;
+                        var control = tlpAddCharge.Controls.Find(addChargeTextBox, true);
+                        sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
+                            "VALUES(" + invoiceId + ", '" + name + "', '" + double.Parse(control[0].Text) + "')";
+                        m1.Ins_Upd_Del(sqlstr);
+                    }
+
+                    MessageBox.Show("Invoice created successfully");
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error :" + e1.Message);
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (tbInvoiceNum.Text == "" || tbInvoiceNum.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Enter Voucher number");
+                tbInvoiceNum.Focus();
+                return;
+            }
+
+            btnSave_Click(sender, e);
+
+            PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
+            objPrintInvoice.MdiParent = this.MdiParent;
+            objPrintInvoice.Show();
+        }
+
+        private void tbChallanNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnAddChallan_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(lbAddedChallan.Text) && !String.IsNullOrEmpty(tbChallanNumber.Text))
+            {
+                lbAddedChallan.Text = tbChallanNumber.Text;
+            }
+            else if(!challanNumbers.Contains(tbChallanNumber.Text))
+            {
+                lbAddedChallan.Text += "," + tbChallanNumber.Text;
+            }
+            challanNumbers.Add(tbChallanNumber.Text);
+                
+        }
+
+        private void btnClearChallan_Click(object sender, EventArgs e)
+        {
+            lbAddedChallan.Text = String.Empty;
+        }
+
 
     }
 }

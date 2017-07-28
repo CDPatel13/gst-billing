@@ -36,7 +36,7 @@
             this.colProdRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProdQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbSearchProducts = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,15 +56,21 @@
             this.colSgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustGstin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.colReceivedAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbStartDate = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.tbSearchInvoice = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpInvoiceBtns = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnAddInvoice = new System.Windows.Forms.Button();
             this.btnDeleteInvoice = new System.Windows.Forms.Button();
             this.btnEditInvoice = new System.Windows.Forms.Button();
+            this.btn = new System.Windows.Forms.Button();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +84,7 @@
             this.colCustContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustPayTerms = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.tbSearchCust = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -93,8 +99,8 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tabInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoice)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.flpSearchInvoice.SuspendLayout();
+            this.tlpInvoiceBtns.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -104,12 +110,13 @@
             // 
             // tabProducts
             // 
+            this.tabProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabProducts.Controls.Add(this.dataGridView2);
             this.tabProducts.Controls.Add(this.flowLayoutPanel3);
             this.tabProducts.Controls.Add(this.tableLayoutPanel3);
-            this.tabProducts.Location = new System.Drawing.Point(4, 22);
+            this.tabProducts.Location = new System.Drawing.Point(4, 25);
             this.tabProducts.Name = "tabProducts";
-            this.tabProducts.Size = new System.Drawing.Size(1256, 656);
+            this.tabProducts.Size = new System.Drawing.Size(1256, 653);
             this.tabProducts.TabIndex = 2;
             this.tabProducts.Text = "Products List";
             this.tabProducts.UseVisualStyleBackColor = true;
@@ -123,9 +130,9 @@
             this.colProdRate,
             this.colProdQty});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 70);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 79);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1256, 586);
+            this.dataGridView2.Size = new System.Drawing.Size(1254, 586);
             this.dataGridView2.TabIndex = 9;
             // 
             // colProdDes
@@ -150,44 +157,48 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.textBox2);
+            this.flowLayoutPanel3.Controls.Add(this.tbSearchProducts);
             this.flowLayoutPanel3.Controls.Add(this.button7);
             this.flowLayoutPanel3.Controls.Add(this.button8);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 40);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1256, 30);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1254, 39);
             this.flowLayoutPanel3.TabIndex = 8;
             // 
-            // textBox2
+            // tbSearchProducts
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Location = new System.Drawing.Point(3, 5);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(294, 20);
-            this.textBox2.TabIndex = 0;
+            this.tbSearchProducts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbSearchProducts.Location = new System.Drawing.Point(3, 8);
+            this.tbSearchProducts.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.tbSearchProducts.Name = "tbSearchProducts";
+            this.tbSearchProducts.Size = new System.Drawing.Size(294, 20);
+            this.tbSearchProducts.TabIndex = 0;
             // 
             // button7
             // 
             this.button7.Dock = System.Windows.Forms.DockStyle.Top;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.Location = new System.Drawing.Point(303, 3);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.Size = new System.Drawing.Size(75, 29);
             this.button7.TabIndex = 1;
             this.button7.Text = "Find";
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.Location = new System.Drawing.Point(384, 3);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(75, 29);
             this.button8.TabIndex = 2;
             this.button8.Text = "Clear";
+            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button8.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
@@ -208,7 +219,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1256, 40);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1254, 40);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // btnPrintProduct
@@ -274,12 +285,13 @@
             // 
             // tabInvoice
             // 
+            this.tabInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabInvoice.Controls.Add(this.dgvInvoice);
-            this.tabInvoice.Controls.Add(this.flowLayoutPanel2);
-            this.tabInvoice.Controls.Add(this.tableLayoutPanel2);
-            this.tabInvoice.Location = new System.Drawing.Point(4, 22);
+            this.tabInvoice.Controls.Add(this.flpSearchInvoice);
+            this.tabInvoice.Controls.Add(this.tlpInvoiceBtns);
+            this.tabInvoice.Location = new System.Drawing.Point(4, 25);
             this.tabInvoice.Name = "tabInvoice";
-            this.tabInvoice.Size = new System.Drawing.Size(1256, 656);
+            this.tabInvoice.Size = new System.Drawing.Size(1256, 653);
             this.tabInvoice.TabIndex = 1;
             this.tabInvoice.Text = "Invoice List";
             this.tabInvoice.UseVisualStyleBackColor = true;
@@ -297,13 +309,14 @@
             this.colCgst,
             this.colSgst,
             this.colIgst,
-            this.colCustGstin});
+            this.colCustGstin,
+            this.colReceivedAmt});
             this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvInvoice.Location = new System.Drawing.Point(0, 70);
+            this.dgvInvoice.Location = new System.Drawing.Point(0, 79);
             this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInvoice.Size = new System.Drawing.Size(1256, 586);
+            this.dgvInvoice.Size = new System.Drawing.Size(1254, 586);
             this.dgvInvoice.TabIndex = 7;
             // 
             // colCust
@@ -356,68 +369,127 @@
             this.colCustGstin.HeaderText = "Customer GSTIN";
             this.colCustGstin.Name = "colCustGstin";
             // 
-            // flowLayoutPanel2
+            // colReceivedAmt
             // 
-            this.flowLayoutPanel2.Controls.Add(this.textBox1);
-            this.flowLayoutPanel2.Controls.Add(this.button1);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 40);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1256, 30);
-            this.flowLayoutPanel2.TabIndex = 6;
+            this.colReceivedAmt.HeaderText = "Payment";
+            this.colReceivedAmt.Name = "colReceivedAmt";
             // 
-            // textBox1
+            // flpSearchInvoice
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(3, 5);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 20);
-            this.textBox1.TabIndex = 0;
+            this.flpSearchInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpSearchInvoice.Controls.Add(this.lbStartDate);
+            this.flpSearchInvoice.Controls.Add(this.dateTimePicker1);
+            this.flpSearchInvoice.Controls.Add(this.label1);
+            this.flpSearchInvoice.Controls.Add(this.dateTimePicker2);
+            this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
+            this.flpSearchInvoice.Controls.Add(this.button1);
+            this.flpSearchInvoice.Controls.Add(this.button2);
+            this.flpSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpSearchInvoice.Location = new System.Drawing.Point(0, 40);
+            this.flpSearchInvoice.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.flpSearchInvoice.Name = "flpSearchInvoice";
+            this.flpSearchInvoice.Size = new System.Drawing.Size(1254, 39);
+            this.flpSearchInvoice.TabIndex = 6;
+            // 
+            // lbStartDate
+            // 
+            this.lbStartDate.AutoSize = true;
+            this.lbStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStartDate.Location = new System.Drawing.Point(5, 10);
+            this.lbStartDate.Margin = new System.Windows.Forms.Padding(5, 10, 3, 0);
+            this.lbStartDate.Name = "lbStartDate";
+            this.lbStartDate.Size = new System.Drawing.Size(34, 13);
+            this.lbStartDate.TabIndex = 3;
+            this.lbStartDate.Text = "From";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(45, 8);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(133, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "To";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(161, 8);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.dateTimePicker2.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePicker2.TabIndex = 6;
+            // 
+            // tbSearchInvoice
+            // 
+            this.tbSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbSearchInvoice.Location = new System.Drawing.Point(249, 8);
+            this.tbSearchInvoice.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.tbSearchInvoice.Name = "tbSearchInvoice";
+            this.tbSearchInvoice.Size = new System.Drawing.Size(294, 20);
+            this.tbSearchInvoice.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(303, 3);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(549, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "Find";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(384, 3);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(630, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 29);
             this.button2.TabIndex = 2;
             this.button2.Text = "Clear";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel2
+            // tlpInvoiceBtns
             // 
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.btnPrintInvoice, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnAddInvoice, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnDeleteInvoice, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnEditInvoice, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1256, 40);
-            this.tableLayoutPanel2.TabIndex = 5;
+            this.tlpInvoiceBtns.BackColor = System.Drawing.SystemColors.Control;
+            this.tlpInvoiceBtns.ColumnCount = 6;
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInvoiceBtns.Controls.Add(this.btnPrintInvoice, 3, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btnAddInvoice, 0, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btnDeleteInvoice, 2, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btnEditInvoice, 1, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btn, 4, 0);
+            this.tlpInvoiceBtns.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpInvoiceBtns.Location = new System.Drawing.Point(0, 0);
+            this.tlpInvoiceBtns.Name = "tlpInvoiceBtns";
+            this.tlpInvoiceBtns.RowCount = 1;
+            this.tlpInvoiceBtns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpInvoiceBtns.Size = new System.Drawing.Size(1254, 40);
+            this.tlpInvoiceBtns.TabIndex = 5;
             // 
             // btnPrintInvoice
             // 
@@ -425,6 +497,7 @@
             this.btnPrintInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPrintInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintInvoice.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInvoice.Image")));
             this.btnPrintInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrintInvoice.Location = new System.Drawing.Point(303, 3);
@@ -442,6 +515,7 @@
             this.btnAddInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoice.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnAddInvoice.Image")));
             this.btnAddInvoice.Location = new System.Drawing.Point(3, 3);
             this.btnAddInvoice.Name = "btnAddInvoice";
@@ -458,6 +532,7 @@
             this.btnDeleteInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDeleteInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnDeleteInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteInvoice.Image")));
             this.btnDeleteInvoice.Location = new System.Drawing.Point(203, 3);
             this.btnDeleteInvoice.Name = "btnDeleteInvoice";
@@ -474,6 +549,7 @@
             this.btnEditInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEditInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnEditInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditInvoice.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnEditInvoice.Image")));
             this.btnEditInvoice.Location = new System.Drawing.Point(103, 3);
             this.btnEditInvoice.Name = "btnEditInvoice";
@@ -484,14 +560,29 @@
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
+            // btn
+            // 
+            this.btn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn.ForeColor = System.Drawing.Color.DarkViolet;
+            this.btn.Image = ((System.Drawing.Image)(resources.GetObject("btn.Image")));
+            this.btn.Location = new System.Drawing.Point(403, 3);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(94, 34);
+            this.btn.TabIndex = 4;
+            this.btn.Text = "Payment";
+            this.btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn.UseVisualStyleBackColor = true;
+            // 
             // tabCustomer
             // 
+            this.tabCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabCustomer.Controls.Add(this.dataGridView1);
             this.tabCustomer.Controls.Add(this.flowLayoutPanel1);
             this.tabCustomer.Controls.Add(this.tableLayoutPanel1);
-            this.tabCustomer.Location = new System.Drawing.Point(4, 22);
+            this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
-            this.tabCustomer.Size = new System.Drawing.Size(1256, 656);
+            this.tabCustomer.Size = new System.Drawing.Size(1256, 653);
             this.tabCustomer.TabIndex = 0;
             this.tabCustomer.Text = "Customer List";
             this.tabCustomer.UseVisualStyleBackColor = true;
@@ -511,9 +602,9 @@
             this.colCustContact,
             this.colCustPayTerms});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 70);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 79);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1256, 586);
+            this.dataGridView1.Size = new System.Drawing.Size(1254, 586);
             this.dataGridView1.TabIndex = 8;
             // 
             // colCustName
@@ -576,44 +667,48 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.tbSearch);
+            this.flowLayoutPanel1.Controls.Add(this.tbSearchCust);
             this.flowLayoutPanel1.Controls.Add(this.btnFind);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1256, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1254, 39);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // tbSearch
+            // tbSearchCust
             // 
-            this.tbSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbSearch.Location = new System.Drawing.Point(3, 5);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(294, 20);
-            this.tbSearch.TabIndex = 0;
+            this.tbSearchCust.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbSearchCust.Location = new System.Drawing.Point(3, 8);
+            this.tbSearchCust.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.tbSearchCust.Name = "tbSearchCust";
+            this.tbSearchCust.Size = new System.Drawing.Size(294, 20);
+            this.tbSearchCust.TabIndex = 0;
             // 
             // btnFind
             // 
             this.btnFind.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
             this.btnFind.Location = new System.Drawing.Point(303, 3);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.Size = new System.Drawing.Size(75, 29);
             this.btnFind.TabIndex = 1;
             this.btnFind.Text = "Find";
+            this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFind.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(384, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(75, 29);
             this.btnClear.TabIndex = 2;
             this.btnClear.Text = "Clear";
+            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
@@ -634,7 +729,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 40);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1254, 40);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // btnPrintCust
@@ -700,6 +795,7 @@
             // 
             // tabMain
             // 
+            this.tabMain.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabMain.Controls.Add(this.tabInvoice);
             this.tabMain.Controls.Add(this.tabCustomer);
             this.tabMain.Controls.Add(this.tabProducts);
@@ -719,6 +815,7 @@
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.tabProducts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -727,9 +824,9 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tabInvoice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoice)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.flpSearchInvoice.ResumeLayout(false);
+            this.flpSearchInvoice.PerformLayout();
+            this.tlpInvoiceBtns.ResumeLayout(false);
             this.tabCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -746,7 +843,7 @@
         private System.Windows.Forms.TabPage tabInvoice;
         private System.Windows.Forms.TabPage tabCustomer;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.TextBox tbSearchCust;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -755,17 +852,16 @@
         private System.Windows.Forms.Button btnDeleteCust;
         private System.Windows.Forms.Button btnEditCust;
         private System.Windows.Forms.TabControl tabMain;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.FlowLayoutPanel flpSearchInvoice;
+        private System.Windows.Forms.TextBox tbSearchInvoice;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tlpInvoiceBtns;
         private System.Windows.Forms.Button btnPrintInvoice;
         private System.Windows.Forms.Button btnAddInvoice;
         private System.Windows.Forms.Button btnDeleteInvoice;
-        private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSearchProducts;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -776,16 +872,6 @@
         private System.Windows.Forms.DataGridView dgvInvoice;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCust;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTaxableAmt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustLandmark;
@@ -800,6 +886,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colProdId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProdRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProdQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCust;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTaxableAmt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCgst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSgst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colReceivedAmt;
+        private System.Windows.Forms.Label lbStartDate;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button btnEditInvoice;
+        private System.Windows.Forms.Button btn;
 
     }
 }

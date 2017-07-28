@@ -23,13 +23,7 @@ namespace GST_Billing
 
         private void CustomerDetails_Load(object sender, EventArgs e)
         {
-        }
-
-        void CustomerDetails_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            Home home = new Home();
-            home.Show();
-            //this.Hide();
+            tbPayment.DataSource = tbShipPayment.DataSource = baseModel.paymentTerms.Values.ToList();
         }
 
         private void cbState_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,11 +61,6 @@ namespace GST_Billing
             else
             {
                 btnSave.Enabled = false;
-            }
-
-            if (cbBillShip.Checked)
-            {
-                syncBillingAndShipping();
             }
         }
 

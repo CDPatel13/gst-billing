@@ -21,7 +21,8 @@ namespace GST_Billing
             SqliteDb objSqlLite = new SqliteDb();
             objSqlLite.CreateDatabase();
 
-            Application.Run(new MainWindow());
+            Application.Run(new Login());
+            //Application.Run(new MainWindow());
             //Application.Run(new Home());
         }
     }
