@@ -30,15 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tabProducts = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.colProdDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.tbSearchProducts = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnFindProduct = new System.Windows.Forms.Button();
+            this.btnClearProduct = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrintProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -46,6 +42,36 @@
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.tabInvoice = new System.Windows.Forms.TabPage();
             this.dgvInvoice = new System.Windows.Forms.DataGridView();
+            this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbStartDate = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.tbSearchInvoice = new System.Windows.Forms.TextBox();
+            this.btnSearchInvoice = new System.Windows.Forms.Button();
+            this.btnClearInvoice = new System.Windows.Forms.Button();
+            this.tlpInvoiceBtns = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
+            this.btnAddInvoice = new System.Windows.Forms.Button();
+            this.btnDeleteInvoice = new System.Windows.Forms.Button();
+            this.btnEditInvoice = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.tabCustomer = new System.Windows.Forms.TabPage();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tbSearchCust = new System.Windows.Forms.TextBox();
+            this.btnFindCustomer = new System.Windows.Forms.Button();
+            this.btnClearCustomer = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrintCust = new System.Windows.Forms.Button();
+            this.btnAddCust = new System.Windows.Forms.Button();
+            this.btnDeleteCust = new System.Windows.Forms.Button();
+            this.btnEditCust = new System.Windows.Forms.Button();
+            this.tabMain = new System.Windows.Forms.TabControl();
+            this.lbReceived = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbAmountReceived = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.colCust = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvoiceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,22 +83,6 @@
             this.colIgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustGstin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReceivedAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbStartDate = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.tbSearchInvoice = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tlpInvoiceBtns = new System.Windows.Forms.TableLayoutPanel();
-            this.btnPrintInvoice = new System.Windows.Forms.Button();
-            this.btnAddInvoice = new System.Windows.Forms.Button();
-            this.btnDeleteInvoice = new System.Windows.Forms.Button();
-            this.btnEditInvoice = new System.Windows.Forms.Button();
-            this.btn = new System.Windows.Forms.Button();
-            this.tabCustomer = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustLandmark = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,19 +92,14 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustPayTerms = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tbSearchCust = new System.Windows.Forms.TextBox();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnPrintCust = new System.Windows.Forms.Button();
-            this.btnAddCust = new System.Windows.Forms.Button();
-            this.btnDeleteCust = new System.Windows.Forms.Button();
-            this.btnEditCust = new System.Windows.Forms.Button();
-            this.tabMain = new System.Windows.Forms.TabControl();
+            this.colCustPayTerms = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProdDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHsnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProdRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProdQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabProducts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabInvoice.SuspendLayout();
@@ -102,7 +107,7 @@
             this.flpSearchInvoice.SuspendLayout();
             this.tlpInvoiceBtns.SuspendLayout();
             this.tabCustomer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabMain.SuspendLayout();
@@ -111,7 +116,7 @@
             // tabProducts
             // 
             this.tabProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabProducts.Controls.Add(this.dataGridView2);
+            this.tabProducts.Controls.Add(this.dgvProducts);
             this.tabProducts.Controls.Add(this.flowLayoutPanel3);
             this.tabProducts.Controls.Add(this.tableLayoutPanel3);
             this.tabProducts.Location = new System.Drawing.Point(4, 25);
@@ -121,45 +126,29 @@
             this.tabProducts.Text = "Products List";
             this.tabProducts.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgvProducts
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colProdDes,
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colProdId,
+            this.colProdDes,
+            this.colHsnCode,
             this.colProdRate,
             this.colProdQty});
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 79);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1254, 586);
-            this.dataGridView2.TabIndex = 9;
-            // 
-            // colProdDes
-            // 
-            this.colProdDes.HeaderText = "Product Description";
-            this.colProdDes.Name = "colProdDes";
-            // 
-            // colProdId
-            // 
-            this.colProdId.HeaderText = "Product ID";
-            this.colProdId.Name = "colProdId";
-            // 
-            // colProdRate
-            // 
-            this.colProdRate.HeaderText = "Product Rate";
-            this.colProdRate.Name = "colProdRate";
-            // 
-            // colProdQty
-            // 
-            this.colProdQty.HeaderText = "Product Quantity";
-            this.colProdQty.Name = "colProdQty";
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvProducts.Location = new System.Drawing.Point(0, 79);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowTemplate.ReadOnly = true;
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProducts.Size = new System.Drawing.Size(1254, 586);
+            this.dgvProducts.TabIndex = 9;
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.tbSearchProducts);
-            this.flowLayoutPanel3.Controls.Add(this.button7);
-            this.flowLayoutPanel3.Controls.Add(this.button8);
+            this.flowLayoutPanel3.Controls.Add(this.btnFindProduct);
+            this.flowLayoutPanel3.Controls.Add(this.btnClearProduct);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 40);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -175,31 +164,33 @@
             this.tbSearchProducts.Size = new System.Drawing.Size(294, 20);
             this.tbSearchProducts.TabIndex = 0;
             // 
-            // button7
+            // btnFindProduct
             // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(303, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 29);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Find";
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnFindProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFindProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnFindProduct.Image")));
+            this.btnFindProduct.Location = new System.Drawing.Point(303, 3);
+            this.btnFindProduct.Name = "btnFindProduct";
+            this.btnFindProduct.Size = new System.Drawing.Size(75, 29);
+            this.btnFindProduct.TabIndex = 1;
+            this.btnFindProduct.Text = "Find";
+            this.btnFindProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFindProduct.UseVisualStyleBackColor = true;
+            this.btnFindProduct.Click += new System.EventHandler(this.btnFindProduct_Click);
             // 
-            // button8
+            // btnClearProduct
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(384, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 29);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Clear";
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnClearProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClearProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnClearProduct.Image")));
+            this.btnClearProduct.Location = new System.Drawing.Point(384, 3);
+            this.btnClearProduct.Name = "btnClearProduct";
+            this.btnClearProduct.Size = new System.Drawing.Size(75, 29);
+            this.btnClearProduct.TabIndex = 2;
+            this.btnClearProduct.Text = "Clear";
+            this.btnClearProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearProduct.UseVisualStyleBackColor = true;
+            this.btnClearProduct.Click += new System.EventHandler(this.btnClearProduct_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -228,6 +219,7 @@
             this.btnPrintProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPrintProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnPrintProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintProduct.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintProduct.Image")));
             this.btnPrintProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrintProduct.Location = new System.Drawing.Point(303, 3);
@@ -237,6 +229,7 @@
             this.btnPrintProduct.Text = "Print";
             this.btnPrintProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintProduct.UseVisualStyleBackColor = true;
+            this.btnPrintProduct.Click += new System.EventHandler(this.btnPrintProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -244,6 +237,7 @@
             this.btnAddProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProduct.Image")));
             this.btnAddProduct.Location = new System.Drawing.Point(3, 3);
             this.btnAddProduct.Name = "btnAddProduct";
@@ -252,6 +246,7 @@
             this.btnAddProduct.Text = "Add";
             this.btnAddProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // btnDeleteProduct
             // 
@@ -259,6 +254,7 @@
             this.btnDeleteProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDeleteProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteProduct.Image")));
             this.btnDeleteProduct.Location = new System.Drawing.Point(203, 3);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
@@ -267,6 +263,7 @@
             this.btnDeleteProduct.Text = "Delete";
             this.btnDeleteProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnEditProduct
             // 
@@ -274,6 +271,7 @@
             this.btnEditProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEditProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnEditProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditProduct.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnEditProduct.Image")));
             this.btnEditProduct.Location = new System.Drawing.Point(103, 3);
             this.btnEditProduct.Name = "btnEditProduct";
@@ -282,6 +280,7 @@
             this.btnEditProduct.Text = "Edit";
             this.btnEditProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditProduct.UseVisualStyleBackColor = true;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // tabInvoice
             // 
@@ -315,64 +314,11 @@
             this.dgvInvoice.Location = new System.Drawing.Point(0, 79);
             this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
+            this.dgvInvoice.ReadOnly = true;
+            this.dgvInvoice.RowTemplate.ReadOnly = true;
             this.dgvInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInvoice.Size = new System.Drawing.Size(1254, 586);
             this.dgvInvoice.TabIndex = 7;
-            // 
-            // colCust
-            // 
-            this.colCust.HeaderText = "Customer Name";
-            this.colCust.Name = "colCust";
-            // 
-            // colInvoiceNum
-            // 
-            this.colInvoiceNum.HeaderText = "Invoice No";
-            this.colInvoiceNum.Name = "colInvoiceNum";
-            // 
-            // colInvoiceDate
-            // 
-            this.colInvoiceDate.HeaderText = "Invoice Date";
-            this.colInvoiceDate.Name = "colInvoiceDate";
-            // 
-            // colAmount
-            // 
-            this.colAmount.HeaderText = "Net Amount";
-            this.colAmount.Name = "colAmount";
-            // 
-            // colDiscount
-            // 
-            this.colDiscount.HeaderText = "Discount";
-            this.colDiscount.Name = "colDiscount";
-            // 
-            // colTaxableAmt
-            // 
-            this.colTaxableAmt.HeaderText = "Taxable Amount";
-            this.colTaxableAmt.Name = "colTaxableAmt";
-            // 
-            // colCgst
-            // 
-            this.colCgst.HeaderText = "CGST Total";
-            this.colCgst.Name = "colCgst";
-            // 
-            // colSgst
-            // 
-            this.colSgst.HeaderText = "SGST Total";
-            this.colSgst.Name = "colSgst";
-            // 
-            // colIgst
-            // 
-            this.colIgst.HeaderText = "IGST Total";
-            this.colIgst.Name = "colIgst";
-            // 
-            // colCustGstin
-            // 
-            this.colCustGstin.HeaderText = "Customer GSTIN";
-            this.colCustGstin.Name = "colCustGstin";
-            // 
-            // colReceivedAmt
-            // 
-            this.colReceivedAmt.HeaderText = "Payment";
-            this.colReceivedAmt.Name = "colReceivedAmt";
             // 
             // flpSearchInvoice
             // 
@@ -382,8 +328,12 @@
             this.flpSearchInvoice.Controls.Add(this.label1);
             this.flpSearchInvoice.Controls.Add(this.dateTimePicker2);
             this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
-            this.flpSearchInvoice.Controls.Add(this.button1);
-            this.flpSearchInvoice.Controls.Add(this.button2);
+            this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
+            this.flpSearchInvoice.Controls.Add(this.btnClearInvoice);
+            this.flpSearchInvoice.Controls.Add(this.lbReceived);
+            this.flpSearchInvoice.Controls.Add(this.lbAmountReceived);
+            this.flpSearchInvoice.Controls.Add(this.label2);
+            this.flpSearchInvoice.Controls.Add(this.label3);
             this.flpSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpSearchInvoice.Location = new System.Drawing.Point(0, 40);
             this.flpSearchInvoice.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -442,31 +392,33 @@
             this.tbSearchInvoice.Size = new System.Drawing.Size(294, 20);
             this.tbSearchInvoice.TabIndex = 0;
             // 
-            // button1
+            // btnSearchInvoice
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(549, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Find";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSearchInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchInvoice.Image")));
+            this.btnSearchInvoice.Location = new System.Drawing.Point(549, 3);
+            this.btnSearchInvoice.Name = "btnSearchInvoice";
+            this.btnSearchInvoice.Size = new System.Drawing.Size(75, 29);
+            this.btnSearchInvoice.TabIndex = 1;
+            this.btnSearchInvoice.Text = "Find";
+            this.btnSearchInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearchInvoice.UseVisualStyleBackColor = true;
+            this.btnSearchInvoice.Click += new System.EventHandler(this.btnSearchInvoice_Click);
             // 
-            // button2
+            // btnClearInvoice
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(630, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 29);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Clear";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClearInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClearInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInvoice.Image")));
+            this.btnClearInvoice.Location = new System.Drawing.Point(630, 3);
+            this.btnClearInvoice.Name = "btnClearInvoice";
+            this.btnClearInvoice.Size = new System.Drawing.Size(75, 29);
+            this.btnClearInvoice.TabIndex = 2;
+            this.btnClearInvoice.Text = "Clear";
+            this.btnClearInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearInvoice.UseVisualStyleBackColor = true;
+            this.btnClearInvoice.Click += new System.EventHandler(this.btnClearInvoice_Click);
             // 
             // tlpInvoiceBtns
             // 
@@ -482,7 +434,7 @@
             this.tlpInvoiceBtns.Controls.Add(this.btnAddInvoice, 0, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnDeleteInvoice, 2, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnEditInvoice, 1, 0);
-            this.tlpInvoiceBtns.Controls.Add(this.btn, 4, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btnPayment, 4, 0);
             this.tlpInvoiceBtns.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpInvoiceBtns.Location = new System.Drawing.Point(0, 0);
             this.tlpInvoiceBtns.Name = "tlpInvoiceBtns";
@@ -560,24 +512,25 @@
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
-            // btn
+            // btnPayment
             // 
-            this.btn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn.ForeColor = System.Drawing.Color.DarkViolet;
-            this.btn.Image = ((System.Drawing.Image)(resources.GetObject("btn.Image")));
-            this.btn.Location = new System.Drawing.Point(403, 3);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(94, 34);
-            this.btn.TabIndex = 4;
-            this.btn.Text = "Payment";
-            this.btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn.UseVisualStyleBackColor = true;
+            this.btnPayment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.DarkViolet;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.Location = new System.Drawing.Point(403, 3);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(94, 34);
+            this.btnPayment.TabIndex = 4;
+            this.btnPayment.Text = "Payment";
+            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // tabCustomer
             // 
             this.tabCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabCustomer.Controls.Add(this.dataGridView1);
+            this.tabCustomer.Controls.Add(this.dgvCustomer);
             this.tabCustomer.Controls.Add(this.flowLayoutPanel1);
             this.tabCustomer.Controls.Add(this.tableLayoutPanel1);
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
@@ -587,10 +540,10 @@
             this.tabCustomer.Text = "Customer List";
             this.tabCustomer.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvCustomer
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCustName,
             this.colCustAddress,
             this.colCustLandmark,
@@ -601,75 +554,20 @@
             this.colCustEmail,
             this.colCustContact,
             this.colCustPayTerms});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1254, 586);
-            this.dataGridView1.TabIndex = 8;
-            // 
-            // colCustName
-            // 
-            this.colCustName.HeaderText = "Customer Name";
-            this.colCustName.Name = "colCustName";
-            // 
-            // colCustAddress
-            // 
-            this.colCustAddress.HeaderText = "Customer Address";
-            this.colCustAddress.Name = "colCustAddress";
-            // 
-            // colCustLandmark
-            // 
-            this.colCustLandmark.HeaderText = "Customer Landmark";
-            this.colCustLandmark.Name = "colCustLandmark";
-            // 
-            // colCustCity
-            // 
-            this.colCustCity.HeaderText = "Customer City";
-            this.colCustCity.Name = "colCustCity";
-            // 
-            // colCustPinCode
-            // 
-            this.colCustPinCode.HeaderText = "Customer PIN Code";
-            this.colCustPinCode.Name = "colCustPinCode";
-            // 
-            // colCustState
-            // 
-            this.colCustState.HeaderText = "Customer State";
-            this.colCustState.Name = "colCustState";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Customer GSTIN";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // colCustEmail
-            // 
-            this.colCustEmail.HeaderText = "Customer Email";
-            this.colCustEmail.Name = "colCustEmail";
-            // 
-            // colCustContact
-            // 
-            this.colCustContact.HeaderText = "Customer Contact No";
-            this.colCustContact.Name = "colCustContact";
-            // 
-            // colCustPayTerms
-            // 
-            this.colCustPayTerms.HeaderText = "Customer Payment Terms";
-            this.colCustPayTerms.Items.AddRange(new object[] {
-            "Immediately",
-            "15 Days",
-            "30 Days",
-            "60 Days",
-            "More Than 60 Days"});
-            this.colCustPayTerms.Name = "colCustPayTerms";
-            this.colCustPayTerms.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCustPayTerms.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvCustomer.Location = new System.Drawing.Point(0, 79);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
+            this.dgvCustomer.RowTemplate.ReadOnly = true;
+            this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCustomer.Size = new System.Drawing.Size(1254, 586);
+            this.dgvCustomer.TabIndex = 8;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.tbSearchCust);
-            this.flowLayoutPanel1.Controls.Add(this.btnFind);
-            this.flowLayoutPanel1.Controls.Add(this.btnClear);
+            this.flowLayoutPanel1.Controls.Add(this.btnFindCustomer);
+            this.flowLayoutPanel1.Controls.Add(this.btnClearCustomer);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -685,31 +583,33 @@
             this.tbSearchCust.Size = new System.Drawing.Size(294, 20);
             this.tbSearchCust.TabIndex = 0;
             // 
-            // btnFind
+            // btnFindCustomer
             // 
-            this.btnFind.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
-            this.btnFind.Location = new System.Drawing.Point(303, 3);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 29);
-            this.btnFind.TabIndex = 1;
-            this.btnFind.Text = "Find";
-            this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFindCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFindCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnFindCustomer.Image")));
+            this.btnFindCustomer.Location = new System.Drawing.Point(303, 3);
+            this.btnFindCustomer.Name = "btnFindCustomer";
+            this.btnFindCustomer.Size = new System.Drawing.Size(75, 29);
+            this.btnFindCustomer.TabIndex = 1;
+            this.btnFindCustomer.Text = "Find";
+            this.btnFindCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFindCustomer.UseVisualStyleBackColor = true;
+            this.btnFindCustomer.Click += new System.EventHandler(this.btnFindCustomer_Click);
             // 
-            // btnClear
+            // btnClearCustomer
             // 
-            this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(384, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 29);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "Clear";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClearCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClearCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnClearCustomer.Image")));
+            this.btnClearCustomer.Location = new System.Drawing.Point(384, 3);
+            this.btnClearCustomer.Name = "btnClearCustomer";
+            this.btnClearCustomer.Size = new System.Drawing.Size(75, 29);
+            this.btnClearCustomer.TabIndex = 2;
+            this.btnClearCustomer.Text = "Clear";
+            this.btnClearCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearCustomer.UseVisualStyleBackColor = true;
+            this.btnClearCustomer.Click += new System.EventHandler(this.btnClearCustomer_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -738,6 +638,7 @@
             this.btnPrintCust.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPrintCust.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnPrintCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintCust.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintCust.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintCust.Image")));
             this.btnPrintCust.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrintCust.Location = new System.Drawing.Point(303, 3);
@@ -747,6 +648,7 @@
             this.btnPrintCust.Text = "Print";
             this.btnPrintCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintCust.UseVisualStyleBackColor = true;
+            this.btnPrintCust.Click += new System.EventHandler(this.btnPrintCust_Click);
             // 
             // btnAddCust
             // 
@@ -754,6 +656,7 @@
             this.btnAddCust.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddCust.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnAddCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCust.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddCust.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCust.Image")));
             this.btnAddCust.Location = new System.Drawing.Point(3, 3);
             this.btnAddCust.Name = "btnAddCust";
@@ -762,6 +665,7 @@
             this.btnAddCust.Text = "Add";
             this.btnAddCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddCust.UseVisualStyleBackColor = true;
+            this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
             // 
             // btnDeleteCust
             // 
@@ -769,6 +673,7 @@
             this.btnDeleteCust.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDeleteCust.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnDeleteCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteCust.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteCust.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCust.Image")));
             this.btnDeleteCust.Location = new System.Drawing.Point(203, 3);
             this.btnDeleteCust.Name = "btnDeleteCust";
@@ -777,6 +682,7 @@
             this.btnDeleteCust.Text = "Delete";
             this.btnDeleteCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteCust.UseVisualStyleBackColor = true;
+            this.btnDeleteCust.Click += new System.EventHandler(this.btnDeleteCust_Click);
             // 
             // btnEditCust
             // 
@@ -784,6 +690,7 @@
             this.btnEditCust.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEditCust.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.btnEditCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCust.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditCust.Image = ((System.Drawing.Image)(resources.GetObject("btnEditCust.Image")));
             this.btnEditCust.Location = new System.Drawing.Point(103, 3);
             this.btnEditCust.Name = "btnEditCust";
@@ -792,6 +699,7 @@
             this.btnEditCust.Text = "Edit";
             this.btnEditCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditCust.UseVisualStyleBackColor = true;
+            this.btnEditCust.Click += new System.EventHandler(this.btnEditCust_Click);
             // 
             // tabMain
             // 
@@ -806,6 +714,213 @@
             this.tabMain.Size = new System.Drawing.Size(1264, 682);
             this.tabMain.TabIndex = 1;
             // 
+            // lbReceived
+            // 
+            this.lbReceived.AutoSize = true;
+            this.lbReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReceived.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbReceived.Location = new System.Drawing.Point(738, 10);
+            this.lbReceived.Margin = new System.Windows.Forms.Padding(30, 10, 3, 0);
+            this.lbReceived.Name = "lbReceived";
+            this.lbReceived.Size = new System.Drawing.Size(138, 16);
+            this.lbReceived.TabIndex = 7;
+            this.lbReceived.Text = "Received Amount :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label2.Location = new System.Drawing.Point(931, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Pending Amount :";
+            // 
+            // lbAmountReceived
+            // 
+            this.lbAmountReceived.AutoSize = true;
+            this.lbAmountReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAmountReceived.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbAmountReceived.Location = new System.Drawing.Point(882, 10);
+            this.lbAmountReceived.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lbAmountReceived.Name = "lbAmountReceived";
+            this.lbAmountReceived.Size = new System.Drawing.Size(36, 16);
+            this.lbAmountReceived.TabIndex = 10;
+            this.lbAmountReceived.Text = "0.00";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label3.Location = new System.Drawing.Point(1065, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 16);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "0.00";
+            // 
+            // colCust
+            // 
+            this.colCust.HeaderText = "Customer Name";
+            this.colCust.Name = "colCust";
+            this.colCust.ReadOnly = true;
+            // 
+            // colInvoiceNum
+            // 
+            this.colInvoiceNum.HeaderText = "Invoice No";
+            this.colInvoiceNum.Name = "colInvoiceNum";
+            this.colInvoiceNum.ReadOnly = true;
+            // 
+            // colInvoiceDate
+            // 
+            this.colInvoiceDate.HeaderText = "Invoice Date";
+            this.colInvoiceDate.Name = "colInvoiceDate";
+            this.colInvoiceDate.ReadOnly = true;
+            // 
+            // colAmount
+            // 
+            this.colAmount.HeaderText = "Net Amount";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            // 
+            // colDiscount
+            // 
+            this.colDiscount.HeaderText = "Discount";
+            this.colDiscount.Name = "colDiscount";
+            this.colDiscount.ReadOnly = true;
+            // 
+            // colTaxableAmt
+            // 
+            this.colTaxableAmt.HeaderText = "Taxable Amount";
+            this.colTaxableAmt.Name = "colTaxableAmt";
+            this.colTaxableAmt.ReadOnly = true;
+            // 
+            // colCgst
+            // 
+            this.colCgst.HeaderText = "CGST Total";
+            this.colCgst.Name = "colCgst";
+            this.colCgst.ReadOnly = true;
+            // 
+            // colSgst
+            // 
+            this.colSgst.HeaderText = "SGST Total";
+            this.colSgst.Name = "colSgst";
+            this.colSgst.ReadOnly = true;
+            // 
+            // colIgst
+            // 
+            this.colIgst.HeaderText = "IGST Total";
+            this.colIgst.Name = "colIgst";
+            this.colIgst.ReadOnly = true;
+            // 
+            // colCustGstin
+            // 
+            this.colCustGstin.HeaderText = "Customer GSTIN";
+            this.colCustGstin.Name = "colCustGstin";
+            this.colCustGstin.ReadOnly = true;
+            // 
+            // colReceivedAmt
+            // 
+            this.colReceivedAmt.HeaderText = "Payment";
+            this.colReceivedAmt.Name = "colReceivedAmt";
+            this.colReceivedAmt.ReadOnly = true;
+            // 
+            // colCustName
+            // 
+            this.colCustName.HeaderText = "Customer Name";
+            this.colCustName.Name = "colCustName";
+            this.colCustName.ReadOnly = true;
+            // 
+            // colCustAddress
+            // 
+            this.colCustAddress.HeaderText = "Customer Address";
+            this.colCustAddress.Name = "colCustAddress";
+            this.colCustAddress.ReadOnly = true;
+            // 
+            // colCustLandmark
+            // 
+            this.colCustLandmark.HeaderText = "Customer Landmark";
+            this.colCustLandmark.Name = "colCustLandmark";
+            this.colCustLandmark.ReadOnly = true;
+            // 
+            // colCustCity
+            // 
+            this.colCustCity.HeaderText = "Customer City";
+            this.colCustCity.Name = "colCustCity";
+            this.colCustCity.ReadOnly = true;
+            // 
+            // colCustPinCode
+            // 
+            this.colCustPinCode.HeaderText = "Customer PIN Code";
+            this.colCustPinCode.Name = "colCustPinCode";
+            this.colCustPinCode.ReadOnly = true;
+            // 
+            // colCustState
+            // 
+            this.colCustState.HeaderText = "Customer State";
+            this.colCustState.Name = "colCustState";
+            this.colCustState.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Customer GSTIN";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // colCustEmail
+            // 
+            this.colCustEmail.HeaderText = "Customer Email";
+            this.colCustEmail.Name = "colCustEmail";
+            this.colCustEmail.ReadOnly = true;
+            // 
+            // colCustContact
+            // 
+            this.colCustContact.HeaderText = "Customer Contact No";
+            this.colCustContact.Name = "colCustContact";
+            this.colCustContact.ReadOnly = true;
+            // 
+            // colCustPayTerms
+            // 
+            this.colCustPayTerms.HeaderText = "Customer Payment Terms";
+            this.colCustPayTerms.Name = "colCustPayTerms";
+            this.colCustPayTerms.ReadOnly = true;
+            this.colCustPayTerms.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colProdId
+            // 
+            this.colProdId.HeaderText = "Product ID";
+            this.colProdId.Name = "colProdId";
+            this.colProdId.ReadOnly = true;
+            this.colProdId.Width = 40;
+            // 
+            // colProdDes
+            // 
+            this.colProdDes.HeaderText = "Product Description";
+            this.colProdDes.Name = "colProdDes";
+            this.colProdDes.ReadOnly = true;
+            this.colProdDes.Width = 200;
+            // 
+            // colHsnCode
+            // 
+            this.colHsnCode.HeaderText = "HSN Code";
+            this.colHsnCode.Name = "colHsnCode";
+            this.colHsnCode.ReadOnly = true;
+            // 
+            // colProdRate
+            // 
+            this.colProdRate.HeaderText = "Product Rate";
+            this.colProdRate.Name = "colProdRate";
+            this.colProdRate.ReadOnly = true;
+            // 
+            // colProdQty
+            // 
+            this.colProdQty.HeaderText = "Product Quantity";
+            this.colProdQty.Name = "colProdQty";
+            this.colProdQty.ReadOnly = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,7 +933,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.tabProducts.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -828,7 +943,7 @@
             this.flpSearchInvoice.PerformLayout();
             this.tlpInvoiceBtns.ResumeLayout(false);
             this.tabCustomer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -844,8 +959,8 @@
         private System.Windows.Forms.TabPage tabCustomer;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox tbSearchCust;
-        private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnFindCustomer;
+        private System.Windows.Forms.Button btnClearCustomer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnPrintCust;
         private System.Windows.Forms.Button btnAddCust;
@@ -854,38 +969,34 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.FlowLayoutPanel flpSearchInvoice;
         private System.Windows.Forms.TextBox tbSearchInvoice;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSearchInvoice;
+        private System.Windows.Forms.Button btnClearInvoice;
         private System.Windows.Forms.TableLayoutPanel tlpInvoiceBtns;
         private System.Windows.Forms.Button btnPrintInvoice;
         private System.Windows.Forms.Button btnAddInvoice;
         private System.Windows.Forms.Button btnDeleteInvoice;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox tbSearchProducts;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnFindProduct;
+        private System.Windows.Forms.Button btnClearProduct;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnPrintProduct;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.DataGridView dgvInvoice;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustLandmark;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustPinCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustContact;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colCustPayTerms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdDes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdQty;
+        private System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.DataGridView dgvCustomer;
+        private System.Windows.Forms.Label lbStartDate;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button btnEditInvoice;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Label lbReceived;
+        private System.Windows.Forms.Label lbAmountReceived;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCust;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceDate;
@@ -897,12 +1008,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReceivedAmt;
-        private System.Windows.Forms.Label lbStartDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button btnEditInvoice;
-        private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProdId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProdDes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHsnCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProdRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProdQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustLandmark;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustCity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustPinCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustState;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustContact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustPayTerms;
 
     }
 }
