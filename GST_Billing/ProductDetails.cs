@@ -38,7 +38,7 @@ namespace GST_Billing
             {
                 int NoOfRows = 0;
                 string sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit)" +
-                                "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdQty.Text + "')";
+                                "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdUnit.Text + "')";
                 NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
                 if (NoOfRows > 0)
@@ -54,6 +54,21 @@ namespace GST_Billing
             catch (Exception e1)
             {
                 MessageBox.Show("Error :" + e1.Message);
+            }
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            if( !String.IsNullOrEmpty(tbProdDes.Text) &&
+                !String.IsNullOrEmpty(tbProdHsnCode.Text) &&
+                !String.IsNullOrEmpty(tbProdRate.Text) &&
+                !String.IsNullOrEmpty(tbProdUnit.Text))
+            {
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                btnSave.Enabled = false;
             }
         }
     }

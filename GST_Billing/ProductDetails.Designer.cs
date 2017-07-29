@@ -30,8 +30,8 @@
         {
             this.tbProdHsnCode = new System.Windows.Forms.TextBox();
             this.lbProdHsnCode = new System.Windows.Forms.Label();
-            this.tbProdQty = new System.Windows.Forms.TextBox();
-            this.lbProdQty = new System.Windows.Forms.Label();
+            this.tbProdUnit = new System.Windows.Forms.TextBox();
+            this.lbProdUnit = new System.Windows.Forms.Label();
             this.tbProdRate = new System.Windows.Forms.TextBox();
             this.lbProdRate = new System.Windows.Forms.Label();
             this.tbProdDes = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
             this.tbProdHsnCode.Name = "tbProdHsnCode";
             this.tbProdHsnCode.Size = new System.Drawing.Size(256, 23);
             this.tbProdHsnCode.TabIndex = 36;
+            this.tbProdHsnCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbProdHsnCode
             // 
@@ -57,24 +58,24 @@
             this.lbProdHsnCode.TabIndex = 37;
             this.lbProdHsnCode.Text = "HSN Code";
             // 
-            // tbProdQty
+            // tbProdUnit
             // 
-            this.tbProdQty.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProdQty.Location = new System.Drawing.Point(487, 41);
-            this.tbProdQty.Name = "tbProdQty";
-            this.tbProdQty.Size = new System.Drawing.Size(256, 23);
-            this.tbProdQty.TabIndex = 34;
-            this.tbProdQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRateQty_KeyPress);
+            this.tbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProdUnit.Location = new System.Drawing.Point(487, 41);
+            this.tbProdUnit.Name = "tbProdUnit";
+            this.tbProdUnit.Size = new System.Drawing.Size(256, 23);
+            this.tbProdUnit.TabIndex = 34;
+            this.tbProdUnit.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
-            // lbProdQty
+            // lbProdUnit
             // 
-            this.lbProdQty.AutoSize = true;
-            this.lbProdQty.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdQty.Location = new System.Drawing.Point(415, 44);
-            this.lbProdQty.Name = "lbProdQty";
-            this.lbProdQty.Size = new System.Drawing.Size(66, 16);
-            this.lbProdQty.TabIndex = 35;
-            this.lbProdQty.Text = "Quantity";
+            this.lbProdUnit.AutoSize = true;
+            this.lbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProdUnit.Location = new System.Drawing.Point(445, 44);
+            this.lbProdUnit.Name = "lbProdUnit";
+            this.lbProdUnit.Size = new System.Drawing.Size(36, 16);
+            this.lbProdUnit.TabIndex = 35;
+            this.lbProdUnit.Text = "Unit";
             // 
             // tbProdRate
             // 
@@ -83,6 +84,7 @@
             this.tbProdRate.Name = "tbProdRate";
             this.tbProdRate.Size = new System.Drawing.Size(256, 23);
             this.tbProdRate.TabIndex = 24;
+            this.tbProdRate.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.tbProdRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRateQty_KeyPress);
             // 
             // lbProdRate
@@ -102,6 +104,7 @@
             this.tbProdDes.Name = "tbProdDes";
             this.tbProdDes.Size = new System.Drawing.Size(256, 23);
             this.tbProdDes.TabIndex = 22;
+            this.tbProdDes.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbProdDes
             // 
@@ -134,8 +137,8 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbProdHsnCode);
             this.Controls.Add(this.lbProdHsnCode);
-            this.Controls.Add(this.tbProdQty);
-            this.Controls.Add(this.lbProdQty);
+            this.Controls.Add(this.tbProdUnit);
+            this.Controls.Add(this.lbProdUnit);
             this.Controls.Add(this.tbProdRate);
             this.Controls.Add(this.lbProdRate);
             this.Controls.Add(this.tbProdDes);
@@ -152,8 +155,8 @@
 
         private System.Windows.Forms.TextBox tbProdHsnCode;
         private System.Windows.Forms.Label lbProdHsnCode;
-        private System.Windows.Forms.TextBox tbProdQty;
-        private System.Windows.Forms.Label lbProdQty;
+        private System.Windows.Forms.TextBox tbProdUnit;
+        private System.Windows.Forms.Label lbProdUnit;
         private System.Windows.Forms.TextBox tbProdRate;
         private System.Windows.Forms.Label lbProdRate;
         private System.Windows.Forms.TextBox tbProdDes;
