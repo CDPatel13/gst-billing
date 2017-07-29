@@ -43,12 +43,22 @@ namespace GST_Billing
             this.Refresh();
         }
 
+        private void setAdditionalCharges()
+        {
+            lbAddCharge1.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge2.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge3.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge4.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge5.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+            lbAddCharge6.DataSource = baseModel.additionalCharges.Values.ToList<string>();
+        }
+
         /// <summary>
         /// Check state changed for "Shipping details are same as billing"
         /// if checked, disable the shipping details part
         /// </summary>
-        /// <param name="sender">CheckBox</param>
-        /// <param name="e">Event arguments</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbBillAndShip_CheckedChanged(object sender, EventArgs e)
         {
             gbShipping.Enabled = !cbBillAndShip.Checked;
@@ -144,8 +154,7 @@ namespace GST_Billing
         private double calculateTaxableValue()
         {
             double result = 0;
-            result = double.Parse(tbAddCharge1.Text) + double.Parse(tbAddCharge2.Text) + double.Parse(tbAddCharge3.Text) +
-                     double.Parse(tbAddCharge4.Text) + double.Parse(tbAddCharge5.Text) + double.Parse(tbAddCharge6.Text);
+
 
             return Math.Round(result, 2);
         }
@@ -465,34 +474,6 @@ namespace GST_Billing
             lbAddedChallan.Text = String.Empty;
         }
 
-        private void tbAddCharge_TextChanged(object sender, EventArgs e)
-        {
-            TextBox tbAddCharge = sender as TextBox;
-            int index = tlpAddCharge.Controls.GetChildIndex(tlpAddCharge.Controls[tbAddCharge.Name], false);
-            var addCharge = tlpAddCharge.Controls[index - 1] ;
 
-            if (!String.IsNullOrEmpty(addCharge.Text))
-            {
-                addChargeFinal += !String.IsNullOrEmpty(tbAddCharge.Text) ? double.Parse(tbAddCharge.Text) : 0;
-                calculateTotals();
-            }
-            else
-            {
-                tbAddCharge.Text = "0.00";
-            }
-            tbAddCharge.Text = String.IsNullOrEmpty(tbAddCharge.Text) ? "0.00" : tbAddCharge.Text;
-        }
-
-        private void lbAddCharge_Click(object sender, EventArgs e)
-        {
-            ComboBox lbAddCharge = sender as ComboBox;
-            lbAddCharge.DataSource = baseModel.additionalCharges.Values.ToList();
-        }
-
-        private void tbAddCharge_Click(object sender, EventArgs e)
-        {
-            TextBox tbAddCharge = sender as TextBox;
-            tbAddCharge.SelectAll();
-        }
     }
 }

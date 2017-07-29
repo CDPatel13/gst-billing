@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Invoice));
             this.gbBilling = new System.Windows.Forms.GroupBox();
             this.tbBillPin = new System.Windows.Forms.TextBox();
@@ -116,18 +116,18 @@
             this.flpPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.gbAddCharge = new System.Windows.Forms.GroupBox();
             this.tlpAddCharge = new System.Windows.Forms.TableLayoutPanel();
-            this.lbAddCharge1 = new System.Windows.Forms.ComboBox();
-            this.tbAddCharge1 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge2 = new System.Windows.Forms.ComboBox();
-            this.tbAddCharge2 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge3 = new System.Windows.Forms.ComboBox();
-            this.tbAddCharge3 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge4 = new System.Windows.Forms.ComboBox();
-            this.tbAddCharge4 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge5 = new System.Windows.Forms.ComboBox();
-            this.tbAddCharge5 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge6 = new System.Windows.Forms.ComboBox();
             this.tbAddCharge6 = new System.Windows.Forms.TextBox();
+            this.tbAddCharge3 = new System.Windows.Forms.TextBox();
+            this.tbAddCharge5 = new System.Windows.Forms.TextBox();
+            this.tbAddCharge2 = new System.Windows.Forms.TextBox();
+            this.tbAddCharge4 = new System.Windows.Forms.TextBox();
+            this.lbAddCharge1 = new System.Windows.Forms.ComboBox();
+            this.lbAddCharge2 = new System.Windows.Forms.ComboBox();
+            this.lbAddCharge3 = new System.Windows.Forms.ComboBox();
+            this.lbAddCharge4 = new System.Windows.Forms.ComboBox();
+            this.lbAddCharge5 = new System.Windows.Forms.ComboBox();
+            this.lbAddCharge6 = new System.Windows.Forms.ComboBox();
+            this.tbAddCharge1 = new System.Windows.Forms.TextBox();
             this.lbSgst = new System.Windows.Forms.Label();
             this.tbSgst = new System.Windows.Forms.TextBox();
             this.lbCgst = new System.Windows.Forms.Label();
@@ -137,12 +137,12 @@
             this.flpBillShip = new System.Windows.Forms.FlowLayoutPanel();
             this.flpA = new System.Windows.Forms.FlowLayoutPanel();
             this.flpGst = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpAddCharge = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbPaymentTerms = new System.Windows.Forms.Label();
+            this.splitter3 = new System.Windows.Forms.Splitter();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
+            this.lbPaymentTerms = new System.Windows.Forms.Label();
             this.tbPaymentTerms = new System.Windows.Forms.ComboBox();
-            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.flpAddCharge = new System.Windows.Forms.FlowLayoutPanel();
             this.gbBilling.SuspendLayout();
             this.gbInvoice.SuspendLayout();
             this.tlpInvoice.SuspendLayout();
@@ -845,14 +845,14 @@
             // 
             // dgvProducts
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSerNo,
@@ -864,26 +864,26 @@
             this.colAmount,
             this.colDiscount,
             this.colTaxableVal});
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvProducts.Location = new System.Drawing.Point(0, 373);
             this.dgvProducts.Name = "dgvProducts";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
-            this.dgvProducts.Size = new System.Drawing.Size(759, 205);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvProducts.Size = new System.Drawing.Size(742, 205);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
@@ -912,9 +912,9 @@
             // 
             // colQty
             // 
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.NullValue = "0.00";
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.colQty.DefaultCellStyle = dataGridViewCellStyle2;
             this.colQty.FillWeight = 71.97796F;
             this.colQty.HeaderText = "Qty";
             this.colQty.Name = "colQty";
@@ -929,9 +929,9 @@
             // 
             // colRate
             // 
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.NullValue = "0.00";
-            this.colRate.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.colRate.DefaultCellStyle = dataGridViewCellStyle3;
             this.colRate.FillWeight = 81.26287F;
             this.colRate.HeaderText = "Rate";
             this.colRate.Name = "colRate";
@@ -947,9 +947,9 @@
             // 
             // colDiscount
             // 
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = "0.00";
-            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle4;
             this.colDiscount.FillWeight = 104.4025F;
             this.colDiscount.HeaderText = "Discount";
             this.colDiscount.Name = "colDiscount";
@@ -958,9 +958,9 @@
             // colTaxableVal
             // 
             this.colTaxableVal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle26.Format = "N2";
-            dataGridViewCellStyle26.NullValue = "0.00";
-            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle5;
             this.colTaxableVal.FillWeight = 124.9178F;
             this.colTaxableVal.HeaderText = "Taxable Value";
             this.colTaxableVal.Name = "colTaxableVal";
@@ -998,14 +998,14 @@
             this.tlpTotals.Controls.Add(this.lbCgstT, 6, 0);
             this.tlpTotals.Controls.Add(this.lbIgstT, 7, 0);
             this.tlpTotals.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpTotals.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F);
+            this.tlpTotals.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.tlpTotals.Location = new System.Drawing.Point(0, 749);
             this.tlpTotals.Name = "tlpTotals";
             this.tlpTotals.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(759, 72);
+            this.tlpTotals.Size = new System.Drawing.Size(742, 72);
             this.tlpTotals.TabIndex = 9;
             // 
             // lbTotalFinal
@@ -1013,7 +1013,7 @@
             this.lbTotalFinal.AutoSize = true;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(735, 40);
+            this.lbTotalFinal.Location = new System.Drawing.Point(718, 40);
             this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
             this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
@@ -1025,7 +1025,7 @@
             this.lbTotalIgst.AutoSize = true;
             this.lbTotalIgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalIgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalIgst.Location = new System.Drawing.Point(560, 40);
+            this.lbTotalIgst.Location = new System.Drawing.Point(541, 40);
             this.lbTotalIgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalIgst.Name = "lbTotalIgst";
             this.lbTotalIgst.Size = new System.Drawing.Size(18, 23);
@@ -1036,8 +1036,8 @@
             // 
             this.lbSgstT.AutoSize = true;
             this.lbSgstT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbSgstT.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbSgstT.Location = new System.Drawing.Point(368, 9);
+            this.lbSgstT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbSgstT.Location = new System.Drawing.Point(349, 9);
             this.lbSgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbSgstT.Name = "lbSgstT";
             this.lbSgstT.Size = new System.Drawing.Size(64, 22);
@@ -1048,11 +1048,11 @@
             // 
             this.lbTaxableVal.AutoSize = true;
             this.lbTaxableVal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbTaxableVal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbTaxableVal.Location = new System.Drawing.Point(256, 9);
+            this.lbTaxableVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbTaxableVal.Location = new System.Drawing.Point(242, 9);
             this.lbTaxableVal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTaxableVal.Name = "lbTaxableVal";
-            this.lbTaxableVal.Size = new System.Drawing.Size(103, 22);
+            this.lbTaxableVal.Size = new System.Drawing.Size(98, 22);
             this.lbTaxableVal.TabIndex = 5;
             this.lbTaxableVal.Text = "Taxable Value";
             // 
@@ -1060,11 +1060,11 @@
             // 
             this.lbDiscount.AutoSize = true;
             this.lbDiscount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbDiscount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbDiscount.Location = new System.Drawing.Point(180, 9);
+            this.lbDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbDiscount.Location = new System.Drawing.Point(170, 9);
             this.lbDiscount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbDiscount.Name = "lbDiscount";
-            this.lbDiscount.Size = new System.Drawing.Size(67, 22);
+            this.lbDiscount.Size = new System.Drawing.Size(63, 22);
             this.lbDiscount.TabIndex = 4;
             this.lbDiscount.Text = "Discount";
             // 
@@ -1072,11 +1072,11 @@
             // 
             this.lbAmount.AutoSize = true;
             this.lbAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbAmount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbAmount.Location = new System.Drawing.Point(112, 9);
+            this.lbAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbAmount.Location = new System.Drawing.Point(105, 9);
             this.lbAmount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbAmount.Name = "lbAmount";
-            this.lbAmount.Size = new System.Drawing.Size(59, 22);
+            this.lbAmount.Size = new System.Drawing.Size(56, 22);
             this.lbAmount.TabIndex = 3;
             this.lbAmount.Text = "Amount";
             // 
@@ -1084,11 +1084,11 @@
             // 
             this.lbQty.AutoSize = true;
             this.lbQty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbQty.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbQty.Location = new System.Drawing.Point(71, 9);
+            this.lbQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbQty.Location = new System.Drawing.Point(66, 9);
             this.lbQty.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbQty.Name = "lbQty";
-            this.lbQty.Size = new System.Drawing.Size(32, 22);
+            this.lbQty.Size = new System.Drawing.Size(30, 22);
             this.lbQty.TabIndex = 2;
             this.lbQty.Text = "Qty";
             // 
@@ -1096,11 +1096,11 @@
             // 
             this.lbFinalTotal.AutoSize = true;
             this.lbFinalTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbFinalTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFinalTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFinalTotal.Location = new System.Drawing.Point(6, 40);
             this.lbFinalTotal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbFinalTotal.Name = "lbFinalTotal";
-            this.lbFinalTotal.Size = new System.Drawing.Size(56, 23);
+            this.lbFinalTotal.Size = new System.Drawing.Size(51, 23);
             this.lbFinalTotal.TabIndex = 8;
             this.lbFinalTotal.Text = "Total";
             // 
@@ -1110,7 +1110,7 @@
             this.lbTotalQty.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalQty.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalQty.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalQty.Location = new System.Drawing.Point(85, 40);
+            this.lbTotalQty.Location = new System.Drawing.Point(78, 40);
             this.lbTotalQty.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalQty.Name = "lbTotalQty";
             this.lbTotalQty.Size = new System.Drawing.Size(18, 23);
@@ -1123,7 +1123,7 @@
             this.lbTotalAmount.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalAmount.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalAmount.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalAmount.Location = new System.Drawing.Point(153, 40);
+            this.lbTotalAmount.Location = new System.Drawing.Point(143, 40);
             this.lbTotalAmount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalAmount.Name = "lbTotalAmount";
             this.lbTotalAmount.Size = new System.Drawing.Size(18, 23);
@@ -1136,7 +1136,7 @@
             this.lbTotalDiscount.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalDiscount.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalDiscount.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalDiscount.Location = new System.Drawing.Point(229, 40);
+            this.lbTotalDiscount.Location = new System.Drawing.Point(215, 40);
             this.lbTotalDiscount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalDiscount.Name = "lbTotalDiscount";
             this.lbTotalDiscount.Size = new System.Drawing.Size(18, 23);
@@ -1149,7 +1149,7 @@
             this.lbTotalTaxVal.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalTaxVal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalTaxVal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalTaxVal.Location = new System.Drawing.Point(341, 40);
+            this.lbTotalTaxVal.Location = new System.Drawing.Point(322, 40);
             this.lbTotalTaxVal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalTaxVal.Name = "lbTotalTaxVal";
             this.lbTotalTaxVal.Size = new System.Drawing.Size(18, 23);
@@ -1162,7 +1162,7 @@
             this.lbTotalSgst.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalSgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalSgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalSgst.Location = new System.Drawing.Point(414, 40);
+            this.lbTotalSgst.Location = new System.Drawing.Point(395, 40);
             this.lbTotalSgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalSgst.Name = "lbTotalSgst";
             this.lbTotalSgst.Size = new System.Drawing.Size(18, 23);
@@ -1174,7 +1174,7 @@
             this.lbTotalCgst.AutoSize = true;
             this.lbTotalCgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalCgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalCgst.Location = new System.Drawing.Point(487, 40);
+            this.lbTotalCgst.Location = new System.Drawing.Point(468, 40);
             this.lbTotalCgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalCgst.Name = "lbTotalCgst";
             this.lbTotalCgst.Size = new System.Drawing.Size(18, 23);
@@ -1184,11 +1184,11 @@
             // lbTotalAll
             // 
             this.lbTotalAll.AutoSize = true;
-            this.lbTotalAll.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.lbTotalAll.Location = new System.Drawing.Point(587, 9);
+            this.lbTotalAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbTotalAll.Location = new System.Drawing.Point(568, 9);
             this.lbTotalAll.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalAll.Name = "lbTotalAll";
-            this.lbTotalAll.Size = new System.Drawing.Size(42, 16);
+            this.lbTotalAll.Size = new System.Drawing.Size(40, 17);
             this.lbTotalAll.TabIndex = 14;
             this.lbTotalAll.Text = "Total";
             // 
@@ -1196,8 +1196,8 @@
             // 
             this.lbCgstT.AutoSize = true;
             this.lbCgstT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbCgstT.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCgstT.Location = new System.Drawing.Point(441, 9);
+            this.lbCgstT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCgstT.Location = new System.Drawing.Point(422, 9);
             this.lbCgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbCgstT.Name = "lbCgstT";
             this.lbCgstT.Size = new System.Drawing.Size(64, 22);
@@ -1207,11 +1207,11 @@
             // lbIgstT
             // 
             this.lbIgstT.AutoSize = true;
-            this.lbIgstT.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIgstT.Location = new System.Drawing.Point(514, 9);
+            this.lbIgstT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIgstT.Location = new System.Drawing.Point(495, 9);
             this.lbIgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbIgstT.Name = "lbIgstT";
-            this.lbIgstT.Size = new System.Drawing.Size(38, 15);
+            this.lbIgstT.Size = new System.Drawing.Size(39, 16);
             this.lbIgstT.TabIndex = 17;
             this.lbIgstT.Text = "IGST";
             // 
@@ -1258,7 +1258,7 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 821);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(759, 43);
+            this.flpPanelButtons.Size = new System.Drawing.Size(742, 43);
             this.flpPanelButtons.TabIndex = 12;
             // 
             // gbAddCharge
@@ -1282,18 +1282,18 @@
             this.tlpAddCharge.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlpAddCharge.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpAddCharge.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge1, 0, 0);
-            this.tlpAddCharge.Controls.Add(this.tbAddCharge1, 1, 0);
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge2, 0, 1);
-            this.tlpAddCharge.Controls.Add(this.tbAddCharge2, 1, 1);
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge3, 0, 2);
-            this.tlpAddCharge.Controls.Add(this.tbAddCharge3, 1, 2);
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge4, 2, 0);
-            this.tlpAddCharge.Controls.Add(this.tbAddCharge4, 3, 0);
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge5, 2, 1);
-            this.tlpAddCharge.Controls.Add(this.tbAddCharge5, 3, 1);
-            this.tlpAddCharge.Controls.Add(this.lbAddCharge6, 2, 2);
             this.tlpAddCharge.Controls.Add(this.tbAddCharge6, 3, 2);
+            this.tlpAddCharge.Controls.Add(this.tbAddCharge3, 1, 2);
+            this.tlpAddCharge.Controls.Add(this.tbAddCharge5, 3, 1);
+            this.tlpAddCharge.Controls.Add(this.tbAddCharge2, 1, 1);
+            this.tlpAddCharge.Controls.Add(this.tbAddCharge4, 3, 0);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge1, 0, 0);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge2, 0, 1);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge3, 0, 2);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge4, 2, 0);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge5, 2, 1);
+            this.tlpAddCharge.Controls.Add(this.lbAddCharge6, 2, 2);
+            this.tlpAddCharge.Controls.Add(this.tbAddCharge1, 1, 0);
             this.tlpAddCharge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAddCharge.Location = new System.Drawing.Point(3, 19);
             this.tlpAddCharge.Name = "tlpAddCharge";
@@ -1304,6 +1304,51 @@
             this.tlpAddCharge.Size = new System.Drawing.Size(726, 141);
             this.tlpAddCharge.TabIndex = 19;
             // 
+            // tbAddCharge6
+            // 
+            this.tbAddCharge6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge6.Location = new System.Drawing.Point(582, 97);
+            this.tbAddCharge6.Name = "tbAddCharge6";
+            this.tbAddCharge6.Size = new System.Drawing.Size(141, 23);
+            this.tbAddCharge6.TabIndex = 11;
+            this.tbAddCharge6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            // 
+            // tbAddCharge3
+            // 
+            this.tbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge3.Location = new System.Drawing.Point(220, 97);
+            this.tbAddCharge3.Name = "tbAddCharge3";
+            this.tbAddCharge3.Size = new System.Drawing.Size(139, 23);
+            this.tbAddCharge3.TabIndex = 10;
+            this.tbAddCharge3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            // 
+            // tbAddCharge5
+            // 
+            this.tbAddCharge5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge5.Location = new System.Drawing.Point(582, 50);
+            this.tbAddCharge5.Name = "tbAddCharge5";
+            this.tbAddCharge5.Size = new System.Drawing.Size(141, 23);
+            this.tbAddCharge5.TabIndex = 9;
+            this.tbAddCharge5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            // 
+            // tbAddCharge2
+            // 
+            this.tbAddCharge2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge2.Location = new System.Drawing.Point(220, 50);
+            this.tbAddCharge2.Name = "tbAddCharge2";
+            this.tbAddCharge2.Size = new System.Drawing.Size(139, 23);
+            this.tbAddCharge2.TabIndex = 8;
+            this.tbAddCharge2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            // 
+            // tbAddCharge4
+            // 
+            this.tbAddCharge4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge4.Location = new System.Drawing.Point(582, 3);
+            this.tbAddCharge4.Name = "tbAddCharge4";
+            this.tbAddCharge4.Size = new System.Drawing.Size(141, 23);
+            this.tbAddCharge4.TabIndex = 7;
+            this.tbAddCharge4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            // 
             // lbAddCharge1
             // 
             this.lbAddCharge1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1312,19 +1357,6 @@
             this.lbAddCharge1.Name = "lbAddCharge1";
             this.lbAddCharge1.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge1.TabIndex = 0;
-            this.lbAddCharge1.Click += new System.EventHandler(this.lbAddCharge_Click);
-            // 
-            // tbAddCharge1
-            // 
-            this.tbAddCharge1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge1.Location = new System.Drawing.Point(220, 3);
-            this.tbAddCharge1.Name = "tbAddCharge1";
-            this.tbAddCharge1.Size = new System.Drawing.Size(139, 23);
-            this.tbAddCharge1.TabIndex = 6;
-            this.tbAddCharge1.Text = "0.00";
-            this.tbAddCharge1.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge1.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge2
             // 
@@ -1334,19 +1366,6 @@
             this.lbAddCharge2.Name = "lbAddCharge2";
             this.lbAddCharge2.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge2.TabIndex = 1;
-            this.lbAddCharge2.Click += new System.EventHandler(this.lbAddCharge_Click);
-            // 
-            // tbAddCharge2
-            // 
-            this.tbAddCharge2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge2.Location = new System.Drawing.Point(220, 50);
-            this.tbAddCharge2.Name = "tbAddCharge2";
-            this.tbAddCharge2.Size = new System.Drawing.Size(139, 23);
-            this.tbAddCharge2.TabIndex = 8;
-            this.tbAddCharge2.Text = "0.00";
-            this.tbAddCharge2.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge2.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge3
             // 
@@ -1356,19 +1375,6 @@
             this.lbAddCharge3.Name = "lbAddCharge3";
             this.lbAddCharge3.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge3.TabIndex = 2;
-            this.lbAddCharge3.Click += new System.EventHandler(this.lbAddCharge_Click);
-            // 
-            // tbAddCharge3
-            // 
-            this.tbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge3.Location = new System.Drawing.Point(220, 97);
-            this.tbAddCharge3.Name = "tbAddCharge3";
-            this.tbAddCharge3.Size = new System.Drawing.Size(139, 23);
-            this.tbAddCharge3.TabIndex = 10;
-            this.tbAddCharge3.Text = "0.00";
-            this.tbAddCharge3.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge3.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge4
             // 
@@ -1378,19 +1384,6 @@
             this.lbAddCharge4.Name = "lbAddCharge4";
             this.lbAddCharge4.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge4.TabIndex = 3;
-            this.lbAddCharge4.Click += new System.EventHandler(this.lbAddCharge_Click);
-            // 
-            // tbAddCharge4
-            // 
-            this.tbAddCharge4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge4.Location = new System.Drawing.Point(582, 3);
-            this.tbAddCharge4.Name = "tbAddCharge4";
-            this.tbAddCharge4.Size = new System.Drawing.Size(141, 23);
-            this.tbAddCharge4.TabIndex = 7;
-            this.tbAddCharge4.Text = "0.00";
-            this.tbAddCharge4.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge4.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge5
             // 
@@ -1400,19 +1393,6 @@
             this.lbAddCharge5.Name = "lbAddCharge5";
             this.lbAddCharge5.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge5.TabIndex = 4;
-            this.lbAddCharge5.Click += new System.EventHandler(this.lbAddCharge_Click);
-            // 
-            // tbAddCharge5
-            // 
-            this.tbAddCharge5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge5.Location = new System.Drawing.Point(582, 50);
-            this.tbAddCharge5.Name = "tbAddCharge5";
-            this.tbAddCharge5.Size = new System.Drawing.Size(141, 23);
-            this.tbAddCharge5.TabIndex = 9;
-            this.tbAddCharge5.Text = "0.00";
-            this.tbAddCharge5.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge5.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge6
             // 
@@ -1422,19 +1402,15 @@
             this.lbAddCharge6.Name = "lbAddCharge6";
             this.lbAddCharge6.Size = new System.Drawing.Size(211, 24);
             this.lbAddCharge6.TabIndex = 5;
-            this.lbAddCharge6.Click += new System.EventHandler(this.lbAddCharge_Click);
             // 
-            // tbAddCharge6
+            // tbAddCharge1
             // 
-            this.tbAddCharge6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge6.Location = new System.Drawing.Point(582, 97);
-            this.tbAddCharge6.Name = "tbAddCharge6";
-            this.tbAddCharge6.Size = new System.Drawing.Size(141, 23);
-            this.tbAddCharge6.TabIndex = 11;
-            this.tbAddCharge6.Text = "0.00";
-            this.tbAddCharge6.Click += new System.EventHandler(this.tbAddCharge_Click);
-            this.tbAddCharge6.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            this.tbAddCharge6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
+            this.tbAddCharge1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge1.Location = new System.Drawing.Point(220, 3);
+            this.tbAddCharge1.Name = "tbAddCharge1";
+            this.tbAddCharge1.Size = new System.Drawing.Size(139, 23);
+            this.tbAddCharge1.TabIndex = 6;
+            this.tbAddCharge1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbSgst
             // 
@@ -1521,7 +1497,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(759, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(742, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1530,7 +1506,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(759, 100);
+            this.flpA.Size = new System.Drawing.Size(742, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1550,28 +1526,17 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(759, 33);
+            this.flpGst.Size = new System.Drawing.Size(742, 33);
             this.flpGst.TabIndex = 25;
             // 
-            // flpAddCharge
+            // splitter3
             // 
-            this.flpAddCharge.Controls.Add(this.gbAddCharge);
-            this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
-            this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(759, 171);
-            this.flpAddCharge.TabIndex = 26;
-            // 
-            // lbPaymentTerms
-            // 
-            this.lbPaymentTerms.AutoSize = true;
-            this.lbPaymentTerms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPaymentTerms.Location = new System.Drawing.Point(498, 7);
-            this.lbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
-            this.lbPaymentTerms.Name = "lbPaymentTerms";
-            this.lbPaymentTerms.Size = new System.Drawing.Size(96, 15);
-            this.lbPaymentTerms.TabIndex = 25;
-            this.lbPaymentTerms.Text = "Payment Terms";
+            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter3.Location = new System.Drawing.Point(178, 3);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(1, 25);
+            this.splitter3.TabIndex = 30;
+            this.splitter3.TabStop = false;
             // 
             // splitter1
             // 
@@ -1591,30 +1556,41 @@
             this.splitter2.TabIndex = 27;
             this.splitter2.TabStop = false;
             // 
+            // lbPaymentTerms
+            // 
+            this.lbPaymentTerms.AutoSize = true;
+            this.lbPaymentTerms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPaymentTerms.Location = new System.Drawing.Point(498, 7);
+            this.lbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.lbPaymentTerms.Name = "lbPaymentTerms";
+            this.lbPaymentTerms.Size = new System.Drawing.Size(96, 15);
+            this.lbPaymentTerms.TabIndex = 25;
+            this.lbPaymentTerms.Text = "Payment Terms";
+            // 
             // tbPaymentTerms
             // 
             this.tbPaymentTerms.FormattingEnabled = true;
-            this.tbPaymentTerms.Location = new System.Drawing.Point(600, 5);
+            this.tbPaymentTerms.Location = new System.Drawing.Point(3, 36);
             this.tbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.tbPaymentTerms.Name = "tbPaymentTerms";
             this.tbPaymentTerms.Size = new System.Drawing.Size(147, 21);
             this.tbPaymentTerms.TabIndex = 28;
             // 
-            // splitter3
+            // flpAddCharge
             // 
-            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter3.Location = new System.Drawing.Point(178, 3);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(1, 25);
-            this.splitter3.TabIndex = 30;
-            this.splitter3.TabStop = false;
+            this.flpAddCharge.Controls.Add(this.gbAddCharge);
+            this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
+            this.flpAddCharge.Name = "flpAddCharge";
+            this.flpAddCharge.Size = new System.Drawing.Size(742, 171);
+            this.flpAddCharge.TabIndex = 26;
             // 
             // Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(776, 562);
+            this.ClientSize = new System.Drawing.Size(759, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);
@@ -1622,7 +1598,7 @@
             this.Controls.Add(this.flpBillShip);
             this.Controls.Add(this.flpA);
             this.Controls.Add(this.flpPanelButtons);
-            this.MaximumSize = new System.Drawing.Size(1024, 768);
+            this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.MinimumSize = new System.Drawing.Size(775, 367);
             this.Name = "Invoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
