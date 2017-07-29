@@ -57,6 +57,8 @@
             this.lbIfscCode = new System.Windows.Forms.Label();
             this.tbAccountNo = new System.Windows.Forms.TextBox();
             this.lbAccountNo = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbContact = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbName
@@ -158,7 +160,7 @@
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(0, 251);
+            this.btnSave.Location = new System.Drawing.Point(0, 293);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(755, 29);
             this.btnSave.TabIndex = 14;
@@ -377,12 +379,31 @@
             this.lbAccountNo.TabIndex = 40;
             this.lbAccountNo.Text = "Account No";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(95, 251);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(237, 23);
+            this.textBox1.TabIndex = 43;
+            // 
+            // lbContact
+            // 
+            this.lbContact.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContact.Location = new System.Drawing.Point(8, 251);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(81, 40);
+            this.lbContact.TabIndex = 44;
+            this.lbContact.Text = "Contact Person";
+            // 
             // CompanyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(755, 280);
+            this.ClientSize = new System.Drawing.Size(755, 322);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbContact);
             this.Controls.Add(this.tbIfscCode);
             this.Controls.Add(this.lbIfscCode);
             this.Controls.Add(this.tbAccountNo);
@@ -414,12 +435,10 @@
             this.Controls.Add(this.lbName);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(771, 318);
             this.MinimumSize = new System.Drawing.Size(371, 299);
             this.Name = "CompanyDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CompanyDetails";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CompanyDetails_FormClosed);
             this.Load += new System.EventHandler(this.CompanyDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -457,5 +476,7 @@
         private System.Windows.Forms.Label lbIfscCode;
         private System.Windows.Forms.TextBox tbAccountNo;
         private System.Windows.Forms.Label lbAccountNo;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbContact;
     }
 }
