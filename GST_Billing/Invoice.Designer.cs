@@ -137,6 +137,11 @@
             this.flpBillShip = new System.Windows.Forms.FlowLayoutPanel();
             this.flpA = new System.Windows.Forms.FlowLayoutPanel();
             this.flpGst = new System.Windows.Forms.FlowLayoutPanel();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.lbPaymentTerms = new System.Windows.Forms.Label();
+            this.tbPaymentTerms = new System.Windows.Forms.ComboBox();
             this.flpAddCharge = new System.Windows.Forms.FlowLayoutPanel();
             this.gbBilling.SuspendLayout();
             this.gbInvoice.SuspendLayout();
@@ -429,11 +434,11 @@
             this.cbBillAndShip.AutoSize = true;
             this.cbBillAndShip.Checked = true;
             this.cbBillAndShip.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbBillAndShip.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbBillAndShip.Location = new System.Drawing.Point(361, 7);
+            this.cbBillAndShip.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBillAndShip.Location = new System.Drawing.Point(281, 7);
             this.cbBillAndShip.Margin = new System.Windows.Forms.Padding(10, 7, 3, 3);
             this.cbBillAndShip.Name = "cbBillAndShip";
-            this.cbBillAndShip.Size = new System.Drawing.Size(248, 20);
+            this.cbBillAndShip.Size = new System.Drawing.Size(204, 19);
             this.cbBillAndShip.TabIndex = 12;
             this.cbBillAndShip.Text = "Shipping details same as billing";
             this.cbBillAndShip.UseVisualStyleBackColor = true;
@@ -1427,9 +1432,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSgst.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSgst.Location = new System.Drawing.Point(54, 3);
-            this.tbSgst.MinimumSize = new System.Drawing.Size(51, 26);
             this.tbSgst.Name = "tbSgst";
-            this.tbSgst.Size = new System.Drawing.Size(59, 25);
+            this.tbSgst.Size = new System.Drawing.Size(30, 25);
             this.tbSgst.TabIndex = 13;
             this.tbSgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbSgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
@@ -1441,7 +1445,7 @@
             this.lbCgst.AutoSize = true;
             this.lbCgst.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lbCgst.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbCgst.Location = new System.Drawing.Point(119, 7);
+            this.lbCgst.Location = new System.Drawing.Point(90, 7);
             this.lbCgst.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.lbCgst.Name = "lbCgst";
             this.lbCgst.Size = new System.Drawing.Size(46, 16);
@@ -1453,10 +1457,9 @@
             this.tbCgst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCgst.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCgst.Location = new System.Drawing.Point(171, 3);
-            this.tbCgst.MinimumSize = new System.Drawing.Size(51, 26);
+            this.tbCgst.Location = new System.Drawing.Point(142, 3);
             this.tbCgst.Name = "tbCgst";
-            this.tbCgst.Size = new System.Drawing.Size(59, 25);
+            this.tbCgst.Size = new System.Drawing.Size(30, 25);
             this.tbCgst.TabIndex = 14;
             this.tbCgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbCgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
@@ -1468,8 +1471,8 @@
             this.lbIgst.AutoSize = true;
             this.lbIgst.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lbIgst.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbIgst.Location = new System.Drawing.Point(243, 7);
-            this.lbIgst.Margin = new System.Windows.Forms.Padding(10, 7, 3, 3);
+            this.lbIgst.Location = new System.Drawing.Point(185, 7);
+            this.lbIgst.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.lbIgst.Name = "lbIgst";
             this.lbIgst.Size = new System.Drawing.Size(40, 16);
             this.lbIgst.TabIndex = 24;
@@ -1480,10 +1483,9 @@
             this.tbIgst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbIgst.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIgst.Location = new System.Drawing.Point(289, 3);
-            this.tbIgst.MinimumSize = new System.Drawing.Size(51, 26);
+            this.tbIgst.Location = new System.Drawing.Point(231, 3);
             this.tbIgst.Name = "tbIgst";
-            this.tbIgst.Size = new System.Drawing.Size(59, 25);
+            this.tbIgst.Size = new System.Drawing.Size(30, 25);
             this.tbIgst.TabIndex = 15;
             this.tbIgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbIgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
@@ -1513,14 +1515,66 @@
             this.flpGst.Controls.Add(this.tbSgst);
             this.flpGst.Controls.Add(this.lbCgst);
             this.flpGst.Controls.Add(this.tbCgst);
+            this.flpGst.Controls.Add(this.splitter3);
             this.flpGst.Controls.Add(this.lbIgst);
             this.flpGst.Controls.Add(this.tbIgst);
+            this.flpGst.Controls.Add(this.splitter1);
             this.flpGst.Controls.Add(this.cbBillAndShip);
+            this.flpGst.Controls.Add(this.splitter2);
+            this.flpGst.Controls.Add(this.lbPaymentTerms);
+            this.flpGst.Controls.Add(this.tbPaymentTerms);
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
             this.flpGst.Size = new System.Drawing.Size(742, 33);
             this.flpGst.TabIndex = 25;
+            // 
+            // splitter3
+            // 
+            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter3.Location = new System.Drawing.Point(178, 3);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(1, 25);
+            this.splitter3.TabIndex = 30;
+            this.splitter3.TabStop = false;
+            // 
+            // splitter1
+            // 
+            this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter1.Location = new System.Drawing.Point(267, 3);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(1, 25);
+            this.splitter1.TabIndex = 26;
+            this.splitter1.TabStop = false;
+            // 
+            // splitter2
+            // 
+            this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter2.Location = new System.Drawing.Point(491, 3);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(1, 25);
+            this.splitter2.TabIndex = 27;
+            this.splitter2.TabStop = false;
+            // 
+            // lbPaymentTerms
+            // 
+            this.lbPaymentTerms.AutoSize = true;
+            this.lbPaymentTerms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPaymentTerms.Location = new System.Drawing.Point(498, 7);
+            this.lbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.lbPaymentTerms.Name = "lbPaymentTerms";
+            this.lbPaymentTerms.Size = new System.Drawing.Size(96, 15);
+            this.lbPaymentTerms.TabIndex = 25;
+            this.lbPaymentTerms.Text = "Payment Terms";
+            // 
+            // tbPaymentTerms
+            // 
+            this.tbPaymentTerms.FormattingEnabled = true;
+            this.tbPaymentTerms.Location = new System.Drawing.Point(3, 36);
+            this.tbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.tbPaymentTerms.Name = "tbPaymentTerms";
+            this.tbPaymentTerms.Size = new System.Drawing.Size(147, 21);
+            this.tbPaymentTerms.TabIndex = 28;
             // 
             // flpAddCharge
             // 
@@ -1680,6 +1734,11 @@
         private System.Windows.Forms.TextBox tbShipPin;
         private System.Windows.Forms.Label lbShipPin;
         private System.Windows.Forms.TextBox tbBillName;
+        private System.Windows.Forms.Label lbPaymentTerms;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.ComboBox tbPaymentTerms;
+        private System.Windows.Forms.Splitter splitter3;
     }
 }
 
