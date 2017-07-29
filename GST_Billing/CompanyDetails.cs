@@ -39,7 +39,7 @@ namespace GST_Billing
                     tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
                     cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
                     tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
-                    //tbPincode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
+                    textBox2.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
                     tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
                     tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
                     tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["gstin"]);
@@ -91,7 +91,7 @@ namespace GST_Billing
             }
             sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
                             "VALUES('" + tbName.Text + "', '" + textBox1.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
-                                        + tbCode.Text + "', " + tbCode.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
+                                        + tbCode.Text + "', " + textBox2.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
                                         + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
             NoOfRows = m1.Ins_Upd_Del(sqlstr);
             
