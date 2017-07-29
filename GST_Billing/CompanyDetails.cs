@@ -96,12 +96,6 @@ namespace GST_Billing
             }
         }
 
-        void CompanyDetails_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            Home home = new Home();
-            home.Show();
-        }
-
         private void cbState_SelectedIndexChanged(object sender, EventArgs e)
         {
             string state = baseModel.ToPascalCase(cbState.Text);
