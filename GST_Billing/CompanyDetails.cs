@@ -32,13 +32,21 @@ namespace GST_Billing
 
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
+                    tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
                     tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
+                    tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["landmark"]);
+                    tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
+                    cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
+                    tbPincode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
                     tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
                     tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
                     tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["gstin"]);
-                    cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
-                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
+                    tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["panno"]);
+                    tbBankName.Text = Convert.ToString(ds.Tables[0].Rows[0]["bankname"]);
+                    tbBranch.Text = Convert.ToString(ds.Tables[0].Rows[0]["branchname"]);
+                    tbAccountNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["accountno"]);
+                    tbIfscCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["ifsccode"]);
                 }
                 else
                 {
@@ -80,9 +88,10 @@ namespace GST_Billing
             { 
                 NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
             }
-            sqlstr = "INSERT INTO userDetails(name, address, state, code, gstin, email, phoneNumber)" +
-                            "VALUES('" + tbName.Text + "', '" + tbAddress.Text + "', '" + cbState.SelectedItem + "','"
-                                        + tbCode.Text + "', '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "')";
+            sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
+                            "VALUES('" + tbName.Text + "', '" + tbName.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
+                                        + tbCode.Text + "', " + tbPincode.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "', '" + tbPanNo.Text + "','"
+                                        + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
             NoOfRows = m1.Ins_Upd_Del(sqlstr);
             
             if (NoOfRows > 0)

@@ -118,25 +118,35 @@ namespace GST_Billing
                 DataSet ds = customerExists(tbName.Text);
                 int NoOfRows = 0;
                 string sqlstr;
-                if (ds != null)
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
                     DialogResult result = MessageBox.Show("Do you want to update existing information?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        sqlstr = "UPDATE customerDetails set custname='" + tbName.Text + "', custaddress='" + tbAddress.Text + "', custstate='" + cbState.Text + 
-                                  "', custcode='" + tbCode.Text + "', custgstin='" + tbGstin.Text + "', custemail='" + tbEmail.Text + 
-                                  "', custphoneNumber='" + tbContact.Text + "', shipname='" + tbShipName.Text + "', shipaddress='" + tbShipAddress.Text + 
-                                  "', shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipContact.Text + "', shipstate='" + cbShipState.Text + 
-                                  "', shipcode='" + tbShipCode.Text + "', shipgstin='" + tbShipGstin.Text + "' where custname='" + tbName.Text + "'";
+                        sqlstr = "UPDATE customerDetails set custname='" + tbName.Text + "', custContactPerson='" + textBox1.Text + "', custaddress='" + tbAddress.Text + "', custlandmark='" + tbLandmark.Text +
+                                  "', custcity='" + tbCity.Text + "', custstate='" + cbState.Text + "', custcode='" + tbCode.Text +
+                                  "', custpincode='" + tbPinCode.Text + "', custemail='" + tbEmail.Text + "', custphoneNumber='" + tbContact.Text +
+                                  "', custgstin='" + tbGstin.Text + "', custAadharNo='" + tbAadharNo.Text + "', custPanno='" + tbPanNo.Text +
+                                  "', custpaymentTermName='" + tbPayment.Text +
+                                  "', shipname='" + tbShipName.Text + "', shipContactPerson='" + tbShipContact.Text + "', shipaddress='" + tbShipAddress.Text +
+                                  "', shiplandmark='" + tbShipLandmark.Text + "', shipcity='" + tbShipCity.Text + "', shipstate='" + cbShipState.Text +
+                                  "', shipcode='" + tbShipCode.Text + "', shippincode='" + tbShipPinCode.Text + "', shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipPhone.Text +
+                                  "', shipgstin='" + tbShipGstin.Text + "', shipAadharNo='" + tbShipAadhar.Text + "', shipPanno='" + tbShipPanNumber.Text +
+                                  "', shippaymentTermName='" + tbShipPayment.Text + "' where custname='" + tbName.Text + "'";
                         NoOfRows = m1.Ins_Upd_Del(sqlstr);
                     }
                 }
                 else
                 {
-                    sqlstr = "INSERT INTO customerDetails(custname, custaddress, custstate, custcode, custgstin, custemail, custphoneNumber, " +
-                             "shipname, shipaddress, shipstate, shipcode, shipgstin, shipemail, shipphoneNumber)" +
-                             "VALUES('" + tbName.Text + "', '" + tbAddress.Text + "', '" + cbState.Text + "','" + tbCode.Text + "', '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "', '"
-                                        + tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + cbShipState.Text + "','" + tbShipCode.Text + "', '" + tbShipGstin.Text + "', '" + tbShipEmail.Text + "', '" + tbShipContact.Text + "')";
+                    sqlstr = "INSERT INTO customerDetails(custname, custContactPerson, custaddress, custlandmark, custcity, custstate, " +
+                                "custcode, custpincode, custemail, custphoneNumber, custgstin, custAadharNo, custPanno, custpaymentTermName, " +
+                                "shipname, shipContactPerson, shipaddress, shiplandmark, shipcity, shipstate, shipcode, shippincode, " +
+                                "shipemail, shipphoneNumber, shipgstin, shipAadharNo, shipPanno, shippaymentTermName)" +
+                             "VALUES('" + tbName.Text + "', '" + textBox1.Text + "', '" + tbAddress.Text + "','" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.Text + "', '" + tbCode.Text + "', '"
+                                         + tbPinCode.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "','" + tbGstin.Text + "', '" + tbAadharNo.Text + "', '" + tbPanNo.Text + "', '" + tbPayment.Text + "', '"
+                                        + tbShipName.Text + "', '" + tbShipContact.Text + "', '" + tbShipAddress.Text + "','" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + cbShipState.Text + "', '"
+                                        + tbShipCode.Text + "', '" + tbShipPinCode.Text + "', '" + tbShipEmail.Text + "', '" + tbShipPhone.Text + "','" + tbShipGstin.Text + "', '" + tbShipAadhar.Text + "', '"
+                                        + tbShipPanNumber.Text + "', '" + tbShipPayment.Text + "')";
                     NoOfRows = m1.Ins_Upd_Del(sqlstr);
                 }
                 if (NoOfRows > 0)
@@ -164,16 +174,22 @@ namespace GST_Billing
             try
             {
                 DataSet ds = customerExists(tbName.Text);
-                if (ds != null)
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
+                    textBox1.Text = Convert.ToString(ds.Tables[0].Rows[0]["custContactPerson"]);
                     tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
+                    tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["custlandmark"]);
+                    tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcity"]);
+                    cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);
+                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcode"]);
+                    tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpincode"]);
                     tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["custemail"]);
                     tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["custphoneNumber"]);
                     tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custgstin"]);
-                    cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);
-                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcode"]);
+                    tbAadharNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custAadharNo"]);
+                    tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custPanno"]);
+                    tbPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpaymentTermName"]);                    
                     fillShippingDetailsFromDB(ds);
-
                 }
                 else
                 {
@@ -204,7 +220,7 @@ namespace GST_Billing
         private void updateShippingDetailsFromDB()
         {
             DataSet ds = customerExists(tbName.Text);
-            if(ds != null)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 fillShippingDetailsFromDB(ds);
             }
@@ -213,12 +229,19 @@ namespace GST_Billing
         private void fillShippingDetailsFromDB(DataSet ds)
         {
             tbShipName.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipname"]);
+            tbShipContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipContactPerson"]);
             tbShipAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipaddress"]);
-            tbShipEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipemail"]);
-            tbShipContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipphoneNumber"]);
-            tbShipGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipgstin"]);
+            tbShipLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["shiplandmark"]);
+            tbShipCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcity"]);
             cbShipState.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipstate"]);
             tbShipCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcode"]);
+            tbShipPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippincode"]);
+            tbShipEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipemail"]);
+            tbShipPhone.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipphoneNumber"]);
+            tbShipGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipgstin"]);
+            tbShipAadhar.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipAadharNo"]);
+            tbShipPanNumber.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipPanno"]);
+            tbShipPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippaymentTermName"]); 
         }
 
         private void syncBillingAndShipping()

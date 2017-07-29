@@ -32,14 +32,17 @@ namespace GaneshLogistics.AppCode
         {
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [userDetails] (
 	                                userId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	                                name	TEXT NOT NULL,
+	                                name	TEXT,
                                     companyname	TEXT NOT NULL,
 	                                address	TEXT NOT NULL,
+                                    landmark	TEXT NOT NULL,
+                                    city	TEXT NOT NULL,
+                                    state	TEXT,
+	                                code	TEXT,
+                                    pincode INTEGER,
 	                                email	TEXT,
 	                                phoneNumber	INTEGER NOT NULL,
-	                                gstin	TEXT NOT NULL,
-	                                state	TEXT,
-	                                code	TEXT,
+	                                gstin	TEXT NOT NULL,	                                
                                     panno	TEXT,
                                 	bankname	TEXT,
 	                                branchname	TEXT,
@@ -53,22 +56,44 @@ namespace GaneshLogistics.AppCode
 	                                isActive	BIT(1) DEFAULT 1
                                 )");
 
+            CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [productDetails] (
+	                                productId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                    productName	TEXT NOT NULL,
+                                    hsnCode		TEXT,
+                                    productPrice	DECIMAL(8,2) NOT NULL,
+                                    productUnit	TEXT
+                                )");
+
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [customerDetails] (
 	                                custId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	                                custname	TEXT NOT NULL UNIQUE,
-	                                custaddress	TEXT NOT NULL,
+                                    custname	TEXT NOT NULL UNIQUE,
+                                    custContactPerson TEXT,
+                                    custaddress	TEXT NOT NULL,
+                                    custlandmark	TEXT,
+                                    custcity	TEXT,
+                                    custstate	TEXT,
+                                    custcode	TEXT,
+                                    custpincode	INTEGER,
                                     custemail	TEXT,
-	                                custphoneNumber	INTEGER NOT NULL,
-	                                custstate	TEXT,
-	                                custcode	TEXT,
-	                                custgstin	TEXT NOT NULL,
-									shipname	TEXT NOT NULL,
-									shipaddress	TEXT,
-									shipemail	TEXT,
-									shipphoneNumber	INTEGER NOT NULL,
-									shipstate	TEXT,
-									shipcode	TEXT,
-									shipgstin	TEXT NOT NULL
+                                    custphoneNumber	INTEGER NOT NULL,
+                                    custgstin	TEXT NOT NULL,
+                                    custAadharNo	TEXT,
+                                    custPanno	TEXT,
+                                    custpaymentTermName TEXT,
+                                    shipname	TEXT NOT NULL,
+                                    shipContactPerson TEXT,
+                                    shipaddress	TEXT,
+                                    shiplandmark	TEXT,
+                                    shipcity	TEXT,
+                                    shipstate	TEXT,
+                                    shipcode	TEXT,
+                                    shippincode	INTEGER,
+                                    shipemail	TEXT,
+                                    shipphoneNumber	INTEGER NOT NULL,
+                                    shipgstin	TEXT NOT NULL,
+                                    shipAadharNo	TEXT,
+                                    shipPanno	TEXT,
+                                    shippaymentTermName TEXT,
                                 )");
 
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceDetails] (
@@ -77,7 +102,7 @@ namespace GaneshLogistics.AppCode
 	                                invoiceDate	TEXT NOT NULL,
 	                                custId	INTEGER NOT NULL,
 	                                userId INTEGER NOT NULL,
-                                    termId INTEGER NOT NULL,
+                                    termName TEXT,
 	                                shipPartyName	TEXT,
 	                                shipPartyAddress	TEXT,
 	                                shipGstIn	TEXT,
