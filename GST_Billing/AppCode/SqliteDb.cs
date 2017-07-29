@@ -127,9 +127,6 @@ namespace GaneshLogistics.AppCode
 	                                FOREIGN KEY (userId) REFERENCES userDetails (userId)
 	                                ON DELETE NO ACTION
 	                                ON UPDATE NO ACTION,
-	                                FOREIGN KEY (termId) REFERENCES paymentTerms (termId)
-	                                ON DELETE NO ACTION
-	                                ON UPDATE NO ACTION,
 	                                FOREIGN KEY(custId) REFERENCES customerDetails ( custId ) 
 	                                ON DELETE NO ACTION 
 	                                ON UPDATE NO ACTION
