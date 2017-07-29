@@ -36,6 +36,9 @@ namespace GST_Billing
         private void Invoice_Load(object sender, EventArgs e)
         {
             loadCustomerDetailsFromDatabase();
+            tbPaymentTerms.DataSource = baseModel.paymentTerms.Values.ToList();
+            tbPaymentTerms.AutoCompleteMode = AutoCompleteMode.None;
+            tbPaymentTerms.SelectedIndex = -1;
             this.ResizeRedraw = true;
             this.Refresh();
         }
