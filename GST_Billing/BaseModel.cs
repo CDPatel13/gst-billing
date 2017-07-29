@@ -35,6 +35,9 @@ namespace GST_Billing
                                                     {"Rajasthan","08"}, {"Sikkim","11"}, {"Tamil Nadu","33"}, {"Telangana","36"}, {"Tripura","16"}, {"Uttar Pradesh","09"},
                                                     {"Uttarakhand","05"}, {"West Bengal","19"}};
 
+        public Dictionary<int, string> additionalCharges = new Dictionary<int, string>() { {1, "Packing & Forwarding" }, {2, "Freight" }, {3, "Loading & Unloading" }, {4, "Insurance" }, {5, "Courier Charge" }, {6, "Other Charges" } };
+
+        public Dictionary<int, string> paymentTerms = new Dictionary<int, string>() { { 1, "Immediately" }, { 2, "Within 15 Days" }, { 3, "Within 30 Days" }, { 4, "Within 45 Days" }, { 5, "Within 60 Days" }, { 6, "Other" } };
 
         // Convert the string to Pascal case.
         public string ToPascalCase(string the_string)
