@@ -18,7 +18,7 @@ namespace GST_Billing
         BaseModel baseModel = BaseModel.Instance;
         List<int> colIndices = new int[] { 3, 5, 7}.ToList();
         List<string> listOfCustomers = new List<string>();
-        List<string> listAddCharges = new List<string>();
+        List<Tuple<string, string>> listofAddCharges = new List<Tuple<string, string>>();
         List<string> challanNumbers = new List<string>();
 
         SqliteDb m1 = new SqliteDb();
@@ -261,11 +261,17 @@ namespace GST_Billing
             {
                 custId = Convert.ToInt32(ds.Tables[0].Rows[0]["custId"]);
                 tbBillAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
+                tbBillLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["custlandmark"]);
+                tbBillCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcity"]);
+                tbBillPin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpincode"]);
                 tbBillGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custgstin"]);
                 cbBillState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);
                 tbBillCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcode"]);
                 tbShipName.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipname"]);
                 tbShipAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipaddress"]);
+                tbShipLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipLandmark"]);
+                tbShipCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipCity"]);
+                tbShipPin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipPinCode"]);
                 tbShipGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipgstin"]);
                 cbShipState.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipstate"]);
                 tbShipCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcode"]);
@@ -385,10 +391,10 @@ namespace GST_Billing
                 int userId = Convert.ToInt32(m1.scaler(sqlstr));
 
                 //, totaCGSTAmount, totalIGSTAmount
-                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipPartyName, shipPartyAddress, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, IsActive)" +
-                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ",'" + userId + "', '" +
-                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
+                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
+                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MMM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + userId + "', '" +
+                        tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', " + tbShipPin.Text + ", '" + tbShipGstin.Text + "', '" + cbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
                         lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 1)";
                 int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
@@ -410,12 +416,18 @@ namespace GST_Billing
                         }
                     }
 
-                    foreach (string name in listAddCharges)
-                    {
-                        var addChargeTextBox = "tbAdd" + name;
-                        var control = tlpAddCharge.Controls.Find(addChargeTextBox, true);
+
+                    foreach (var item in listofAddCharges)
+                    {                        
                         sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
-                            "VALUES(" + invoiceId + ", '" + name + "', '" + double.Parse(control[0].Text) + "')";
+                            "VALUES(" + invoiceId + ", '" + item.Item1 + "', " + item.Item2 + ")";
+                        m1.Ins_Upd_Del(sqlstr);
+                    }
+
+                    foreach (string challanNo in challanNumbers)
+                    {
+                        sqlstr = "INSERT INTO invoiceChallanDetails(invoiceId, challanNo)" +
+                            "VALUES(" + invoiceId + ", '" + challanNo + "')";
                         m1.Ins_Upd_Del(sqlstr);
                     }
 
@@ -471,6 +483,37 @@ namespace GST_Billing
             lbAddedChallan.Text = String.Empty;
         }
 
+        private void calcualteAddCharges()
+        {
+            if (lbAddCharge1.Text != null && lbAddCharge1.Text != "" && tbAddCharge1.Text != null && tbAddCharge1.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
+            }
 
+            if (lbAddCharge2.Text != null && lbAddCharge2.Text != "" && tbAddCharge2.Text != null && tbAddCharge2.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
+            }
+
+            if (lbAddCharge3.Text != null && lbAddCharge3.Text != "" && tbAddCharge3.Text != null && tbAddCharge3.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
+            }
+
+            if (lbAddCharge4.Text != null && lbAddCharge4.Text != "" && tbAddCharge4.Text != null && tbAddCharge4.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
+            }
+
+            if (lbAddCharge5.Text != null && lbAddCharge5.Text != "" && tbAddCharge5.Text != null && tbAddCharge5.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
+            }
+
+            if (lbAddCharge6.Text != null && lbAddCharge6.Text != "" && tbAddCharge6.Text != null && tbAddCharge6.Text != "")
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
+            }
+        }
     }
 }
