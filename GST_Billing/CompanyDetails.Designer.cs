@@ -58,6 +58,8 @@
             this.tbAccountNo = new System.Windows.Forms.TextBox();
             this.lbAccountNo = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbPinCode = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbContact = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -140,7 +142,7 @@
             // tbGstin
             // 
             this.tbGstin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGstin.Location = new System.Drawing.Point(95, 164);
+            this.tbGstin.Location = new System.Drawing.Point(95, 193);
             this.tbGstin.Name = "tbGstin";
             this.tbGstin.Size = new System.Drawing.Size(237, 23);
             this.tbGstin.TabIndex = 4;
@@ -150,7 +152,7 @@
             // 
             this.lbGstin.AutoSize = true;
             this.lbGstin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGstin.Location = new System.Drawing.Point(39, 167);
+            this.lbGstin.Location = new System.Drawing.Point(39, 195);
             this.lbGstin.Name = "lbGstin";
             this.lbGstin.Size = new System.Drawing.Size(50, 16);
             this.lbGstin.TabIndex = 12;
@@ -160,7 +162,7 @@
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(0, 293);
+            this.btnSave.Location = new System.Drawing.Point(0, 279);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(755, 29);
             this.btnSave.TabIndex = 14;
@@ -172,7 +174,7 @@
             // 
             this.blState.AutoSize = true;
             this.blState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blState.Location = new System.Drawing.Point(45, 108);
+            this.blState.Location = new System.Drawing.Point(45, 137);
             this.blState.Name = "blState";
             this.blState.Size = new System.Drawing.Size(44, 16);
             this.blState.TabIndex = 15;
@@ -181,7 +183,7 @@
             // tbCode
             // 
             this.tbCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCode.Location = new System.Drawing.Point(95, 135);
+            this.tbCode.Location = new System.Drawing.Point(95, 164);
             this.tbCode.MaxLength = 2;
             this.tbCode.Name = "tbCode";
             this.tbCode.Size = new System.Drawing.Size(237, 23);
@@ -195,7 +197,7 @@
             // 
             this.lbCode.AutoSize = true;
             this.lbCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCode.Location = new System.Drawing.Point(44, 138);
+            this.lbCode.Location = new System.Drawing.Point(44, 167);
             this.lbCode.Name = "lbCode";
             this.lbCode.Size = new System.Drawing.Size(45, 16);
             this.lbCode.TabIndex = 17;
@@ -246,7 +248,7 @@
             "Uttar Pradesh",
             "Uttarakhand",
             "West Bengal"});
-            this.cbState.Location = new System.Drawing.Point(95, 105);
+            this.cbState.Location = new System.Drawing.Point(95, 134);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(237, 24);
             this.cbState.TabIndex = 5;
@@ -274,7 +276,7 @@
             // tbCity
             // 
             this.tbCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCity.Location = new System.Drawing.Point(514, 76);
+            this.tbCity.Location = new System.Drawing.Point(95, 105);
             this.tbCity.Name = "tbCity";
             this.tbCity.Size = new System.Drawing.Size(237, 23);
             this.tbCity.TabIndex = 20;
@@ -283,7 +285,7 @@
             // 
             this.lbCity.AutoSize = true;
             this.lbCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCity.Location = new System.Drawing.Point(474, 79);
+            this.lbCity.Location = new System.Drawing.Point(55, 108);
             this.lbCity.Name = "lbCity";
             this.lbCity.Size = new System.Drawing.Size(34, 16);
             this.lbCity.TabIndex = 21;
@@ -346,7 +348,7 @@
             // tbIfscCode
             // 
             this.tbIfscCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIfscCode.Location = new System.Drawing.Point(95, 222);
+            this.tbIfscCode.Location = new System.Drawing.Point(95, 251);
             this.tbIfscCode.Name = "tbIfscCode";
             this.tbIfscCode.Size = new System.Drawing.Size(237, 23);
             this.tbIfscCode.TabIndex = 41;
@@ -355,7 +357,7 @@
             // 
             this.lbIfscCode.AutoSize = true;
             this.lbIfscCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIfscCode.Location = new System.Drawing.Point(8, 225);
+            this.lbIfscCode.Location = new System.Drawing.Point(8, 254);
             this.lbIfscCode.Name = "lbIfscCode";
             this.lbIfscCode.Size = new System.Drawing.Size(81, 16);
             this.lbIfscCode.TabIndex = 42;
@@ -364,7 +366,7 @@
             // tbAccountNo
             // 
             this.tbAccountNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAccountNo.Location = new System.Drawing.Point(95, 193);
+            this.tbAccountNo.Location = new System.Drawing.Point(95, 222);
             this.tbAccountNo.Name = "tbAccountNo";
             this.tbAccountNo.Size = new System.Drawing.Size(237, 23);
             this.tbAccountNo.TabIndex = 39;
@@ -373,7 +375,7 @@
             // 
             this.lbAccountNo.AutoSize = true;
             this.lbAccountNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAccountNo.Location = new System.Drawing.Point(1, 196);
+            this.lbAccountNo.Location = new System.Drawing.Point(1, 225);
             this.lbAccountNo.Name = "lbAccountNo";
             this.lbAccountNo.Size = new System.Drawing.Size(88, 16);
             this.lbAccountNo.TabIndex = 40;
@@ -382,18 +384,37 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(95, 251);
+            this.textBox1.Location = new System.Drawing.Point(514, 250);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(237, 23);
             this.textBox1.TabIndex = 43;
             // 
+            // lbPinCode
+            // 
+            this.lbPinCode.AutoSize = true;
+            this.lbPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPinCode.Location = new System.Drawing.Point(436, 79);
+            this.lbPinCode.Name = "lbPinCode";
+            this.lbPinCode.Size = new System.Drawing.Size(72, 16);
+            this.lbPinCode.TabIndex = 46;
+            this.lbPinCode.Text = "PIN Code";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(514, 76);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(237, 23);
+            this.textBox2.TabIndex = 45;
+            // 
             // lbContact
             // 
+            this.lbContact.AutoSize = true;
             this.lbContact.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbContact.Location = new System.Drawing.Point(8, 251);
+            this.lbContact.Location = new System.Drawing.Point(392, 253);
             this.lbContact.Name = "lbContact";
-            this.lbContact.Size = new System.Drawing.Size(81, 40);
-            this.lbContact.TabIndex = 44;
+            this.lbContact.Size = new System.Drawing.Size(116, 16);
+            this.lbContact.TabIndex = 47;
             this.lbContact.Text = "Contact Person";
             // 
             // CompanyDetails
@@ -401,9 +422,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(755, 322);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(755, 308);
             this.Controls.Add(this.lbContact);
+            this.Controls.Add(this.lbPinCode);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tbIfscCode);
             this.Controls.Add(this.lbIfscCode);
             this.Controls.Add(this.tbAccountNo);
@@ -435,6 +458,7 @@
             this.Controls.Add(this.lbName);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(771, 346);
             this.MinimumSize = new System.Drawing.Size(371, 299);
             this.Name = "CompanyDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -477,6 +501,8 @@
         private System.Windows.Forms.TextBox tbAccountNo;
         private System.Windows.Forms.Label lbAccountNo;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbPinCode;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lbContact;
     }
 }

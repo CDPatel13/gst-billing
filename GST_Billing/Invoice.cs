@@ -26,6 +26,7 @@ namespace GST_Billing
         double sgstFinal = 0;
         double cgstFinal = 0;
         double igstFinal = 0;
+        double addChargeFinal = 0;
 
         public Invoice()
         {
@@ -35,7 +36,9 @@ namespace GST_Billing
         private void Invoice_Load(object sender, EventArgs e)
         {
             loadCustomerDetailsFromDatabase();
-            setAdditionalCharges();
+            tbPaymentTerms.DataSource = baseModel.paymentTerms.Values.ToList();
+            tbPaymentTerms.AutoCompleteMode = AutoCompleteMode.None;
+            tbPaymentTerms.SelectedIndex = -1;
             this.ResizeRedraw = true;
             this.Refresh();
         }
