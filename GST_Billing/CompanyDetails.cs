@@ -23,7 +23,7 @@ namespace GST_Billing
 
         private void CompanyDetails_Load(object sender, EventArgs e)
         {
-            
+
             int NoOfRows = 0;
             try
             {
@@ -81,28 +81,35 @@ namespace GST_Billing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string sqlstr = "SELECT * from userDetails";
-            DataSet ds = m1.selectData(sqlstr);
-            int NoOfRows = 0;
+            try
+            {
+                string sqlstr = "SELECT * from userDetails";
+                DataSet ds = m1.selectData(sqlstr);
+                int NoOfRows = 0;
 
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
-            { 
-                NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
+                }
+                sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
+                                "VALUES('" + tbName.Text + "', '" + textBox1.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
+                                            + tbCode.Text + "', " + textBox2.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
+                                            + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
+                NoOfRows = m1.Ins_Upd_Del(sqlstr);
+
+                if (NoOfRows > 0)
+                {
+                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    return;
+                }
             }
-            sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
-                            "VALUES('" + tbName.Text + "', '" + textBox1.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
-                                        + tbCode.Text + "', " + textBox2.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
-                                        + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
-            NoOfRows = m1.Ins_Upd_Del(sqlstr);
-            
-            if (NoOfRows > 0)
+            catch (Exception e1)
             {
-                MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
-                return;
+                MessageBox.Show("Error :" + e1.Message);
             }
         }
 

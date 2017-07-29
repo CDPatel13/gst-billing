@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GaneshLogistics.AppCode;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,8 @@ namespace GST_Billing
 {
     public partial class ProductDetails : Form
     {
+        SqliteDb m1 = new SqliteDb();
+
         public ProductDetails()
         {
             InitializeComponent();
@@ -31,7 +34,27 @@ namespace GST_Billing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // TODO : Save Product details in database
+            try
+            {
+                int NoOfRows = 0;
+                string sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit)" +
+                                "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdQty.Text + "')";
+                NoOfRows = m1.Ins_Upd_Del(sqlstr);
+
+                if (NoOfRows > 0)
+                {
+                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error :" + e1.Message);
+            }
         }
     }
 }

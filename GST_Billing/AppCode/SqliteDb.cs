@@ -93,7 +93,7 @@ namespace GaneshLogistics.AppCode
                                     shipgstin	TEXT NOT NULL,
                                     shipAadharNo	TEXT,
                                     shipPanno	TEXT,
-                                    shippaymentTermName TEXT,
+                                    shippaymentTermName TEXT
                                 )");
 
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceDetails] (
