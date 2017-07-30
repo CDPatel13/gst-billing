@@ -42,6 +42,17 @@
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.tabInvoice = new System.Windows.Forms.TabPage();
             this.dgvInvoice = new System.Windows.Forms.DataGridView();
+            this.colCust = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTaxableAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustGstin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReceivedAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
             this.lbStartDate = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -50,6 +61,10 @@
             this.tbSearchInvoice = new System.Windows.Forms.TextBox();
             this.btnSearchInvoice = new System.Windows.Forms.Button();
             this.btnClearInvoice = new System.Windows.Forms.Button();
+            this.lbTotalAmount = new System.Windows.Forms.Label();
+            this.lbAmountReceived = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tlpInvoiceBtns = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnAddInvoice = new System.Windows.Forms.Button();
@@ -68,36 +83,6 @@
             this.btnDeleteCust = new System.Windows.Forms.Button();
             this.btnEditCust = new System.Windows.Forms.Button();
             this.tabMain = new System.Windows.Forms.TabControl();
-            this.lbReceived = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbAmountReceived = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.colCust = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTaxableAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustGstin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReceivedAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustLandmark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustPinCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustPayTerms = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHsnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProdQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
@@ -129,12 +114,6 @@
             // dgvProducts
             // 
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colProdId,
-            this.colProdDes,
-            this.colHsnCode,
-            this.colProdRate,
-            this.colProdQty});
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvProducts.Location = new System.Drawing.Point(0, 79);
             this.dgvProducts.Name = "dgvProducts";
@@ -320,6 +299,72 @@
             this.dgvInvoice.Size = new System.Drawing.Size(1254, 586);
             this.dgvInvoice.TabIndex = 7;
             // 
+            // colCust
+            // 
+            this.colCust.HeaderText = "Customer Name";
+            this.colCust.Name = "colCust";
+            this.colCust.ReadOnly = true;
+            // 
+            // colInvoiceNum
+            // 
+            this.colInvoiceNum.HeaderText = "Invoice No";
+            this.colInvoiceNum.Name = "colInvoiceNum";
+            this.colInvoiceNum.ReadOnly = true;
+            // 
+            // colInvoiceDate
+            // 
+            this.colInvoiceDate.HeaderText = "Invoice Date";
+            this.colInvoiceDate.Name = "colInvoiceDate";
+            this.colInvoiceDate.ReadOnly = true;
+            // 
+            // colAmount
+            // 
+            this.colAmount.HeaderText = "Net Amount";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            // 
+            // colDiscount
+            // 
+            this.colDiscount.HeaderText = "Discount";
+            this.colDiscount.Name = "colDiscount";
+            this.colDiscount.ReadOnly = true;
+            // 
+            // colTaxableAmt
+            // 
+            this.colTaxableAmt.HeaderText = "Taxable Amount";
+            this.colTaxableAmt.Name = "colTaxableAmt";
+            this.colTaxableAmt.ReadOnly = true;
+            // 
+            // colCgst
+            // 
+            this.colCgst.HeaderText = "CGST Total";
+            this.colCgst.Name = "colCgst";
+            this.colCgst.ReadOnly = true;
+            // 
+            // colSgst
+            // 
+            this.colSgst.HeaderText = "SGST Total";
+            this.colSgst.Name = "colSgst";
+            this.colSgst.ReadOnly = true;
+            // 
+            // colIgst
+            // 
+            this.colIgst.HeaderText = "IGST Total";
+            this.colIgst.Name = "colIgst";
+            this.colIgst.ReadOnly = true;
+            // 
+            // colCustGstin
+            // 
+            this.colCustGstin.HeaderText = "Customer GSTIN";
+            this.colCustGstin.Name = "colCustGstin";
+            this.colCustGstin.ReadOnly = true;
+            // 
+            // colReceivedAmt
+            // 
+            this.colReceivedAmt.HeaderText = "Payment";
+            this.colReceivedAmt.Name = "colReceivedAmt";
+            this.colReceivedAmt.ReadOnly = true;
+            // 
             // flpSearchInvoice
             // 
             this.flpSearchInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -330,7 +375,7 @@
             this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnClearInvoice);
-            this.flpSearchInvoice.Controls.Add(this.lbReceived);
+            this.flpSearchInvoice.Controls.Add(this.lbTotalAmount);
             this.flpSearchInvoice.Controls.Add(this.lbAmountReceived);
             this.flpSearchInvoice.Controls.Add(this.label2);
             this.flpSearchInvoice.Controls.Add(this.label3);
@@ -419,6 +464,54 @@
             this.btnClearInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearInvoice.UseVisualStyleBackColor = true;
             this.btnClearInvoice.Click += new System.EventHandler(this.btnClearInvoice_Click);
+            // 
+            // lbTotalAmount
+            // 
+            this.lbTotalAmount.AutoSize = true;
+            this.lbTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalAmount.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbTotalAmount.Location = new System.Drawing.Point(738, 10);
+            this.lbTotalAmount.Margin = new System.Windows.Forms.Padding(30, 10, 3, 0);
+            this.lbTotalAmount.Name = "lbTotalAmount";
+            this.lbTotalAmount.Size = new System.Drawing.Size(161, 16);
+            this.lbTotalAmount.TabIndex = 7;
+            this.lbTotalAmount.Text = "Total Invoice Amount :";
+            // 
+            // lbAmountReceived
+            // 
+            this.lbAmountReceived.AutoSize = true;
+            this.lbAmountReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAmountReceived.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbAmountReceived.Location = new System.Drawing.Point(905, 10);
+            this.lbAmountReceived.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lbAmountReceived.Name = "lbAmountReceived";
+            this.lbAmountReceived.Size = new System.Drawing.Size(36, 16);
+            this.lbAmountReceived.TabIndex = 10;
+            this.lbAmountReceived.Text = "0.00";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label2.Location = new System.Drawing.Point(954, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Pending Amount :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label3.Location = new System.Drawing.Point(1088, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 16);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "0.00";
             // 
             // tlpInvoiceBtns
             // 
@@ -543,17 +636,6 @@
             // dgvCustomer
             // 
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCustName,
-            this.colCustAddress,
-            this.colCustLandmark,
-            this.colCustCity,
-            this.colCustPinCode,
-            this.colCustState,
-            this.dataGridViewTextBoxColumn4,
-            this.colCustEmail,
-            this.colCustContact,
-            this.colCustPayTerms});
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvCustomer.Location = new System.Drawing.Point(0, 79);
             this.dgvCustomer.Name = "dgvCustomer";
@@ -714,213 +796,6 @@
             this.tabMain.Size = new System.Drawing.Size(1264, 682);
             this.tabMain.TabIndex = 1;
             // 
-            // lbReceived
-            // 
-            this.lbReceived.AutoSize = true;
-            this.lbReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbReceived.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbReceived.Location = new System.Drawing.Point(738, 10);
-            this.lbReceived.Margin = new System.Windows.Forms.Padding(30, 10, 3, 0);
-            this.lbReceived.Name = "lbReceived";
-            this.lbReceived.Size = new System.Drawing.Size(138, 16);
-            this.lbReceived.TabIndex = 7;
-            this.lbReceived.Text = "Received Amount :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(931, 10);
-            this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Pending Amount :";
-            // 
-            // lbAmountReceived
-            // 
-            this.lbAmountReceived.AutoSize = true;
-            this.lbAmountReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAmountReceived.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbAmountReceived.Location = new System.Drawing.Point(882, 10);
-            this.lbAmountReceived.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.lbAmountReceived.Name = "lbAmountReceived";
-            this.lbAmountReceived.Size = new System.Drawing.Size(36, 16);
-            this.lbAmountReceived.TabIndex = 10;
-            this.lbAmountReceived.Text = "0.00";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(1065, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "0.00";
-            // 
-            // colCust
-            // 
-            this.colCust.HeaderText = "Customer Name";
-            this.colCust.Name = "colCust";
-            this.colCust.ReadOnly = true;
-            // 
-            // colInvoiceNum
-            // 
-            this.colInvoiceNum.HeaderText = "Invoice No";
-            this.colInvoiceNum.Name = "colInvoiceNum";
-            this.colInvoiceNum.ReadOnly = true;
-            // 
-            // colInvoiceDate
-            // 
-            this.colInvoiceDate.HeaderText = "Invoice Date";
-            this.colInvoiceDate.Name = "colInvoiceDate";
-            this.colInvoiceDate.ReadOnly = true;
-            // 
-            // colAmount
-            // 
-            this.colAmount.HeaderText = "Net Amount";
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            // 
-            // colDiscount
-            // 
-            this.colDiscount.HeaderText = "Discount";
-            this.colDiscount.Name = "colDiscount";
-            this.colDiscount.ReadOnly = true;
-            // 
-            // colTaxableAmt
-            // 
-            this.colTaxableAmt.HeaderText = "Taxable Amount";
-            this.colTaxableAmt.Name = "colTaxableAmt";
-            this.colTaxableAmt.ReadOnly = true;
-            // 
-            // colCgst
-            // 
-            this.colCgst.HeaderText = "CGST Total";
-            this.colCgst.Name = "colCgst";
-            this.colCgst.ReadOnly = true;
-            // 
-            // colSgst
-            // 
-            this.colSgst.HeaderText = "SGST Total";
-            this.colSgst.Name = "colSgst";
-            this.colSgst.ReadOnly = true;
-            // 
-            // colIgst
-            // 
-            this.colIgst.HeaderText = "IGST Total";
-            this.colIgst.Name = "colIgst";
-            this.colIgst.ReadOnly = true;
-            // 
-            // colCustGstin
-            // 
-            this.colCustGstin.HeaderText = "Customer GSTIN";
-            this.colCustGstin.Name = "colCustGstin";
-            this.colCustGstin.ReadOnly = true;
-            // 
-            // colReceivedAmt
-            // 
-            this.colReceivedAmt.HeaderText = "Payment";
-            this.colReceivedAmt.Name = "colReceivedAmt";
-            this.colReceivedAmt.ReadOnly = true;
-            // 
-            // colCustName
-            // 
-            this.colCustName.HeaderText = "Customer Name";
-            this.colCustName.Name = "colCustName";
-            this.colCustName.ReadOnly = true;
-            // 
-            // colCustAddress
-            // 
-            this.colCustAddress.HeaderText = "Customer Address";
-            this.colCustAddress.Name = "colCustAddress";
-            this.colCustAddress.ReadOnly = true;
-            // 
-            // colCustLandmark
-            // 
-            this.colCustLandmark.HeaderText = "Customer Landmark";
-            this.colCustLandmark.Name = "colCustLandmark";
-            this.colCustLandmark.ReadOnly = true;
-            // 
-            // colCustCity
-            // 
-            this.colCustCity.HeaderText = "Customer City";
-            this.colCustCity.Name = "colCustCity";
-            this.colCustCity.ReadOnly = true;
-            // 
-            // colCustPinCode
-            // 
-            this.colCustPinCode.HeaderText = "Customer PIN Code";
-            this.colCustPinCode.Name = "colCustPinCode";
-            this.colCustPinCode.ReadOnly = true;
-            // 
-            // colCustState
-            // 
-            this.colCustState.HeaderText = "Customer State";
-            this.colCustState.Name = "colCustState";
-            this.colCustState.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Customer GSTIN";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // colCustEmail
-            // 
-            this.colCustEmail.HeaderText = "Customer Email";
-            this.colCustEmail.Name = "colCustEmail";
-            this.colCustEmail.ReadOnly = true;
-            // 
-            // colCustContact
-            // 
-            this.colCustContact.HeaderText = "Customer Contact No";
-            this.colCustContact.Name = "colCustContact";
-            this.colCustContact.ReadOnly = true;
-            // 
-            // colCustPayTerms
-            // 
-            this.colCustPayTerms.HeaderText = "Customer Payment Terms";
-            this.colCustPayTerms.Name = "colCustPayTerms";
-            this.colCustPayTerms.ReadOnly = true;
-            this.colCustPayTerms.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colProdId
-            // 
-            this.colProdId.HeaderText = "Product ID";
-            this.colProdId.Name = "colProdId";
-            this.colProdId.ReadOnly = true;
-            this.colProdId.Width = 40;
-            // 
-            // colProdDes
-            // 
-            this.colProdDes.HeaderText = "Product Description";
-            this.colProdDes.Name = "colProdDes";
-            this.colProdDes.ReadOnly = true;
-            this.colProdDes.Width = 200;
-            // 
-            // colHsnCode
-            // 
-            this.colHsnCode.HeaderText = "HSN Code";
-            this.colHsnCode.Name = "colHsnCode";
-            this.colHsnCode.ReadOnly = true;
-            // 
-            // colProdRate
-            // 
-            this.colProdRate.HeaderText = "Product Rate";
-            this.colProdRate.Name = "colProdRate";
-            this.colProdRate.ReadOnly = true;
-            // 
-            // colProdQty
-            // 
-            this.colProdQty.HeaderText = "Product Quantity";
-            this.colProdQty.Name = "colProdQty";
-            this.colProdQty.ReadOnly = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -993,7 +868,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.Button btnPayment;
-        private System.Windows.Forms.Label lbReceived;
+        private System.Windows.Forms.Label lbTotalAmount;
         private System.Windows.Forms.Label lbAmountReceived;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1008,21 +883,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReceivedAmt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdDes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHsnCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProdQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustLandmark;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustPinCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustContact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustPayTerms;
 
     }
 }

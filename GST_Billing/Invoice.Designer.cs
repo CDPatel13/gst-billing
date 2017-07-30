@@ -883,7 +883,7 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvProducts.Size = new System.Drawing.Size(742, 205);
+            this.dgvProducts.Size = new System.Drawing.Size(759, 205);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
@@ -1005,7 +1005,7 @@
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(742, 72);
+            this.tlpTotals.Size = new System.Drawing.Size(759, 72);
             this.tlpTotals.TabIndex = 9;
             // 
             // lbTotalFinal
@@ -1013,7 +1013,7 @@
             this.lbTotalFinal.AutoSize = true;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(718, 40);
+            this.lbTotalFinal.Location = new System.Drawing.Point(735, 40);
             this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
             this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
@@ -1258,7 +1258,7 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 821);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(742, 43);
+            this.flpPanelButtons.Size = new System.Drawing.Size(759, 43);
             this.flpPanelButtons.TabIndex = 12;
             // 
             // gbAddCharge
@@ -1497,7 +1497,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(742, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(759, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1506,7 +1506,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(742, 100);
+            this.flpA.Size = new System.Drawing.Size(759, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1526,7 +1526,7 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(742, 33);
+            this.flpGst.Size = new System.Drawing.Size(759, 33);
             this.flpGst.TabIndex = 25;
             // 
             // splitter3
@@ -1570,7 +1570,7 @@
             // tbPaymentTerms
             // 
             this.tbPaymentTerms.FormattingEnabled = true;
-            this.tbPaymentTerms.Location = new System.Drawing.Point(3, 36);
+            this.tbPaymentTerms.Location = new System.Drawing.Point(600, 5);
             this.tbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.tbPaymentTerms.Name = "tbPaymentTerms";
             this.tbPaymentTerms.Size = new System.Drawing.Size(147, 21);
@@ -1582,7 +1582,7 @@
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
             this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(742, 171);
+            this.flpAddCharge.Size = new System.Drawing.Size(759, 171);
             this.flpAddCharge.TabIndex = 26;
             // 
             // Invoice
@@ -1590,7 +1590,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(759, 561);
+            this.ClientSize = new System.Drawing.Size(776, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);
