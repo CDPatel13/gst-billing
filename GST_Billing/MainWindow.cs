@@ -13,6 +13,13 @@ namespace GST_Billing
     public partial class MainWindow : Form
     {
         SqliteDb m1 = new SqliteDb();
+        BindingSource bindingSourceInvoice = new BindingSource();
+        BindingSource bindingSourceCustomer = new BindingSource();
+        BindingSource bindingSourceProducts = new BindingSource();
+
+        DataTable tableCustomer;
+        DataTable tableInvoice;
+        DataTable tableProduct;
 
         public MainWindow()
         {
@@ -50,12 +57,15 @@ namespace GST_Billing
 
         private void btnDeleteInvoice_Click(object sender, EventArgs e)
         {
-            
+            string sqlstr = "DELETE FROM productDetails WHERE invoiceNo='" + (int)dgvInvoice.SelectedRows[0].Cells[0].Value + "'";
             DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
             // TODO : Delete selected invoice from database
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
+            {
+                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
                 dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+            }
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
@@ -79,27 +89,32 @@ namespace GST_Billing
         {
             CustomerDetails customer = new CustomerDetails();
             customer.ShowDialog();
+
+            fillCustomerDataGrid();
         }
 
         private void btnEditCust_Click(object sender, EventArgs e)
         {
-            // TODO : edit customer details
             string custName = String.Empty;
-            if (dgvCustomer.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dgvCustomer.SelectedRows[0];
-                custName = (string)row.Cells["colCustName"].Value;
-            }
+            DataGridViewRow row = dgvCustomer.SelectedRows[0];
+            custName = (string)row.Cells["Customer Name"].Value;
+
+            CustomerDetails editCustomer = new CustomerDetails(custName);
+            editCustomer.ShowDialog();
+
+            fillCustomerDataGrid();
         }
 
         private void btnDeleteCust_Click(object sender, EventArgs e)
         {
-            // TODO : delete customer details from DB
+            string sqlstr = "DELETE FROM customerDetails WHERE custname='"+(string)dgvCustomer.SelectedRows[0].Cells[0].Value+"'";
             DialogResult result = MessageBox.Show("Do you really want to delete this customer?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            // TODO : Delete selected invoice from database
             if (result == DialogResult.Yes)
-                dgvCustomer.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+            {
+                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                dgvCustomer.Rows.RemoveAt(dgvCustomer.SelectedRows[0].Index);
+            }
         }
 
         private void btnPrintCust_Click(object sender, EventArgs e)
@@ -111,6 +126,8 @@ namespace GST_Billing
         {
             ProductDetails products = new ProductDetails();
             products.ShowDialog();
+
+            fillProductDataGrid();
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
@@ -126,13 +143,15 @@ namespace GST_Billing
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            // TODO : delete product details
-            // TODO : delete customer details from DB
+            string sqlstr = "DELETE FROM productDetails WHERE productId='" + (Int64)dgvProducts.SelectedRows[0].Cells[0].Value + "'";
+            
             DialogResult result = MessageBox.Show("Do you really want to delete this product?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            // TODO : Delete selected invoice from database
             if (result == DialogResult.Yes)
-                dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+            {
+                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                dgvProducts.Rows.RemoveAt(dgvProducts.SelectedRows[0].Index);
+            }
         }
 
         private void btnPrintProduct_Click(object sender, EventArgs e)
@@ -175,57 +194,59 @@ namespace GST_Billing
             int colIndex = 0;
             string sqlstr = "SELECT * FROM customerDetails";
             DataSet ds = m1.selectData(sqlstr);
-            DataTable table = ds.Tables[0];
+            tableCustomer = ds.Tables[0];
 
             //table.Columns["custId"].ColumnName = "Customer ID";
-            table.Columns["custname"].ColumnName = "Customer Name";
-            table.Columns["custContactPerson"].ColumnName = "Contact Person";
-            table.Columns["custaddress"].ColumnName = "Customer Address";
-            table.Columns["custcity"].ColumnName = "Customer City";
-            table.Columns["custlandmark"].ColumnName = "Customer Landmark";
-            table.Columns["custstate"].ColumnName = "Customer State";
-            table.Columns["custcode"].ColumnName = "Code";
-            table.Columns["custpincode"].ColumnName = "Customer PIN Code";
-            table.Columns["custemail"].ColumnName = "Customer Email";
-            table.Columns["custphoneNumber"].ColumnName = "Customer Phone No";
-            table.Columns["custgstin"].ColumnName = "Customer GSTIN";
-            table.Columns["custAadharNo"].ColumnName = "Customer Aadhar No";
-            table.Columns["custPanno"].ColumnName = "Customer PAN No";
-            table.Columns["custpaymentTermName"].ColumnName = "Customer Payment Terms";
+            tableCustomer.Columns["custname"].ColumnName = "Customer Name";
+            tableCustomer.Columns["custContactPerson"].ColumnName = "Contact Person";
+            tableCustomer.Columns["custaddress"].ColumnName = "Customer Address";
+            tableCustomer.Columns["custcity"].ColumnName = "Customer City";
+            tableCustomer.Columns["custlandmark"].ColumnName = "Customer Landmark";
+            tableCustomer.Columns["custstate"].ColumnName = "Customer State";
+            tableCustomer.Columns["custcode"].ColumnName = "Code";
+            tableCustomer.Columns["custpincode"].ColumnName = "Customer PIN Code";
+            tableCustomer.Columns["custemail"].ColumnName = "Customer Email";
+            tableCustomer.Columns["custphoneNumber"].ColumnName = "Customer Phone No";
+            tableCustomer.Columns["custgstin"].ColumnName = "Customer GSTIN";
+            tableCustomer.Columns["custAadharNo"].ColumnName = "Customer Aadhar No";
+            tableCustomer.Columns["custPanno"].ColumnName = "Customer PAN No";
+            tableCustomer.Columns["custpaymentTermName"].ColumnName = "Customer Payment Terms";
 
             //table.Columns["Customer ID"].SetOrdinal(0);
-            table.Columns["Customer Name"].SetOrdinal(colIndex++);
-            table.Columns["Customer Address"].SetOrdinal(colIndex++);
-            table.Columns["Customer Landmark"].SetOrdinal(colIndex++);
-            table.Columns["Customer City"].SetOrdinal(colIndex++);
-            table.Columns["Customer State"].SetOrdinal(colIndex++);
-            table.Columns["Code"].SetOrdinal(colIndex++);
-            table.Columns["Customer PIN Code"].SetOrdinal(colIndex++);
-            table.Columns["Customer GSTIN"].SetOrdinal(colIndex++);
-            table.Columns["Customer Phone No"].SetOrdinal(colIndex++);
-            table.Columns["Customer Email"].SetOrdinal(colIndex++);
-            table.Columns["Customer Aadhar No"].SetOrdinal(colIndex++);
-            table.Columns["Customer PAN No"].SetOrdinal(colIndex++);
-            table.Columns["Contact Person"].SetOrdinal(colIndex++);
-            table.Columns["Customer Payment Terms"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Name"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Address"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Landmark"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer City"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer State"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Code"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer PIN Code"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer GSTIN"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Phone No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Email"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Aadhar No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer PAN No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Contact Person"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Payment Terms"].SetOrdinal(colIndex++);
 
-            table.Columns.Remove("custId");
-            table.Columns.Remove("shipname");
-            table.Columns.Remove("shipaddress");
-            table.Columns.Remove("shipContactPerson");
-            table.Columns.Remove("shipcity");
-            table.Columns.Remove("shiplandmark");
-            table.Columns.Remove("shipstate");
-            table.Columns.Remove("shipcode");
-            table.Columns.Remove("shippincode");
-            table.Columns.Remove("shipemail");
-            table.Columns.Remove("shipphoneNumber");
-            table.Columns.Remove("shipgstin");
-            table.Columns.Remove("shipAadharNo");
-            table.Columns.Remove("shipPanno");
-            table.Columns.Remove("shippaymentTermName");
+            tableCustomer.Columns.Remove("custId");
+            tableCustomer.Columns.Remove("shipname");
+            tableCustomer.Columns.Remove("shipaddress");
+            tableCustomer.Columns.Remove("shipContactPerson");
+            tableCustomer.Columns.Remove("shipcity");
+            tableCustomer.Columns.Remove("shiplandmark");
+            tableCustomer.Columns.Remove("shipstate");
+            tableCustomer.Columns.Remove("shipcode");
+            tableCustomer.Columns.Remove("shippincode");
+            tableCustomer.Columns.Remove("shipemail");
+            tableCustomer.Columns.Remove("shipphoneNumber");
+            tableCustomer.Columns.Remove("shipgstin");
+            tableCustomer.Columns.Remove("shipAadharNo");
+            tableCustomer.Columns.Remove("shipPanno");
+            tableCustomer.Columns.Remove("shippaymentTermName");
 
-            dgvCustomer.DataSource = table;
+            bindingSourceCustomer.DataSource = null;
+            bindingSourceCustomer.DataSource = tableCustomer;
+            dgvCustomer.DataSource = bindingSourceCustomer;
         }
 
         private void fillProductDataGrid()
@@ -233,21 +254,23 @@ namespace GST_Billing
             int colIndex = 0;
             string sqlstr = "SELECT * FROM productDetails";
             DataSet ds = m1.selectData(sqlstr);
-            DataTable table = ds.Tables[0];
+            tableProduct = ds.Tables[0];
 
-            table.Columns["productId"].ColumnName = "Product ID";
-            table.Columns["productName"].ColumnName = "Product Name";
-            table.Columns["productPrice"].ColumnName = "Product Price";
-            table.Columns["hsnCode"].ColumnName = "HSN Code";
-            table.Columns["productUnit"].ColumnName = "Product Unit";
+            tableProduct.Columns["productId"].ColumnName = "Product ID";
+            tableProduct.Columns["productName"].ColumnName = "Product Name";
+            tableProduct.Columns["productPrice"].ColumnName = "Product Price";
+            tableProduct.Columns["hsnCode"].ColumnName = "HSN Code";
+            tableProduct.Columns["productUnit"].ColumnName = "Product Unit";
 
-            table.Columns["Product ID"].SetOrdinal(colIndex++);
-            table.Columns["Product Name"].SetOrdinal(colIndex++);
-            table.Columns["HSN Code"].SetOrdinal(colIndex++);
-            table.Columns["Product Price"].SetOrdinal(colIndex++);
-            table.Columns["Product Unit"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Product ID"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Product Name"].SetOrdinal(colIndex++);
+            tableProduct.Columns["HSN Code"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Product Price"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Product Unit"].SetOrdinal(colIndex++);
 
-            dgvProducts.DataSource = table;
+            bindingSourceProducts.DataSource = null;
+            bindingSourceProducts.DataSource = tableProduct;
+            dgvProducts.DataSource = bindingSourceProducts;
         }
     }
 }

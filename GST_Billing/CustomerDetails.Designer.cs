@@ -44,7 +44,6 @@
             this.lbCode = new System.Windows.Forms.Label();
             this.tbState = new System.Windows.Forms.ComboBox();
             this.gbBilling = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.lbLandmark = new System.Windows.Forms.Label();
             this.tbLandmark = new System.Windows.Forms.TextBox();
             this.lbCity = new System.Windows.Forms.Label();
@@ -112,7 +111,7 @@
             this.tbName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.Location = new System.Drawing.Point(128, 16);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(569, 23);
+            this.tbName.Size = new System.Drawing.Size(620, 23);
             this.tbName.TabIndex = 0;
             this.tbName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -289,6 +288,7 @@
             this.tbState.TabIndex = 5;
             this.tbState.SelectedIndexChanged += new System.EventHandler(this.tbState_SelectedIndexChanged);
             this.tbState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.tbState.Leave += new System.EventHandler(this.tbState_SelectedIndexChanged);
             // 
             // gbBilling
             // 
@@ -296,7 +296,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbBilling.Controls.Add(this.lbName);
             this.gbBilling.Controls.Add(this.tbName);
-            this.gbBilling.Controls.Add(this.btnSearch);
             this.gbBilling.Controls.Add(this.lbAddress);
             this.gbBilling.Controls.Add(this.tbAddress);
             this.gbBilling.Controls.Add(this.lbLandmark);
@@ -329,16 +328,6 @@
             this.gbBilling.TabIndex = 19;
             this.gbBilling.TabStop = false;
             this.gbBilling.Text = "Billing Details";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(703, 16);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(45, 23);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Go";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lbLandmark
             // 
@@ -712,8 +701,9 @@
             this.tbShipState.Name = "tbShipState";
             this.tbShipState.Size = new System.Drawing.Size(237, 24);
             this.tbShipState.TabIndex = 20;
-            this.tbShipState.SelectedIndexChanged += new System.EventHandler(this.tbShipState_SelectedIndexChanged);
+            this.tbShipState.SelectedIndexChanged += new System.EventHandler(this.tbState_SelectedIndexChanged);
             this.tbShipState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.tbShipState.Leave += new System.EventHandler(this.tbState_SelectedIndexChanged);
             // 
             // lbShipCode
             // 
@@ -929,7 +919,6 @@
 		private System.Windows.Forms.Label lbCode;
 		private System.Windows.Forms.ComboBox tbState;
         private System.Windows.Forms.GroupBox gbBilling;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox tbLandmark;
         private System.Windows.Forms.Label lbLandmark;
