@@ -288,9 +288,7 @@ namespace GST_Billing
             }
         }
 
-
-
-        private DataSet customerExists(string name)
+        public DataSet customerExists(string name)
         {
             string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "'";
             DataSet ds = m1.selectData(sqlstr);

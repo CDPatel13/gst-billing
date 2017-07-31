@@ -210,6 +210,7 @@
             this.btnPrintProduct.Text = "Print";
             this.btnPrintProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintProduct.UseVisualStyleBackColor = true;
+            this.btnPrintProduct.Visible = false;
             this.btnPrintProduct.Click += new System.EventHandler(this.btnPrintProduct_Click);
             // 
             // btnAddProduct
@@ -736,6 +737,7 @@
             this.btnPrintCust.Text = "Print";
             this.btnPrintCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintCust.UseVisualStyleBackColor = true;
+            this.btnPrintCust.Visible = false;
             this.btnPrintCust.Click += new System.EventHandler(this.btnPrintCust_Click);
             // 
             // btnAddCust

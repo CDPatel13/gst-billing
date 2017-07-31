@@ -171,12 +171,22 @@ namespace GST_Billing
 
         private void btnFindCustomer_Click(object sender, EventArgs e)
         {
-
+            string customer = tbSearchCust.Text;
+            if(!String.IsNullOrEmpty(customer))
+            {
+                string sqlstr = "SELECT * FROM customerDetails WHERE custname like '%" + customer + "%'";
+                DataSet ds = m1.selectData(sqlstr);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    fillCustomerDataGrid(ds);
+                }
+            }
         }
 
         private void btnClearCustomer_Click(object sender, EventArgs e)
         {
             tbSearchCust.Clear();
+            fillCustomerDataGrid();
         }
 
         private void btnFindProduct_Click(object sender, EventArgs e)
@@ -189,12 +199,20 @@ namespace GST_Billing
             tbSearchProducts.Clear();
         }
 
-        private void fillCustomerDataGrid()
+        private void fillCustomerDataGrid(DataSet table = null)
         {
             int colIndex = 0;
             string sqlstr = "SELECT * FROM customerDetails";
-            DataSet ds = m1.selectData(sqlstr);
-            tableCustomer = ds.Tables[0];
+
+            if(table == null)
+            {
+                DataSet ds = m1.selectData(sqlstr);
+                tableCustomer = ds.Tables[0];
+            }
+            else
+            {
+                tableCustomer = table.Tables[0];
+            }
 
             //table.Columns["custId"].ColumnName = "Customer ID";
             tableCustomer.Columns["custname"].ColumnName = "Customer Name";
