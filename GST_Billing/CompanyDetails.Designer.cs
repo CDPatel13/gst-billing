@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbName = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbCompanyName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -39,7 +39,7 @@
             this.tbGstin = new System.Windows.Forms.TextBox();
             this.lbGstin = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.blState = new System.Windows.Forms.Label();
+            this.lbState = new System.Windows.Forms.Label();
             this.tbCode = new System.Windows.Forms.TextBox();
             this.lbCode = new System.Windows.Forms.Label();
             this.cbState = new System.Windows.Forms.ComboBox();
@@ -57,30 +57,32 @@
             this.lbIfscCode = new System.Windows.Forms.Label();
             this.tbAccountNo = new System.Windows.Forms.TextBox();
             this.lbAccountNo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbContactPerson = new System.Windows.Forms.TextBox();
             this.lbPinCode = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPinCode = new System.Windows.Forms.TextBox();
             this.lbContact = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbName
             // 
-            this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(42, 18);
+            this.lbName.Location = new System.Drawing.Point(16, 9);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(47, 16);
+            this.lbName.Size = new System.Drawing.Size(73, 35);
             this.lbName.TabIndex = 0;
-            this.lbName.Text = "Name";
+            this.lbName.Text = "Company Name";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // tbName
+            // tbCompanyName
             // 
-            this.tbName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(95, 15);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(656, 23);
-            this.tbName.TabIndex = 0;
-            this.tbName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.tbCompanyName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbCompanyName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbCompanyName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCompanyName.Location = new System.Drawing.Point(95, 15);
+            this.tbCompanyName.Name = "tbCompanyName";
+            this.tbCompanyName.Size = new System.Drawing.Size(656, 23);
+            this.tbCompanyName.TabIndex = 0;
+            this.tbCompanyName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // tbAddress
             // 
@@ -170,15 +172,15 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // blState
+            // lbState
             // 
-            this.blState.AutoSize = true;
-            this.blState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blState.Location = new System.Drawing.Point(45, 137);
-            this.blState.Name = "blState";
-            this.blState.Size = new System.Drawing.Size(44, 16);
-            this.blState.TabIndex = 15;
-            this.blState.Text = "State";
+            this.lbState.AutoSize = true;
+            this.lbState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbState.Location = new System.Drawing.Point(45, 137);
+            this.lbState.Name = "lbState";
+            this.lbState.Size = new System.Drawing.Size(44, 16);
+            this.lbState.TabIndex = 15;
+            this.lbState.Text = "State";
             // 
             // tbCode
             // 
@@ -381,13 +383,13 @@
             this.lbAccountNo.TabIndex = 40;
             this.lbAccountNo.Text = "Account No";
             // 
-            // textBox1
+            // tbContactPerson
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(514, 250);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 23);
-            this.textBox1.TabIndex = 43;
+            this.tbContactPerson.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContactPerson.Location = new System.Drawing.Point(514, 250);
+            this.tbContactPerson.Name = "tbContactPerson";
+            this.tbContactPerson.Size = new System.Drawing.Size(237, 23);
+            this.tbContactPerson.TabIndex = 43;
             // 
             // lbPinCode
             // 
@@ -399,13 +401,13 @@
             this.lbPinCode.TabIndex = 46;
             this.lbPinCode.Text = "PIN Code";
             // 
-            // textBox2
+            // tbPinCode
             // 
-            this.textBox2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(514, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(237, 23);
-            this.textBox2.TabIndex = 45;
+            this.tbPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPinCode.Location = new System.Drawing.Point(514, 76);
+            this.tbPinCode.Name = "tbPinCode";
+            this.tbPinCode.Size = new System.Drawing.Size(237, 23);
+            this.tbPinCode.TabIndex = 45;
             // 
             // lbContact
             // 
@@ -425,8 +427,8 @@
             this.ClientSize = new System.Drawing.Size(755, 308);
             this.Controls.Add(this.lbContact);
             this.Controls.Add(this.lbPinCode);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPinCode);
+            this.Controls.Add(this.tbContactPerson);
             this.Controls.Add(this.tbIfscCode);
             this.Controls.Add(this.lbIfscCode);
             this.Controls.Add(this.tbAccountNo);
@@ -444,7 +446,7 @@
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.tbCode);
             this.Controls.Add(this.lbCode);
-            this.Controls.Add(this.blState);
+            this.Controls.Add(this.lbState);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbGstin);
             this.Controls.Add(this.lbGstin);
@@ -454,7 +456,7 @@
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.lbAddress);
-            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.tbCompanyName);
             this.Controls.Add(this.lbName);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
@@ -472,7 +474,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbCompanyName;
         private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.TextBox tbEmail;
@@ -482,7 +484,7 @@
         private System.Windows.Forms.TextBox tbGstin;
         private System.Windows.Forms.Label lbGstin;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label blState;
+        private System.Windows.Forms.Label lbState;
         private System.Windows.Forms.TextBox tbCode;
         private System.Windows.Forms.Label lbCode;
         private System.Windows.Forms.ComboBox cbState;
@@ -500,9 +502,9 @@
         private System.Windows.Forms.Label lbIfscCode;
         private System.Windows.Forms.TextBox tbAccountNo;
         private System.Windows.Forms.Label lbAccountNo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbContactPerson;
         private System.Windows.Forms.Label lbPinCode;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPinCode;
         private System.Windows.Forms.Label lbContact;
     }
 }

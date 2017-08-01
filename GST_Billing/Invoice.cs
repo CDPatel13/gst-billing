@@ -27,10 +27,17 @@ namespace GST_Billing
         double cgstFinal = 0;
         double igstFinal = 0;
         double addChargeFinal = 0;
+        private int invoiceToEdit;
 
         public Invoice()
         {
             InitializeComponent();
+        }
+
+        public Invoice(int invoiceToEdit)
+        {
+            // TODO: Complete member initialization
+            this.invoiceToEdit = invoiceToEdit;
         }
 
         private void Invoice_Load(object sender, EventArgs e)

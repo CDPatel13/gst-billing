@@ -21,69 +21,68 @@ namespace GST_Billing
         DataTable tableInvoice;
         DataTable tableProduct;
 
+        List<string> listOfProducts = new List<string>();
+        List<string> listOfCustomers = new List<string>();
+        AutoCompleteStringCollection autoCompleteStrings = new AutoCompleteStringCollection();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        #region MainWindow
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            // TODO : fill datagrids with data from DB
             fillCustomerDataGrid();
             fillProductDataGrid();
+            fillInvoiceDataGrid();
 
-            // UI : Select first row
+            fillAutoCompleteCustomers();
+
             if (dgvInvoice.RowCount > 0)
                 dgvInvoice.Rows[0].Selected = true;
         }
-
-        private void btnAddInvoice_Click(object sender, EventArgs e)
-        {
-            Invoice generateInvoice = new Invoice();
-            DialogResult result = generateInvoice.ShowDialog();
-        }
-
-        private void btnEditInvoice_Click(object sender, EventArgs e)
-        {
-            int invoiceToEdit = 0;
-            string custName = String.Empty;
-            if(dgvInvoice.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dgvInvoice.SelectedRows[0];
-                invoiceToEdit = Int32.Parse((string)row.Cells["colInvoiceNum"].Value);
-                custName = (string)row.Cells["colCust"].Value;
-            }
-        }
-
-        private void btnDeleteInvoice_Click(object sender, EventArgs e)
-        {
-            string sqlstr = "DELETE FROM productDetails WHERE invoiceNo='" + (int)dgvInvoice.SelectedRows[0].Cells[0].Value + "'";
-            DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            
-            // TODO : Delete selected invoice from database
-            if (result == DialogResult.Yes)
-            {
-                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
-                dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
-            }
-        }
-
-        private void btnPrintInvoice_Click(object sender, EventArgs e)
-        {
-            // TODO : print selected invoice
-        }
-
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnPayment_Click(object sender, EventArgs e)
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // TODO : Add info into invoice for payment
-            // TODO : refresh data grid with updated values
+            TabPage selectedTab = tabMain.SelectedTab;
+
+            switch (selectedTab.Name)
+            {
+                case "tabProducts":
+                    fillAutoCompleteProducts();
+                    break;
+                case "tabInvoice":
+                case "tabCustomer":
+                    fillAutoCompleteCustomers();
+                    break;
+                default:
+                    autoCompleteStrings.Clear();
+                    break;
+            }
         }
+
+        private void tsmiCompanyInfo_Click(object sender, EventArgs e)
+        {
+            CompanyDetails companyInfo = new CompanyDetails();
+            companyInfo.ShowDialog();
+        }
+
+        private void tsmiChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePassword password = new ChangePassword();
+            password.ShowDialog();
+        }
+
+        #endregion
+
+        #region Customer
 
         private void btnAddCust_Click(object sender, EventArgs e)
         {
@@ -97,12 +96,15 @@ namespace GST_Billing
         {
             string custName = String.Empty;
             DataGridViewRow row = dgvCustomer.SelectedRows[0];
-            custName = (string)row.Cells["Customer Name"].Value;
+            if(row!= null)
+            { 
+                custName = (string)row.Cells["Customer Name"].Value;
 
-            CustomerDetails editCustomer = new CustomerDetails(custName);
-            editCustomer.ShowDialog();
+                CustomerDetails editCustomer = new CustomerDetails(custName);
+                editCustomer.ShowDialog();
 
-            fillCustomerDataGrid();
+                fillCustomerDataGrid();
+            }
         }
 
         private void btnDeleteCust_Click(object sender, EventArgs e)
@@ -122,57 +124,10 @@ namespace GST_Billing
             // TODO : Print customer details
         }
 
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            ProductDetails products = new ProductDetails();
-            products.ShowDialog();
-
-            fillProductDataGrid();
-        }
-
-        private void btnEditProduct_Click(object sender, EventArgs e)
-        {
-            // TODO : edit product details
-            string prodId = String.Empty;
-            if (dgvProducts.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dgvProducts.SelectedRows[0];
-                prodId = (string)row.Cells["colProdId"].Value;
-            }
-        }
-
-        private void btnDeleteProduct_Click(object sender, EventArgs e)
-        {
-            string sqlstr = "DELETE FROM productDetails WHERE productId='" + (Int64)dgvProducts.SelectedRows[0].Cells[0].Value + "'";
-            
-            DialogResult result = MessageBox.Show("Do you really want to delete this product?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
-                dgvProducts.Rows.RemoveAt(dgvProducts.SelectedRows[0].Index);
-            }
-        }
-
-        private void btnPrintProduct_Click(object sender, EventArgs e)
-        {
-            // TODO : Print product details
-        }
-
-        private void btnSearchInvoice_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnClearInvoice_Click(object sender, EventArgs e)
-        {
-            tbSearchInvoice.Clear();
-        }
-
         private void btnFindCustomer_Click(object sender, EventArgs e)
         {
             string customer = tbSearchCust.Text;
-            if(!String.IsNullOrEmpty(customer))
+            if (!String.IsNullOrEmpty(customer))
             {
                 string sqlstr = "SELECT * FROM customerDetails WHERE custname like '%" + customer + "%'";
                 DataSet ds = m1.selectData(sqlstr);
@@ -189,22 +144,12 @@ namespace GST_Billing
             fillCustomerDataGrid();
         }
 
-        private void btnFindProduct_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnClearProduct_Click(object sender, EventArgs e)
-        {
-            tbSearchProducts.Clear();
-        }
-
         private void fillCustomerDataGrid(DataSet table = null)
         {
             int colIndex = 0;
             string sqlstr = "SELECT * FROM customerDetails";
 
-            if(table == null)
+            if (table == null)
             {
                 DataSet ds = m1.selectData(sqlstr);
                 tableCustomer = ds.Tables[0];
@@ -267,28 +212,282 @@ namespace GST_Billing
             dgvCustomer.DataSource = bindingSourceCustomer;
         }
 
-        private void fillProductDataGrid()
+        private void fillAutoCompleteCustomers()
+        {
+            string sqlstr = "SELECT custname from customerDetails";
+            DataSet ds = m1.selectData(sqlstr);
+
+            autoCompleteStrings.Clear();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    autoCompleteStrings.Add((string)row["custname"]);
+                }
+                tbSearchCust.AutoCompleteCustomSource = autoCompleteStrings;
+                tbSearchInvoice.AutoCompleteCustomSource = autoCompleteStrings;
+            }
+        }
+        
+        #endregion
+
+        #region Products
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            ProductDetails products = new ProductDetails();
+            products.ShowDialog();
+
+            fillProductDataGrid();
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            string prodname = String.Empty;
+            DataGridViewRow row = dgvProducts.SelectedRows[0];
+            if (row != null)
+            {
+                prodname = (string)row.Cells["Product Name"].Value;
+
+                ProductDetails editProduct = new ProductDetails(prodname);
+                editProduct.ShowDialog();
+
+                fillProductDataGrid();
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            if(dgvProducts.SelectedRows.Count > 0)
+            { 
+                string sqlstr = "DELETE FROM productDetails WHERE productName='" + (string)dgvProducts.SelectedRows[0].Cells[0].Value + "'";
+            
+                DialogResult result = MessageBox.Show("Do you really want to delete this product?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                    dgvProducts.Rows.RemoveAt(dgvProducts.SelectedRows[0].Index);
+                }
+            }
+        }
+
+        private void btnPrintProduct_Click(object sender, EventArgs e)
+        {
+            // TODO : Print product details
+        }
+
+        private void btnFindProduct_Click(object sender, EventArgs e)
+        {
+            string product = tbSearchProducts.Text;
+            if (!String.IsNullOrEmpty(product))
+            {
+                string sqlstr = "SELECT * FROM productDetails WHERE productName like '%" + product + "%'";
+                DataSet ds = m1.selectData(sqlstr);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    fillProductDataGrid(ds);
+                }
+            }
+        }
+
+        private void btnClearProduct_Click(object sender, EventArgs e)
+        {
+            tbSearchProducts.Clear();
+            fillProductDataGrid();
+        }
+
+        private void fillProductDataGrid(DataSet table = null)
         {
             int colIndex = 0;
             string sqlstr = "SELECT * FROM productDetails";
-            DataSet ds = m1.selectData(sqlstr);
-            tableProduct = ds.Tables[0];
 
-            tableProduct.Columns["productId"].ColumnName = "Product ID";
+            if (table == null)
+            {
+                DataSet ds = m1.selectData(sqlstr);
+                tableProduct = ds.Tables[0];
+            }
+            else
+            {
+                tableProduct = table.Tables[0];
+            }
+
             tableProduct.Columns["productName"].ColumnName = "Product Name";
             tableProduct.Columns["productPrice"].ColumnName = "Product Price";
             tableProduct.Columns["hsnCode"].ColumnName = "HSN Code";
             tableProduct.Columns["productUnit"].ColumnName = "Product Unit";
 
-            tableProduct.Columns["Product ID"].SetOrdinal(colIndex++);
             tableProduct.Columns["Product Name"].SetOrdinal(colIndex++);
             tableProduct.Columns["HSN Code"].SetOrdinal(colIndex++);
             tableProduct.Columns["Product Price"].SetOrdinal(colIndex++);
             tableProduct.Columns["Product Unit"].SetOrdinal(colIndex++);
 
+            tableProduct.Columns.Remove("productId");
+
             bindingSourceProducts.DataSource = null;
             bindingSourceProducts.DataSource = tableProduct;
             dgvProducts.DataSource = bindingSourceProducts;
         }
+
+        private void fillAutoCompleteProducts()
+        {
+            string sqlstr = "SELECT productName from productDetails";
+            DataSet ds = m1.selectData(sqlstr);
+
+            autoCompleteStrings.Clear();
+            if(ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach(DataRow row in ds.Tables[0].Rows)
+                {
+                    autoCompleteStrings.Add((string)row["productName"]);
+                }
+                tbSearchProducts.AutoCompleteCustomSource = autoCompleteStrings;
+            }
+        }
+
+        #endregion
+
+        #region Invoice
+
+        private void btnAddInvoice_Click(object sender, EventArgs e)
+        {
+            Invoice generateInvoice = new Invoice();
+            DialogResult result = generateInvoice.ShowDialog();
+        }
+
+        private void btnEditInvoice_Click(object sender, EventArgs e)
+        {
+            int invoiceToEdit = 0;
+            string custName = String.Empty;
+            DataGridViewRow row = dgvInvoice.SelectedRows[0];
+
+            if (row != null)
+            {
+                invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
+
+                Invoice editInvoice = new Invoice(invoiceToEdit);
+                editInvoice.ShowDialog();
+
+                fillInvoiceDataGrid();
+            }
+        }
+
+        private void btnDeleteInvoice_Click(object sender, EventArgs e)
+        {
+            string sqlstr = "DELETE FROM productDetails WHERE invoiceNo='" + (int)dgvInvoice.SelectedRows[0].Cells[0].Value + "'";
+            DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            // TODO : Delete selected invoice from database
+            if (result == DialogResult.Yes)
+            {
+                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+            }
+        }
+
+        private void btnPrintInvoice_Click(object sender, EventArgs e)
+        {
+            // TODO : print selected invoice
+        }
+
+        private void btnSearchInvoice_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnClearInvoice_Click(object sender, EventArgs e)
+        {
+            tbSearchInvoice.Clear();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            // TODO : Add info into invoice for payment
+            // TODO : refresh data grid with updated values
+        }
+
+        private void fillInvoiceDataGrid()
+        {
+            // TODO : pending Invoice page
+            return;
+            int colIndex = 0;
+            string sqlstrInvoice = "SELECT * FROM invoiceDetails";
+            string sqlstrCust = "SELECT custname FROM customerDetails WHERE custId = '";
+            DataTable invoiceLocal;
+            DataTable customerLocal;
+
+            DataSet ds = m1.selectData(sqlstrInvoice);
+            invoiceLocal = ds.Tables[0];
+
+            tableInvoice.Clear();
+
+            tableInvoice.Columns.Add("Customer Name");
+            tableInvoice.Columns.Add("Invoice No");
+            tableInvoice.Columns.Add("Invoice Date");
+            tableInvoice.Columns.Add("Net Amount");
+            tableInvoice.Columns.Add("Discount");
+            tableInvoice.Columns.Add("Taxable Amount");
+            tableInvoice.Columns.Add("CGST Table");
+            tableInvoice.Columns.Add("SGST Table");
+            tableInvoice.Columns.Add("IGST Table");
+            tableInvoice.Columns.Add("Customer GSTIN");
+            tableInvoice.Columns.Add("Payment");
+
+            
+
+            //table.Columns["custId"].ColumnName = "Customer ID";
+            tableCustomer.Columns["invoiceNo"].ColumnName = "Invoice No";
+            tableCustomer.Columns["custId"].ColumnName = "Customer Name";
+            tableCustomer.Columns["custaddress"].ColumnName = "Customer Address";
+            tableCustomer.Columns["custcity"].ColumnName = "Customer City";
+            tableCustomer.Columns["custlandmark"].ColumnName = "Customer Landmark";
+            tableCustomer.Columns["custstate"].ColumnName = "Customer State";
+            tableCustomer.Columns["custcode"].ColumnName = "Code";
+            tableCustomer.Columns["custpincode"].ColumnName = "Customer PIN Code";
+            tableCustomer.Columns["custemail"].ColumnName = "Customer Email";
+            tableCustomer.Columns["custphoneNumber"].ColumnName = "Customer Phone No";
+            tableCustomer.Columns["custgstin"].ColumnName = "Customer GSTIN";
+            tableCustomer.Columns["custAadharNo"].ColumnName = "Customer Aadhar No";
+            tableCustomer.Columns["custPanno"].ColumnName = "Customer PAN No";
+            tableCustomer.Columns["custpaymentTermName"].ColumnName = "Customer Payment Terms";
+
+            //table.Columns["Customer ID"].SetOrdinal(0);
+            tableCustomer.Columns["Customer Name"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Address"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Landmark"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer City"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer State"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Code"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer PIN Code"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer GSTIN"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Phone No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Email"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Aadhar No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer PAN No"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Contact Person"].SetOrdinal(colIndex++);
+            tableCustomer.Columns["Customer Payment Terms"].SetOrdinal(colIndex++);
+
+            tableCustomer.Columns.Remove("custId");
+            tableCustomer.Columns.Remove("shipname");
+            tableCustomer.Columns.Remove("shipaddress");
+            tableCustomer.Columns.Remove("shipContactPerson");
+            tableCustomer.Columns.Remove("shipcity");
+            tableCustomer.Columns.Remove("shiplandmark");
+            tableCustomer.Columns.Remove("shipstate");
+            tableCustomer.Columns.Remove("shipcode");
+            tableCustomer.Columns.Remove("shippincode");
+            tableCustomer.Columns.Remove("shipemail");
+            tableCustomer.Columns.Remove("shipphoneNumber");
+            tableCustomer.Columns.Remove("shipgstin");
+            tableCustomer.Columns.Remove("shipAadharNo");
+            tableCustomer.Columns.Remove("shipPanno");
+            tableCustomer.Columns.Remove("shippaymentTermName");
+
+            bindingSourceCustomer.DataSource = null;
+            bindingSourceCustomer.DataSource = tableCustomer;
+            dgvCustomer.DataSource = bindingSourceCustomer;
+        }
+
+        #endregion
     }
 }

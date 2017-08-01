@@ -62,9 +62,9 @@
             this.btnSearchInvoice = new System.Windows.Forms.Button();
             this.btnClearInvoice = new System.Windows.Forms.Button();
             this.lbTotalAmount = new System.Windows.Forms.Label();
-            this.lbAmountReceived = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbAmountTotal = new System.Windows.Forms.Label();
+            this.lbPending = new System.Windows.Forms.Label();
+            this.lbAmountPending = new System.Windows.Forms.Label();
             this.tlpInvoiceBtns = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnAddInvoice = new System.Windows.Forms.Button();
@@ -83,6 +83,10 @@
             this.btnDeleteCust = new System.Windows.Forms.Button();
             this.btnEditCust = new System.Windows.Forms.Button();
             this.tabMain = new System.Windows.Forms.TabControl();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
+            this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCompanyInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.tabProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
@@ -96,6 +100,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabMain.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProducts
@@ -116,13 +121,14 @@
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.AllowUserToDeleteRows = false;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProducts.Location = new System.Drawing.Point(0, 79);
+            this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowTemplate.ReadOnly = true;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1254, 586);
+            this.dgvProducts.Size = new System.Drawing.Size(1254, 572);
             this.dgvProducts.TabIndex = 9;
             // 
             // flowLayoutPanel3
@@ -138,6 +144,8 @@
             // 
             // tbSearchProducts
             // 
+            this.tbSearchProducts.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbSearchProducts.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbSearchProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbSearchProducts.Location = new System.Drawing.Point(3, 8);
             this.tbSearchProducts.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
@@ -294,14 +302,15 @@
             this.colIgst,
             this.colCustGstin,
             this.colReceivedAmt});
-            this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvInvoice.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInvoice.Location = new System.Drawing.Point(0, 79);
             this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.ReadOnly = true;
             this.dgvInvoice.RowTemplate.ReadOnly = true;
             this.dgvInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInvoice.Size = new System.Drawing.Size(1254, 586);
+            this.dgvInvoice.Size = new System.Drawing.Size(1254, 572);
             this.dgvInvoice.TabIndex = 7;
             // 
             // colCust
@@ -381,9 +390,9 @@
             this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnClearInvoice);
             this.flpSearchInvoice.Controls.Add(this.lbTotalAmount);
-            this.flpSearchInvoice.Controls.Add(this.lbAmountReceived);
-            this.flpSearchInvoice.Controls.Add(this.label2);
-            this.flpSearchInvoice.Controls.Add(this.label3);
+            this.flpSearchInvoice.Controls.Add(this.lbAmountTotal);
+            this.flpSearchInvoice.Controls.Add(this.lbPending);
+            this.flpSearchInvoice.Controls.Add(this.lbAmountPending);
             this.flpSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpSearchInvoice.Location = new System.Drawing.Point(0, 40);
             this.flpSearchInvoice.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -404,7 +413,8 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(45, 8);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
@@ -435,6 +445,8 @@
             // 
             // tbSearchInvoice
             // 
+            this.tbSearchInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbSearchInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbSearchInvoice.Location = new System.Drawing.Point(249, 8);
             this.tbSearchInvoice.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
@@ -482,41 +494,41 @@
             this.lbTotalAmount.TabIndex = 7;
             this.lbTotalAmount.Text = "Total Invoice Amount :";
             // 
-            // lbAmountReceived
+            // lbAmountTotal
             // 
-            this.lbAmountReceived.AutoSize = true;
-            this.lbAmountReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAmountReceived.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbAmountReceived.Location = new System.Drawing.Point(905, 10);
-            this.lbAmountReceived.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.lbAmountReceived.Name = "lbAmountReceived";
-            this.lbAmountReceived.Size = new System.Drawing.Size(36, 16);
-            this.lbAmountReceived.TabIndex = 10;
-            this.lbAmountReceived.Text = "0.00";
+            this.lbAmountTotal.AutoSize = true;
+            this.lbAmountTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAmountTotal.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbAmountTotal.Location = new System.Drawing.Point(905, 10);
+            this.lbAmountTotal.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lbAmountTotal.Name = "lbAmountTotal";
+            this.lbAmountTotal.Size = new System.Drawing.Size(36, 16);
+            this.lbAmountTotal.TabIndex = 10;
+            this.lbAmountTotal.Text = "0.00";
             // 
-            // label2
+            // lbPending
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(954, 10);
-            this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Pending Amount :";
+            this.lbPending.AutoSize = true;
+            this.lbPending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPending.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbPending.Location = new System.Drawing.Point(954, 10);
+            this.lbPending.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lbPending.Name = "lbPending";
+            this.lbPending.Size = new System.Drawing.Size(128, 16);
+            this.lbPending.TabIndex = 9;
+            this.lbPending.Text = "Pending Amount :";
             // 
-            // label3
+            // lbAmountPending
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(1088, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "0.00";
+            this.lbAmountPending.AutoSize = true;
+            this.lbAmountPending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAmountPending.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbAmountPending.Location = new System.Drawing.Point(1088, 10);
+            this.lbAmountPending.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lbAmountPending.Name = "lbAmountPending";
+            this.lbAmountPending.Size = new System.Drawing.Size(36, 16);
+            this.lbAmountPending.TabIndex = 11;
+            this.lbAmountPending.Text = "0.00";
             // 
             // tlpInvoiceBtns
             // 
@@ -643,13 +655,14 @@
             this.dgvCustomer.AllowUserToAddRows = false;
             this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomer.Location = new System.Drawing.Point(0, 79);
+            this.dgvCustomer.MultiSelect = false;
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowTemplate.ReadOnly = true;
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomer.Size = new System.Drawing.Size(1254, 586);
+            this.dgvCustomer.Size = new System.Drawing.Size(1254, 572);
             this.dgvCustomer.TabIndex = 8;
             // 
             // flowLayoutPanel1
@@ -665,6 +678,8 @@
             // 
             // tbSearchCust
             // 
+            this.tbSearchCust.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbSearchCust.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbSearchCust.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbSearchCust.Location = new System.Drawing.Point(3, 8);
             this.tbSearchCust.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
@@ -803,13 +818,61 @@
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(1264, 682);
             this.tabMain.TabIndex = 1;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
+            // 
+            // menuStripMain
+            // 
+            this.menuStripMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuStripMain.AutoSize = false;
+            this.menuStripMain.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSettings});
+            this.menuStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStripMain.Location = new System.Drawing.Point(1085, 0);
+            this.menuStripMain.Name = "menuStripMain";
+            this.menuStripMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menuStripMain.ShowItemToolTips = true;
+            this.menuStripMain.Size = new System.Drawing.Size(173, 25);
+            this.menuStripMain.TabIndex = 2;
+            this.menuStripMain.Text = "menuStrip1";
+            // 
+            // tsmiSettings
+            // 
+            this.tsmiSettings.BackColor = System.Drawing.Color.LightCyan;
+            this.tsmiSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCompanyInfo,
+            this.tsmiChangePassword});
+            this.tsmiSettings.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiSettings.ForeColor = System.Drawing.Color.DarkGreen;
+            this.tsmiSettings.Name = "tsmiSettings";
+            this.tsmiSettings.Size = new System.Drawing.Size(71, 21);
+            this.tsmiSettings.Text = "Settings";
+            // 
+            // tsmiCompanyInfo
+            // 
+            this.tsmiCompanyInfo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiCompanyInfo.Name = "tsmiCompanyInfo";
+            this.tsmiCompanyInfo.Size = new System.Drawing.Size(181, 22);
+            this.tsmiCompanyInfo.Text = "Company Info";
+            this.tsmiCompanyInfo.Click += new System.EventHandler(this.tsmiCompanyInfo_Click);
+            // 
+            // tsmiChangePassword
+            // 
+            this.tsmiChangePassword.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiChangePassword.Name = "tsmiChangePassword";
+            this.tsmiChangePassword.Size = new System.Drawing.Size(189, 22);
+            this.tsmiChangePassword.Text = "Change Credentials";
+            this.tsmiChangePassword.Click += new System.EventHandler(this.tsmiChangePassword_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.tabMain);
+            this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -831,6 +894,8 @@
             this.flowLayoutPanel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -877,9 +942,9 @@
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Label lbTotalAmount;
-        private System.Windows.Forms.Label lbAmountReceived;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbAmountTotal;
+        private System.Windows.Forms.Label lbPending;
+        private System.Windows.Forms.Label lbAmountPending;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCust;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceDate;
@@ -891,6 +956,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReceivedAmt;
+        private System.Windows.Forms.MenuStrip menuStripMain;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCompanyInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiChangePassword;
 
     }
 }
