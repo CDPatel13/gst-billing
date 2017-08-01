@@ -32,7 +32,7 @@ namespace GST_Billing
                                 invoiceProductDetails.productUnitPrice as productUnitPrice, invoiceProductDetails.productAmount as productAmount, invoiceProductDetails.productDiscount as productDiscount,
                                 invoiceProductDetails.productTaxAmount as productTaxAmount, 
                                 customerDetails.custname as custname, customerDetails.custstate as custstate, 
-                                customerDetails.custcode as custcode, customerDetails.custgstin as custgstin, userDetails.name as name, userDetails.companyname as companyname, companyname.panno as panno, 
+                                customerDetails.custcode as custcode, customerDetails.custgstin as custgstin, userDetails.name as name, userDetails.companyname as companyname, userDetails.panno as panno, 
                                 userDetails.bankname as bankname, userDetails.branchname as branchname, userDetails.accountno as accountno, userDetails.ifsccode as ifsccode, 
                                 userDetails.email as email, userDetails.phoneNumber as phoneNumber, userDetails.gstin as gstin, userDetails.state as state, 
                                 userDetails.code as code, (invoiceDetails.shipAddress || "", "" || invoiceDetails.shipLandmark || "", "" || invoiceDetails.shipCity || ""-"" || invoiceDetails.shipPinCode) AS shipAddress,
