@@ -146,6 +146,7 @@
             this.MaximizeBox = false;
             this.Name = "ProductDetails";
             this.Text = "Product Details";
+            this.Load += new System.EventHandler(this.ProductDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

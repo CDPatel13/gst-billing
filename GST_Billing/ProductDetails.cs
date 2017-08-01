@@ -13,10 +13,53 @@ namespace GST_Billing
     public partial class ProductDetails : Form
     {
         SqliteDb m1 = new SqliteDb();
+        private string prodName;
 
         public ProductDetails()
         {
             InitializeComponent();
+        }
+
+        public ProductDetails(string productName)
+        {
+            // TODO: Complete member initialization
+            this.prodName = productName;
+            InitializeComponent();
+        }
+
+        private void ProductDetails_Load(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(prodName))
+            {
+                getProductDataFromDB(prodName);
+                tbProdDes.Enabled = false;
+            }
+        }
+
+        private void getProductDataFromDB(string prodname)
+        {
+            DataSet ds = productExists(prodname);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                fillDetailsFromDB(ds);
+            }
+        }
+
+        private void fillDetailsFromDB(DataSet ds)
+        {
+            tbProdDes.Text = Convert.ToString(ds.Tables[0].Rows[0]["productName"]);
+            tbProdHsnCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["hsnCode"]);
+            tbProdRate.Text = Convert.ToString(ds.Tables[0].Rows[0]["productPrice"]);
+            tbProdUnit.Text = Convert.ToString(ds.Tables[0].Rows[0]["productUnit"]);
+        }
+
+        public DataSet productExists(string name)
+        {
+            string sqlstr = "SELECT * FROM productDetails WHERE productName='" + name + "'";
+            DataSet ds = m1.selectData(sqlstr);
+            if (ds.Tables[0].Rows.Count > 0)
+                return ds;
+            return null;
         }
 
         private void tbRateQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -36,11 +79,25 @@ namespace GST_Billing
         {
             try
             {
+                DataSet ds = productExists(tbProdDes.Text);
                 int NoOfRows = 0;
-                string sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit)" +
-                                "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdUnit.Text + "')";
-                NoOfRows = m1.Ins_Upd_Del(sqlstr);
-
+                string sqlstr;
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    DialogResult result = MessageBox.Show("Do you want to update existing information?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        sqlstr = "UPDATE productDetails set productName='" + tbProdDes.Text + "', hsnCode='" + tbProdHsnCode.Text + "', productPrice='" + tbProdRate.Text +
+                                  "', productUnit='" + tbProdUnit.Text + "' WHERE productId='" + ds.Tables[0].Rows[0][0] + "'" ;
+                        NoOfRows = m1.Ins_Upd_Del(sqlstr);
+                    }
+                }
+                else 
+                { 
+                    sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit)" +
+                                    "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdUnit.Text + "')";
+                    NoOfRows = m1.Ins_Upd_Del(sqlstr);
+                }
                 if (NoOfRows > 0)
                 {
                     MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);

@@ -15,9 +15,16 @@ namespace GST_Billing
     {
         BaseModel baseModel = BaseModel.Instance;
         SqliteDb m1 = new SqliteDb();
+        string customerToEdit = String.Empty;
 
         public CustomerDetails()
         {
+            InitializeComponent();
+        }
+
+        public CustomerDetails(string customerName)
+        {
+            customerToEdit = customerName;
             InitializeComponent();
         }
 
@@ -25,8 +32,13 @@ namespace GST_Billing
         {
             tbPayment.DataSource = baseModel.paymentTerms.Values.ToList();
             tbShipPayment.DataSource = baseModel.paymentTerms.Values.ToList();
-            tbPayment.SelectedIndex = -1;
-            tbShipPayment.SelectedIndex = -1;
+            if (!String.IsNullOrEmpty(customerToEdit))
+            {
+                getCustomerDataFromDB(customerToEdit);
+                tbName.Enabled = false;
+            }
+            //tbPayment.SelectedIndex = -1;
+            //tbShipPayment.SelectedIndex = -1;
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
@@ -58,7 +70,7 @@ namespace GST_Billing
         private void tbCode_LeaveFocus(object sender, EventArgs e)
         {
             TextBox tbCode = sender as TextBox;
-            int tbStateIndex = tbCode.Parent.Controls.GetChildIndex(tbCode, false) - 2;
+            int tbStateIndex = tbCode.Parent.Controls.IndexOf(tbCode) - 2;
             ComboBox tbState = tbCode.Parent.Controls[tbStateIndex] as ComboBox;
             int code = !String.IsNullOrEmpty(tbCode.Text) ? int.Parse(tbCode.Text) : 1;
             string codeStr = String.Format("{0:D2}", code);
@@ -76,6 +88,36 @@ namespace GST_Billing
             syncBillingAndShipping();
         }
 
+        private void tbState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox tbStateBox = sender as ComboBox;
+            GroupBox gbBillShip = tbStateBox.Parent as GroupBox;
+            string state = String.Empty;
+
+            if (tbStateBox.Name == "tbState")
+            {
+                state = baseModel.ToPascalCase(tbState.Text);
+            }
+            else
+            {
+                state = baseModel.ToPascalCase(tbShipState.Text);
+            }
+
+            if (!String.IsNullOrEmpty(state))
+            {
+                try
+                {
+                    gbBillShip.Controls[gbBillShip.Controls.IndexOf(tbStateBox) + 2].Text = baseModel.stateCodes[state];
+                    tbStateBox.BackColor = Color.White;
+                }
+                catch (Exception ex)
+                {
+                    btnSave.Enabled = false;
+                    tbStateBox.BackColor = Color.Tomato;
+                }
+            }
+        }
+
         private void tbCode_Click(object sender, EventArgs e)
         {
             string name = ((TextBox)sender).Name;
@@ -87,8 +129,6 @@ namespace GST_Billing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("This is not yet available!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
             try
             {
                 DataSet ds = customerExists(tbName.Text);
@@ -106,9 +146,9 @@ namespace GST_Billing
                                   "', custpaymentTermName='" + tbPayment.Text +
                                   "', shipname='" + tbShipName.Text + "', shipContactPerson='" + tbShipContact.Text + "', shipaddress='" + tbShipAddress.Text +
                                   "', shiplandmark='" + tbShipLandmark.Text + "', shipcity='" + tbShipCity.Text + "', shipstate='" + tbShipState.Text +
-                                  "', shipcode='" + tbShipCode.Text + "', shippincode=" + tbShipPinCode.Text + ", shipemail='" + tbShipEmail.Text + "', shipphoneNumber=" + tbShipPhone.Text +
+                                  "', shipcode='" + tbShipCode.Text + "', shippincode=" + tbShipPinCode.Text + ", shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipPhone.Text +
                                   "', shipgstin='" + tbShipGstin.Text + "', shipAadharNo='" + tbShipAadhar.Text + "', shipPanno='" + tbShipPanNumber.Text +
-                                  ", shippaymentTermName='" + tbShipPayment.Text + "' where custname='" + tbName.Text + "'";
+                                  "', shippaymentTermName='" + tbShipPayment.Text + "' where custname='" + tbName.Text + "'";
                         NoOfRows = m1.Ins_Upd_Del(sqlstr);
                     }
                 }
@@ -248,24 +288,7 @@ namespace GST_Billing
             }
         }
 
-        private void tbShipState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string state = baseModel.ToPascalCase(tbShipState.Text);
-            if (!String.IsNullOrEmpty(state))
-            {
-                tbShipCode.Text = baseModel.stateCodes[state];
-            }
-        }
-
-        private void tbState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(tbState.Text))
-            {
-                tbCode.Text = baseModel.stateCodes[tbState.Text];
-            }
-        }
-
-        private DataSet customerExists(string name)
+        public DataSet customerExists(string name)
         {
             string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "'";
             DataSet ds = m1.selectData(sqlstr);
@@ -293,5 +316,36 @@ namespace GST_Billing
                 e.KeyChar = char.ToUpper(e.KeyChar);
             }
         }
+
+        private void getCustomerDataFromDB(string customerName)
+        {
+            DataSet ds = customerExists(customerName);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                fillDetailsFromDB(ds);
+            }
+            syncBillingAndShipping();
+        }
+
+        private void fillDetailsFromDB(DataSet ds)
+        {
+            tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["custname"]);
+            tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["custContactPerson"]);
+            tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
+            tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["custlandmark"]);
+            tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcity"]);
+            tbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);
+            tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcode"]);
+            tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpincode"]);
+            tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["custemail"]);
+            tbPhoneNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custphoneNumber"]);
+            tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custgstin"]);
+            tbAadharNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custAadharNo"]);
+            tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custPanno"]);
+            tbPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpaymentTermName"]);
+            fillShippingDetailsFromDB(ds);
+        }
+
+
     }
 }

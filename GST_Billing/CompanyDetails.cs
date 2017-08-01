@@ -16,9 +16,24 @@ namespace GST_Billing
         BaseModel baseModel = BaseModel.Instance;
         SqliteDb m1 = new SqliteDb();
 
+        AutoCompleteStringCollection autoCompleteStrings = new AutoCompleteStringCollection();
+
         public CompanyDetails()
         {
             InitializeComponent();
+
+            string sqlstr = "SELECT companyname from userDetails";
+            DataSet ds = m1.selectData(sqlstr);
+
+            autoCompleteStrings.Clear();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    autoCompleteStrings.Add((string)row["companyname"]);
+                }
+                tbCompanyName.AutoCompleteCustomSource = autoCompleteStrings;
+            }
         }
 
         private void CompanyDetails_Load(object sender, EventArgs e)
@@ -32,14 +47,14 @@ namespace GST_Billing
 
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
-                    textBox1.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
+                    tbCompanyName.Text = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
+                    tbContactPerson.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
                     tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
                     tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["landmark"]);
                     tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
                     cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
                     tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
-                    textBox2.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
+                    tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
                     tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
                     tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
                     tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["gstin"]);
@@ -62,7 +77,7 @@ namespace GST_Billing
 
         void textBox_TextChanged(object sender, System.EventArgs e)
         {
-            bool name = !String.IsNullOrEmpty(tbName.Text) && !String.IsNullOrWhiteSpace(tbName.Text);
+            bool name = !String.IsNullOrEmpty(tbCompanyName.Text) && !String.IsNullOrWhiteSpace(tbCompanyName.Text);
             bool address = !String.IsNullOrEmpty(tbAddress.Text) && !String.IsNullOrWhiteSpace(tbAddress.Text);
             bool contact = !String.IsNullOrEmpty(tbContact.Text) && !String.IsNullOrWhiteSpace(tbContact.Text);
             bool gstin = !String.IsNullOrEmpty(tbGstin.Text) && !String.IsNullOrWhiteSpace(tbGstin.Text);
@@ -92,8 +107,8 @@ namespace GST_Billing
                     NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
                 }
                 sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
-                                "VALUES('" + tbName.Text + "', '" + textBox1.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
-                                            + tbCode.Text + "', " + textBox2.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
+                                "VALUES('" + tbCompanyName.Text + "', '" + tbContactPerson.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
+                                            + tbCode.Text + "', " + tbPinCode.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
                                             + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
                 NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
