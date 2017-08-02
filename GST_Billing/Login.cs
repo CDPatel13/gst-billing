@@ -18,14 +18,29 @@ namespace GST_Billing
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainWindow window = new MainWindow();
-            window.Show();
+            if(tbUserName.Text != "admin" && tbPassword.Text != "admin")
+            {
+                MessageBox.Show("Please enter valid credentials!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.Hide();
+                MainWindow window = new MainWindow();
+                window.Show();
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            //TODO : Get company information from DB
+
+            this.ActiveControl = tbUserName;
         }
     }
 }
