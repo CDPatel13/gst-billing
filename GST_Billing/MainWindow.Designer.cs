@@ -42,22 +42,11 @@
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.tabInvoice = new System.Windows.Forms.TabPage();
             this.dgvInvoice = new System.Windows.Forms.DataGridView();
-            this.colCust = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTaxableAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIgst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustGstin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReceivedAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
             this.lbStartDate = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.tbSearchInvoice = new System.Windows.Forms.TextBox();
             this.btnSearchInvoice = new System.Windows.Forms.Button();
             this.btnClearInvoice = new System.Windows.Forms.Button();
@@ -290,18 +279,6 @@
             this.dgvInvoice.AllowUserToAddRows = false;
             this.dgvInvoice.AllowUserToDeleteRows = false;
             this.dgvInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCust,
-            this.colInvoiceNum,
-            this.colInvoiceDate,
-            this.colAmount,
-            this.colDiscount,
-            this.colTaxableAmt,
-            this.colCgst,
-            this.colSgst,
-            this.colIgst,
-            this.colCustGstin,
-            this.colReceivedAmt});
             this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoice.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInvoice.Location = new System.Drawing.Point(0, 79);
@@ -313,79 +290,13 @@
             this.dgvInvoice.Size = new System.Drawing.Size(1254, 572);
             this.dgvInvoice.TabIndex = 7;
             // 
-            // colCust
-            // 
-            this.colCust.HeaderText = "Customer Name";
-            this.colCust.Name = "colCust";
-            this.colCust.ReadOnly = true;
-            // 
-            // colInvoiceNum
-            // 
-            this.colInvoiceNum.HeaderText = "Invoice No";
-            this.colInvoiceNum.Name = "colInvoiceNum";
-            this.colInvoiceNum.ReadOnly = true;
-            // 
-            // colInvoiceDate
-            // 
-            this.colInvoiceDate.HeaderText = "Invoice Date";
-            this.colInvoiceDate.Name = "colInvoiceDate";
-            this.colInvoiceDate.ReadOnly = true;
-            // 
-            // colAmount
-            // 
-            this.colAmount.HeaderText = "Net Amount";
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            // 
-            // colDiscount
-            // 
-            this.colDiscount.HeaderText = "Discount";
-            this.colDiscount.Name = "colDiscount";
-            this.colDiscount.ReadOnly = true;
-            // 
-            // colTaxableAmt
-            // 
-            this.colTaxableAmt.HeaderText = "Taxable Amount";
-            this.colTaxableAmt.Name = "colTaxableAmt";
-            this.colTaxableAmt.ReadOnly = true;
-            // 
-            // colCgst
-            // 
-            this.colCgst.HeaderText = "CGST Total";
-            this.colCgst.Name = "colCgst";
-            this.colCgst.ReadOnly = true;
-            // 
-            // colSgst
-            // 
-            this.colSgst.HeaderText = "SGST Total";
-            this.colSgst.Name = "colSgst";
-            this.colSgst.ReadOnly = true;
-            // 
-            // colIgst
-            // 
-            this.colIgst.HeaderText = "IGST Total";
-            this.colIgst.Name = "colIgst";
-            this.colIgst.ReadOnly = true;
-            // 
-            // colCustGstin
-            // 
-            this.colCustGstin.HeaderText = "Customer GSTIN";
-            this.colCustGstin.Name = "colCustGstin";
-            this.colCustGstin.ReadOnly = true;
-            // 
-            // colReceivedAmt
-            // 
-            this.colReceivedAmt.HeaderText = "Payment";
-            this.colReceivedAmt.Name = "colReceivedAmt";
-            this.colReceivedAmt.ReadOnly = true;
-            // 
             // flpSearchInvoice
             // 
             this.flpSearchInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpSearchInvoice.Controls.Add(this.lbStartDate);
-            this.flpSearchInvoice.Controls.Add(this.dateTimePicker1);
+            this.flpSearchInvoice.Controls.Add(this.dtpStartDate);
             this.flpSearchInvoice.Controls.Add(this.label1);
-            this.flpSearchInvoice.Controls.Add(this.dateTimePicker2);
+            this.flpSearchInvoice.Controls.Add(this.dtpEndDate);
             this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnClearInvoice);
@@ -411,16 +322,17 @@
             this.lbStartDate.TabIndex = 3;
             this.lbStartDate.Text = "From";
             // 
-            // dateTimePicker1
+            // dtpStartDate
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(45, 8);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-            this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(82, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dtpStartDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.Location = new System.Drawing.Point(45, 8);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.dtpStartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(82, 20);
+            this.dtpStartDate.TabIndex = 4;
+            this.dtpStartDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -433,15 +345,16 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "To";
             // 
-            // dateTimePicker2
+            // dtpEndDate
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(161, 8);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-            this.dateTimePicker2.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
-            this.dateTimePicker2.TabIndex = 6;
+            this.dtpEndDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.Location = new System.Drawing.Point(161, 8);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.dtpEndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(82, 20);
+            this.dtpEndDate.TabIndex = 6;
             // 
             // tbSearchInvoice
             // 
@@ -853,7 +766,7 @@
             // 
             this.tsmiCompanyInfo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmiCompanyInfo.Name = "tsmiCompanyInfo";
-            this.tsmiCompanyInfo.Size = new System.Drawing.Size(181, 22);
+            this.tsmiCompanyInfo.Size = new System.Drawing.Size(189, 22);
             this.tsmiCompanyInfo.Text = "Company Info";
             this.tsmiCompanyInfo.Click += new System.EventHandler(this.tsmiCompanyInfo_Click);
             // 
@@ -936,26 +849,15 @@
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Label lbStartDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Label lbTotalAmount;
         private System.Windows.Forms.Label lbAmountTotal;
         private System.Windows.Forms.Label lbPending;
         private System.Windows.Forms.Label lbAmountPending;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCust;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTaxableAmt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIgst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustGstin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReceivedAmt;
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
         private System.Windows.Forms.ToolStripMenuItem tsmiCompanyInfo;

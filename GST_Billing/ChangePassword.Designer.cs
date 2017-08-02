@@ -98,6 +98,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(167, 62);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(199, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.UseSystemPasswordChar = true;
@@ -108,6 +109,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(167, 88);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(199, 20);
             this.textBox2.TabIndex = 5;
             this.textBox2.UseSystemPasswordChar = true;
@@ -118,6 +120,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Location = new System.Drawing.Point(167, 114);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(199, 20);
             this.textBox3.TabIndex = 6;
             this.textBox3.UseSystemPasswordChar = true;
@@ -127,11 +130,11 @@
             this.lbMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbMain.AutoSize = true;
-            this.lbMain.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMain.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMain.ForeColor = System.Drawing.Color.Purple;
             this.lbMain.Location = new System.Drawing.Point(121, 9);
             this.lbMain.Name = "lbMain";
-            this.lbMain.Size = new System.Drawing.Size(146, 21);
+            this.lbMain.Size = new System.Drawing.Size(149, 18);
             this.lbMain.TabIndex = 7;
             this.lbMain.Text = "Change Credentials";
             // 
@@ -161,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(378, 165);
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.lbUserName);
