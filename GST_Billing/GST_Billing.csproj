@@ -203,6 +203,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="StringCipher.cs" />
     <EmbeddedResource Include="AdditionalCharges.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AdditionalCharges.cs</LastGenOutput>
