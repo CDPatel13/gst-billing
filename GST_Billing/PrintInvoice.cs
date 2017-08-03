@@ -69,7 +69,16 @@ namespace GST_Billing
             cryRpt.DataSourceConnections.Clear();
             cryRpt.SetDataSource(dsVoucher.Tables[0]);
             cryRpt.Subreports[0].DataSourceConnections.Clear();
-            cryRpt.Subreports[0].SetDataSource(dsAddCharges.Tables[0]);
+
+            if (dsAddCharges.Tables[0].Rows.Count < 1)
+            {
+                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = true;
+            }
+            else
+            {
+                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = false;
+                cryRpt.Subreports[0].SetDataSource(dsAddCharges.Tables[0]);
+            }            
             crystalReportViewer1.ReportSource = cryRpt;
             crystalReportViewer1.Refresh();
             

@@ -170,10 +170,10 @@
       <DependentUpon>InvoicePayment.cs</DependentUpon>
     </Compile>
     <Compile Include="invoicePrint.cs">
+      <SubType>Component</SubType>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>invoicePrint.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
