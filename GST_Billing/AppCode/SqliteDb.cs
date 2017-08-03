@@ -151,7 +151,7 @@ namespace GaneshLogistics.AppCode
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [additionalCharges] (
 	                                chargeNo	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	                                invoiceId	INTEGER NOT NULL,
-	                                chargeName	TEXT NOT NULL UNIQUE,
+	                                chargeName	TEXT NOT NULL,
 	                                chargeAmount	DECIMAL(8,2) NOT NULL,
 	                                FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
                                     ON DELETE NO ACTION 
