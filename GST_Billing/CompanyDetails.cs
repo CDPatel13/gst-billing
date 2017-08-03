@@ -17,12 +17,40 @@ namespace GST_Billing
         SqliteDb m1 = new SqliteDb();
 
         AutoCompleteStringCollection autoCompleteStrings = new AutoCompleteStringCollection();
+        private string _companyName;
+        private string _companyAddress;
+        private string _companyEmail;
+        private string _companyContact;
+
+        public string CompanyName
+        {
+            get { return _companyName; }
+            set { _companyName = value; }
+        }
+
+        public string CompanyAddress
+        {
+            get { return _companyAddress; }
+            set { _companyAddress = value; }
+        }
+
+        public string CompanyEmail
+        {
+            get { return _companyEmail; }
+            set { _companyEmail = value; }
+        }
+
+        public string CompanyContact
+        {
+            get { return _companyContact; }
+            set { _companyContact = value; }
+        }
 
         public CompanyDetails()
         {
             InitializeComponent();
 
-            string sqlstr = "SELECT companyname from userDetails";
+            string sqlstr = "SELECT * from userDetails";
             DataSet ds = m1.selectData(sqlstr);
 
             autoCompleteStrings.Clear();
@@ -33,6 +61,14 @@ namespace GST_Billing
                     autoCompleteStrings.Add((string)row["companyname"]);
                 }
                 tbCompanyName.AutoCompleteCustomSource = autoCompleteStrings;
+
+                this.CompanyName = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
+                this.CompanyAddress = Convert.ToString(ds.Tables[0].Rows[0]["address"]) + "," + 
+                                      Convert.ToString(ds.Tables[0].Rows[0]["landmark"]) + "," + 
+                                      Convert.ToString(ds.Tables[0].Rows[0]["city"]) + "," + 
+                                      Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                this.CompanyEmail = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
+                this.CompanyContact = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
             }
         }
 
@@ -114,11 +150,19 @@ namespace GST_Billing
 
                 if (NoOfRows > 0)
                 {
+                    this.CompanyName = tbCompanyName.Text;
+                    this.CompanyAddress = tbAddress.Text;
+                    this.CompanyEmail = tbEmail.Text;
+                    this.CompanyContact = tbContact.Text;
+
                     MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    this.DialogResult = System.Windows.Forms.DialogResult.Abort;
                     return;
                 }
             }

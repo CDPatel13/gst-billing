@@ -343,6 +343,8 @@ namespace GST_Billing
         {
             Invoice generateInvoice = new Invoice();
             DialogResult result = generateInvoice.ShowDialog();
+
+            fillInvoiceDataGrid();
         }
 
         private void btnEditInvoice_Click(object sender, EventArgs e)
@@ -426,8 +428,10 @@ namespace GST_Billing
                 Invoice editInvoice = new Invoice(invoiceToEdit);
 
                 InvoicePayment payment = new InvoicePayment(invoiceToEdit, custName, amount, pending);
-                payment.ShowDialog();
-                paymentDone = payment.PaymentDone;
+                if (payment.ShowDialog() == DialogResult.OK)
+                {
+                    paymentDone = payment.PaymentDone;
+                }
                 
                 if(!editInvoice.UpdatePayment(paymentDone))
                 {

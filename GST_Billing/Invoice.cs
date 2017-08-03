@@ -56,7 +56,8 @@ namespace GST_Billing
 				getInvoiceDetailsToEdit(invoiceToEdit);
 				disableControls();
 			}
-			
+
+            this.WindowState = FormWindowState.Maximized;
 			this.ResizeRedraw = true;
 			this.Refresh();
 		}
@@ -290,6 +291,7 @@ namespace GST_Billing
 			amount = Math.Round(rate * quantity, 2);
 
 			tempString = row.Cells["colDiscount"].Value == null ? "0.00" : row.Cells["colDiscount"].Value.ToString();
+            row.Cells["colDiscount"].Value = tempString;
 			discount = !String.IsNullOrEmpty(tempString) ? double.Parse(tempString) : 0;
 			
 			taxable = Math.Round(amount - discount, 2);
@@ -369,15 +371,55 @@ namespace GST_Billing
 		{
 			e.Control.KeyPress -= new KeyPressEventHandler(column_KeyPress);
 
+            if(dgvProducts.CurrentCell.ColumnIndex == 1)
+            {
+                TextBox tb = e.Control as TextBox;
+                if(tb != null)
+                {
+                    tb.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+                    addProducts(collection);
+                    tb.AutoCompleteCustomSource = collection;
+                    tb.TextChanged += tb_TextChanged;
+                }
+            }
+
 			if (colIndices.Contains(dgvProducts.CurrentCell.ColumnIndex))
 			{ 
 				TextBox tb = e.Control as TextBox;
-				//if (tb != null)
+                if(tb != null)
 				{
 					tb.KeyPress += new KeyPressEventHandler(column_KeyPress);
 				}
 			}
 		}
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"'";
+            DataSet ds = m1.selectData(sqlstr);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                dgvProducts.CurrentRow.Cells["colHsnCode"].Value = ds.Tables[0].Rows[0][0].ToString();
+                dgvProducts.CurrentRow.Cells["colRate"].Value = ds.Tables[0].Rows[0][1].ToString();
+                dgvProducts.CurrentRow.Cells["colUnit"].Value = ds.Tables[0].Rows[0][2].ToString();
+            }
+        }
+
+        private void addProducts(AutoCompleteStringCollection collection)
+        {
+            string sqlstr = "SELECT productName FROM productDetails";
+            DataSet ds = m1.selectData(sqlstr);
+            if(ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach(DataRow row in ds.Tables[0].Rows)
+                {
+                    collection.Add(row[0].ToString());
+                }
+            }
+        }
 
 		private void column_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -502,7 +544,10 @@ namespace GST_Billing
 			{
 				tbShipName.Text = tbBillName.Text;
 				tbShipAddress.Text = tbBillAddress.Text;
-				tbShipGstin.Text = tbBillGstin.Text;
+                tbShipLandmark.Text = tbBillLandmark.Text;
+                tbShipCity.Text = tbBillCity.Text;
+                tbShipPin.Text = tbBillPin.Text;
+                tbShipGstin.Text = tbBillGstin.Text;
 				tbShipState.Text = tbBillState.Text;
 				tbShipCode.Text = tbBillCode.Text;
 			}
@@ -516,13 +561,14 @@ namespace GST_Billing
 
 		private void textBox_TextChanged(object sender, EventArgs e)
 		{
+            bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
 			bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
 			bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
 			bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
 			bool state = !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
 			bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
 
-			if (name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
+            if (invoiceNo && name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
 			{
 				flpPanelButtons.Enabled = true;
 			}
@@ -607,7 +653,7 @@ namespace GST_Billing
 						}
 					}
 
-
+                    getListOfAdditionalCharges();
 					foreach (var item in listofAddCharges)
 					{                        
 						sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
@@ -659,7 +705,7 @@ namespace GST_Billing
 			objPrintInvoice.Show();
 		}
 
-		private void tbChallanNumber_KeyPress(object sender, KeyPressEventArgs e)
+		private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
 			{
@@ -678,7 +724,6 @@ namespace GST_Billing
 				lbAddedChallan.Text += "," + tbChallanNumber.Text;
 			}
 			challanNumbers.Add(tbChallanNumber.Text);
-				
 		}
 
 		private void btnClearChallan_Click(object sender, EventArgs e)
@@ -692,42 +737,69 @@ namespace GST_Billing
 
 			if (!String.IsNullOrEmpty(lbAddCharge1.Text) && !String.IsNullOrEmpty(tbAddCharge1.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
 				totalAddCharge += double.Parse(tbAddCharge1.Text);
 			}
 
 			if (!String.IsNullOrEmpty(lbAddCharge2.Text) && !String.IsNullOrEmpty(tbAddCharge2.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
 				totalAddCharge += double.Parse(tbAddCharge2.Text);
 			}
 
 			if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
 				totalAddCharge += double.Parse(tbAddCharge3.Text);
 			}
 
 			if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
 				totalAddCharge += double.Parse(tbAddCharge4.Text);
 			}
 
 			if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
 				totalAddCharge += double.Parse(tbAddCharge5.Text);
 			}
 
 			if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
 			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
 				totalAddCharge += double.Parse(tbAddCharge6.Text);
 			}
 
 			return totalAddCharge;
 		}
+
+        private void getListOfAdditionalCharges()
+        {
+            if (!String.IsNullOrEmpty(lbAddCharge1.Text) && !String.IsNullOrEmpty(tbAddCharge1.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
+            }
+
+            if (!String.IsNullOrEmpty(lbAddCharge2.Text) && !String.IsNullOrEmpty(tbAddCharge2.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
+            }
+
+            if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
+            }
+
+            if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
+            }
+
+            if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
+            }
+
+            if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
+            {
+                listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
+            }
+        }
 
 		private void tbAddCharge1_TextChanged(object sender, EventArgs e)
 		{
@@ -736,7 +808,15 @@ namespace GST_Billing
 
 		internal bool UpdatePayment(double amount)
 		{
-			string sqlstr = "UPDATE invoiceDetails SET receivedAmount='" + amount + "' WHERE invoiceId='" + invoiceToEdit + "'";
+            string sqlstr;
+            sqlstr = "SELECT receivedAmount FROM invoiceDetails WHERE invoiceNo='" + invoiceToEdit + "'";
+            DataSet ds = m1.selectData(sqlstr);
+            if(ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                amount += double.Parse(ds.Tables[0].Rows[0][0].ToString());
+            }
+
+            sqlstr = "UPDATE invoiceDetails SET receivedAmount='" + amount + "' WHERE invoiceNo='" + invoiceToEdit + "'";
 			int no_of_rows = m1.Ins_Upd_Del(sqlstr);
 			if(no_of_rows > 0)
 			{
@@ -747,5 +827,14 @@ namespace GST_Billing
 				return false;
 			}
 		}
+
+        private void dgvProducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int serNo = 1;
+            foreach(DataGridViewRow row in dgvProducts.Rows)
+            {
+                row.Cells["colSerNo"].Value = (serNo++).ToString();
+            }
+        }
 	}
 }

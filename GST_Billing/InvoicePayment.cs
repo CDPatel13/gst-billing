@@ -51,6 +51,9 @@ namespace GST_Billing
                 this.PaymentDone = double.Parse(tbPayment.Text);
             else
                 this.PaymentDone = 0;
+
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
         }
 
         private void InvoicePayment_Load(object sender, EventArgs e)
