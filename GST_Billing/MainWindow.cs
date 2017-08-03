@@ -127,21 +127,16 @@ namespace GST_Billing
         private void btnFindCustomer_Click(object sender, EventArgs e)
         {
             string customer = tbSearchCust.Text;
-            if (!String.IsNullOrEmpty(customer))
+            if (!String.IsNullOrEmpty(customer) && !String.IsNullOrWhiteSpace(customer))
             {
-                string sqlstr = "SELECT * FROM customerDetails WHERE custname like '%" + customer + "%'";
-                DataSet ds = m1.selectData(sqlstr);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    fillCustomerDataGrid(ds);
-                }
+                tableCustomer.DefaultView.RowFilter = "[Customer Name] LIKE '%" + customer + "%'";
             }
         }
 
         private void btnClearCustomer_Click(object sender, EventArgs e)
         {
             tbSearchCust.Clear();
-            fillCustomerDataGrid();
+            tableCustomer.DefaultView.RowFilter = String.Empty;
         }
 
         private void fillCustomerDataGrid(DataSet table = null)
@@ -280,21 +275,16 @@ namespace GST_Billing
         private void btnFindProduct_Click(object sender, EventArgs e)
         {
             string product = tbSearchProducts.Text;
-            if (!String.IsNullOrEmpty(product))
+            if (!String.IsNullOrEmpty(product) && !String.IsNullOrWhiteSpace(product))
             {
-                string sqlstr = "SELECT * FROM productDetails WHERE productName like '%" + product + "%'";
-                DataSet ds = m1.selectData(sqlstr);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    fillProductDataGrid(ds);
-                }
+                tableProduct.DefaultView.RowFilter = "[Product Name] LIKE '%" + product + "%'";
             }
         }
 
         private void btnClearProduct_Click(object sender, EventArgs e)
         {
             tbSearchProducts.Clear();
-            fillProductDataGrid();
+            tableProduct.DefaultView.RowFilter = String.Empty;
         }
 
         private void fillProductDataGrid(DataSet table = null)
@@ -374,118 +364,166 @@ namespace GST_Billing
 
         private void btnDeleteInvoice_Click(object sender, EventArgs e)
         {
-            string sqlstr = "DELETE FROM productDetails WHERE invoiceNo='" + (int)dgvInvoice.SelectedRows[0].Cells[0].Value + "'";
+            string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "'";
             DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             // TODO : Delete selected invoice from database
             if (result == DialogResult.Yes)
             {
                 int no_of_rows = m1.Ins_Upd_Del(sqlstr);
-                dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+                if(no_of_rows > 0)
+                    dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
             }
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-            // TODO : print selected invoice
+            DataGridViewRow row = dgvInvoice.SelectedRows[0];
+            if (row != null)
+            {
+                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value);
+                objPrintInvoice.MdiParent = this.MdiParent;
+                objPrintInvoice.Show();
+            }
         }
 
         private void btnSearchInvoice_Click(object sender, EventArgs e)
         {
-            
+            string conditionName = " AND [Customer Name] LIKE '%" + tbSearchInvoice.Text + "%'";
+            string conditionDate = "[Invoice Date] > #" + dtpStartDate.Value + "# AND [Invoice Date] < #" + dtpEndDate.Value + "#";
+            if(!String.IsNullOrEmpty(tbSearchInvoice.Text) && !String.IsNullOrWhiteSpace(tbSearchInvoice.Text))
+            {
+                tableInvoice.DefaultView.RowFilter = conditionDate + conditionName;
+            }
+            else
+            {
+                tableInvoice.DefaultView.RowFilter = conditionDate;
+            }
         }
 
         private void btnClearInvoice_Click(object sender, EventArgs e)
         {
             tbSearchInvoice.Clear();
+            tableInvoice.DefaultView.RowFilter = String.Empty;
+            //fillInvoiceDataGrid();
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            // TODO : Add info into invoice for payment
-            // TODO : refresh data grid with updated values
+            int invoiceToEdit = 0;
+            string custName = String.Empty;
+            double paymentDone = 0;
+            DataGridViewRow row = dgvInvoice.SelectedRows[0];
+
+            if (row != null)
+            {
+                invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
+                custName = (string)row.Cells["Customer Name"].Value;
+                double amount = double.Parse(row.Cells["Total Bill Amount"].Value.ToString());
+                double received = double.Parse(row.Cells["Received Amount Till Date"].Value.ToString());
+                double pending = amount - received;
+
+                Invoice editInvoice = new Invoice(invoiceToEdit);
+
+                InvoicePayment payment = new InvoicePayment(invoiceToEdit, custName, amount, pending);
+                payment.ShowDialog();
+                paymentDone = payment.PaymentDone;
+                
+                if(!editInvoice.UpdatePayment(paymentDone))
+                {
+                    MessageBox.Show("Failed to update payment. Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                
+                fillInvoiceDataGrid();
+            }
+
         }
 
         private void fillInvoiceDataGrid()
         {
-            // TODO : pending Invoice page
-            return;
             int colIndex = 0;
-            string sqlstrInvoice = "SELECT * FROM invoiceDetails";
-            string sqlstrCust = "SELECT custname FROM customerDetails WHERE custId = '";
-            DataTable invoiceLocal;
-            DataTable customerLocal;
+            string sqlstrInvoice = "SELECT custname,invoiceNo,invoiceDate,termName,invoiceDetails.shipName," +
+                                   "invoiceDetails.shipAddress,invoiceDetails.shipLandmark,invoiceDetails.shipCity," + 
+                                   "invoiceDetails.shipState,invoiceDetails.shipPinCode,invoiceDetails.shipGstIn," +
+                                   "sgstPercent,cgstPercent,igstPercent,totalQnty,totalAmount,totaDiscount," +
+                                   "totalTaxAmount,totalSGSTAmount,totaCGSTAmount,totalIGSTAmount,totalBillAmount," + 
+                                   "receivedAmount" +
+                                   " FROM invoiceDetails" + 
+                                   " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId";
 
             DataSet ds = m1.selectData(sqlstrInvoice);
-            invoiceLocal = ds.Tables[0];
+            tableInvoice = ds.Tables[0];
 
-            tableInvoice.Clear();
-
-            tableInvoice.Columns.Add("Customer Name");
-            tableInvoice.Columns.Add("Invoice No");
-            tableInvoice.Columns.Add("Invoice Date");
-            tableInvoice.Columns.Add("Net Amount");
-            tableInvoice.Columns.Add("Discount");
-            tableInvoice.Columns.Add("Taxable Amount");
-            tableInvoice.Columns.Add("CGST Table");
-            tableInvoice.Columns.Add("SGST Table");
-            tableInvoice.Columns.Add("IGST Table");
-            tableInvoice.Columns.Add("Customer GSTIN");
-            tableInvoice.Columns.Add("Payment");
-
+            tableInvoice.Columns.Add("Invoice Date", typeof(DateTime));
             
+            tableInvoice.Columns["custname"].ColumnName = "Customer Name";
+            tableInvoice.Columns["invoiceNo"].ColumnName = "Invoice No";
+            tableInvoice.Columns["totalQnty"].ColumnName = "Total Quantity";
+            tableInvoice.Columns["totalAmount"].ColumnName = "Amount";
+            tableInvoice.Columns["totaDiscount"].ColumnName = "Discount";
+            tableInvoice.Columns["totalTaxAmount"].ColumnName = "Taxable Amount";
+            tableInvoice.Columns["totalSGSTAmount"].ColumnName = "Total SGST Amount";
+            tableInvoice.Columns["totaCGSTAmount"].ColumnName = "Total CGST Amount";
+            tableInvoice.Columns["totalIGSTAmount"].ColumnName = "Total IGST Amount";
+            tableInvoice.Columns["totalBillAmount"].ColumnName = "Total Bill Amount";
+            tableInvoice.Columns["termName"].ColumnName = "Payment Terms";
+            tableInvoice.Columns["receivedAmount"].ColumnName = "Received Amount Till Date";
 
-            //table.Columns["custId"].ColumnName = "Customer ID";
-            tableCustomer.Columns["invoiceNo"].ColumnName = "Invoice No";
-            tableCustomer.Columns["custId"].ColumnName = "Customer Name";
-            tableCustomer.Columns["custaddress"].ColumnName = "Customer Address";
-            tableCustomer.Columns["custcity"].ColumnName = "Customer City";
-            tableCustomer.Columns["custlandmark"].ColumnName = "Customer Landmark";
-            tableCustomer.Columns["custstate"].ColumnName = "Customer State";
-            tableCustomer.Columns["custcode"].ColumnName = "Code";
-            tableCustomer.Columns["custpincode"].ColumnName = "Customer PIN Code";
-            tableCustomer.Columns["custemail"].ColumnName = "Customer Email";
-            tableCustomer.Columns["custphoneNumber"].ColumnName = "Customer Phone No";
-            tableCustomer.Columns["custgstin"].ColumnName = "Customer GSTIN";
-            tableCustomer.Columns["custAadharNo"].ColumnName = "Customer Aadhar No";
-            tableCustomer.Columns["custPanno"].ColumnName = "Customer PAN No";
-            tableCustomer.Columns["custpaymentTermName"].ColumnName = "Customer Payment Terms";
+            tableInvoice.Columns["Customer Name"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Invoice No"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Invoice Date"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Total Quantity"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Discount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Taxable Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Total SGST Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Total CGST Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Total IGST Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Total Bill Amount"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Payment Terms"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["Received Amount Till Date"].SetOrdinal(colIndex++);
 
-            //table.Columns["Customer ID"].SetOrdinal(0);
-            tableCustomer.Columns["Customer Name"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Address"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Landmark"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer City"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer State"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Code"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer PIN Code"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer GSTIN"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Phone No"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Email"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Aadhar No"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer PAN No"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Contact Person"].SetOrdinal(colIndex++);
-            tableCustomer.Columns["Customer Payment Terms"].SetOrdinal(colIndex++);
+            foreach(DataRow row in tableInvoice.Rows)
+            {
+                row["Invoice Date"] = DateTime.ParseExact(row["invoiceDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            }
 
-            tableCustomer.Columns.Remove("custId");
-            tableCustomer.Columns.Remove("shipname");
-            tableCustomer.Columns.Remove("shipaddress");
-            tableCustomer.Columns.Remove("shipContactPerson");
-            tableCustomer.Columns.Remove("shipcity");
-            tableCustomer.Columns.Remove("shiplandmark");
-            tableCustomer.Columns.Remove("shipstate");
-            tableCustomer.Columns.Remove("shipcode");
-            tableCustomer.Columns.Remove("shippincode");
-            tableCustomer.Columns.Remove("shipemail");
-            tableCustomer.Columns.Remove("shipphoneNumber");
-            tableCustomer.Columns.Remove("shipgstin");
-            tableCustomer.Columns.Remove("shipAadharNo");
-            tableCustomer.Columns.Remove("shipPanno");
-            tableCustomer.Columns.Remove("shippaymentTermName");
+            tableInvoice.Columns.Remove("invoiceDate");
+            tableInvoice.Columns.Remove("shipName");
+            tableInvoice.Columns.Remove("shipAddress");
+            tableInvoice.Columns.Remove("shipCity");
+            tableInvoice.Columns.Remove("shipLandmark");
+            tableInvoice.Columns.Remove("shipState");
+            tableInvoice.Columns.Remove("shipPinCode");
+            tableInvoice.Columns.Remove("shipGstIn");
+            tableInvoice.Columns.Remove("sgstPercent");
+            tableInvoice.Columns.Remove("cgstPercent");
+            tableInvoice.Columns.Remove("igstPercent");
 
-            bindingSourceCustomer.DataSource = null;
-            bindingSourceCustomer.DataSource = tableCustomer;
-            dgvCustomer.DataSource = bindingSourceCustomer;
+            bindingSourceInvoice.DataSource = null;
+            bindingSourceInvoice.DataSource = tableInvoice;
+            dgvInvoice.DataSource = bindingSourceInvoice;
+
+            dgvInvoice.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            calculateTotalInvoiceAmount();
+        }
+
+        private void calculateTotalInvoiceAmount()
+        {
+            double total = 0;
+            foreach (DataGridViewRow row in dgvInvoice.Rows)
+            {
+                total += row.Cells["Total Bill Amount"].Value != null ? Convert.ToDouble(row.Cells["Total Bill Amount"].Value) : 0.00;
+            }
+            lbAmountTotal.Text = total.ToString();
+
+            double received = 0;
+            foreach (DataGridViewRow row in dgvInvoice.Rows)
+            {
+                received += row.Cells["Received Amount Till Date"].Value != null ? Convert.ToDouble(row.Cells["Received Amount Till Date"].Value) : 0.00;
+            }
+            lbAmountPending.Text = (total - received).ToString();
         }
 
         #endregion

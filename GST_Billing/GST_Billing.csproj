@@ -101,9 +101,6 @@
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms.Ribbon">
-      <HintPath>..\..\..\GST_Billing_New\GST_Billing\System.Windows.Forms.Ribbon.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -166,6 +163,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InvoiceDetails.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InvoicePayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoicePayment.Designer.cs">
+      <DependentUpon>InvoicePayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="invoicePrint.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -203,6 +206,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="StringCipher.cs" />
     <EmbeddedResource Include="AdditionalCharges.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AdditionalCharges.cs</LastGenOutput>
@@ -221,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoicePayment.resx">
+      <DependentUpon>InvoicePayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="invoicePrint.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

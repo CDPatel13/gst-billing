@@ -43,8 +43,8 @@
             this.lbBillCity = new System.Windows.Forms.Label();
             this.tbBillLandmark = new System.Windows.Forms.TextBox();
             this.lbBillLandmark = new System.Windows.Forms.Label();
-            this.cbBillName = new System.Windows.Forms.ComboBox();
-            this.cbBillState = new System.Windows.Forms.ComboBox();
+            this.tbBillName = new System.Windows.Forms.ComboBox();
+            this.tbBillState = new System.Windows.Forms.ComboBox();
             this.lbBillCode = new System.Windows.Forms.Label();
             this.tbBillCode = new System.Windows.Forms.TextBox();
             this.lbBillState = new System.Windows.Forms.Label();
@@ -53,7 +53,6 @@
             this.tbBillAddress = new System.Windows.Forms.TextBox();
             this.lbBillAddress = new System.Windows.Forms.Label();
             this.lbBillName = new System.Windows.Forms.Label();
-            this.tbBillName = new System.Windows.Forms.TextBox();
             this.cbBillAndShip = new System.Windows.Forms.CheckBox();
             this.gbInvoice = new System.Windows.Forms.GroupBox();
             this.tlpInvoice = new System.Windows.Forms.TableLayoutPanel();
@@ -73,7 +72,7 @@
             this.lbShipCity = new System.Windows.Forms.Label();
             this.tbShipLandmark = new System.Windows.Forms.TextBox();
             this.lbShipLandmark = new System.Windows.Forms.Label();
-            this.cbShipState = new System.Windows.Forms.ComboBox();
+            this.tbShipState = new System.Windows.Forms.ComboBox();
             this.lbShipCode = new System.Windows.Forms.Label();
             this.tbShipCode = new System.Windows.Forms.TextBox();
             this.lbShipState = new System.Windows.Forms.Label();
@@ -168,8 +167,8 @@
             this.gbBilling.Controls.Add(this.lbBillCity);
             this.gbBilling.Controls.Add(this.tbBillLandmark);
             this.gbBilling.Controls.Add(this.lbBillLandmark);
-            this.gbBilling.Controls.Add(this.cbBillName);
-            this.gbBilling.Controls.Add(this.cbBillState);
+            this.gbBilling.Controls.Add(this.tbBillName);
+            this.gbBilling.Controls.Add(this.tbBillState);
             this.gbBilling.Controls.Add(this.lbBillCode);
             this.gbBilling.Controls.Add(this.tbBillCode);
             this.gbBilling.Controls.Add(this.lbBillState);
@@ -178,7 +177,6 @@
             this.gbBilling.Controls.Add(this.tbBillAddress);
             this.gbBilling.Controls.Add(this.lbBillAddress);
             this.gbBilling.Controls.Add(this.lbBillName);
-            this.gbBilling.Controls.Add(this.tbBillName);
             this.gbBilling.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.gbBilling.Location = new System.Drawing.Point(3, 3);
             this.gbBilling.Name = "gbBilling";
@@ -190,9 +188,11 @@
             // tbBillPin
             // 
             this.tbBillPin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBillPin.Enabled = false;
+            this.tbBillPin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillPin.Location = new System.Drawing.Point(239, 139);
             this.tbBillPin.Name = "tbBillPin";
-            this.tbBillPin.Size = new System.Drawing.Size(118, 26);
+            this.tbBillPin.Size = new System.Drawing.Size(118, 25);
             this.tbBillPin.TabIndex = 24;
             // 
             // lbBillPin
@@ -210,9 +210,11 @@
             // 
             this.tbBillCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBillCity.Enabled = false;
+            this.tbBillCity.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillCity.Location = new System.Drawing.Point(78, 139);
             this.tbBillCity.Name = "tbBillCity";
-            this.tbBillCity.Size = new System.Drawing.Size(118, 26);
+            this.tbBillCity.Size = new System.Drawing.Size(118, 25);
             this.tbBillCity.TabIndex = 22;
             // 
             // lbBillCity
@@ -231,9 +233,11 @@
             // 
             this.tbBillLandmark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBillLandmark.Enabled = false;
+            this.tbBillLandmark.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillLandmark.Location = new System.Drawing.Point(78, 107);
             this.tbBillLandmark.Name = "tbBillLandmark";
-            this.tbBillLandmark.Size = new System.Drawing.Size(278, 26);
+            this.tbBillLandmark.Size = new System.Drawing.Size(278, 25);
             this.tbBillLandmark.TabIndex = 20;
             // 
             // lbBillLandmark
@@ -248,30 +252,30 @@
             this.lbBillLandmark.TabIndex = 19;
             this.lbBillLandmark.Text = "Landmark";
             // 
-            // cbBillName
+            // tbBillName
             // 
-            this.cbBillName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbBillName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbBillName.DropDownHeight = 100;
-            this.cbBillName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbBillName.FormattingEnabled = true;
-            this.cbBillName.IntegralHeight = false;
-            this.cbBillName.Location = new System.Drawing.Point(78, 20);
-            this.cbBillName.Name = "cbBillName";
-            this.cbBillName.Size = new System.Drawing.Size(278, 25);
-            this.cbBillName.TabIndex = 2;
-            this.cbBillName.SelectedIndexChanged += new System.EventHandler(this.cbBillName_SelectedIndexChanged);
+            this.tbBillName.DropDownHeight = 100;
+            this.tbBillName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBillName.FormattingEnabled = true;
+            this.tbBillName.IntegralHeight = false;
+            this.tbBillName.Location = new System.Drawing.Point(78, 20);
+            this.tbBillName.Name = "tbBillName";
+            this.tbBillName.Size = new System.Drawing.Size(278, 25);
+            this.tbBillName.TabIndex = 2;
+            this.tbBillName.SelectedIndexChanged += new System.EventHandler(this.cbBillName_SelectedIndexChanged);
             // 
-            // cbBillState
+            // tbBillState
             // 
-            this.cbBillState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbBillState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbBillState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbBillState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbBillState.Enabled = false;
-            this.cbBillState.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbBillState.FormattingEnabled = true;
-            this.cbBillState.Items.AddRange(new object[] {
+            this.tbBillState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbBillState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tbBillState.Enabled = false;
+            this.tbBillState.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBillState.FormattingEnabled = true;
+            this.tbBillState.Items.AddRange(new object[] {
             "Andaman and Nicobar Islands",
             "Andhra Pradesh",
             "Arunachal Pradesh",
@@ -308,10 +312,10 @@
             "Uttar Pradesh",
             "Uttarakhand",
             "West Bengal"});
-            this.cbBillState.Location = new System.Drawing.Point(78, 202);
-            this.cbBillState.Name = "cbBillState";
-            this.cbBillState.Size = new System.Drawing.Size(171, 25);
-            this.cbBillState.TabIndex = 5;
+            this.tbBillState.Location = new System.Drawing.Point(78, 202);
+            this.tbBillState.Name = "tbBillState";
+            this.tbBillState.Size = new System.Drawing.Size(171, 25);
+            this.tbBillState.TabIndex = 5;
             // 
             // lbBillCode
             // 
@@ -416,17 +420,6 @@
             this.lbBillName.TabIndex = 1;
             this.lbBillName.Text = "Name";
             // 
-            // tbBillName
-            // 
-            this.tbBillName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbBillName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBillName.Location = new System.Drawing.Point(78, 18);
-            this.tbBillName.Name = "tbBillName";
-            this.tbBillName.Size = new System.Drawing.Size(279, 25);
-            this.tbBillName.TabIndex = 25;
-            this.tbBillName.Visible = false;
-            // 
             // cbBillAndShip
             // 
             this.cbBillAndShip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -480,6 +473,7 @@
             this.tlpInvoice.RowCount = 2;
             this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpInvoice.Size = new System.Drawing.Size(726, 66);
             this.tlpInvoice.TabIndex = 4;
             // 
@@ -510,11 +504,12 @@
             // tbInvoiceDate
             // 
             this.tbInvoiceDate.CalendarFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInvoiceDate.CustomFormat = "dd /MMM/ yyyy";
+            this.tbInvoiceDate.CustomFormat = "dd/MM/yyyy";
             this.tbInvoiceDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbInvoiceDate.Font = new System.Drawing.Font("Arial", 10F);
             this.tbInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.tbInvoiceDate.Location = new System.Drawing.Point(148, 36);
+            this.tbInvoiceDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.tbInvoiceDate.Name = "tbInvoiceDate";
             this.tbInvoiceDate.Size = new System.Drawing.Size(211, 23);
             this.tbInvoiceDate.TabIndex = 5;
@@ -601,7 +596,7 @@
             this.gbShipping.Controls.Add(this.lbShipCity);
             this.gbShipping.Controls.Add(this.tbShipLandmark);
             this.gbShipping.Controls.Add(this.lbShipLandmark);
-            this.gbShipping.Controls.Add(this.cbShipState);
+            this.gbShipping.Controls.Add(this.tbShipState);
             this.gbShipping.Controls.Add(this.lbShipCode);
             this.gbShipping.Controls.Add(this.tbShipCode);
             this.gbShipping.Controls.Add(this.lbShipState);
@@ -624,9 +619,10 @@
             // tbShipPin
             // 
             this.tbShipPin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbShipPin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipPin.Location = new System.Drawing.Point(239, 139);
             this.tbShipPin.Name = "tbShipPin";
-            this.tbShipPin.Size = new System.Drawing.Size(118, 26);
+            this.tbShipPin.Size = new System.Drawing.Size(118, 25);
             this.tbShipPin.TabIndex = 31;
             // 
             // lbShipPin
@@ -644,9 +640,10 @@
             // 
             this.tbShipCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbShipCity.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipCity.Location = new System.Drawing.Point(78, 139);
             this.tbShipCity.Name = "tbShipCity";
-            this.tbShipCity.Size = new System.Drawing.Size(118, 26);
+            this.tbShipCity.Size = new System.Drawing.Size(118, 25);
             this.tbShipCity.TabIndex = 29;
             // 
             // lbShipCity
@@ -665,9 +662,10 @@
             // 
             this.tbShipLandmark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbShipLandmark.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipLandmark.Location = new System.Drawing.Point(78, 107);
             this.tbShipLandmark.Name = "tbShipLandmark";
-            this.tbShipLandmark.Size = new System.Drawing.Size(279, 26);
+            this.tbShipLandmark.Size = new System.Drawing.Size(279, 25);
             this.tbShipLandmark.TabIndex = 27;
             // 
             // lbShipLandmark
@@ -682,15 +680,15 @@
             this.lbShipLandmark.TabIndex = 26;
             this.lbShipLandmark.Text = "Landmark";
             // 
-            // cbShipState
+            // tbShipState
             // 
-            this.cbShipState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbShipState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbShipState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbShipState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbShipState.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbShipState.FormattingEnabled = true;
-            this.cbShipState.Items.AddRange(new object[] {
+            this.tbShipState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbShipState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tbShipState.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbShipState.FormattingEnabled = true;
+            this.tbShipState.Items.AddRange(new object[] {
             "Andaman and Nicobar Islands",
             "Andhra Pradesh",
             "Arunachal Pradesh",
@@ -727,11 +725,11 @@
             "Uttar Pradesh",
             "Uttarakhand",
             "West Bengal"});
-            this.cbShipState.Location = new System.Drawing.Point(78, 202);
-            this.cbShipState.Name = "cbShipState";
-            this.cbShipState.Size = new System.Drawing.Size(171, 25);
-            this.cbShipState.TabIndex = 10;
-            this.cbShipState.SelectedIndexChanged += new System.EventHandler(this.cbShipState_SelectedIndexChanged);
+            this.tbShipState.Location = new System.Drawing.Point(78, 202);
+            this.tbShipState.Name = "tbShipState";
+            this.tbShipState.Size = new System.Drawing.Size(171, 25);
+            this.tbShipState.TabIndex = 10;
+            this.tbShipState.SelectedIndexChanged += new System.EventHandler(this.cbShipState_SelectedIndexChanged);
             // 
             // lbShipCode
             // 
@@ -883,7 +881,7 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvProducts.Size = new System.Drawing.Size(759, 205);
+            this.dgvProducts.Size = new System.Drawing.Size(776, 205);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
@@ -1005,7 +1003,7 @@
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(759, 72);
+            this.tlpTotals.Size = new System.Drawing.Size(776, 72);
             this.tlpTotals.TabIndex = 9;
             // 
             // lbTotalFinal
@@ -1013,7 +1011,7 @@
             this.lbTotalFinal.AutoSize = true;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(735, 40);
+            this.lbTotalFinal.Location = new System.Drawing.Point(752, 40);
             this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
             this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
@@ -1258,7 +1256,7 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 821);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(759, 43);
+            this.flpPanelButtons.Size = new System.Drawing.Size(776, 43);
             this.flpPanelButtons.TabIndex = 12;
             // 
             // gbAddCharge
@@ -1311,6 +1309,7 @@
             this.tbAddCharge6.Name = "tbAddCharge6";
             this.tbAddCharge6.Size = new System.Drawing.Size(141, 23);
             this.tbAddCharge6.TabIndex = 11;
+            this.tbAddCharge6.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // tbAddCharge3
@@ -1320,6 +1319,7 @@
             this.tbAddCharge3.Name = "tbAddCharge3";
             this.tbAddCharge3.Size = new System.Drawing.Size(139, 23);
             this.tbAddCharge3.TabIndex = 10;
+            this.tbAddCharge3.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // tbAddCharge5
@@ -1329,6 +1329,7 @@
             this.tbAddCharge5.Name = "tbAddCharge5";
             this.tbAddCharge5.Size = new System.Drawing.Size(141, 23);
             this.tbAddCharge5.TabIndex = 9;
+            this.tbAddCharge5.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // tbAddCharge2
@@ -1338,6 +1339,7 @@
             this.tbAddCharge2.Name = "tbAddCharge2";
             this.tbAddCharge2.Size = new System.Drawing.Size(139, 23);
             this.tbAddCharge2.TabIndex = 8;
+            this.tbAddCharge2.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // tbAddCharge4
@@ -1347,6 +1349,7 @@
             this.tbAddCharge4.Name = "tbAddCharge4";
             this.tbAddCharge4.Size = new System.Drawing.Size(141, 23);
             this.tbAddCharge4.TabIndex = 7;
+            this.tbAddCharge4.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbAddCharge1
@@ -1410,6 +1413,7 @@
             this.tbAddCharge1.Name = "tbAddCharge1";
             this.tbAddCharge1.Size = new System.Drawing.Size(139, 23);
             this.tbAddCharge1.TabIndex = 6;
+            this.tbAddCharge1.TextChanged += new System.EventHandler(this.tbAddCharge1_TextChanged);
             this.tbAddCharge1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbSgst
@@ -1497,7 +1501,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(759, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(776, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1506,7 +1510,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(759, 100);
+            this.flpA.Size = new System.Drawing.Size(776, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1526,7 +1530,7 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(759, 33);
+            this.flpGst.Size = new System.Drawing.Size(776, 33);
             this.flpGst.TabIndex = 25;
             // 
             // splitter3
@@ -1582,7 +1586,7 @@
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
             this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(759, 171);
+            this.flpAddCharge.Size = new System.Drawing.Size(776, 171);
             this.flpAddCharge.TabIndex = 26;
             // 
             // Invoice
@@ -1590,7 +1594,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(776, 561);
+            this.ClientSize = new System.Drawing.Size(793, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);
@@ -1670,8 +1674,8 @@
         private System.Windows.Forms.Label lbTotalTaxVal;
         private System.Windows.Forms.Label lbTotalSgst;
         private System.Windows.Forms.Label lbTotalAll;
-        private System.Windows.Forms.ComboBox cbBillState;
-        private System.Windows.Forms.ComboBox cbShipState;
+        private System.Windows.Forms.ComboBox tbBillState;
+        private System.Windows.Forms.ComboBox tbShipState;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.FlowLayoutPanel flpPanelButtons;
@@ -1682,7 +1686,7 @@
         private System.Windows.Forms.TextBox tbCgst;
         private System.Windows.Forms.Label lbIgst;
         private System.Windows.Forms.TextBox tbIgst;
-        private System.Windows.Forms.ComboBox cbBillName;
+        private System.Windows.Forms.ComboBox tbBillName;
         private System.Windows.Forms.Label lbCgstT;
         private System.Windows.Forms.Label lbTotalFinal;
         private System.Windows.Forms.Label lbTotalIgst;
@@ -1733,7 +1737,6 @@
         private System.Windows.Forms.Label lbBillPin;
         private System.Windows.Forms.TextBox tbShipPin;
         private System.Windows.Forms.Label lbShipPin;
-        private System.Windows.Forms.TextBox tbBillName;
         private System.Windows.Forms.Label lbPaymentTerms;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;

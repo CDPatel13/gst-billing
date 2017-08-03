@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.splContLogin = new System.Windows.Forms.SplitContainer();
-            this.lbCompanyName = new System.Windows.Forms.Label();
-            this.lbCompanyAddress = new System.Windows.Forms.Label();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.lbContact = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbCompanyContact = new System.Windows.Forms.Label();
+            this.lbCompanyEmail = new System.Windows.Forms.Label();
+            this.lbContact = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.lbCompanyAddress = new System.Windows.Forms.Label();
+            this.lbCompanyName = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
-            this.lbPassword = new System.Windows.Forms.Label();
             this.tbUserName = new System.Windows.Forms.TextBox();
+            this.lbPassword = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -49,8 +49,9 @@
             // 
             // splContLogin
             // 
+            this.splContLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splContLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splContLogin.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splContLogin.IsSplitterFixed = true;
             this.splContLogin.Location = new System.Drawing.Point(0, 0);
             this.splContLogin.Name = "splContLogin";
             this.splContLogin.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -59,7 +60,7 @@
             // 
             this.splContLogin.Panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.splContLogin.Panel1.Controls.Add(this.lbCompanyContact);
-            this.splContLogin.Panel1.Controls.Add(this.label1);
+            this.splContLogin.Panel1.Controls.Add(this.lbCompanyEmail);
             this.splContLogin.Panel1.Controls.Add(this.lbContact);
             this.splContLogin.Panel1.Controls.Add(this.lbEmail);
             this.splContLogin.Panel1.Controls.Add(this.lbCompanyAddress);
@@ -68,65 +69,16 @@
             // splContLogin.Panel2
             // 
             this.splContLogin.Panel2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.splContLogin.Panel2.Controls.Add(this.btnCancel);
-            this.splContLogin.Panel2.Controls.Add(this.btnOK);
-            this.splContLogin.Panel2.Controls.Add(this.tbPassword);
+            this.splContLogin.Panel2.Controls.Add(this.lbUserName);
             this.splContLogin.Panel2.Controls.Add(this.tbUserName);
             this.splContLogin.Panel2.Controls.Add(this.lbPassword);
-            this.splContLogin.Panel2.Controls.Add(this.lbUserName);
+            this.splContLogin.Panel2.Controls.Add(this.tbPassword);
+            this.splContLogin.Panel2.Controls.Add(this.btnOK);
+            this.splContLogin.Panel2.Controls.Add(this.btnCancel);
             this.splContLogin.Size = new System.Drawing.Size(452, 280);
-            this.splContLogin.SplitterDistance = 117;
-            this.splContLogin.TabIndex = 0;
-            // 
-            // lbCompanyName
-            // 
-            this.lbCompanyName.AutoSize = true;
-            this.lbCompanyName.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCompanyName.Location = new System.Drawing.Point(12, 9);
-            this.lbCompanyName.Name = "lbCompanyName";
-            this.lbCompanyName.Size = new System.Drawing.Size(129, 21);
-            this.lbCompanyName.TabIndex = 0;
-            this.lbCompanyName.Text = "Company Name";
-            // 
-            // lbCompanyAddress
-            // 
-            this.lbCompanyAddress.AutoSize = true;
-            this.lbCompanyAddress.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCompanyAddress.Location = new System.Drawing.Point(12, 46);
-            this.lbCompanyAddress.Name = "lbCompanyAddress";
-            this.lbCompanyAddress.Size = new System.Drawing.Size(122, 17);
-            this.lbCompanyAddress.TabIndex = 1;
-            this.lbCompanyAddress.Text = "Company Address";
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(12, 79);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(54, 16);
-            this.lbEmail.TabIndex = 2;
-            this.lbEmail.Text = "Email : ";
-            // 
-            // lbContact
-            // 
-            this.lbContact.AutoSize = true;
-            this.lbContact.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbContact.Location = new System.Drawing.Point(12, 96);
-            this.lbContact.Name = "lbContact";
-            this.lbContact.Size = new System.Drawing.Size(67, 16);
-            this.lbContact.TabIndex = 3;
-            this.lbContact.Text = "Contact : ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(74, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "companyemail@abc.com";
+            this.splContLogin.SplitterDistance = 119;
+            this.splContLogin.SplitterWidth = 1;
+            this.splContLogin.TabIndex = 100;
             // 
             // lbCompanyContact
             // 
@@ -135,52 +87,104 @@
             this.lbCompanyContact.Location = new System.Drawing.Point(88, 96);
             this.lbCompanyContact.Name = "lbCompanyContact";
             this.lbCompanyContact.Size = new System.Drawing.Size(112, 16);
-            this.lbCompanyContact.TabIndex = 5;
+            this.lbCompanyContact.TabIndex = 51;
             this.lbCompanyContact.Text = "+919876543210";
+            // 
+            // lbCompanyEmail
+            // 
+            this.lbCompanyEmail.AutoSize = true;
+            this.lbCompanyEmail.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompanyEmail.Location = new System.Drawing.Point(74, 79);
+            this.lbCompanyEmail.Name = "lbCompanyEmail";
+            this.lbCompanyEmail.Size = new System.Drawing.Size(154, 16);
+            this.lbCompanyEmail.TabIndex = 41;
+            this.lbCompanyEmail.Text = "companyemail@abc.com";
+            // 
+            // lbContact
+            // 
+            this.lbContact.AutoSize = true;
+            this.lbContact.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContact.Location = new System.Drawing.Point(12, 96);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(67, 16);
+            this.lbContact.TabIndex = 31;
+            this.lbContact.Text = "Contact : ";
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Location = new System.Drawing.Point(12, 79);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(54, 16);
+            this.lbEmail.TabIndex = 21;
+            this.lbEmail.Text = "Email : ";
+            // 
+            // lbCompanyAddress
+            // 
+            this.lbCompanyAddress.AutoSize = true;
+            this.lbCompanyAddress.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompanyAddress.Location = new System.Drawing.Point(12, 46);
+            this.lbCompanyAddress.Name = "lbCompanyAddress";
+            this.lbCompanyAddress.Size = new System.Drawing.Size(122, 17);
+            this.lbCompanyAddress.TabIndex = 11;
+            this.lbCompanyAddress.Text = "Company Address";
+            // 
+            // lbCompanyName
+            // 
+            this.lbCompanyName.AutoSize = true;
+            this.lbCompanyName.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompanyName.Location = new System.Drawing.Point(12, 9);
+            this.lbCompanyName.Name = "lbCompanyName";
+            this.lbCompanyName.Size = new System.Drawing.Size(129, 21);
+            this.lbCompanyName.TabIndex = 11;
+            this.lbCompanyName.Text = "Company Name";
             // 
             // lbUserName
             // 
             this.lbUserName.AutoSize = true;
             this.lbUserName.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.Location = new System.Drawing.Point(72, 27);
+            this.lbUserName.Location = new System.Drawing.Point(62, 31);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(79, 17);
-            this.lbUserName.TabIndex = 0;
+            this.lbUserName.TabIndex = 4;
             this.lbUserName.Text = "User Name : ";
+            // 
+            // tbUserName
+            // 
+            this.tbUserName.Location = new System.Drawing.Point(158, 30);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(169, 20);
+            this.tbUserName.TabIndex = 0;
             // 
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.Location = new System.Drawing.Point(72, 67);
+            this.lbPassword.Location = new System.Drawing.Point(71, 73);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(70, 17);
-            this.lbPassword.TabIndex = 1;
+            this.lbPassword.TabIndex = 5;
             this.lbPassword.Text = "Password : ";
-            // 
-            // tbUserName
-            // 
-            this.tbUserName.Location = new System.Drawing.Point(158, 26);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(169, 20);
-            this.tbUserName.TabIndex = 2;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(158, 66);
+            this.tbPassword.Location = new System.Drawing.Point(158, 72);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(169, 20);
-            this.tbPassword.TabIndex = 3;
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // btnOK
             // 
             this.btnOK.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Crimson;
-            this.btnOK.Location = new System.Drawing.Point(158, 112);
+            this.btnOK.Location = new System.Drawing.Point(171, 112);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 35);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -193,13 +197,14 @@
             this.btnCancel.Location = new System.Drawing.Point(252, 112);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 35);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Login
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 280);
@@ -208,6 +213,7 @@
             this.MinimumSize = new System.Drawing.Size(468, 318);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.splContLogin.Panel1.ResumeLayout(false);
             this.splContLogin.Panel1.PerformLayout();
             this.splContLogin.Panel2.ResumeLayout(false);
@@ -223,7 +229,7 @@
         private System.Windows.Forms.SplitContainer splContLogin;
         private System.Windows.Forms.Label lbCompanyName;
         private System.Windows.Forms.Label lbCompanyContact;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbCompanyEmail;
         private System.Windows.Forms.Label lbContact;
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.Label lbCompanyAddress;
