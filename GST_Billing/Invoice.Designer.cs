@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Invoice));
             this.gbBilling = new System.Windows.Forms.GroupBox();
             this.tbBillPin = new System.Windows.Forms.TextBox();
@@ -486,7 +487,7 @@
             this.tbChallanNumber.Name = "tbChallanNumber";
             this.tbChallanNumber.Size = new System.Drawing.Size(213, 25);
             this.tbChallanNumber.TabIndex = 11;
-            this.tbChallanNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbChallanNumber_KeyPress);
+            this.tbChallanNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // lbChallan
             // 
@@ -548,6 +549,7 @@
             this.tbInvoiceNum.Name = "tbInvoiceNum";
             this.tbInvoiceNum.Size = new System.Drawing.Size(211, 25);
             this.tbInvoiceNum.TabIndex = 0;
+            this.tbInvoiceNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // btnAddChallan
             // 
@@ -843,14 +845,14 @@
             // 
             // dgvProducts
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSerNo,
@@ -862,35 +864,39 @@
             this.colAmount,
             this.colDiscount,
             this.colTaxableVal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle31;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvProducts.Location = new System.Drawing.Point(0, 373);
             this.dgvProducts.Name = "dgvProducts";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvProducts.Size = new System.Drawing.Size(776, 205);
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvProducts.Size = new System.Drawing.Size(827, 205);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
+            this.dgvProducts.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProducts_RowsAdded);
             // 
             // colSerNo
             // 
+            dataGridViewCellStyle26.Format = "N0";
+            this.colSerNo.DefaultCellStyle = dataGridViewCellStyle26;
             this.colSerNo.FillWeight = 91.70123F;
             this.colSerNo.HeaderText = "Ser. No.";
             this.colSerNo.Name = "colSerNo";
+            this.colSerNo.ReadOnly = true;
             this.colSerNo.Width = 40;
             // 
             // colProDes
@@ -910,9 +916,9 @@
             // 
             // colQty
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle27.Format = "N2";
+            dataGridViewCellStyle27.NullValue = "0.00";
+            this.colQty.DefaultCellStyle = dataGridViewCellStyle27;
             this.colQty.FillWeight = 71.97796F;
             this.colQty.HeaderText = "Qty";
             this.colQty.Name = "colQty";
@@ -927,9 +933,9 @@
             // 
             // colRate
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.colRate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle28.Format = "N2";
+            dataGridViewCellStyle28.NullValue = "0.00";
+            this.colRate.DefaultCellStyle = dataGridViewCellStyle28;
             this.colRate.FillWeight = 81.26287F;
             this.colRate.HeaderText = "Rate";
             this.colRate.Name = "colRate";
@@ -945,9 +951,9 @@
             // 
             // colDiscount
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle29.Format = "N2";
+            dataGridViewCellStyle29.NullValue = "0.00";
+            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle29;
             this.colDiscount.FillWeight = 104.4025F;
             this.colDiscount.HeaderText = "Discount";
             this.colDiscount.Name = "colDiscount";
@@ -956,9 +962,9 @@
             // colTaxableVal
             // 
             this.colTaxableVal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle30.Format = "N2";
+            dataGridViewCellStyle30.NullValue = "0.00";
+            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle30;
             this.colTaxableVal.FillWeight = 124.9178F;
             this.colTaxableVal.HeaderText = "Taxable Value";
             this.colTaxableVal.Name = "colTaxableVal";
@@ -1003,7 +1009,7 @@
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(776, 72);
+            this.tlpTotals.Size = new System.Drawing.Size(827, 72);
             this.tlpTotals.TabIndex = 9;
             // 
             // lbTotalFinal
@@ -1011,7 +1017,7 @@
             this.lbTotalFinal.AutoSize = true;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(752, 40);
+            this.lbTotalFinal.Location = new System.Drawing.Point(803, 40);
             this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
             this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
@@ -1256,7 +1262,7 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 821);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(776, 43);
+            this.flpPanelButtons.Size = new System.Drawing.Size(827, 43);
             this.flpPanelButtons.TabIndex = 12;
             // 
             // gbAddCharge
@@ -1501,7 +1507,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(776, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(827, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1510,7 +1516,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(776, 100);
+            this.flpA.Size = new System.Drawing.Size(827, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1530,7 +1536,7 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(776, 33);
+            this.flpGst.Size = new System.Drawing.Size(827, 33);
             this.flpGst.TabIndex = 25;
             // 
             // splitter3
@@ -1586,7 +1592,7 @@
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
             this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(776, 171);
+            this.flpAddCharge.Size = new System.Drawing.Size(827, 171);
             this.flpAddCharge.TabIndex = 26;
             // 
             // Invoice
@@ -1594,7 +1600,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(793, 561);
+            this.ClientSize = new System.Drawing.Size(844, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);
@@ -1602,10 +1608,9 @@
             this.Controls.Add(this.flpBillShip);
             this.Controls.Add(this.flpA);
             this.Controls.Add(this.flpPanelButtons);
-            this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.MinimumSize = new System.Drawing.Size(775, 367);
             this.Name = "Invoice";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "GST Billing";
             this.Load += new System.EventHandler(this.Invoice_Load);
             this.ResizeEnd += new System.EventHandler(this.Invoice_ResizeEnd);
@@ -1716,15 +1721,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpA;
         private System.Windows.Forms.FlowLayoutPanel flpGst;
         private System.Windows.Forms.FlowLayoutPanel flpAddCharge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSerNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProDes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHsnCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTaxableVal;
         private System.Windows.Forms.TextBox tbBillLandmark;
         private System.Windows.Forms.Label lbBillLandmark;
         private System.Windows.Forms.TextBox tbShipLandmark;
@@ -1742,6 +1738,15 @@
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.ComboBox tbPaymentTerms;
         private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSerNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProDes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHsnCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTaxableVal;
     }
 }
 

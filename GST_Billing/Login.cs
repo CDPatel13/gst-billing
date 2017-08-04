@@ -11,6 +11,7 @@ namespace GST_Billing
 {
     public partial class Login : Form
     {
+        bool companyExists = false;
         public Login()
         {
             InitializeComponent();
@@ -38,8 +39,28 @@ namespace GST_Billing
 
         private void Login_Load(object sender, EventArgs e)
         {
+            CompanyDetails newCompany = new CompanyDetails();
             //TODO : Get company information from DB
-
+            if (String.IsNullOrEmpty(newCompany.CompanyName))
+            {
+                DialogResult result = MessageBox.Show("Please enter company details...", "Company Details Setup", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if ((result == DialogResult.OK) && (newCompany.ShowDialog() == DialogResult.OK))
+                {
+                    companyExists = true;
+                    this.lbCompanyName.Text = newCompany.CompanyName;
+                    this.lbCompanyAddress.Text = newCompany.CompanyAddress;
+                    this.lbCompanyEmail.Text = newCompany.CompanyEmail;
+                    this.lbCompanyContact.Text = newCompany.CompanyContact;
+                }
+            }
+            else
+            {
+                companyExists = true;
+                this.lbCompanyName.Text = newCompany.CompanyName;
+                this.lbCompanyAddress.Text = newCompany.CompanyAddress;
+                this.lbCompanyEmail.Text = newCompany.CompanyEmail;
+                this.lbCompanyContact.Text = newCompany.CompanyContact;
+            }
             this.ActiveControl = tbUserName;
         }
     }

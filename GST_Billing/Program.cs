@@ -46,6 +46,7 @@ namespace GST_Billing
         
         static Boolean Proceed()
         {
+            return true;
             Boolean proceed = false;
             try
             {
