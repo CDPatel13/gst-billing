@@ -144,8 +144,8 @@ namespace GST_Billing
                 }
                 sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
                                 "VALUES('" + tbCompanyName.Text + "', '" + tbContactPerson.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
-                                            + tbCode.Text + "', " + tbPinCode.Text + ", '" + tbGstin.Text + "', '" + tbEmail.Text + "', " + tbContact.Text + ", '" + tbPanNo.Text + "','"
-                                            + tbBankName.Text + "', '" + tbBranch.Text + "', " + tbAccountNo.Text + ", '" + tbIfscCode.Text + "')";
+                                            + tbCode.Text + "', '" + tbPinCode.Text + "', '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "', '" + tbPanNo.Text + "','"
+                                            + tbBankName.Text + "', '" + tbBranch.Text + "', '" + tbAccountNo.Text + "', '" + tbIfscCode.Text + "')";
                 NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
                 if (NoOfRows > 0)

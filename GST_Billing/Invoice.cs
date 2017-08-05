@@ -613,10 +613,16 @@ namespace GST_Billing
 					switch (drDuplicateInsert)
 					{
 						case DialogResult.Yes:
-							sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId ='" + ds.Tables[0].Rows[0]["invoiceId"] + "'";
+							sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-							sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "'";
+                            sqlstr = "DELETE FROM invoiceChallanDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+							m1.Ins_Upd_Del(sqlstr);
+
+                            sqlstr = "DELETE FROM additionalCharges WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+							m1.Ins_Upd_Del(sqlstr);
+
+                            sqlstr = "DELETE FROM invoiceDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 							break;
 						case DialogResult.No:
@@ -631,7 +637,7 @@ namespace GST_Billing
 				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
 						"totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
 						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + userId + "', '" +
-						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', " + tbShipPin.Text + ", '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
+						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
 						lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1)";
 				int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
@@ -657,7 +663,7 @@ namespace GST_Billing
 					foreach (var item in listofAddCharges)
 					{                        
 						sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
-							"VALUES(" + invoiceId + ", '" + item.Item1 + "', " + item.Item2 + ")";
+							"VALUES(" + invoiceId + ", '" + item.Item1 + "', '" + item.Item2 + "')";
 						m1.Ins_Upd_Del(sqlstr);
 					}
 

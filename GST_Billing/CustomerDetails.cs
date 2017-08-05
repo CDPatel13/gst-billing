@@ -141,12 +141,12 @@ namespace GST_Billing
                     {
                         sqlstr = "UPDATE customerDetails set custname='" + tbName.Text + "', custContactPerson='" + tbContact.Text + "', custaddress='" + tbAddress.Text + "', custlandmark='" + tbLandmark.Text +
                                   "', custcity='" + tbCity.Text + "', custstate='" + tbState.Text + "', custcode='" + tbCode.Text +
-                                  "', custpincode=" + tbPinCode.Text + ", custemail='" + tbEmail.Text + "', custphoneNumber=" + tbPhoneNo.Text +
-                                  ", custgstin='" + tbGstin.Text + "', custAadharNo='" + tbAadharNo.Text + "', custPanno='" + tbPanNo.Text +
+                                  "', custpincode='" + tbPinCode.Text + "', custemail='" + tbEmail.Text + "', custphoneNumber='" + tbPhoneNo.Text +
+                                  "', custgstin='" + tbGstin.Text + "', custAadharNo='" + tbAadharNo.Text + "', custPanno='" + tbPanNo.Text +
                                   "', custpaymentTermName='" + tbPayment.Text +
                                   "', shipname='" + tbShipName.Text + "', shipContactPerson='" + tbShipContact.Text + "', shipaddress='" + tbShipAddress.Text +
                                   "', shiplandmark='" + tbShipLandmark.Text + "', shipcity='" + tbShipCity.Text + "', shipstate='" + tbShipState.Text +
-                                  "', shipcode='" + tbShipCode.Text + "', shippincode=" + tbShipPinCode.Text + ", shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipPhone.Text +
+                                  "', shipcode='" + tbShipCode.Text + "', shippincode='" + tbShipPinCode.Text + "', shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipPhone.Text +
                                   "', shipgstin='" + tbShipGstin.Text + "', shipAadharNo='" + tbShipAadhar.Text + "', shipPanno='" + tbShipPanNumber.Text +
                                   "', shippaymentTermName='" + tbShipPayment.Text + "' where custname='" + tbName.Text + "'";
                         NoOfRows = m1.Ins_Upd_Del(sqlstr);
@@ -158,10 +158,10 @@ namespace GST_Billing
                                 "custcode, custpincode, custemail, custphoneNumber, custgstin, custAadharNo, custPanno, custpaymentTermName, " +
                                 "shipname, shipContactPerson, shipaddress, shiplandmark, shipcity, shipstate, shipcode, shippincode, " +
                                 "shipemail, shipphoneNumber, shipgstin, shipAadharNo, shipPanno, shippaymentTermName)" +
-                             "VALUES('" + tbName.Text + "', '" + tbContact.Text + "', '" + tbAddress.Text + "','" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + tbState.Text + "', '" + tbCode.Text + "', "
-                                         + tbPinCode.Text + ", '" + tbEmail.Text + "', " + tbPhoneNo.Text + ",'" + tbGstin.Text + "', '" + tbAadharNo.Text + "', '" + tbPanNo.Text + "', '" + tbPayment.Text + "', '"
+                             "VALUES('" + tbName.Text + "', '" + tbContact.Text + "', '" + tbAddress.Text + "','" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + tbState.Text + "', '" + tbCode.Text + "', '"
+                                         + tbPinCode.Text + "', '" + tbEmail.Text + "', '" + tbPhoneNo.Text + "','" + tbGstin.Text + "', '" + tbAadharNo.Text + "', '" + tbPanNo.Text + "', '" + tbPayment.Text + "', '"
                                         + tbShipName.Text + "', '" + tbShipContact.Text + "', '" + tbShipAddress.Text + "','" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipState.Text + "', '"
-                                        + tbShipCode.Text + "', '" + tbShipPinCode.Text + "', '" + tbShipEmail.Text + "', " + tbShipPhone.Text + ",'" + tbShipGstin.Text + "', '" + tbShipAadhar.Text + "', '"
+                                        + tbShipCode.Text + "', '" + tbShipPinCode.Text + "', '" + tbShipEmail.Text + "', '" + tbShipPhone.Text + "','" + tbShipGstin.Text + "', '" + tbShipAadhar.Text + "', '"
                                         + tbShipPanNumber.Text + "', '" + tbShipPayment.Text + "')";
                     NoOfRows = m1.Ins_Upd_Del(sqlstr);
                 }
