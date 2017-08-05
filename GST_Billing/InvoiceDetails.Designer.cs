@@ -327,6 +327,8 @@ namespace GST_Billing {
             
             private global::System.Data.DataColumn columncustgstin;
             
+            private global::System.Data.DataColumn columncustPanno;
+            
             private global::System.Data.DataColumn columninvoiceNo;
             
             private global::System.Data.DataColumn columninvoiceDate;
@@ -346,6 +348,8 @@ namespace GST_Billing {
             private global::System.Data.DataColumn columnshipCode;
             
             private global::System.Data.DataColumn columnshipPinCode;
+            
+            private global::System.Data.DataColumn columnshipPanno;
             
             private global::System.Data.DataColumn columntotalQnty;
             
@@ -622,6 +626,14 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn custPannoColumn {
+                get {
+                    return this.columncustPanno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn invoiceNoColumn {
                 get {
                     return this.columninvoiceNo;
@@ -697,6 +709,14 @@ namespace GST_Billing {
             public global::System.Data.DataColumn shipPinCodeColumn {
                 get {
                     return this.columnshipPinCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn shipPannoColumn {
+                get {
+                    return this.columnshipPanno;
                 }
             }
             
@@ -954,6 +974,7 @@ namespace GST_Billing {
                         string custcode, 
                         string custpincode, 
                         string custgstin, 
+                        string custPanno, 
                         string invoiceNo, 
                         string invoiceDate, 
                         string shipName, 
@@ -964,6 +985,7 @@ namespace GST_Billing {
                         string shipState, 
                         string shipCode, 
                         string shipPinCode, 
+                        string shipPanno, 
                         string totalQnty, 
                         string totalAmount, 
                         string totaDiscount, 
@@ -1014,6 +1036,7 @@ namespace GST_Billing {
                         custcode,
                         custpincode,
                         custgstin,
+                        custPanno,
                         invoiceNo,
                         invoiceDate,
                         shipName,
@@ -1024,6 +1047,7 @@ namespace GST_Billing {
                         shipState,
                         shipCode,
                         shipPinCode,
+                        shipPanno,
                         totalQnty,
                         totalAmount,
                         totaDiscount,
@@ -1094,6 +1118,7 @@ namespace GST_Billing {
                 this.columncustcode = base.Columns["custcode"];
                 this.columncustpincode = base.Columns["custpincode"];
                 this.columncustgstin = base.Columns["custgstin"];
+                this.columncustPanno = base.Columns["custPanno"];
                 this.columninvoiceNo = base.Columns["invoiceNo"];
                 this.columninvoiceDate = base.Columns["invoiceDate"];
                 this.columnshipName = base.Columns["shipName"];
@@ -1104,6 +1129,7 @@ namespace GST_Billing {
                 this.columnshipState = base.Columns["shipState"];
                 this.columnshipCode = base.Columns["shipCode"];
                 this.columnshipPinCode = base.Columns["shipPinCode"];
+                this.columnshipPanno = base.Columns["shipPanno"];
                 this.columntotalQnty = base.Columns["totalQnty"];
                 this.columntotalAmount = base.Columns["totalAmount"];
                 this.columntotaDiscount = base.Columns["totaDiscount"];
@@ -1181,6 +1207,8 @@ namespace GST_Billing {
                 base.Columns.Add(this.columncustpincode);
                 this.columncustgstin = new global::System.Data.DataColumn("custgstin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncustgstin);
+                this.columncustPanno = new global::System.Data.DataColumn("custPanno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustPanno);
                 this.columninvoiceNo = new global::System.Data.DataColumn("invoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvoiceNo);
                 this.columninvoiceDate = new global::System.Data.DataColumn("invoiceDate", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1201,6 +1229,8 @@ namespace GST_Billing {
                 base.Columns.Add(this.columnshipCode);
                 this.columnshipPinCode = new global::System.Data.DataColumn("shipPinCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnshipPinCode);
+                this.columnshipPanno = new global::System.Data.DataColumn("shipPanno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshipPanno);
                 this.columntotalQnty = new global::System.Data.DataColumn("totalQnty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalQnty);
                 this.columntotalAmount = new global::System.Data.DataColumn("totalAmount", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1775,6 +1805,22 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string custPanno {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceBill.custPannoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custPanno\' in table \'invoiceBill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceBill.custPannoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string invoiceNo {
                 get {
                     try {
@@ -1930,6 +1976,22 @@ namespace GST_Billing {
                 }
                 set {
                     this[this.tableinvoiceBill.shipPinCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string shipPanno {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceBill.shipPannoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shipPanno\' in table \'invoiceBill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceBill.shipPannoColumn] = value;
                 }
             }
             
@@ -2607,6 +2669,18 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscustPannoNull() {
+                return this.IsNull(this.tableinvoiceBill.custPannoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcustPannoNull() {
+                this[this.tableinvoiceBill.custPannoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsinvoiceNoNull() {
                 return this.IsNull(this.tableinvoiceBill.invoiceNoColumn);
             }
@@ -2723,6 +2797,18 @@ namespace GST_Billing {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetshipPinCodeNull() {
                 this[this.tableinvoiceBill.shipPinCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsshipPannoNull() {
+                return this.IsNull(this.tableinvoiceBill.shipPannoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetshipPannoNull() {
+                this[this.tableinvoiceBill.shipPannoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
