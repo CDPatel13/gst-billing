@@ -2695,7 +2695,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1281018070</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>740654284</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
@@ -3796,8 +3796,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>-1281003734</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1281018070</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>740654284</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>740654284</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1280991157</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1280995702</td></row>
 	</table>
@@ -4043,7 +4043,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{8D1957D5-D43F-42F4-A5D4-690312AD3225}</td></row>
 		<row><td>ISUSSignature</td><td>{17B59535-12D7-4B47-8C29-40A9C08C0DB1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
