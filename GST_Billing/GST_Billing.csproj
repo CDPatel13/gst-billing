@@ -174,6 +174,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>invoicePrint.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -229,10 +230,11 @@
     <EmbeddedResource Include="InvoicePayment.resx">
       <DependentUpon>InvoicePayment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="invoicePrint.rpt">
+    <Content Include="invoicePrint.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>invoicePrint.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
