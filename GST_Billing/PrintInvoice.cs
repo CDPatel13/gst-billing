@@ -63,8 +63,8 @@ namespace GST_Billing
             InvoiceDetails dsAddCharges = m1.selectDataAdapter(sqlstr, 1);
 
 
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("D:\\Nirav\\gst-billing\\GST_Billing\\invoicePrint.rpt");
+            ReportDocument cryRpt = new invoicePrint();
+            //cryRpt.Load("D:\\Nirav\\gst-billing\\GST_Billing\\invoicePrint.rpt");
             //cryRpt.Load("C:/MainReport.rpt");
             cryRpt.DataSourceConnections.Clear();
             cryRpt.SetDataSource(dsVoucher.Tables[0]);
