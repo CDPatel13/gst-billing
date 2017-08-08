@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GaneshLogistics.AppCode;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace GST_Billing
     public partial class Login : Form
     {
         bool companyExists = false;
+        SqliteDb m1 = new SqliteDb();
         public Login()
         {
             InitializeComponent();
@@ -19,17 +21,35 @@ namespace GST_Billing
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(tbUserName.Text != "admin" && tbPassword.Text != "admin")
+            try
             {
-                MessageBox.Show("Please enter valid credentials!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                this.Hide();
-                MainWindow window = new MainWindow();
-                window.Show();
-            }
+                string sqlstr = "SELECT * FROM loginDetails WHERE username = '" + tbUserName.Text + "' ";
+				DataSet ds = m1.selectData(sqlstr);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    string username = Convert.ToString(ds.Tables[0].Rows[0]["username"]);
+                    string password = Convert.ToString(ds.Tables[0].Rows[0]["password"]);
 
+                    if (tbUserName.Text != username || tbPassword.Text != password)
+                    {
+                        MessageBox.Show("Please enter valid credentials!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        this.Hide();
+                        MainWindow window = new MainWindow();
+                        window.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter valid credentials!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error :" + e1.Message);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -30,6 +30,12 @@ namespace GaneshLogistics.AppCode
 
         private void CreateTables()
         {
+            CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [loginDetails] (
+	                                loginId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	                                username TEXT NOT NULL,
+                                    password TEXT NOT NULL
+                                )");
+
             CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [userDetails] (
 	                                userId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	                                name	TEXT,
@@ -176,6 +182,11 @@ namespace GaneshLogistics.AppCode
             InsertDetails.Add(strQuery + "('Within 45 days')");
             InsertDetails.Add(strQuery + "('Within 60 days')");
             InsertDetails.Add(strQuery + "('Others')");
+
+            strQuery = "";
+            strQuery = "INSERT INTO loginDetails(username, password) VALUES ";
+            InsertDetails.Add("DELETE FROM loginDetails");
+            InsertDetails.Add(strQuery + "('admin', 'admin')");
         }
 
         public void CreateDatabase()

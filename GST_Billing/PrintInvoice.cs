@@ -22,8 +22,10 @@ namespace GST_Billing
 
         public PrintInvoice(string invoiceNo)
         {
-            InitializeComponent();
-            string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName,		
+            try
+            {
+                InitializeComponent();
+                string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName,		
                                 invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, 
                                 invoiceDetails.sgstPercent as sgstPercent, invoiceDetails.cgstPercent as cgstPercent, invoiceDetails.igstPercent as igstPercent,  invoiceDetails.termName as termName, 
                                 invoiceDetails.shipCode as shipCode, invoiceDetails.totalQnty as totalQnty, invoiceDetails.totalAmount as totalAmount, invoiceDetails.totaDiscount as totaDiscount, 
@@ -44,50 +46,55 @@ namespace GST_Billing
                         INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId 
                         INNER JOIN userDetails ON userDetails.userId = invoiceDetails.userId                                                  
                         WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.IsActive = 1 ";
-            //LEFT JOIN additionalCharges ON additionalCharges.invoiceId = invoiceDetails.invoiceId
-            //additionalCharges.chargeName as chargeName, additionalCharges.chargeAmount as chargeAmount
-            InvoiceDetails dsVoucher = m1.selectDataAdapter(sqlstr1, 1);
+                //LEFT JOIN additionalCharges ON additionalCharges.invoiceId = invoiceDetails.invoiceId
+                //additionalCharges.chargeName as chargeName, additionalCharges.chargeAmount as chargeAmount
+                InvoiceDetails dsVoucher = m1.selectDataAdapter(sqlstr1, 1);
 
-            string sqlstr = "select invoiceId from invoiceDetails WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.IsActive = 1 LIMIT 1";
-            int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
+                string sqlstr = "select invoiceId from invoiceDetails WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.IsActive = 1 LIMIT 1";
+                int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
 
-            sqlstr = "select GROUP_CONCAT(challanNo) FROM invoiceChallanDetails WHERE invoiceId = " + invoiceId + " ";
-            string challanNOs = m1.scaler(sqlstr);
+                sqlstr = "select GROUP_CONCAT(challanNo) FROM invoiceChallanDetails WHERE invoiceId = " + invoiceId + " ";
+                string challanNOs = m1.scaler(sqlstr);
 
-            for (int i = 0; i < dsVoucher.Tables[0].Rows.Count; i++)
-            {
-                dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
-            }
+                for (int i = 0; i < dsVoucher.Tables[0].Rows.Count; i++)
+                {
+                    dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
+                }
 
-            sqlstr = "select chargeName, chargeAmount FROM additionalCharges WHERE invoiceId = " + invoiceId + "";
-            InvoiceDetails dsAddCharges = m1.selectDataAdapter(sqlstr, 1);
+                sqlstr = "select chargeName, chargeAmount FROM additionalCharges WHERE invoiceId = " + invoiceId + "";
+                InvoiceDetails dsAddCharges = m1.selectDataAdapter(sqlstr, 1);
 
 
-            ReportDocument cryRpt = new invoicePrint();
-            //cryRpt.Load("D:\\Nirav\\gst-billing\\GST_Billing\\invoicePrint.rpt");
-            //cryRpt.Load("C:/MainReport.rpt");
-            cryRpt.DataSourceConnections.Clear();
-            cryRpt.SetDataSource(dsVoucher.Tables[0]);
-            cryRpt.Subreports[0].DataSourceConnections.Clear();
-/*
-            if (dsAddCharges.Tables[0].Rows.Count < 1)
-            {
-                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = true;
-            }
-            else
-            {
-                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = false;
+                ReportDocument cryRpt = new invoicePrint();
+                //cryRpt.Load("D:\\Nirav\\gst-billing\\GST_Billing\\invoicePrint.rpt");
+                //cryRpt.Load("C:/MainReport.rpt");
+                cryRpt.DataSourceConnections.Clear();
+                cryRpt.SetDataSource(dsVoucher.Tables[0]);
+                cryRpt.Subreports[0].DataSourceConnections.Clear();
+                /*
+                            if (dsAddCharges.Tables[0].Rows.Count < 1)
+                            {
+                                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = true;
+                            }
+                            else
+                            {
+                                cryRpt.ReportDefinition.Sections["PageFooterSection2"].SectionFormat.EnableSuppress = false;
                 
-            }   
- */
-            cryRpt.Subreports[0].SetDataSource(dsAddCharges.Tables[0]);
-            crystalReportViewer1.ReportSource = cryRpt;
-            crystalReportViewer1.Refresh();
-            
-            //invoicePrint1.SetDataSource(dsVoucher.Tables[0]);
-            //rptVoucherDetails1.Database.Tables[0].SetDataSource(dsVoucher.Tables[0]);
-            //crystalReportViewer1.ReportSource = invoicePrint1;
-            //crystalReportViewer1.Refresh();
+                            }   
+                 */
+                cryRpt.Subreports[0].SetDataSource(dsAddCharges.Tables[0]);
+                crystalReportViewer1.ReportSource = cryRpt;
+                crystalReportViewer1.Refresh();
+
+                //invoicePrint1.SetDataSource(dsVoucher.Tables[0]);
+                //rptVoucherDetails1.Database.Tables[0].SetDataSource(dsVoucher.Tables[0]);
+                //crystalReportViewer1.ReportSource = invoicePrint1;
+                //crystalReportViewer1.Refresh();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error :" + e1.Message);
+            }
         }
     }
 }
