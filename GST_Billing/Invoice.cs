@@ -57,7 +57,7 @@ namespace GST_Billing
 				disableControls();
 			}
 
-            this.WindowState = FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.ResizeRedraw = true;
 			this.Refresh();
 		}
@@ -291,7 +291,7 @@ namespace GST_Billing
 			amount = Math.Round(rate * quantity, 2);
 
 			tempString = row.Cells["colDiscount"].Value == null ? "0.00" : row.Cells["colDiscount"].Value.ToString();
-            row.Cells["colDiscount"].Value = tempString;
+			row.Cells["colDiscount"].Value = tempString;
 			discount = !String.IsNullOrEmpty(tempString) ? double.Parse(tempString) : 0;
 			
 			taxable = Math.Round(amount - discount, 2);
@@ -371,55 +371,55 @@ namespace GST_Billing
 		{
 			e.Control.KeyPress -= new KeyPressEventHandler(column_KeyPress);
 
-            if(dgvProducts.CurrentCell.ColumnIndex == 1)
-            {
-                TextBox tb = e.Control as TextBox;
-                if(tb != null)
-                {
-                    tb.AutoCompleteMode = AutoCompleteMode.Suggest;
-                    tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                    addProducts(collection);
-                    tb.AutoCompleteCustomSource = collection;
-                    tb.TextChanged += tb_TextChanged;
-                }
-            }
+			if(dgvProducts.CurrentCell.ColumnIndex == 1)
+			{
+				TextBox tb = e.Control as TextBox;
+				if(tb != null)
+				{
+					tb.AutoCompleteMode = AutoCompleteMode.Suggest;
+					tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+					AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+					addProducts(collection);
+					tb.AutoCompleteCustomSource = collection;
+					tb.TextChanged += tb_TextChanged;
+				}
+			}
 
 			if (colIndices.Contains(dgvProducts.CurrentCell.ColumnIndex))
 			{ 
 				TextBox tb = e.Control as TextBox;
-                if(tb != null)
+				if(tb != null)
 				{
 					tb.KeyPress += new KeyPressEventHandler(column_KeyPress);
 				}
 			}
 		}
 
-        private void tb_TextChanged(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"'";
-            DataSet ds = m1.selectData(sqlstr);
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                dgvProducts.CurrentRow.Cells["colHsnCode"].Value = ds.Tables[0].Rows[0][0].ToString();
-                dgvProducts.CurrentRow.Cells["colRate"].Value = ds.Tables[0].Rows[0][1].ToString();
-                dgvProducts.CurrentRow.Cells["colUnit"].Value = ds.Tables[0].Rows[0][2].ToString();
-            }
-        }
+		private void tb_TextChanged(object sender, EventArgs e)
+		{
+			TextBox tb = sender as TextBox;
+			string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"'";
+			DataSet ds = m1.selectData(sqlstr);
+			if (ds != null && ds.Tables[0].Rows.Count > 0)
+			{
+				dgvProducts.CurrentRow.Cells["colHsnCode"].Value = ds.Tables[0].Rows[0][0].ToString();
+				dgvProducts.CurrentRow.Cells["colRate"].Value = ds.Tables[0].Rows[0][1].ToString();
+				dgvProducts.CurrentRow.Cells["colUnit"].Value = ds.Tables[0].Rows[0][2].ToString();
+			}
+		}
 
-        private void addProducts(AutoCompleteStringCollection collection)
-        {
-            string sqlstr = "SELECT productName FROM productDetails";
-            DataSet ds = m1.selectData(sqlstr);
-            if(ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach(DataRow row in ds.Tables[0].Rows)
-                {
-                    collection.Add(row[0].ToString());
-                }
-            }
-        }
+		private void addProducts(AutoCompleteStringCollection collection)
+		{
+			string sqlstr = "SELECT productName FROM productDetails";
+			DataSet ds = m1.selectData(sqlstr);
+			if(ds != null && ds.Tables[0].Rows.Count > 0)
+			{
+				foreach(DataRow row in ds.Tables[0].Rows)
+				{
+					collection.Add(row[0].ToString());
+				}
+			}
+		}
 
 		private void column_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -544,10 +544,10 @@ namespace GST_Billing
 			{
 				tbShipName.Text = tbBillName.Text;
 				tbShipAddress.Text = tbBillAddress.Text;
-                tbShipLandmark.Text = tbBillLandmark.Text;
-                tbShipCity.Text = tbBillCity.Text;
-                tbShipPin.Text = tbBillPin.Text;
-                tbShipGstin.Text = tbBillGstin.Text;
+				tbShipLandmark.Text = tbBillLandmark.Text;
+				tbShipCity.Text = tbBillCity.Text;
+				tbShipPin.Text = tbBillPin.Text;
+				tbShipGstin.Text = tbBillGstin.Text;
 				tbShipState.Text = tbBillState.Text;
 				tbShipCode.Text = tbBillCode.Text;
 			}
@@ -561,14 +561,14 @@ namespace GST_Billing
 
 		private void textBox_TextChanged(object sender, EventArgs e)
 		{
-            bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
+			bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
 			bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
 			bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
 			bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
 			bool state = !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
 			bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
 
-            if (invoiceNo && name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
+			if (invoiceNo && name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
 			{
 				flpPanelButtons.Enabled = true;
 			}
@@ -616,13 +616,13 @@ namespace GST_Billing
 							sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-                            sqlstr = "DELETE FROM invoiceChallanDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+							sqlstr = "DELETE FROM invoiceChallanDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-                            sqlstr = "DELETE FROM additionalCharges WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+							sqlstr = "DELETE FROM additionalCharges WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-                            sqlstr = "DELETE FROM invoiceDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+							sqlstr = "DELETE FROM invoiceDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 							break;
 						case DialogResult.No:
@@ -634,7 +634,7 @@ namespace GST_Billing
 				int userId = Convert.ToInt32(m1.scaler(sqlstr));
 
 				//, totaCGSTAmount, totalIGSTAmount
-                sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
+				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
 						"totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
 						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + userId + "', '" + tbPaymentTerms.SelectedItem + "', '" +
 						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
@@ -659,7 +659,7 @@ namespace GST_Billing
 						}
 					}
 
-                    getListOfAdditionalCharges();
+					getListOfAdditionalCharges();
 					foreach (var item in listofAddCharges)
 					{                        
 						sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
@@ -774,38 +774,38 @@ namespace GST_Billing
 			return totalAddCharge;
 		}
 
-        private void getListOfAdditionalCharges()
-        {
-            if (!String.IsNullOrEmpty(lbAddCharge1.Text) && !String.IsNullOrEmpty(tbAddCharge1.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
-            }
+		private void getListOfAdditionalCharges()
+		{
+			if (!String.IsNullOrEmpty(lbAddCharge1.Text) && !String.IsNullOrEmpty(tbAddCharge1.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
+			}
 
-            if (!String.IsNullOrEmpty(lbAddCharge2.Text) && !String.IsNullOrEmpty(tbAddCharge2.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
-            }
+			if (!String.IsNullOrEmpty(lbAddCharge2.Text) && !String.IsNullOrEmpty(tbAddCharge2.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
+			}
 
-            if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
-            }
+			if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
+			}
 
-            if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
-            }
+			if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
+			}
 
-            if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
-            }
+			if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
+			}
 
-            if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
-            {
-                listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
-            }
-        }
+			if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
+			{
+				listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
+			}
+		}
 
 		private void tbAddCharge1_TextChanged(object sender, EventArgs e)
 		{
@@ -814,15 +814,15 @@ namespace GST_Billing
 
 		internal bool UpdatePayment(double amount)
 		{
-            string sqlstr;
-            sqlstr = "SELECT receivedAmount FROM invoiceDetails WHERE invoiceNo='" + invoiceToEdit + "'";
-            DataSet ds = m1.selectData(sqlstr);
-            if(ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                amount += double.Parse(ds.Tables[0].Rows[0][0].ToString());
-            }
+			string sqlstr;
+			sqlstr = "SELECT receivedAmount FROM invoiceDetails WHERE invoiceNo='" + invoiceToEdit + "'";
+			DataSet ds = m1.selectData(sqlstr);
+			if(ds != null && ds.Tables[0].Rows.Count > 0)
+			{
+				amount += double.Parse(ds.Tables[0].Rows[0][0].ToString());
+			}
 
-            sqlstr = "UPDATE invoiceDetails SET receivedAmount='" + amount + "' WHERE invoiceNo='" + invoiceToEdit + "'";
+			sqlstr = "UPDATE invoiceDetails SET receivedAmount='" + amount + "' WHERE invoiceNo='" + invoiceToEdit + "'";
 			int no_of_rows = m1.Ins_Upd_Del(sqlstr);
 			if(no_of_rows > 0)
 			{
@@ -834,13 +834,13 @@ namespace GST_Billing
 			}
 		}
 
-        private void dgvProducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            int serNo = 1;
-            foreach(DataGridViewRow row in dgvProducts.Rows)
-            {
-                row.Cells["colSerNo"].Value = (serNo++).ToString();
-            }
-        }
+		private void dgvProducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+		{
+			int serNo = 1;
+			foreach(DataGridViewRow row in dgvProducts.Rows)
+			{
+				row.Cells["colSerNo"].Value = (serNo++).ToString();
+			}
+		}
 	}
 }
