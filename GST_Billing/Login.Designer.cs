@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.splContLogin = new System.Windows.Forms.SplitContainer();
             this.lbCompanyContact = new System.Windows.Forms.Label();
             this.lbCompanyEmail = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             // 
             // splContLogin.Panel1
             // 
-            this.splContLogin.Panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.splContLogin.Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.splContLogin.Panel1.Controls.Add(this.lbCompanyContact);
             this.splContLogin.Panel1.Controls.Add(this.lbCompanyEmail);
             this.splContLogin.Panel1.Controls.Add(this.lbContact);
@@ -68,7 +69,7 @@
             // 
             // splContLogin.Panel2
             // 
-            this.splContLogin.Panel2.BackColor = System.Drawing.Color.LavenderBlush;
+            this.splContLogin.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splContLogin.Panel2.Controls.Add(this.lbUserName);
             this.splContLogin.Panel2.Controls.Add(this.tbUserName);
             this.splContLogin.Panel2.Controls.Add(this.lbPassword);
@@ -180,27 +181,31 @@
             // 
             // btnOK
             // 
-            this.btnOK.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnOK.BackColor = System.Drawing.SystemColors.Control;
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Crimson;
-            this.btnOK.Location = new System.Drawing.Point(171, 112);
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
+            this.btnOK.Location = new System.Drawing.Point(148, 112);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 35);
+            this.btnOK.Size = new System.Drawing.Size(90, 35);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "Log In";
+            this.btnOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Crimson;
-            this.btnCancel.Location = new System.Drawing.Point(252, 112);
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.Location = new System.Drawing.Point(244, 112);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 35);
+            this.btnCancel.Size = new System.Drawing.Size(90, 35);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbProdHsnCode = new System.Windows.Forms.TextBox();
             this.lbProdHsnCode = new System.Windows.Forms.Label();
             this.tbProdUnit = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
             this.tbProdDes = new System.Windows.Forms.TextBox();
             this.lbProdDes = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.validatorTextBox = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.validatorTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tbProdHsnCode
@@ -46,7 +49,6 @@
             this.tbProdHsnCode.Name = "tbProdHsnCode";
             this.tbProdHsnCode.Size = new System.Drawing.Size(256, 23);
             this.tbProdHsnCode.TabIndex = 36;
-            this.tbProdHsnCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbProdHsnCode
             // 
@@ -60,12 +62,12 @@
             // 
             // tbProdUnit
             // 
+            this.tbProdUnit.BackColor = System.Drawing.SystemColors.Window;
             this.tbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdUnit.Location = new System.Drawing.Point(487, 41);
             this.tbProdUnit.Name = "tbProdUnit";
             this.tbProdUnit.Size = new System.Drawing.Size(256, 23);
             this.tbProdUnit.TabIndex = 34;
-            this.tbProdUnit.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbProdUnit
             // 
@@ -84,7 +86,6 @@
             this.tbProdRate.Name = "tbProdRate";
             this.tbProdRate.Size = new System.Drawing.Size(256, 23);
             this.tbProdRate.TabIndex = 24;
-            this.tbProdRate.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.tbProdRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRateQty_KeyPress);
             // 
             // lbProdRate
@@ -99,12 +100,12 @@
             // 
             // tbProdDes
             // 
+            this.tbProdDes.BackColor = System.Drawing.SystemColors.Window;
             this.tbProdDes.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdDes.Location = new System.Drawing.Point(107, 12);
             this.tbProdDes.Name = "tbProdDes";
             this.tbProdDes.Size = new System.Drawing.Size(256, 23);
             this.tbProdDes.TabIndex = 22;
-            this.tbProdDes.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbProdDes
             // 
@@ -119,7 +120,6 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.Location = new System.Drawing.Point(0, 251);
             this.btnSave.Name = "btnSave";
@@ -128,6 +128,10 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // validatorTextBox
+            // 
+            this.validatorTextBox.ContainerControl = this;
             // 
             // ProductDetails
             // 
@@ -147,6 +151,7 @@
             this.Name = "ProductDetails";
             this.Text = "Product Details";
             this.Load += new System.EventHandler(this.ProductDetails_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.validatorTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +168,6 @@
         private System.Windows.Forms.TextBox tbProdDes;
         private System.Windows.Forms.Label lbProdDes;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider validatorTextBox;
     }
 }

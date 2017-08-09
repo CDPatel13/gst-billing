@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbName = new System.Windows.Forms.Label();
             this.tbCompanyName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.lbState = new System.Windows.Forms.Label();
             this.tbCode = new System.Windows.Forms.TextBox();
             this.lbCode = new System.Windows.Forms.Label();
-            this.cbState = new System.Windows.Forms.ComboBox();
+            this.tbState = new System.Windows.Forms.ComboBox();
             this.tbLandmark = new System.Windows.Forms.TextBox();
             this.lbLandmark = new System.Windows.Forms.Label();
             this.tbCity = new System.Windows.Forms.TextBox();
@@ -61,6 +62,8 @@
             this.lbPinCode = new System.Windows.Forms.Label();
             this.tbPinCode = new System.Windows.Forms.TextBox();
             this.lbContact = new System.Windows.Forms.Label();
+            this.errorProviderTextBox = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lbName
@@ -163,7 +166,6 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(0, 279);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(755, 29);
@@ -205,15 +207,15 @@
             this.lbCode.TabIndex = 17;
             this.lbCode.Text = "Code";
             // 
-            // cbState
+            // tbState
             // 
-            this.cbState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbState.DropDownHeight = 100;
-            this.cbState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbState.FormattingEnabled = true;
-            this.cbState.IntegralHeight = false;
-            this.cbState.Items.AddRange(new object[] {
+            this.tbState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tbState.DropDownHeight = 100;
+            this.tbState.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbState.FormattingEnabled = true;
+            this.tbState.IntegralHeight = false;
+            this.tbState.Items.AddRange(new object[] {
             "Andaman And Nicobar Islands",
             "Andhra Pradesh",
             "Arunachal Pradesh",
@@ -250,12 +252,12 @@
             "Uttar Pradesh",
             "Uttarakhand",
             "West Bengal"});
-            this.cbState.Location = new System.Drawing.Point(95, 134);
-            this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(237, 24);
-            this.cbState.TabIndex = 5;
-            this.cbState.SelectedIndexChanged += new System.EventHandler(this.cbState_SelectedIndexChanged);
-            this.cbState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.tbState.Location = new System.Drawing.Point(95, 134);
+            this.tbState.Name = "tbState";
+            this.tbState.Size = new System.Drawing.Size(237, 24);
+            this.tbState.TabIndex = 5;
+            this.tbState.SelectedIndexChanged += new System.EventHandler(this.cbState_SelectedIndexChanged);
+            this.tbState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // tbLandmark
             // 
@@ -419,6 +421,10 @@
             this.lbContact.TabIndex = 47;
             this.lbContact.Text = "Contact Person";
             // 
+            // errorProviderTextBox
+            // 
+            this.errorProviderTextBox.ContainerControl = this;
+            // 
             // CompanyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -443,7 +449,7 @@
             this.Controls.Add(this.lbCity);
             this.Controls.Add(this.tbLandmark);
             this.Controls.Add(this.lbLandmark);
-            this.Controls.Add(this.cbState);
+            this.Controls.Add(this.tbState);
             this.Controls.Add(this.tbCode);
             this.Controls.Add(this.lbCode);
             this.Controls.Add(this.lbState);
@@ -466,6 +472,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CompanyDetails";
             this.Load += new System.EventHandler(this.CompanyDetails_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,7 +494,7 @@
         private System.Windows.Forms.Label lbState;
         private System.Windows.Forms.TextBox tbCode;
         private System.Windows.Forms.Label lbCode;
-        private System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.ComboBox tbState;
         private System.Windows.Forms.TextBox tbLandmark;
         private System.Windows.Forms.Label lbLandmark;
         private System.Windows.Forms.TextBox tbCity;
@@ -506,5 +513,6 @@
         private System.Windows.Forms.Label lbPinCode;
         private System.Windows.Forms.TextBox tbPinCode;
         private System.Windows.Forms.Label lbContact;
+        private System.Windows.Forms.ErrorProvider errorProviderTextBox;
     }
 }

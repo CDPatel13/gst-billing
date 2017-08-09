@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Invoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbBilling = new System.Windows.Forms.GroupBox();
             this.tbBillPin = new System.Windows.Forms.TextBox();
             this.lbBillPin = new System.Windows.Forms.Label();
@@ -179,7 +179,7 @@
             this.gbBilling.Location = new System.Drawing.Point(3, 3);
             this.gbBilling.Name = "gbBilling";
             this.gbBilling.Size = new System.Drawing.Size(363, 231);
-            this.gbBilling.TabIndex = 5;
+            this.gbBilling.TabIndex = 2;
             this.gbBilling.TabStop = false;
             this.gbBilling.Text = "Billing Details";
             // 
@@ -190,7 +190,7 @@
             this.tbBillPin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillPin.Location = new System.Drawing.Point(239, 139);
             this.tbBillPin.Name = "tbBillPin";
-            this.tbBillPin.Size = new System.Drawing.Size(118, 25);
+            this.tbBillPin.Size = new System.Drawing.Size(108, 25);
             this.tbBillPin.TabIndex = 24;
             this.tbBillPin.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -237,7 +237,7 @@
             this.tbBillLandmark.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillLandmark.Location = new System.Drawing.Point(78, 107);
             this.tbBillLandmark.Name = "tbBillLandmark";
-            this.tbBillLandmark.Size = new System.Drawing.Size(278, 25);
+            this.tbBillLandmark.Size = new System.Drawing.Size(269, 25);
             this.tbBillLandmark.TabIndex = 20;
             this.tbBillLandmark.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -263,8 +263,8 @@
             this.tbBillName.IntegralHeight = false;
             this.tbBillName.Location = new System.Drawing.Point(78, 20);
             this.tbBillName.Name = "tbBillName";
-            this.tbBillName.Size = new System.Drawing.Size(278, 25);
-            this.tbBillName.TabIndex = 2;
+            this.tbBillName.Size = new System.Drawing.Size(269, 25);
+            this.tbBillName.TabIndex = 0;
             this.tbBillName.SelectedIndexChanged += new System.EventHandler(this.cbBillName_SelectedIndexChanged);
             this.tbBillName.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -339,9 +339,8 @@
             this.tbBillCode.Enabled = false;
             this.tbBillCode.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillCode.Location = new System.Drawing.Point(305, 202);
-            this.tbBillCode.MinimumSize = new System.Drawing.Size(51, 26);
             this.tbBillCode.Name = "tbBillCode";
-            this.tbBillCode.Size = new System.Drawing.Size(51, 25);
+            this.tbBillCode.Size = new System.Drawing.Size(42, 25);
             this.tbBillCode.TabIndex = 6;
             this.tbBillCode.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -381,7 +380,7 @@
             this.tbBillGstin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBillGstin.Location = new System.Drawing.Point(78, 171);
             this.tbBillGstin.Name = "tbBillGstin";
-            this.tbBillGstin.Size = new System.Drawing.Size(279, 25);
+            this.tbBillGstin.Size = new System.Drawing.Size(269, 25);
             this.tbBillGstin.TabIndex = 4;
             this.tbBillGstin.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -394,7 +393,7 @@
             this.tbBillAddress.Location = new System.Drawing.Point(78, 51);
             this.tbBillAddress.Multiline = true;
             this.tbBillAddress.Name = "tbBillAddress";
-            this.tbBillAddress.Size = new System.Drawing.Size(279, 50);
+            this.tbBillAddress.Size = new System.Drawing.Size(269, 50);
             this.tbBillAddress.TabIndex = 3;
             this.tbBillAddress.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -491,7 +490,7 @@
             this.tbChallanNumber.Location = new System.Drawing.Point(510, 3);
             this.tbChallanNumber.Name = "tbChallanNumber";
             this.tbChallanNumber.Size = new System.Drawing.Size(213, 25);
-            this.tbChallanNumber.TabIndex = 11;
+            this.tbChallanNumber.TabIndex = 1;
             this.tbChallanNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // lbChallan
@@ -518,7 +517,7 @@
             this.tbInvoiceDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.tbInvoiceDate.Name = "tbInvoiceDate";
             this.tbInvoiceDate.Size = new System.Drawing.Size(211, 23);
-            this.tbInvoiceDate.TabIndex = 5;
+            this.tbInvoiceDate.TabIndex = 2;
             this.tbInvoiceDate.ValueChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbInvoiceDate
@@ -568,7 +567,7 @@
             this.btnAddChallan.Location = new System.Drawing.Point(510, 36);
             this.btnAddChallan.Name = "btnAddChallan";
             this.btnAddChallan.Size = new System.Drawing.Size(102, 27);
-            this.btnAddChallan.TabIndex = 8;
+            this.btnAddChallan.TabIndex = 3;
             this.btnAddChallan.Text = "Add Challan";
             this.btnAddChallan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddChallan.UseVisualStyleBackColor = true;
@@ -584,7 +583,7 @@
             this.btnClearChallan.Location = new System.Drawing.Point(618, 36);
             this.btnClearChallan.Name = "btnClearChallan";
             this.btnClearChallan.Size = new System.Drawing.Size(105, 27);
-            this.btnClearChallan.TabIndex = 9;
+            this.btnClearChallan.TabIndex = 4;
             this.btnClearChallan.Text = "Clear";
             this.btnClearChallan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearChallan.UseVisualStyleBackColor = true;
@@ -629,7 +628,7 @@
             this.gbShipping.Location = new System.Drawing.Point(372, 3);
             this.gbShipping.Name = "gbShipping";
             this.gbShipping.Size = new System.Drawing.Size(363, 231);
-            this.gbShipping.TabIndex = 6;
+            this.gbShipping.TabIndex = 3;
             this.gbShipping.TabStop = false;
             this.gbShipping.Text = "Shipping Details";
             // 
@@ -639,8 +638,8 @@
             this.tbShipPin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipPin.Location = new System.Drawing.Point(239, 139);
             this.tbShipPin.Name = "tbShipPin";
-            this.tbShipPin.Size = new System.Drawing.Size(118, 25);
-            this.tbShipPin.TabIndex = 31;
+            this.tbShipPin.Size = new System.Drawing.Size(109, 25);
+            this.tbShipPin.TabIndex = 5;
             this.tbShipPin.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbShipPin
@@ -662,7 +661,7 @@
             this.tbShipCity.Location = new System.Drawing.Point(78, 139);
             this.tbShipCity.Name = "tbShipCity";
             this.tbShipCity.Size = new System.Drawing.Size(118, 25);
-            this.tbShipCity.TabIndex = 29;
+            this.tbShipCity.TabIndex = 4;
             this.tbShipCity.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbShipCity
@@ -684,8 +683,8 @@
             this.tbShipLandmark.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipLandmark.Location = new System.Drawing.Point(78, 107);
             this.tbShipLandmark.Name = "tbShipLandmark";
-            this.tbShipLandmark.Size = new System.Drawing.Size(279, 25);
-            this.tbShipLandmark.TabIndex = 27;
+            this.tbShipLandmark.Size = new System.Drawing.Size(270, 25);
+            this.tbShipLandmark.TabIndex = 3;
             this.tbShipLandmark.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbShipLandmark
@@ -748,7 +747,7 @@
             this.tbShipState.Location = new System.Drawing.Point(78, 202);
             this.tbShipState.Name = "tbShipState";
             this.tbShipState.Size = new System.Drawing.Size(171, 25);
-            this.tbShipState.TabIndex = 10;
+            this.tbShipState.TabIndex = 7;
             this.tbShipState.SelectedIndexChanged += new System.EventHandler(this.cbShipState_SelectedIndexChanged);
             this.tbShipState.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -770,10 +769,9 @@
             this.tbShipCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbShipCode.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipCode.Location = new System.Drawing.Point(306, 202);
-            this.tbShipCode.MinimumSize = new System.Drawing.Size(51, 26);
             this.tbShipCode.Name = "tbShipCode";
-            this.tbShipCode.Size = new System.Drawing.Size(51, 25);
-            this.tbShipCode.TabIndex = 11;
+            this.tbShipCode.Size = new System.Drawing.Size(42, 25);
+            this.tbShipCode.TabIndex = 8;
             this.tbShipCode.Click += new System.EventHandler(this.tbShipCode_Click);
             this.tbShipCode.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             this.tbShipCode.Leave += new System.EventHandler(this.tbShipCode_Leave);
@@ -811,8 +809,8 @@
             this.tbShipGstin.Font = new System.Drawing.Font("Arial", 11.25F);
             this.tbShipGstin.Location = new System.Drawing.Point(78, 171);
             this.tbShipGstin.Name = "tbShipGstin";
-            this.tbShipGstin.Size = new System.Drawing.Size(279, 25);
-            this.tbShipGstin.TabIndex = 9;
+            this.tbShipGstin.Size = new System.Drawing.Size(270, 25);
+            this.tbShipGstin.TabIndex = 6;
             this.tbShipGstin.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // tbShipAddress
@@ -823,8 +821,8 @@
             this.tbShipAddress.Location = new System.Drawing.Point(78, 51);
             this.tbShipAddress.Multiline = true;
             this.tbShipAddress.Name = "tbShipAddress";
-            this.tbShipAddress.Size = new System.Drawing.Size(279, 50);
-            this.tbShipAddress.TabIndex = 8;
+            this.tbShipAddress.Size = new System.Drawing.Size(270, 50);
+            this.tbShipAddress.TabIndex = 2;
             this.tbShipAddress.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbShipAddress
@@ -846,8 +844,8 @@
             this.tbShipName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipName.Location = new System.Drawing.Point(78, 20);
             this.tbShipName.Name = "tbShipName";
-            this.tbShipName.Size = new System.Drawing.Size(279, 25);
-            this.tbShipName.TabIndex = 7;
+            this.tbShipName.Size = new System.Drawing.Size(270, 25);
+            this.tbShipName.TabIndex = 1;
             this.tbShipName.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // lbShipName
@@ -865,14 +863,14 @@
             // dgvProducts
             // 
             this.dgvProducts.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSerNo,
@@ -884,35 +882,35 @@
             this.colAmount,
             this.colDiscount,
             this.colTaxableVal});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle63.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle63;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvProducts.Location = new System.Drawing.Point(0, 373);
             this.dgvProducts.Name = "dgvProducts";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvProducts.Size = new System.Drawing.Size(827, 205);
-            this.dgvProducts.TabIndex = 16;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle64;
+            this.dgvProducts.Size = new System.Drawing.Size(844, 205);
+            this.dgvProducts.TabIndex = 5;
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
             this.dgvProducts.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProducts_RowsAdded);
             // 
             // colSerNo
             // 
-            dataGridViewCellStyle2.Format = "N0";
-            this.colSerNo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle58.Format = "N0";
+            this.colSerNo.DefaultCellStyle = dataGridViewCellStyle58;
             this.colSerNo.FillWeight = 91.70123F;
             this.colSerNo.HeaderText = "Ser. No.";
             this.colSerNo.Name = "colSerNo";
@@ -936,9 +934,9 @@
             // 
             // colQty
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle59.Format = "N2";
+            dataGridViewCellStyle59.NullValue = "0.00";
+            this.colQty.DefaultCellStyle = dataGridViewCellStyle59;
             this.colQty.FillWeight = 71.97796F;
             this.colQty.HeaderText = "Qty";
             this.colQty.Name = "colQty";
@@ -953,9 +951,9 @@
             // 
             // colRate
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.colRate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle60.Format = "N2";
+            dataGridViewCellStyle60.NullValue = "0.00";
+            this.colRate.DefaultCellStyle = dataGridViewCellStyle60;
             this.colRate.FillWeight = 81.26287F;
             this.colRate.HeaderText = "Rate";
             this.colRate.Name = "colRate";
@@ -971,9 +969,9 @@
             // 
             // colDiscount
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle61.Format = "N2";
+            dataGridViewCellStyle61.NullValue = "0.00";
+            this.colDiscount.DefaultCellStyle = dataGridViewCellStyle61;
             this.colDiscount.FillWeight = 104.4025F;
             this.colDiscount.HeaderText = "Discount";
             this.colDiscount.Name = "colDiscount";
@@ -982,9 +980,9 @@
             // colTaxableVal
             // 
             this.colTaxableVal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0.00";
-            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle62.Format = "N2";
+            dataGridViewCellStyle62.NullValue = "0.00";
+            this.colTaxableVal.DefaultCellStyle = dataGridViewCellStyle62;
             this.colTaxableVal.FillWeight = 124.9178F;
             this.colTaxableVal.HeaderText = "Taxable Value";
             this.colTaxableVal.Name = "colTaxableVal";
@@ -1029,8 +1027,8 @@
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(827, 72);
-            this.tlpTotals.TabIndex = 9;
+            this.tlpTotals.Size = new System.Drawing.Size(844, 72);
+            this.tlpTotals.TabIndex = 7;
             // 
             // lbTotalFinal
             // 
@@ -1038,7 +1036,7 @@
             this.lbTotalFinal.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(803, 40);
+            this.lbTotalFinal.Location = new System.Drawing.Point(820, 40);
             this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
             this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
@@ -1283,8 +1281,8 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 714);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(827, 43);
-            this.flpPanelButtons.TabIndex = 12;
+            this.flpPanelButtons.Size = new System.Drawing.Size(844, 43);
+            this.flpPanelButtons.TabIndex = 99;
             // 
             // gbAddCharge
             // 
@@ -1295,7 +1293,7 @@
             this.gbAddCharge.Location = new System.Drawing.Point(3, 3);
             this.gbAddCharge.Name = "gbAddCharge";
             this.gbAddCharge.Size = new System.Drawing.Size(824, 55);
-            this.gbAddCharge.TabIndex = 18;
+            this.gbAddCharge.TabIndex = 6;
             this.gbAddCharge.TabStop = false;
             this.gbAddCharge.Text = "Additional Charges";
             // 
@@ -1405,7 +1403,7 @@
             this.tbSgst.Location = new System.Drawing.Point(54, 3);
             this.tbSgst.Name = "tbSgst";
             this.tbSgst.Size = new System.Drawing.Size(30, 25);
-            this.tbSgst.TabIndex = 13;
+            this.tbSgst.TabIndex = 9;
             this.tbSgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             this.tbSgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
@@ -1431,7 +1429,7 @@
             this.tbCgst.Location = new System.Drawing.Point(142, 3);
             this.tbCgst.Name = "tbCgst";
             this.tbCgst.Size = new System.Drawing.Size(30, 25);
-            this.tbCgst.TabIndex = 14;
+            this.tbCgst.TabIndex = 10;
             this.tbCgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             this.tbCgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
@@ -1457,7 +1455,7 @@
             this.tbIgst.Location = new System.Drawing.Point(231, 3);
             this.tbIgst.Name = "tbIgst";
             this.tbIgst.Size = new System.Drawing.Size(30, 25);
-            this.tbIgst.TabIndex = 15;
+            this.tbIgst.TabIndex = 11;
             this.tbIgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             this.tbIgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
@@ -1468,7 +1466,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(827, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(844, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1477,7 +1475,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(827, 100);
+            this.flpA.Size = new System.Drawing.Size(844, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1497,8 +1495,8 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(827, 33);
-            this.flpGst.TabIndex = 25;
+            this.flpGst.Size = new System.Drawing.Size(844, 33);
+            this.flpGst.TabIndex = 2;
             // 
             // splitter3
             // 
@@ -1545,7 +1543,7 @@
             this.tbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.tbPaymentTerms.Name = "tbPaymentTerms";
             this.tbPaymentTerms.Size = new System.Drawing.Size(147, 21);
-            this.tbPaymentTerms.TabIndex = 28;
+            this.tbPaymentTerms.TabIndex = 13;
             this.tbPaymentTerms.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
             // flpAddCharge
@@ -1554,12 +1552,11 @@
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
             this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(827, 64);
+            this.flpAddCharge.Size = new System.Drawing.Size(844, 64);
             this.flpAddCharge.TabIndex = 26;
             // 
             // errorProviderTextBox
             // 
-            this.errorProviderTextBox.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProviderTextBox.ContainerControl = this;
             // 
             // Invoice
@@ -1568,7 +1565,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(844, 561);
+            this.ClientSize = new System.Drawing.Size(861, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);

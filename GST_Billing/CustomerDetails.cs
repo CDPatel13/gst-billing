@@ -41,32 +41,6 @@ namespace GST_Billing
             //tbShipPayment.SelectedIndex = -1;
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
-        {
-            bool name = !String.IsNullOrEmpty(tbName.Text) && !String.IsNullOrWhiteSpace(tbName.Text) &&
-                        !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
-            bool address = !String.IsNullOrEmpty(tbAddress.Text) && !String.IsNullOrWhiteSpace(tbAddress.Text) &&
-                           !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
-            bool phone = !String.IsNullOrEmpty(tbPhoneNo.Text) && !String.IsNullOrWhiteSpace(tbPhoneNo.Text) &&
-                           !String.IsNullOrEmpty(tbShipPhone.Text) && !String.IsNullOrWhiteSpace(tbShipPhone.Text);
-            bool gstin = !String.IsNullOrEmpty(tbGstin.Text) && !String.IsNullOrWhiteSpace(tbGstin.Text) &&
-                         !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
-            bool state = !String.IsNullOrEmpty(tbState.Text) && !String.IsNullOrWhiteSpace(tbState.Text) &&
-                         !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
-            bool code = !String.IsNullOrEmpty(tbCode.Text) && !String.IsNullOrWhiteSpace(tbCode.Text) &&
-                        !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
-
-            if (name && address && phone && gstin && state && code && tbGstin.Text.Length == 15 && tbShipGstin.Text.Length == 15)
-            {
-                btnSave.Enabled = true;
-            }
-            else
-            {
-                btnSave.Enabled = false;
-            }
-            syncBillingAndShipping();
-        }
-
         private void tbCode_LeaveFocus(object sender, EventArgs e)
         {
             TextBox tbCode = sender as TextBox;
@@ -81,7 +55,7 @@ namespace GST_Billing
             }
             else
             {
-                MessageBox.Show("State code must be between 1 and 36.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("State code must be between 1 and 36.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbState.SelectedIndex = 1;
             }
 
@@ -129,6 +103,7 @@ namespace GST_Billing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!ValidateData()) return;
             try
             {
                 DataSet ds = customerExists(tbName.Text);
@@ -167,55 +142,22 @@ namespace GST_Billing
                 }
                 if (NoOfRows > 0)
                 {
-                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message);
+                MessageBox.Show("Error :" + e1.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //Invoice invoice = new Invoice();
             //invoice.Show();
             //this.Hide();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataSet ds = customerExists(tbName.Text);
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
-                {
-                    tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["custContactPerson"]);
-                    tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["custaddress"]);
-                    tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["custlandmark"]);
-                    tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcity"]);
-                    tbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["custstate"]);
-                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custcode"]);
-                    tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpincode"]);
-                    tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["custemail"]);
-                    tbPhoneNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custphoneNumber"]);
-                    tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["custgstin"]);
-                    tbAadharNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custAadharNo"]);
-                    tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["custPanno"]);
-                    tbPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["custpaymentTermName"]);                    
-                    fillShippingDetailsFromDB(ds);
-                }
-                else
-                {
-                    MessageBox.Show("No records found", "Information", MessageBoxButtons.OK);
-                }
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show("Error :" + e1.Message);
-            }
         }
 
         private void cbBillShip_CheckedChanged(object sender, EventArgs e)
@@ -240,33 +182,6 @@ namespace GST_Billing
 
         }
 
-        private void updateShippingDetailsFromDB()
-        {
-            DataSet ds = customerExists(tbName.Text);
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                fillShippingDetailsFromDB(ds);
-            }
-        }
-
-        private void fillShippingDetailsFromDB(DataSet ds)
-        {
-            tbShipName.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipname"]);
-            tbShipContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipContactPerson"]);
-            tbShipAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipaddress"]);
-            tbShipLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["shiplandmark"]);
-            tbShipCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcity"]);
-            tbShipState.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipstate"]);
-            tbShipCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcode"]);
-            tbShipPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippincode"]);
-            tbShipEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipemail"]);
-            tbShipPhone.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipphoneNumber"]);
-            tbShipGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipgstin"]);
-            tbShipAadhar.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipAadharNo"]);
-            tbShipPanNumber.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipPanno"]);
-            tbShipPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippaymentTermName"]); 
-        }
-
         private void syncBillingAndShipping()
         {
             if(cbBillShip.Checked)
@@ -286,15 +201,6 @@ namespace GST_Billing
                 tbShipPayment.Text = tbPayment.Text;
                 tbShipContact.Text = tbContact.Text;
             }
-        }
-
-        public DataSet customerExists(string name)
-        {
-            string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "'";
-            DataSet ds = m1.selectData(sqlstr);
-            if (ds.Tables[0].Rows.Count > 0)
-                return ds;
-            return null;
         }
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
@@ -327,6 +233,15 @@ namespace GST_Billing
             syncBillingAndShipping();
         }
 
+        public DataSet customerExists(string name)
+        {
+            string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "'";
+            DataSet ds = m1.selectData(sqlstr);
+            if (ds.Tables[0].Rows.Count > 0)
+                return ds;
+            return null;
+        }
+
         private void fillDetailsFromDB(DataSet ds)
         {
             tbName.Text = Convert.ToString(ds.Tables[0].Rows[0]["custname"]);
@@ -346,6 +261,222 @@ namespace GST_Billing
             fillShippingDetailsFromDB(ds);
         }
 
+        private void updateShippingDetailsFromDB()
+        {
+            DataSet ds = customerExists(tbName.Text);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                fillShippingDetailsFromDB(ds);
+            }
+        }
 
+        private void fillShippingDetailsFromDB(DataSet ds)
+        {
+            tbShipName.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipname"]);
+            tbShipContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipContactPerson"]);
+            tbShipAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipaddress"]);
+            tbShipLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["shiplandmark"]);
+            tbShipCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcity"]);
+            tbShipState.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipstate"]);
+            tbShipCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipcode"]);
+            tbShipPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippincode"]);
+            tbShipEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipemail"]);
+            tbShipPhone.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipphoneNumber"]);
+            tbShipGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipgstin"]);
+            tbShipAadhar.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipAadharNo"]);
+            tbShipPanNumber.Text = Convert.ToString(ds.Tables[0].Rows[0]["shipPanno"]);
+            tbShipPayment.Text = Convert.ToString(ds.Tables[0].Rows[0]["shippaymentTermName"]);
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            bool name = String.IsNullOrWhiteSpace(tbName.Text);
+            bool address = String.IsNullOrWhiteSpace(tbAddress.Text);
+            bool phone = String.IsNullOrWhiteSpace(tbPhoneNo.Text);
+            bool gstin = String.IsNullOrWhiteSpace(tbGstin.Text);
+            bool state = String.IsNullOrWhiteSpace(tbState.Text);
+            bool code = String.IsNullOrWhiteSpace(tbCode.Text);
+            bool city = String.IsNullOrWhiteSpace(tbCity.Text);
+            bool pin = String.IsNullOrWhiteSpace(tbPinCode.Text);
+            if (!name)
+            {
+                errorProviderBilling.SetError(tbName, String.Empty);
+            }
+            if (!address)
+            {
+                errorProviderBilling.SetError(tbAddress, String.Empty);
+            }
+            if (!phone)
+            {
+                errorProviderBilling.SetError(tbPhoneNo, String.Empty);
+            }
+            if (!gstin)
+            {
+                errorProviderBilling.SetError(tbGstin, String.Empty);
+            }
+            if (!state)
+            {
+                errorProviderBilling.SetError(tbState, String.Empty);
+            }
+            if (!code)
+            {
+                errorProviderBilling.SetError(tbCode, String.Empty);
+            }
+            if (!city)
+            {
+                errorProviderBilling.SetError(tbCity, String.Empty);
+            }
+            if (!pin)
+            {
+                errorProviderBilling.SetError(tbPinCode, String.Empty);
+            }
+
+            name = !String.IsNullOrWhiteSpace(tbShipName.Text);
+            address = !String.IsNullOrWhiteSpace(tbShipAddress.Text);
+            phone = !String.IsNullOrWhiteSpace(tbShipPhone.Text);
+            gstin = !String.IsNullOrWhiteSpace(tbShipGstin.Text);
+            state = !String.IsNullOrWhiteSpace(tbShipState.Text);
+            code = !String.IsNullOrWhiteSpace(tbShipCode.Text);
+            city = !String.IsNullOrWhiteSpace(tbShipCity.Text);
+            pin = !String.IsNullOrWhiteSpace(tbShipPinCode.Text);
+
+            if (!name)
+            {
+                errorProviderBilling.SetError(tbShipName, String.Empty);
+            }
+            if (!address)
+            {
+                errorProviderBilling.SetError(tbShipAddress, String.Empty);
+            }
+            if (!gstin)
+            {
+                errorProviderBilling.SetError(tbShipGstin, String.Empty);
+            }
+            if (!state)
+            {
+                errorProviderBilling.SetError(tbShipState, String.Empty);
+            }
+            if (!code)
+            {
+                errorProviderBilling.SetError(tbShipCode, String.Empty);
+            }
+            if (!city)
+            {
+                errorProviderBilling.SetError(tbShipCity, String.Empty);
+            }
+            if (!pin)
+            {
+                errorProviderBilling.SetError(tbShipPinCode, String.Empty);
+            }
+
+            syncBillingAndShipping();
+        }
+
+        private bool ValidateData()
+        {
+            bool name = !String.IsNullOrWhiteSpace(tbName.Text);
+            bool address = !String.IsNullOrWhiteSpace(tbAddress.Text);
+            bool phone = !String.IsNullOrWhiteSpace(tbPhoneNo.Text);
+            bool gstin = !String.IsNullOrWhiteSpace(tbGstin.Text);
+            bool state = !String.IsNullOrWhiteSpace(tbState.Text);
+            bool code = !String.IsNullOrWhiteSpace(tbCode.Text);
+            bool city = !String.IsNullOrWhiteSpace(tbCity.Text);
+            bool pin = !String.IsNullOrWhiteSpace(tbPinCode.Text);
+
+            bool result = true;
+
+            if (!name)
+            {
+                errorProviderBilling.SetError(tbName, "Please enter customer name.");
+                result = false;
+            }
+            if (!address)
+            {
+                errorProviderBilling.SetError(tbAddress, "Please enter customer address.");
+                result = false;
+            }
+            if (!phone)
+            {
+                errorProviderBilling.SetError(tbPhoneNo, "Please enter customer address.");
+                result = false;
+            }
+            if (!gstin)
+            {
+                errorProviderBilling.SetError(tbGstin, "Please enter customer GSTIN.");
+                result = false;
+            }
+            if (!state)
+            {
+                errorProviderBilling.SetError(tbState, "Please enter customer state.");
+                result = false;
+            }
+            if (!code)
+            {
+                errorProviderBilling.SetError(tbCode, "Please enter customer state code.");
+                result = false;
+            }
+            if (!city)
+            {
+                errorProviderBilling.SetError(tbCity, "Please enter customer city.");
+                result = false;
+            }
+            if (!pin)
+            {
+                errorProviderBilling.SetError(tbPinCode, "Please enter customer pincode.");
+                result = false;
+            }
+
+            if(cbBillShip.Checked)
+            {
+                return result;
+            }
+
+            name    = !String.IsNullOrWhiteSpace(tbShipName.Text);
+            address = !String.IsNullOrWhiteSpace(tbShipAddress.Text);
+            phone   = !String.IsNullOrWhiteSpace(tbShipPhone.Text);
+            gstin   = !String.IsNullOrWhiteSpace(tbShipGstin.Text);
+            state   = !String.IsNullOrWhiteSpace(tbShipState.Text);
+            code    = !String.IsNullOrWhiteSpace(tbShipCode.Text);
+            city    = !String.IsNullOrWhiteSpace(tbShipCity.Text);
+            pin     = !String.IsNullOrWhiteSpace(tbShipPinCode.Text);
+
+            if (!name)
+            {
+                errorProviderBilling.SetError(tbShipName, "Please enter consignee name.");
+                result = false;
+            }
+            if (!address)
+            {
+                errorProviderBilling.SetError(tbShipAddress, "Please enter consignee address.");
+                result = false;
+            }
+            if (!gstin)
+            {
+                errorProviderBilling.SetError(tbShipGstin, "Please enter consignee GSTIN.");
+                result = false;
+            }
+            if (!state)
+            {
+                errorProviderBilling.SetError(tbShipState, "Please enter consignee state.");
+                result = false;
+            }
+            if (!code)
+            {
+                errorProviderBilling.SetError(tbShipCode, "Please enter consignee state code.");
+                result = false;
+            }
+            if (!city)
+            {
+                errorProviderBilling.SetError(tbShipCity, "Please enter consignee city.");
+                result = false;
+            }
+            if (!pin)
+            {
+                errorProviderBilling.SetError(tbShipPinCode, "Please enter consignee pincode.");
+                result = false;
+            }
+
+            return result;
+        }
     }
 }

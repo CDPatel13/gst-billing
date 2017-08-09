@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             this.lbName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
@@ -90,10 +91,14 @@
             this.tbShipContact = new System.Windows.Forms.TextBox();
             this.lbShipPayment = new System.Windows.Forms.Label();
             this.tbShipPayment = new System.Windows.Forms.ComboBox();
+            this.errorProviderBilling = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderShipping = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbBilling.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.gbShipping.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBilling)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderShipping)).BeginInit();
             this.SuspendLayout();
             // 
             // lbName
@@ -111,7 +116,7 @@
             this.tbName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.Location = new System.Drawing.Point(128, 16);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(620, 23);
+            this.tbName.Size = new System.Drawing.Size(614, 23);
             this.tbName.TabIndex = 0;
             this.tbName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -120,7 +125,7 @@
             this.tbAddress.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAddress.Location = new System.Drawing.Point(128, 45);
             this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(620, 23);
+            this.tbAddress.Size = new System.Drawing.Size(614, 23);
             this.tbAddress.TabIndex = 1;
             this.tbAddress.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -137,7 +142,7 @@
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(511, 161);
+            this.tbEmail.Location = new System.Drawing.Point(505, 161);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(237, 23);
             this.tbEmail.TabIndex = 8;
@@ -147,7 +152,7 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(455, 164);
+            this.lbEmail.Location = new System.Drawing.Point(449, 165);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(50, 16);
             this.lbEmail.TabIndex = 8;
@@ -156,7 +161,7 @@
             // tbPhoneNo
             // 
             this.tbPhoneNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhoneNo.Location = new System.Drawing.Point(511, 132);
+            this.tbPhoneNo.Location = new System.Drawing.Point(505, 132);
             this.tbPhoneNo.Name = "tbPhoneNo";
             this.tbPhoneNo.Size = new System.Drawing.Size(237, 23);
             this.tbPhoneNo.TabIndex = 7;
@@ -167,7 +172,7 @@
             // 
             this.lbPhone.AutoSize = true;
             this.lbPhone.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhone.Location = new System.Drawing.Point(429, 135);
+            this.lbPhone.Location = new System.Drawing.Point(423, 136);
             this.lbPhone.Name = "lbPhone";
             this.lbPhone.Size = new System.Drawing.Size(76, 16);
             this.lbPhone.TabIndex = 10;
@@ -196,7 +201,6 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(0, 515);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(763, 29);
@@ -351,7 +355,7 @@
             // 
             this.lbCity.AutoSize = true;
             this.lbCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCity.Location = new System.Drawing.Point(471, 77);
+            this.lbCity.Location = new System.Drawing.Point(465, 77);
             this.lbCity.Name = "lbCity";
             this.lbCity.Size = new System.Drawing.Size(34, 16);
             this.lbCity.TabIndex = 22;
@@ -360,7 +364,7 @@
             // tbCity
             // 
             this.tbCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCity.Location = new System.Drawing.Point(511, 74);
+            this.tbCity.Location = new System.Drawing.Point(505, 74);
             this.tbCity.Name = "tbCity";
             this.tbCity.Size = new System.Drawing.Size(237, 23);
             this.tbCity.TabIndex = 3;
@@ -370,7 +374,7 @@
             // 
             this.lbPinCode.AutoSize = true;
             this.lbPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPinCode.Location = new System.Drawing.Point(434, 106);
+            this.lbPinCode.Location = new System.Drawing.Point(429, 106);
             this.lbPinCode.Name = "lbPinCode";
             this.lbPinCode.Size = new System.Drawing.Size(71, 16);
             this.lbPinCode.TabIndex = 26;
@@ -379,7 +383,7 @@
             // tbPinCode
             // 
             this.tbPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPinCode.Location = new System.Drawing.Point(511, 103);
+            this.tbPinCode.Location = new System.Drawing.Point(505, 103);
             this.tbPinCode.MaxLength = 6;
             this.tbPinCode.Name = "tbPinCode";
             this.tbPinCode.Size = new System.Drawing.Size(237, 23);
@@ -431,7 +435,7 @@
             // 
             this.lbPanNo.AutoSize = true;
             this.lbPanNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPanNo.Location = new System.Drawing.Point(447, 192);
+            this.lbPanNo.Location = new System.Drawing.Point(441, 194);
             this.lbPanNo.Name = "lbPanNo";
             this.lbPanNo.Size = new System.Drawing.Size(58, 16);
             this.lbPanNo.TabIndex = 24;
@@ -440,7 +444,7 @@
             // tbPanNo
             // 
             this.tbPanNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPanNo.Location = new System.Drawing.Point(511, 189);
+            this.tbPanNo.Location = new System.Drawing.Point(505, 190);
             this.tbPanNo.MaxLength = 10;
             this.tbPanNo.Name = "tbPanNo";
             this.tbPanNo.Size = new System.Drawing.Size(237, 23);
@@ -452,7 +456,7 @@
             // 
             this.lbPayment.AutoSize = true;
             this.lbPayment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPayment.Location = new System.Drawing.Point(392, 221);
+            this.lbPayment.Location = new System.Drawing.Point(386, 223);
             this.lbPayment.Name = "lbPayment";
             this.lbPayment.Size = new System.Drawing.Size(113, 16);
             this.lbPayment.TabIndex = 34;
@@ -462,7 +466,7 @@
             // 
             this.tbPayment.Font = new System.Drawing.Font("Arial", 10F);
             this.tbPayment.FormattingEnabled = true;
-            this.tbPayment.Location = new System.Drawing.Point(511, 218);
+            this.tbPayment.Location = new System.Drawing.Point(505, 219);
             this.tbPayment.Name = "tbPayment";
             this.tbPayment.Size = new System.Drawing.Size(237, 24);
             this.tbPayment.TabIndex = 13;
@@ -603,7 +607,7 @@
             // 
             this.lbShipCity.AutoSize = true;
             this.lbShipCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipCity.Location = new System.Drawing.Point(471, 77);
+            this.lbShipCity.Location = new System.Drawing.Point(465, 77);
             this.lbShipCity.Name = "lbShipCity";
             this.lbShipCity.Size = new System.Drawing.Size(34, 16);
             this.lbShipCity.TabIndex = 22;
@@ -613,7 +617,7 @@
             // 
             this.tbShipCity.Enabled = false;
             this.tbShipCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShipCity.Location = new System.Drawing.Point(511, 74);
+            this.tbShipCity.Location = new System.Drawing.Point(505, 74);
             this.tbShipCity.Name = "tbShipCity";
             this.tbShipCity.Size = new System.Drawing.Size(237, 23);
             this.tbShipCity.TabIndex = 18;
@@ -623,7 +627,7 @@
             // 
             this.lbShipPinCode.AutoSize = true;
             this.lbShipPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipPinCode.Location = new System.Drawing.Point(434, 106);
+            this.lbShipPinCode.Location = new System.Drawing.Point(428, 106);
             this.lbShipPinCode.Name = "lbShipPinCode";
             this.lbShipPinCode.Size = new System.Drawing.Size(71, 16);
             this.lbShipPinCode.TabIndex = 26;
@@ -633,7 +637,7 @@
             // 
             this.tbShipPinCode.Enabled = false;
             this.tbShipPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShipPinCode.Location = new System.Drawing.Point(511, 103);
+            this.tbShipPinCode.Location = new System.Drawing.Point(505, 103);
             this.tbShipPinCode.MaxLength = 6;
             this.tbShipPinCode.Name = "tbShipPinCode";
             this.tbShipPinCode.Size = new System.Drawing.Size(237, 23);
@@ -753,7 +757,7 @@
             // 
             this.lbShipPhone.AutoSize = true;
             this.lbShipPhone.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipPhone.Location = new System.Drawing.Point(429, 135);
+            this.lbShipPhone.Location = new System.Drawing.Point(423, 135);
             this.lbShipPhone.Name = "lbShipPhone";
             this.lbShipPhone.Size = new System.Drawing.Size(76, 16);
             this.lbShipPhone.TabIndex = 10;
@@ -763,7 +767,7 @@
             // 
             this.tbShipPhone.Enabled = false;
             this.tbShipPhone.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShipPhone.Location = new System.Drawing.Point(511, 132);
+            this.tbShipPhone.Location = new System.Drawing.Point(505, 132);
             this.tbShipPhone.Name = "tbShipPhone";
             this.tbShipPhone.Size = new System.Drawing.Size(237, 23);
             this.tbShipPhone.TabIndex = 22;
@@ -774,7 +778,7 @@
             // 
             this.lbShipEmail.AutoSize = true;
             this.lbShipEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipEmail.Location = new System.Drawing.Point(455, 165);
+            this.lbShipEmail.Location = new System.Drawing.Point(445, 165);
             this.lbShipEmail.Name = "lbShipEmail";
             this.lbShipEmail.Size = new System.Drawing.Size(50, 16);
             this.lbShipEmail.TabIndex = 8;
@@ -784,7 +788,7 @@
             // 
             this.tbShipEmail.Enabled = false;
             this.tbShipEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShipEmail.Location = new System.Drawing.Point(511, 161);
+            this.tbShipEmail.Location = new System.Drawing.Point(505, 161);
             this.tbShipEmail.Name = "tbShipEmail";
             this.tbShipEmail.Size = new System.Drawing.Size(237, 23);
             this.tbShipEmail.TabIndex = 23;
@@ -816,7 +820,7 @@
             // 
             this.lbShipPanNumber.AutoSize = true;
             this.lbShipPanNumber.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipPanNumber.Location = new System.Drawing.Point(447, 192);
+            this.lbShipPanNumber.Location = new System.Drawing.Point(442, 192);
             this.lbShipPanNumber.Name = "lbShipPanNumber";
             this.lbShipPanNumber.Size = new System.Drawing.Size(58, 16);
             this.lbShipPanNumber.TabIndex = 24;
@@ -826,7 +830,7 @@
             // 
             this.tbShipPanNumber.Enabled = false;
             this.tbShipPanNumber.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShipPanNumber.Location = new System.Drawing.Point(511, 189);
+            this.tbShipPanNumber.Location = new System.Drawing.Point(505, 189);
             this.tbShipPanNumber.MaxLength = 10;
             this.tbShipPanNumber.Name = "tbShipPanNumber";
             this.tbShipPanNumber.Size = new System.Drawing.Size(237, 23);
@@ -858,7 +862,7 @@
             // 
             this.lbShipPayment.AutoSize = true;
             this.lbShipPayment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbShipPayment.Location = new System.Drawing.Point(392, 221);
+            this.lbShipPayment.Location = new System.Drawing.Point(386, 221);
             this.lbShipPayment.Name = "lbShipPayment";
             this.lbShipPayment.Size = new System.Drawing.Size(113, 16);
             this.lbShipPayment.TabIndex = 34;
@@ -869,10 +873,18 @@
             this.tbShipPayment.Enabled = false;
             this.tbShipPayment.Font = new System.Drawing.Font("Arial", 10F);
             this.tbShipPayment.FormattingEnabled = true;
-            this.tbShipPayment.Location = new System.Drawing.Point(511, 218);
+            this.tbShipPayment.Location = new System.Drawing.Point(505, 218);
             this.tbShipPayment.Name = "tbShipPayment";
             this.tbShipPayment.Size = new System.Drawing.Size(237, 24);
             this.tbShipPayment.TabIndex = 28;
+            // 
+            // errorProviderBilling
+            // 
+            this.errorProviderBilling.ContainerControl = this;
+            // 
+            // errorProviderShipping
+            // 
+            this.errorProviderShipping.ContainerControl = this;
             // 
             // CustomerDetails
             // 
@@ -897,6 +909,8 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.gbShipping.ResumeLayout(false);
             this.gbShipping.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBilling)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderShipping)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -965,5 +979,7 @@
         private System.Windows.Forms.CheckBox cbBillShip;
         private System.Windows.Forms.ComboBox tbPayment;
         private System.Windows.Forms.ComboBox tbShipPayment;
+        private System.Windows.Forms.ErrorProvider errorProviderBilling;
+        private System.Windows.Forms.ErrorProvider errorProviderShipping;
 	}
 }

@@ -46,7 +46,9 @@ namespace GST_Billing
         
         static Boolean Proceed()
         {
+#if DEBUG
             return true;
+#endif
             Boolean proceed = false;
             try
             {

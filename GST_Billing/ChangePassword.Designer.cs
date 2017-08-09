@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             this.lbOldPassword = new System.Windows.Forms.Label();
             this.lbPassword = new System.Windows.Forms.Label();
             this.lbConfirmPassword = new System.Windows.Forms.Label();
             this.btnChange = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbOldPassword = new System.Windows.Forms.TextBox();
+            this.tbNewPassword = new System.Windows.Forms.TextBox();
+            this.tbConfirmPassword = new System.Windows.Forms.TextBox();
             this.lbMain = new System.Windows.Forms.Label();
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.lbUserName = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbOldPassword.AutoSize = true;
             this.lbOldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOldPassword.ForeColor = System.Drawing.Color.Indigo;
+            this.lbOldPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbOldPassword.Location = new System.Drawing.Point(59, 63);
             this.lbOldPassword.Name = "lbOldPassword";
             this.lbOldPassword.Size = new System.Drawing.Size(101, 16);
@@ -59,7 +60,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.ForeColor = System.Drawing.Color.Indigo;
+            this.lbPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbPassword.Location = new System.Drawing.Point(53, 89);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(107, 16);
@@ -72,7 +73,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbConfirmPassword.AutoSize = true;
             this.lbConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbConfirmPassword.ForeColor = System.Drawing.Color.Indigo;
+            this.lbConfirmPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbConfirmPassword.Location = new System.Drawing.Point(5, 115);
             this.lbConfirmPassword.Name = "lbConfirmPassword";
             this.lbConfirmPassword.Size = new System.Drawing.Size(155, 16);
@@ -84,46 +85,49 @@
             this.btnChange.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChange.ForeColor = System.Drawing.Color.Brown;
+            this.btnChange.Image = ((System.Drawing.Image)(resources.GetObject("btnChange.Image")));
             this.btnChange.Location = new System.Drawing.Point(0, 140);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(378, 25);
             this.btnChange.TabIndex = 3;
             this.btnChange.Text = "Change";
+            this.btnChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChange.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
-            // textBox1
+            // tbOldPassword
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbOldPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(167, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.UseSystemPasswordChar = true;
+            this.tbOldPassword.Location = new System.Drawing.Point(167, 62);
+            this.tbOldPassword.Name = "tbOldPassword";
+            this.tbOldPassword.PasswordChar = '*';
+            this.tbOldPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbOldPassword.TabIndex = 4;
+            this.tbOldPassword.UseSystemPasswordChar = true;
             // 
-            // textBox2
+            // tbNewPassword
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(167, 88);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(199, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.tbNewPassword.Location = new System.Drawing.Point(167, 88);
+            this.tbNewPassword.Name = "tbNewPassword";
+            this.tbNewPassword.PasswordChar = '*';
+            this.tbNewPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbNewPassword.TabIndex = 5;
+            this.tbNewPassword.UseSystemPasswordChar = true;
             // 
-            // textBox3
+            // tbConfirmPassword
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(167, 114);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PasswordChar = '*';
-            this.textBox3.Size = new System.Drawing.Size(199, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.tbConfirmPassword.Location = new System.Drawing.Point(167, 114);
+            this.tbConfirmPassword.Name = "tbConfirmPassword";
+            this.tbConfirmPassword.PasswordChar = '*';
+            this.tbConfirmPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbConfirmPassword.TabIndex = 6;
+            this.tbConfirmPassword.UseSystemPasswordChar = true;
             // 
             // lbMain
             // 
@@ -131,7 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbMain.AutoSize = true;
             this.lbMain.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMain.ForeColor = System.Drawing.Color.Purple;
+            this.lbMain.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.lbMain.Location = new System.Drawing.Point(121, 9);
             this.lbMain.Name = "lbMain";
             this.lbMain.Size = new System.Drawing.Size(149, 18);
@@ -153,7 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbUserName.AutoSize = true;
             this.lbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.ForeColor = System.Drawing.Color.Indigo;
+            this.lbUserName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbUserName.Location = new System.Drawing.Point(74, 38);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(86, 16);
@@ -164,14 +168,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(378, 165);
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.lbMain);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbConfirmPassword);
+            this.Controls.Add(this.tbNewPassword);
+            this.Controls.Add(this.tbOldPassword);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.lbConfirmPassword);
             this.Controls.Add(this.lbPassword);
@@ -195,9 +199,9 @@
         private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.Label lbConfirmPassword;
         private System.Windows.Forms.Button btnChange;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbOldPassword;
+        private System.Windows.Forms.TextBox tbNewPassword;
+        private System.Windows.Forms.TextBox tbConfirmPassword;
         private System.Windows.Forms.Label lbMain;
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label lbUserName;
