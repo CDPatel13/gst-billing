@@ -24,20 +24,20 @@ namespace GST_Billing
             {
                 if (ValidateInputs())
                 {
-                    string sqlstr = "SELECT * FROM loginDetails WHERE username = '" + tbUserName.Text + "' AND password = '" + textBox1.Text + "' ";
+                    string sqlstr = "SELECT * FROM loginDetails WHERE username = '" + tbUserName.Text + "' AND password = '" + tbOldPassword.Text + "' ";
                     DataSet ds = m1.selectData(sqlstr);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        sqlstr = "UPDATE loginDetails set password='" + textBox2.Text + "' WHERE loginId = " + Convert.ToInt32(ds.Tables[0].Rows[0]["loginId"]) + " ";
+                        sqlstr = "UPDATE loginDetails set password='" + tbNewPassword.Text + "' WHERE loginId = " + Convert.ToInt32(ds.Tables[0].Rows[0]["loginId"]) + " ";
                         int NoOfRows = m1.Ins_Upd_Del(sqlstr);
                         if (NoOfRows > 0)
                         {
-                            MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                            MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                            MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -48,21 +48,21 @@ namespace GST_Billing
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message);
+                MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private bool ValidateInputs()
         {
-            bool username = !String.IsNullOrEmpty(tbUserName.Text) && !String.IsNullOrWhiteSpace(tbUserName.Text);
-            bool oldpassword = !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrWhiteSpace(textBox1.Text);
-            bool newPassword = !String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrWhiteSpace(textBox2.Text);
-            bool confirmPassword = !String.IsNullOrEmpty(textBox3.Text) && !String.IsNullOrWhiteSpace(textBox3.Text);
+            bool username = !String.IsNullOrWhiteSpace(tbUserName.Text);
+            bool oldpassword = !String.IsNullOrWhiteSpace(tbOldPassword.Text);
+            bool newPassword = !String.IsNullOrWhiteSpace(tbNewPassword.Text);
+            bool confirmPassword = !String.IsNullOrWhiteSpace(tbConfirmPassword.Text);
 
             if (username && oldpassword && newPassword && confirmPassword)
             {
-                if (textBox2.Text == textBox3.Text)
+                if (tbNewPassword.Text == tbConfirmPassword.Text)
                 {
                     return true;
                 }
@@ -80,7 +80,12 @@ namespace GST_Billing
 
         private void ChangePassword_Load(object sender, EventArgs e)
         {
-            // TODO : Get current user name
+            string sqlstr = "SELECT username FROM loginDetails";
+            DataSet ds = m1.selectData(sqlstr);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                tbUserName.Text = ds.Tables[0].Rows[0][0].ToString();
+            }
         }
     }
 }

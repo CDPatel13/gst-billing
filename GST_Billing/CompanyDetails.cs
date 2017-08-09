@@ -88,7 +88,7 @@ namespace GST_Billing
                     tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
                     tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["landmark"]);
                     tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
-                    cbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                    tbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
                     tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
                     tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
                     tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
@@ -100,38 +100,56 @@ namespace GST_Billing
                     tbAccountNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["accountno"]);
                     tbIfscCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["ifsccode"]);
                 }
-                else
-                {
-                    MessageBox.Show("No records found", "Information", MessageBoxButtons.OK);
-                }
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message);
+                MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         void textBox_TextChanged(object sender, System.EventArgs e)
         {
-            bool name = !String.IsNullOrEmpty(tbCompanyName.Text) && !String.IsNullOrWhiteSpace(tbCompanyName.Text);
-            bool address = !String.IsNullOrEmpty(tbAddress.Text) && !String.IsNullOrWhiteSpace(tbAddress.Text);
-            bool contact = !String.IsNullOrEmpty(tbContact.Text) && !String.IsNullOrWhiteSpace(tbContact.Text);
-            bool gstin = !String.IsNullOrEmpty(tbGstin.Text) && !String.IsNullOrWhiteSpace(tbGstin.Text);
-            bool state = !String.IsNullOrEmpty(cbState.Text) && !String.IsNullOrWhiteSpace(cbState.Text);
-            bool code = !String.IsNullOrEmpty(tbCode.Text) && !String.IsNullOrWhiteSpace(tbCode.Text);
+            bool name = !String.IsNullOrWhiteSpace(tbCompanyName.Text);
+            bool address = !String.IsNullOrWhiteSpace(tbAddress.Text);
+            bool gstin = !String.IsNullOrWhiteSpace(tbGstin.Text);
+            bool state = !String.IsNullOrWhiteSpace(tbState.Text);
+            bool code = !String.IsNullOrWhiteSpace(tbCode.Text);
+            bool pin = !String.IsNullOrWhiteSpace(tbPinCode.Text);
+            bool city = !String.IsNullOrWhiteSpace(tbCity.Text);
 
-            if (name && address && contact && gstin && state && code && tbGstin.Text.Length == 15)
+            if (!name)
             {
-                btnSave.Enabled = true;
+                errorProviderTextBox.SetError(tbCompanyName, String.Empty);
             }
-            else
+            if (!address)
             {
-                btnSave.Enabled = false;
+                errorProviderTextBox.SetError(tbAddress, String.Empty);
+            }
+            if (!gstin)
+            {
+                errorProviderTextBox.SetError(tbGstin, String.Empty);
+            }
+            if (!state)
+            {
+                errorProviderTextBox.SetError(tbState, String.Empty);
+            }
+            if (!code)
+            {
+                errorProviderTextBox.SetError(tbCode, String.Empty);
+            }
+            if (!city)
+            {
+                errorProviderTextBox.SetError(tbCity, String.Empty);
+            }
+            if (!pin)
+            {
+                errorProviderTextBox.SetError(tbPinCode, String.Empty);
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!validateData()) return;
             try
             {
                 string sqlstr = "SELECT * from userDetails";
@@ -143,7 +161,7 @@ namespace GST_Billing
                     NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
                 }
                 sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
-                                "VALUES('" + tbCompanyName.Text + "', '" + tbContactPerson.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + cbState.SelectedItem + "','"
+                                "VALUES('" + tbCompanyName.Text + "', '" + tbContactPerson.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + tbState.SelectedItem + "','"
                                             + tbCode.Text + "', '" + tbPinCode.Text + "', '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "', '" + tbPanNo.Text + "','"
                                             + tbBankName.Text + "', '" + tbBranch.Text + "', '" + tbAccountNo.Text + "', '" + tbIfscCode.Text + "')";
                 NoOfRows = m1.Ins_Upd_Del(sqlstr);
@@ -155,26 +173,77 @@ namespace GST_Billing
                     this.CompanyEmail = tbEmail.Text;
                     this.CompanyContact = tbContact.Text;
 
-                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = System.Windows.Forms.DialogResult.Abort;
                     return;
                 }
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message);
+                MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool validateData()
+        {
+            bool name = !String.IsNullOrWhiteSpace(tbCompanyName.Text);
+            bool address = !String.IsNullOrWhiteSpace(tbAddress.Text);
+            bool gstin = !String.IsNullOrWhiteSpace(tbGstin.Text);
+            bool state = !String.IsNullOrWhiteSpace(tbState.Text);
+            bool code = !String.IsNullOrWhiteSpace(tbCode.Text);
+            bool pin = !String.IsNullOrWhiteSpace(tbPinCode.Text);
+            bool city = !String.IsNullOrWhiteSpace(tbCity.Text);
+
+            bool result = true;
+
+            if (!name)
+            {
+                errorProviderTextBox.SetError(tbCompanyName, "Please enter company name.");
+                result = false;
+            }
+            if (!address)
+            {
+                errorProviderTextBox.SetError(tbAddress, "Please enter company address.");
+                result = false;
+            }
+            if (!gstin)
+            {
+                errorProviderTextBox.SetError(tbGstin, "Please enter company GSTIN.");
+                result = false;
+            }
+            if (!state)
+            {
+                errorProviderTextBox.SetError(tbState, "Please enter company state.");
+                result = false;
+            }
+            if (!code)
+            {
+                errorProviderTextBox.SetError(tbCode, "Please enter company state code.");
+                result = false;
+            }
+            if (!city)
+            {
+                errorProviderTextBox.SetError(tbCity, "Please enter company city.");
+                result = false;
+            }
+            if (!pin)
+            {
+                errorProviderTextBox.SetError(tbPinCode, "Please enter company pincode.");
+                result = false;
+            }
+
+            return result;
         }
 
         private void cbState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string state = baseModel.ToPascalCase(cbState.Text);
+            string state = baseModel.ToPascalCase(tbState.Text);
             tbCode.Text = baseModel.stateCodes[state];
         }
 
@@ -188,19 +257,19 @@ namespace GST_Billing
 
         private void tbCode_LeaveFocus(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(cbState.Text))
+            if (!String.IsNullOrEmpty(tbState.Text))
             {
                 int code = !String.IsNullOrEmpty(tbCode.Text) ? int.Parse(tbCode.Text) : 1;
                 string codeStr = String.Format("{0:D2}", code);
                 if (code > 0 && code < 37)
                 {
                     string state = baseModel.stateCodes.FirstOrDefault(x => x.Value == codeStr).Key;
-                    cbState.SelectedIndex = cbState.FindStringExact(state);
+                    tbState.SelectedIndex = tbState.FindStringExact(state);
                 }
                 else
                 {
-                    MessageBox.Show("State code must be between 1 and 36.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    cbState.SelectedIndex = 1;
+                    MessageBox.Show("State code must be between 1 and 36.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbState.SelectedIndex = 1;
                 }
             }
         }

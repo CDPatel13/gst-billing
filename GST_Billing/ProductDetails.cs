@@ -77,6 +77,7 @@ namespace GST_Billing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!validateData()) return;
             try
             {
                 DataSet ds = productExists(tbProdDes.Text);
@@ -110,23 +111,28 @@ namespace GST_Billing
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message);
+                MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
+        private bool validateData()
         {
-            if( !String.IsNullOrEmpty(tbProdDes.Text) &&
-                !String.IsNullOrEmpty(tbProdHsnCode.Text) &&
-                !String.IsNullOrEmpty(tbProdRate.Text) &&
-                !String.IsNullOrEmpty(tbProdUnit.Text))
+            bool productDes = !String.IsNullOrWhiteSpace(tbProdDes.Text);
+            bool unit = !String.IsNullOrWhiteSpace(tbProdUnit.Text);
+
+            bool result = true;
+            if(!productDes)
             {
-                btnSave.Enabled = true;
+                validatorTextBox.SetError(tbProdDes, "Please enter product description.");
+                result = false;
             }
-            else
+            if(!unit)
             {
-                btnSave.Enabled = false;
+                validatorTextBox.SetError(tbProdUnit, "Please enter unit for the product.");
+                result = false;
             }
+
+            return result;
         }
     }
 }
