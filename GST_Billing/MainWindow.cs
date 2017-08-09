@@ -95,9 +95,9 @@ namespace GST_Billing
         private void btnEditCust_Click(object sender, EventArgs e)
         {
             string custName = String.Empty;
-            DataGridViewRow row = dgvCustomer.SelectedRows[0];
-            if(row!= null)
+            if(dgvCustomer.SelectedRows.Count > 0)
             { 
+                DataGridViewRow row = dgvCustomer.SelectedRows[0];
                 custName = (string)row.Cells["Customer Name"].Value;
 
                 CustomerDetails editCustomer = new CustomerDetails(custName);
@@ -109,13 +109,18 @@ namespace GST_Billing
 
         private void btnDeleteCust_Click(object sender, EventArgs e)
         {
-            string sqlstr = "DELETE FROM customerDetails WHERE custname='"+(string)dgvCustomer.SelectedRows[0].Cells[0].Value+"'";
-            DialogResult result = MessageBox.Show("Do you really want to delete this customer?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
+            if (dgvCustomer.SelectedRows.Count > 0)
             {
-                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
-                dgvCustomer.Rows.RemoveAt(dgvCustomer.SelectedRows[0].Index);
+                DataGridViewRow row = dgvCustomer.SelectedRows[0];
+
+                string sqlstr = "DELETE FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "'";
+                DialogResult result = MessageBox.Show("Do you really want to delete this customer?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                    dgvCustomer.Rows.RemoveAt(dgvCustomer.SelectedRows[0].Index);
+                }
             }
         }
 
@@ -239,9 +244,9 @@ namespace GST_Billing
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
             string prodname = String.Empty;
-            DataGridViewRow row = dgvProducts.SelectedRows[0];
-            if (row != null)
+            if (dgvProducts.SelectedRows.Count > 0)
             {
+                DataGridViewRow row = dgvProducts.SelectedRows[0];
                 prodname = (string)row.Cells["Product Name"].Value;
 
                 ProductDetails editProduct = new ProductDetails(prodname);
@@ -351,10 +356,10 @@ namespace GST_Billing
         {
             int invoiceToEdit = 0;
             string custName = String.Empty;
-            DataGridViewRow row = dgvInvoice.SelectedRows[0];
-
-            if (row != null)
+            if(dgvInvoice.SelectedRows.Count > 0)
             {
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
+
                 invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
 
                 Invoice editInvoice = new Invoice(invoiceToEdit);
@@ -366,23 +371,28 @@ namespace GST_Billing
 
         private void btnDeleteInvoice_Click(object sender, EventArgs e)
         {
-            string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "'";
-            DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            // TODO : Delete selected invoice from database
-            if (result == DialogResult.Yes)
+            if (dgvInvoice.SelectedRows.Count > 0)
             {
-                int no_of_rows = m1.Ins_Upd_Del(sqlstr);
-                if(no_of_rows > 0)
-                    dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
+
+                string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "'";
+                DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // TODO : Delete selected invoice from database
+                if (result == DialogResult.Yes)
+                {
+                    int no_of_rows = m1.Ins_Upd_Del(sqlstr);
+                    if (no_of_rows > 0)
+                        dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
+                }
             }
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvInvoice.SelectedRows[0];
-            if (row != null)
+            if (dgvInvoice.SelectedRows.Count > 0)
             {
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
                 PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value);
                 objPrintInvoice.MdiParent = this.MdiParent;
                 objPrintInvoice.Show();
@@ -415,10 +425,9 @@ namespace GST_Billing
             int invoiceToEdit = 0;
             string custName = String.Empty;
             double paymentDone = 0;
-            DataGridViewRow row = dgvInvoice.SelectedRows[0];
-
-            if (row != null)
+            if (dgvInvoice.SelectedRows.Count > 0)
             {
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
                 invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
                 custName = (string)row.Cells["Customer Name"].Value;
                 double amount = double.Parse(row.Cells["Total Bill Amount"].Value.ToString());
