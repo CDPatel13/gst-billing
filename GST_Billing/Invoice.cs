@@ -21,6 +21,7 @@ namespace GST_Billing
 		List<string> challanNumbers = new List<string>();
 
 		SqliteDb m1 = new SqliteDb();
+        bool isDirty = false;
 		int custId = 0;
 		double sgstFinal = 0;
 		double cgstFinal = 0;
@@ -162,24 +163,6 @@ namespace GST_Billing
 								tbAddCharge3.Text = Convert.ToString(row[1]);
 							}
 							break;
-						case 4:
-							{
-								lbAddCharge4.Text = Convert.ToString(row[0]);
-								tbAddCharge4.Text = Convert.ToString(row[1]);
-							}
-							break;
-						case 5:
-							{
-								lbAddCharge5.Text = Convert.ToString(row[0]);
-								tbAddCharge5.Text = Convert.ToString(row[1]);
-							}
-							break;
-						case 6:
-							{
-								lbAddCharge6.Text = Convert.ToString(row[0]);
-								tbAddCharge6.Text = Convert.ToString(row[1]);
-							}
-							break;
 					}
 				}
 			}
@@ -221,16 +204,10 @@ namespace GST_Billing
 			lbAddCharge1.DataSource = baseModel.additionalCharges.Values.ToList<string>();
 			lbAddCharge2.DataSource = baseModel.additionalCharges.Values.ToList<string>();
 			lbAddCharge3.DataSource = baseModel.additionalCharges.Values.ToList<string>();
-			lbAddCharge4.DataSource = baseModel.additionalCharges.Values.ToList<string>();
-			lbAddCharge5.DataSource = baseModel.additionalCharges.Values.ToList<string>();
-			lbAddCharge6.DataSource = baseModel.additionalCharges.Values.ToList<string>();
 
 			lbAddCharge1.SelectedIndex = -1;
 			lbAddCharge2.SelectedIndex = -1;
 			lbAddCharge3.SelectedIndex = -1;
-			lbAddCharge4.SelectedIndex = -1;
-			lbAddCharge5.SelectedIndex = -1;
-			lbAddCharge6.SelectedIndex = -1;
 		}
 
 		/// <summary>
@@ -255,6 +232,7 @@ namespace GST_Billing
 				}
 			}
 			updateValuesInRow(e.RowIndex, e.ColumnIndex);
+            isDirty = true;
 		}
 
 		private void updateValuesInRow(int rowIndex, int colIndex)
@@ -559,25 +537,6 @@ namespace GST_Billing
 			tbShipCode.Text = baseModel.stateCodes[state];
 		}
 
-		private void textBox_TextChanged(object sender, EventArgs e)
-		{
-			bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
-			bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
-			bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
-			bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
-			bool state = !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
-			bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
-
-			if (invoiceNo && name && address && gstin && state && code && tbShipGstin.Text.Length == 15)
-			{
-				flpPanelButtons.Enabled = true;
-			}
-			else
-			{
-				flpPanelButtons.Enabled = false;
-			}
-		}
-
 		private void tbShipCode_Leave(object sender, EventArgs e)
 		{
 			int code = !String.IsNullOrEmpty(tbShipCode.Text) ? int.Parse(tbShipCode.Text) : 1;
@@ -601,7 +560,7 @@ namespace GST_Billing
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
-			//if (!ValidateData()) return;
+			if (!ValidateData()) return;
 			try
 			{
 				string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND IsActive = 1 ";
@@ -674,12 +633,15 @@ namespace GST_Billing
 						m1.Ins_Upd_Del(sqlstr);
 					}
 
-					MessageBox.Show("Invoice created successfully");
+					MessageBox.Show("Invoice created successfully","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    btnPrint.Enabled = true;
+                    isDirty = false;
 				}
 			}
 			catch (Exception e1)
 			{
-				MessageBox.Show("Error :" + e1.Message);
+				MessageBox.Show("Error :" + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -704,11 +666,18 @@ namespace GST_Billing
 				return;
 			}
 
-			btnSave_Click(sender, e);
+            //btnSave_Click(sender, e);
 
-			PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
-			objPrintInvoice.MdiParent = this.MdiParent;
-			objPrintInvoice.Show();
+            if(isDirty == false)
+            { 
+			    PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
+			    objPrintInvoice.MdiParent = this.MdiParent;
+			    objPrintInvoice.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please save invoice before printing.", "Information", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
 		}
 
 		private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
@@ -729,12 +698,21 @@ namespace GST_Billing
 			{
 				lbAddedChallan.Text += "," + tbChallanNumber.Text;
 			}
-			challanNumbers.Add(tbChallanNumber.Text);
+			if(challanNumbers.Count < 10)
+			{
+				challanNumbers.Add(tbChallanNumber.Text);
+			}
+			else
+			{
+				MessageBox.Show("Maximum 10 challans per invoice are allowed.","Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			tbChallanNumber.Clear();
 		}
 
 		private void btnClearChallan_Click(object sender, EventArgs e)
 		{
 			lbAddedChallan.Text = String.Empty;
+			challanNumbers.Clear();
 		}
 
 		private double calculateAddCharges()
@@ -754,21 +732,6 @@ namespace GST_Billing
 			if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
 			{
 				totalAddCharge += double.Parse(tbAddCharge3.Text);
-			}
-
-			if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
-			{
-				totalAddCharge += double.Parse(tbAddCharge4.Text);
-			}
-
-			if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
-			{
-				totalAddCharge += double.Parse(tbAddCharge5.Text);
-			}
-
-			if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
-			{
-				totalAddCharge += double.Parse(tbAddCharge6.Text);
 			}
 
 			return totalAddCharge;
@@ -791,25 +754,12 @@ namespace GST_Billing
 				listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
 			}
 
-			if (!String.IsNullOrEmpty(lbAddCharge4.Text) && !String.IsNullOrEmpty(tbAddCharge4.Text))
-			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge4.Text, tbAddCharge4.Text));
-			}
-
-			if (!String.IsNullOrEmpty(lbAddCharge5.Text) && !String.IsNullOrEmpty(tbAddCharge5.Text))
-			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge5.Text, tbAddCharge5.Text));
-			}
-
-			if (!String.IsNullOrEmpty(lbAddCharge6.Text) && !String.IsNullOrEmpty(tbAddCharge6.Text))
-			{
-				listofAddCharges.Add(Tuple.Create(lbAddCharge6.Text, tbAddCharge6.Text));
-			}
 		}
 
-		private void tbAddCharge1_TextChanged(object sender, EventArgs e)
+		private void tbAddCharge_TextChanged(object sender, EventArgs e)
 		{
 			calculateTotals();
+            isDirty = true;
 		}
 
 		internal bool UpdatePayment(double amount)
@@ -842,5 +792,68 @@ namespace GST_Billing
 				row.Cells["colSerNo"].Value = (serNo++).ToString();
 			}
 		}
+
+        private bool ValidateData()
+        {
+            bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
+            bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
+            bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
+            bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
+            bool state = !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
+            bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
+            bool city = !String.IsNullOrEmpty(tbShipCity.Text) && !String.IsNullOrWhiteSpace(tbShipCity.Text);
+            bool pin = !String.IsNullOrEmpty(tbShipPin.Text) && !String.IsNullOrWhiteSpace(tbShipPin.Text);
+
+            bool result = true;
+
+            if(!invoiceNo)
+            {
+                errorProviderTextBox.SetError(tbInvoiceNum, "Please enter invoice number.");
+                result = false;
+            }
+            if (!name)
+            {
+                errorProviderTextBox.SetError(tbShipName, "Please enter consignee name.");
+                result = false;
+            }
+            if (!address)
+            {
+                errorProviderTextBox.SetError(tbShipAddress, "Please enter consignee address.");
+                result = false;
+            }
+            if (!gstin)
+            {
+                errorProviderTextBox.SetError(tbShipGstin, "Please enter consignee GSTIN.");
+                result = false;
+            }
+            if (!state)
+            {
+                errorProviderTextBox.SetError(tbShipState, "Please enter consignee state.");
+                result = false;
+            }
+            if (!code)
+            {
+                errorProviderTextBox.SetError(tbShipCode, "Please enter consignee state code.");
+                result = false;
+            }
+            if (!city)
+            {
+                errorProviderTextBox.SetError(tbShipCity, "Please enter consignee city.");
+                result = false;
+            }
+            if (!pin)
+            {
+                errorProviderTextBox.SetError(tbShipPin, "Please enter consignee pincode.");
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void tbAll_TextChanged(object sender, EventArgs e)
+        {
+            isDirty = true;
+        }
+
 	}
 }
