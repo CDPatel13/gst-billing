@@ -90,25 +90,33 @@ namespace GST_Billing
                 MessageBox.Show("Unlicensed Product. \nCall on : 9879539134 to get valid license", "Unlicensed Product", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-         
-            string GUID = Assembly.GetExecutingAssembly().GetType().GUID.ToString();
-            using (Mutex mutex = new Mutex(false, @"Global\" + GUID))
-            {
-                if(!mutex.WaitOne(0, false))
+
+            try 
+            { 
+                string GUID = Assembly.GetExecutingAssembly().GetType().GUID.ToString();
+                using (Mutex mutex = new Mutex(false, @"Global\" + GUID))
                 {
-                    MessageBox.Show("GST Billing Software is already running.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                    if(!mutex.WaitOne(0, false))
+                    {
+                        MessageBox.Show("GST Billing Software is already running.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
    
-                GC.Collect();
+                    GC.Collect();
 
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
 
-                SqliteDb objSqlLite = new SqliteDb();
-                objSqlLite.CreateDatabase();
+                    SqliteDb objSqlLite = new SqliteDb();
+                    objSqlLite.CreateDatabase();
 
-                Application.Run(new Login());
+                    Application.Run(new Login());
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An unexpected error occured. Restarting the application.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
             }
         }
     }

@@ -46,7 +46,7 @@
             // 
             this.lbMain.AutoSize = true;
             this.lbMain.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMain.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lbMain.ForeColor = System.Drawing.Color.MediumBlue;
             this.lbMain.Location = new System.Drawing.Point(41, 9);
             this.lbMain.Name = "lbMain";
             this.lbMain.Size = new System.Drawing.Size(204, 19);
@@ -56,76 +56,76 @@
             // lbInvoiceNo
             // 
             this.lbInvoiceNo.AutoSize = true;
-            this.lbInvoiceNo.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInvoiceNo.Location = new System.Drawing.Point(42, 52);
+            this.lbInvoiceNo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInvoiceNo.Location = new System.Drawing.Point(47, 52);
             this.lbInvoiceNo.Name = "lbInvoiceNo";
-            this.lbInvoiceNo.Size = new System.Drawing.Size(78, 16);
+            this.lbInvoiceNo.Size = new System.Drawing.Size(91, 16);
             this.lbInvoiceNo.TabIndex = 1;
             this.lbInvoiceNo.Text = "Invoice No. : ";
             // 
             // lbCustomer
             // 
             this.lbCustomer.AutoSize = true;
-            this.lbCustomer.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCustomer.Location = new System.Drawing.Point(19, 80);
+            this.lbCustomer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCustomer.Location = new System.Drawing.Point(17, 80);
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(101, 16);
+            this.lbCustomer.Size = new System.Drawing.Size(121, 16);
             this.lbCustomer.TabIndex = 2;
             this.lbCustomer.Text = "Customer Name : ";
             // 
             // lbBillAmount
             // 
             this.lbBillAmount.AutoSize = true;
-            this.lbBillAmount.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBillAmount.Location = new System.Drawing.Point(41, 108);
+            this.lbBillAmount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBillAmount.Location = new System.Drawing.Point(44, 108);
             this.lbBillAmount.Name = "lbBillAmount";
-            this.lbBillAmount.Size = new System.Drawing.Size(79, 16);
+            this.lbBillAmount.Size = new System.Drawing.Size(94, 16);
             this.lbBillAmount.TabIndex = 3;
             this.lbBillAmount.Text = "Bill Amount : ";
             // 
             // lbPendingAmount
             // 
             this.lbPendingAmount.AutoSize = true;
-            this.lbPendingAmount.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPendingAmount.Location = new System.Drawing.Point(14, 136);
+            this.lbPendingAmount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPendingAmount.Location = new System.Drawing.Point(12, 136);
             this.lbPendingAmount.Name = "lbPendingAmount";
-            this.lbPendingAmount.Size = new System.Drawing.Size(106, 16);
+            this.lbPendingAmount.Size = new System.Drawing.Size(126, 16);
             this.lbPendingAmount.TabIndex = 4;
             this.lbPendingAmount.Text = "Pending Amount : ";
             // 
             // lbPayment
             // 
             this.lbPayment.AutoSize = true;
-            this.lbPayment.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPayment.Location = new System.Drawing.Point(57, 164);
+            this.lbPayment.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPayment.Location = new System.Drawing.Point(62, 164);
             this.lbPayment.Name = "lbPayment";
-            this.lbPayment.Size = new System.Drawing.Size(63, 16);
+            this.lbPayment.Size = new System.Drawing.Size(76, 16);
             this.lbPayment.TabIndex = 5;
             this.lbPayment.Text = "Payment : ";
             // 
             // tbInvoice
             // 
             this.tbInvoice.Enabled = false;
-            this.tbInvoice.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInvoice.Location = new System.Drawing.Point(126, 49);
+            this.tbInvoice.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInvoice.Location = new System.Drawing.Point(144, 49);
             this.tbInvoice.Name = "tbInvoice";
             this.tbInvoice.Size = new System.Drawing.Size(100, 22);
             this.tbInvoice.TabIndex = 6;
             // 
             // tbPayment
             // 
-            this.tbPayment.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPayment.Location = new System.Drawing.Point(126, 161);
+            this.tbPayment.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPayment.Location = new System.Drawing.Point(144, 161);
             this.tbPayment.Name = "tbPayment";
             this.tbPayment.Size = new System.Drawing.Size(100, 22);
-            this.tbPayment.TabIndex = 7;
+            this.tbPayment.TabIndex = 0;
             this.tbPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPayment_KeyPress);
             // 
             // tbCustomer
             // 
             this.tbCustomer.Enabled = false;
-            this.tbCustomer.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCustomer.Location = new System.Drawing.Point(126, 77);
+            this.tbCustomer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCustomer.Location = new System.Drawing.Point(144, 77);
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(100, 22);
             this.tbCustomer.TabIndex = 8;
@@ -133,8 +133,8 @@
             // tbBillAmount
             // 
             this.tbBillAmount.Enabled = false;
-            this.tbBillAmount.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBillAmount.Location = new System.Drawing.Point(126, 105);
+            this.tbBillAmount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBillAmount.Location = new System.Drawing.Point(144, 105);
             this.tbBillAmount.Name = "tbBillAmount";
             this.tbBillAmount.Size = new System.Drawing.Size(100, 22);
             this.tbBillAmount.TabIndex = 9;
@@ -142,8 +142,8 @@
             // tbPending
             // 
             this.tbPending.Enabled = false;
-            this.tbPending.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPending.Location = new System.Drawing.Point(126, 133);
+            this.tbPending.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPending.Location = new System.Drawing.Point(144, 133);
             this.tbPending.Name = "tbPending";
             this.tbPending.Size = new System.Drawing.Size(100, 22);
             this.tbPending.TabIndex = 10;
@@ -152,20 +152,22 @@
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(0, 203);
+            this.btnSave.ForeColor = System.Drawing.Color.Firebrick;
+            this.btnSave.Location = new System.Drawing.Point(0, 193);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(284, 29);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // InvoicePayment
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(284, 232);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(284, 222);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbPending);
             this.Controls.Add(this.tbBillAmount);
@@ -179,7 +181,11 @@
             this.Controls.Add(this.lbInvoiceNo);
             this.Controls.Add(this.lbMain);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(300, 260);
+            this.MinimumSize = new System.Drawing.Size(300, 260);
             this.Name = "InvoicePayment";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InvoicePayment";
             this.Load += new System.EventHandler(this.InvoicePayment_Load);
             this.ResumeLayout(false);

@@ -82,12 +82,12 @@ namespace GST_Billing
                 try
                 {
                     gbBillShip.Controls[gbBillShip.Controls.IndexOf(tbStateBox) + 2].Text = baseModel.stateCodes[state];
-                    tbStateBox.BackColor = Color.White;
                 }
                 catch (Exception ex)
                 {
-                    btnSave.Enabled = false;
-                    tbStateBox.BackColor = Color.Tomato;
+                    tbStateBox.Text = String.Empty;
+                    tbStateBox.SelectedIndex = -1;
+                    gbBillShip.Controls[gbBillShip.Controls.IndexOf(tbStateBox) + 2].Text = String.Empty;
                 }
             }
         }
@@ -397,7 +397,7 @@ namespace GST_Billing
             }
             if (!phone)
             {
-                errorProviderBilling.SetError(tbPhoneNo, "Please enter customer address.");
+                errorProviderBilling.SetError(tbPhoneNo, "Please enter customer phone number.");
                 result = false;
             }
             if (!gstin)
@@ -448,6 +448,11 @@ namespace GST_Billing
             if (!address)
             {
                 errorProviderBilling.SetError(tbShipAddress, "Please enter consignee address.");
+                result = false;
+            }
+            if (!phone)
+            {
+                errorProviderBilling.SetError(tbShipPhone, "Please enter consignee phone number.");
                 result = false;
             }
             if (!gstin)
