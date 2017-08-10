@@ -152,7 +152,7 @@ namespace GST_Billing
             }
             catch (Exception e1)
             {
-                MessageBox.Show("Error :" + e1.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error :" + e1.Message);
             }
 
             //Invoice invoice = new Invoice();
