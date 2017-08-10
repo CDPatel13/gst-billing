@@ -83,7 +83,7 @@
             this.tbCompanyName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCompanyName.Location = new System.Drawing.Point(95, 15);
             this.tbCompanyName.Name = "tbCompanyName";
-            this.tbCompanyName.Size = new System.Drawing.Size(656, 23);
+            this.tbCompanyName.Size = new System.Drawing.Size(644, 23);
             this.tbCompanyName.TabIndex = 0;
             this.tbCompanyName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -92,7 +92,7 @@
             this.tbAddress.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAddress.Location = new System.Drawing.Point(95, 47);
             this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(656, 23);
+            this.tbAddress.Size = new System.Drawing.Size(644, 23);
             this.tbAddress.TabIndex = 1;
             this.tbAddress.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -111,7 +111,7 @@
             this.tbEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEmail.Location = new System.Drawing.Point(514, 105);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(237, 23);
+            this.tbEmail.Size = new System.Drawing.Size(225, 23);
             this.tbEmail.TabIndex = 2;
             // 
             // lbEmail
@@ -129,7 +129,7 @@
             this.tbContact.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContact.Location = new System.Drawing.Point(514, 134);
             this.tbContact.Name = "tbContact";
-            this.tbContact.Size = new System.Drawing.Size(237, 23);
+            this.tbContact.Size = new System.Drawing.Size(225, 23);
             this.tbContact.TabIndex = 3;
             this.tbContact.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.tbContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbContact_KeyPress);
@@ -149,7 +149,7 @@
             this.tbGstin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbGstin.Location = new System.Drawing.Point(95, 193);
             this.tbGstin.Name = "tbGstin";
-            this.tbGstin.Size = new System.Drawing.Size(237, 23);
+            this.tbGstin.Size = new System.Drawing.Size(225, 23);
             this.tbGstin.TabIndex = 4;
             this.tbGstin.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -190,7 +190,7 @@
             this.tbCode.Location = new System.Drawing.Point(95, 164);
             this.tbCode.MaxLength = 2;
             this.tbCode.Name = "tbCode";
-            this.tbCode.Size = new System.Drawing.Size(237, 23);
+            this.tbCode.Size = new System.Drawing.Size(225, 23);
             this.tbCode.TabIndex = 6;
             this.tbCode.Click += new System.EventHandler(this.tbCode_Click);
             this.tbCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
@@ -254,7 +254,7 @@
             "West Bengal"});
             this.tbState.Location = new System.Drawing.Point(95, 134);
             this.tbState.Name = "tbState";
-            this.tbState.Size = new System.Drawing.Size(237, 24);
+            this.tbState.Size = new System.Drawing.Size(225, 24);
             this.tbState.TabIndex = 5;
             this.tbState.SelectedIndexChanged += new System.EventHandler(this.cbState_SelectedIndexChanged);
             this.tbState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
@@ -264,7 +264,7 @@
             this.tbLandmark.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLandmark.Location = new System.Drawing.Point(95, 76);
             this.tbLandmark.Name = "tbLandmark";
-            this.tbLandmark.Size = new System.Drawing.Size(237, 23);
+            this.tbLandmark.Size = new System.Drawing.Size(225, 23);
             this.tbLandmark.TabIndex = 18;
             // 
             // lbLandmark
@@ -282,7 +282,7 @@
             this.tbCity.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCity.Location = new System.Drawing.Point(95, 105);
             this.tbCity.Name = "tbCity";
-            this.tbCity.Size = new System.Drawing.Size(237, 23);
+            this.tbCity.Size = new System.Drawing.Size(225, 23);
             this.tbCity.TabIndex = 20;
             // 
             // lbCity
@@ -300,7 +300,7 @@
             this.tbBankName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBankName.Location = new System.Drawing.Point(514, 192);
             this.tbBankName.Name = "tbBankName";
-            this.tbBankName.Size = new System.Drawing.Size(237, 23);
+            this.tbBankName.Size = new System.Drawing.Size(225, 23);
             this.tbBankName.TabIndex = 34;
             // 
             // lbBankName
@@ -318,7 +318,7 @@
             this.tbPanNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPanNo.Location = new System.Drawing.Point(514, 163);
             this.tbPanNo.Name = "tbPanNo";
-            this.tbPanNo.Size = new System.Drawing.Size(237, 23);
+            this.tbPanNo.Size = new System.Drawing.Size(225, 23);
             this.tbPanNo.TabIndex = 33;
             // 
             // lbPanNumber
@@ -336,7 +336,7 @@
             this.tbBranch.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBranch.Location = new System.Drawing.Point(514, 221);
             this.tbBranch.Name = "tbBranch";
-            this.tbBranch.Size = new System.Drawing.Size(237, 23);
+            this.tbBranch.Size = new System.Drawing.Size(225, 23);
             this.tbBranch.TabIndex = 37;
             // 
             // lbBranch
@@ -354,7 +354,7 @@
             this.tbIfscCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbIfscCode.Location = new System.Drawing.Point(95, 251);
             this.tbIfscCode.Name = "tbIfscCode";
-            this.tbIfscCode.Size = new System.Drawing.Size(237, 23);
+            this.tbIfscCode.Size = new System.Drawing.Size(225, 23);
             this.tbIfscCode.TabIndex = 41;
             // 
             // lbIfscCode
@@ -372,7 +372,7 @@
             this.tbAccountNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAccountNo.Location = new System.Drawing.Point(95, 222);
             this.tbAccountNo.Name = "tbAccountNo";
-            this.tbAccountNo.Size = new System.Drawing.Size(237, 23);
+            this.tbAccountNo.Size = new System.Drawing.Size(225, 23);
             this.tbAccountNo.TabIndex = 39;
             // 
             // lbAccountNo
@@ -390,7 +390,7 @@
             this.tbContactPerson.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContactPerson.Location = new System.Drawing.Point(514, 250);
             this.tbContactPerson.Name = "tbContactPerson";
-            this.tbContactPerson.Size = new System.Drawing.Size(237, 23);
+            this.tbContactPerson.Size = new System.Drawing.Size(225, 23);
             this.tbContactPerson.TabIndex = 43;
             // 
             // lbPinCode
@@ -408,7 +408,7 @@
             this.tbPinCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPinCode.Location = new System.Drawing.Point(514, 76);
             this.tbPinCode.Name = "tbPinCode";
-            this.tbPinCode.Size = new System.Drawing.Size(237, 23);
+            this.tbPinCode.Size = new System.Drawing.Size(225, 23);
             this.tbPinCode.TabIndex = 45;
             // 
             // lbContact
@@ -465,10 +465,12 @@
             this.Controls.Add(this.tbCompanyName);
             this.Controls.Add(this.lbName);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(771, 346);
             this.MinimumSize = new System.Drawing.Size(371, 299);
             this.Name = "CompanyDetails";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CompanyDetails";
             this.Load += new System.EventHandler(this.CompanyDetails_Load);

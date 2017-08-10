@@ -67,19 +67,19 @@ namespace GST_Billing
 				if ((result == DialogResult.OK) && (newCompany.ShowDialog() == DialogResult.OK))
 				{
 					companyExists = true;
-					this.lbCompanyName.Text = newCompany.CompanyName;
-					this.lbCompanyAddress.Text = newCompany.CompanyAddress;
-					this.lbCompanyEmail.Text = newCompany.CompanyEmail;
-					this.lbCompanyContact.Text = newCompany.CompanyContact;
+					//this.lbCompanyName.Text = newCompany.CompanyName;
+					//this.lbCompanyAddress.Text = newCompany.CompanyAddress;
+					//this.lbCompanyEmail.Text = newCompany.CompanyEmail;
+					//this.lbCompanyContact.Text = newCompany.CompanyContact;
 				}
 			}
 			else
 			{
 				companyExists = true;
-				this.lbCompanyName.Text = newCompany.CompanyName;
-				this.lbCompanyAddress.Text = newCompany.CompanyAddress;
-				this.lbCompanyEmail.Text = newCompany.CompanyEmail;
-				this.lbCompanyContact.Text = newCompany.CompanyContact;
+				//this.lbCompanyName.Text = newCompany.CompanyName;
+				//this.lbCompanyAddress.Text = newCompany.CompanyAddress;
+				//this.lbCompanyEmail.Text = newCompany.CompanyEmail;
+				//this.lbCompanyContact.Text = newCompany.CompanyContact;
 			}
 			this.ActiveControl = tbUserName;
 		}
