@@ -96,7 +96,7 @@ namespace GST_Billing
             {
                 if(!mutex.WaitOne(0, false))
                 {
-                    MessageBox.Show("Instance already running");
+                    MessageBox.Show("GST Billing Software is already running.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
    
