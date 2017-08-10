@@ -47,8 +47,8 @@
             this.tbProdHsnCode.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdHsnCode.Location = new System.Drawing.Point(487, 12);
             this.tbProdHsnCode.Name = "tbProdHsnCode";
-            this.tbProdHsnCode.Size = new System.Drawing.Size(256, 23);
-            this.tbProdHsnCode.TabIndex = 36;
+            this.tbProdHsnCode.Size = new System.Drawing.Size(250, 23);
+            this.tbProdHsnCode.TabIndex = 1;
             // 
             // lbProdHsnCode
             // 
@@ -66,8 +66,8 @@
             this.tbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdUnit.Location = new System.Drawing.Point(487, 41);
             this.tbProdUnit.Name = "tbProdUnit";
-            this.tbProdUnit.Size = new System.Drawing.Size(256, 23);
-            this.tbProdUnit.TabIndex = 34;
+            this.tbProdUnit.Size = new System.Drawing.Size(250, 23);
+            this.tbProdUnit.TabIndex = 3;
             // 
             // lbProdUnit
             // 
@@ -84,19 +84,19 @@
             this.tbProdRate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdRate.Location = new System.Drawing.Point(107, 41);
             this.tbProdRate.Name = "tbProdRate";
-            this.tbProdRate.Size = new System.Drawing.Size(256, 23);
-            this.tbProdRate.TabIndex = 24;
+            this.tbProdRate.Size = new System.Drawing.Size(250, 23);
+            this.tbProdRate.TabIndex = 2;
             this.tbProdRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRateQty_KeyPress);
             // 
             // lbProdRate
             // 
             this.lbProdRate.AutoSize = true;
             this.lbProdRate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdRate.Location = new System.Drawing.Point(61, 44);
+            this.lbProdRate.Location = new System.Drawing.Point(57, 44);
             this.lbProdRate.Name = "lbProdRate";
-            this.lbProdRate.Size = new System.Drawing.Size(40, 16);
+            this.lbProdRate.Size = new System.Drawing.Size(44, 16);
             this.lbProdRate.TabIndex = 29;
-            this.lbProdRate.Text = "Rate";
+            this.lbProdRate.Text = "Price";
             // 
             // tbProdDes
             // 
@@ -104,18 +104,18 @@
             this.tbProdDes.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdDes.Location = new System.Drawing.Point(107, 12);
             this.tbProdDes.Name = "tbProdDes";
-            this.tbProdDes.Size = new System.Drawing.Size(256, 23);
-            this.tbProdDes.TabIndex = 22;
+            this.tbProdDes.Size = new System.Drawing.Size(250, 23);
+            this.tbProdDes.TabIndex = 0;
             // 
             // lbProdDes
             // 
             this.lbProdDes.AutoSize = true;
             this.lbProdDes.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdDes.Location = new System.Drawing.Point(12, 15);
+            this.lbProdDes.Location = new System.Drawing.Point(20, 15);
             this.lbProdDes.Name = "lbProdDes";
-            this.lbProdDes.Size = new System.Drawing.Size(89, 16);
+            this.lbProdDes.Size = new System.Drawing.Size(81, 16);
             this.lbProdDes.TabIndex = 23;
-            this.lbProdDes.Text = "Description";
+            this.lbProdDes.Text = "Item Name";
             // 
             // btnSave
             // 
@@ -124,7 +124,7 @@
             this.btnSave.Location = new System.Drawing.Point(0, 251);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(755, 29);
-            this.btnSave.TabIndex = 38;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -135,6 +135,7 @@
             // 
             // ProductDetails
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 280);
@@ -147,9 +148,11 @@
             this.Controls.Add(this.lbProdRate);
             this.Controls.Add(this.tbProdDes);
             this.Controls.Add(this.lbProdDes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ProductDetails";
-            this.Text = "Product Details";
+            this.ShowInTaskbar = false;
+            this.Text = "Item Details";
             this.Load += new System.EventHandler(this.ProductDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.validatorTextBox)).EndInit();
             this.ResumeLayout(false);

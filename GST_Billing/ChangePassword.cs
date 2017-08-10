@@ -24,11 +24,11 @@ namespace GST_Billing
             {
                 if (ValidateInputs())
                 {
-                    string sqlstr = "SELECT * FROM loginDetails WHERE username = '" + tbUserName.Text + "' AND password = '" + tbOldPassword.Text + "' ";
+                    string sqlstr = "SELECT * FROM loginDetails WHERE username = '" + tbOldUserName.Text + "' AND password = '" + tbOldPassword.Text + "' ";
                     DataSet ds = m1.selectData(sqlstr);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        sqlstr = "UPDATE loginDetails set password='" + tbNewPassword.Text + "' WHERE loginId = " + Convert.ToInt32(ds.Tables[0].Rows[0]["loginId"]) + " ";
+                        sqlstr = "UPDATE loginDetails set username='" + tbNewUserName.Text + "',password='" + tbNewPassword.Text + "' WHERE loginId = " + Convert.ToInt32(ds.Tables[0].Rows[0]["loginId"]) + " ";
                         int NoOfRows = m1.Ins_Upd_Del(sqlstr);
                         if (NoOfRows > 0)
                         {
@@ -55,7 +55,7 @@ namespace GST_Billing
 
         private bool ValidateInputs()
         {
-            bool username = !String.IsNullOrWhiteSpace(tbUserName.Text);
+            bool username = !String.IsNullOrWhiteSpace(tbOldUserName.Text);
             bool oldpassword = !String.IsNullOrWhiteSpace(tbOldPassword.Text);
             bool newPassword = !String.IsNullOrWhiteSpace(tbNewPassword.Text);
             bool confirmPassword = !String.IsNullOrWhiteSpace(tbConfirmPassword.Text);
@@ -84,7 +84,7 @@ namespace GST_Billing
             DataSet ds = m1.selectData(sqlstr);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                tbUserName.Text = ds.Tables[0].Rows[0][0].ToString();
+                tbOldUserName.Text = ds.Tables[0].Rows[0][0].ToString();
             }
         }
     }

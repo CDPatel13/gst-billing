@@ -579,7 +579,7 @@
             this.tbShipAddress.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipAddress.Location = new System.Drawing.Point(128, 45);
             this.tbShipAddress.Name = "tbShipAddress";
-            this.tbShipAddress.Size = new System.Drawing.Size(620, 23);
+            this.tbShipAddress.Size = new System.Drawing.Size(614, 23);
             this.tbShipAddress.TabIndex = 16;
             this.tbShipAddress.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -897,9 +897,11 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(779, 582);
             this.Name = "CustomerDetails";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerDetails";
             this.Load += new System.EventHandler(this.CustomerDetails_Load);

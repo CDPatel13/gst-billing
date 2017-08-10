@@ -102,7 +102,7 @@
             this.tabProducts.Name = "tabProducts";
             this.tabProducts.Size = new System.Drawing.Size(1256, 653);
             this.tabProducts.TabIndex = 2;
-            this.tabProducts.Text = "Products List";
+            this.tabProducts.Text = "Item Master";
             this.tabProducts.UseVisualStyleBackColor = true;
             // 
             // dgvProducts
@@ -785,6 +785,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.tabMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainWindow";
             this.Text = "MainWindow";

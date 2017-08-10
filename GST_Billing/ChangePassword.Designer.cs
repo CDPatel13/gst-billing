@@ -37,8 +37,10 @@
             this.tbNewPassword = new System.Windows.Forms.TextBox();
             this.tbConfirmPassword = new System.Windows.Forms.TextBox();
             this.lbMain = new System.Windows.Forms.Label();
-            this.tbUserName = new System.Windows.Forms.TextBox();
-            this.lbUserName = new System.Windows.Forms.Label();
+            this.tbOldUserName = new System.Windows.Forms.TextBox();
+            this.lbOldUserName = new System.Windows.Forms.Label();
+            this.tbNewUserName = new System.Windows.Forms.TextBox();
+            this.lbNewUserName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbOldPassword
@@ -48,7 +50,7 @@
             this.lbOldPassword.AutoSize = true;
             this.lbOldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbOldPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbOldPassword.Location = new System.Drawing.Point(59, 63);
+            this.lbOldPassword.Location = new System.Drawing.Point(59, 84);
             this.lbOldPassword.Name = "lbOldPassword";
             this.lbOldPassword.Size = new System.Drawing.Size(101, 16);
             this.lbOldPassword.TabIndex = 0;
@@ -61,7 +63,7 @@
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbPassword.Location = new System.Drawing.Point(53, 89);
+            this.lbPassword.Location = new System.Drawing.Point(53, 110);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(107, 16);
             this.lbPassword.TabIndex = 1;
@@ -74,7 +76,7 @@
             this.lbConfirmPassword.AutoSize = true;
             this.lbConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbConfirmPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbConfirmPassword.Location = new System.Drawing.Point(5, 115);
+            this.lbConfirmPassword.Location = new System.Drawing.Point(5, 136);
             this.lbConfirmPassword.Name = "lbConfirmPassword";
             this.lbConfirmPassword.Size = new System.Drawing.Size(155, 16);
             this.lbConfirmPassword.TabIndex = 2;
@@ -86,10 +88,10 @@
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChange.ForeColor = System.Drawing.Color.Brown;
             this.btnChange.Image = ((System.Drawing.Image)(resources.GetObject("btnChange.Image")));
-            this.btnChange.Location = new System.Drawing.Point(0, 140);
+            this.btnChange.Location = new System.Drawing.Point(0, 161);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(378, 25);
-            this.btnChange.TabIndex = 3;
+            this.btnChange.TabIndex = 5;
             this.btnChange.Text = "Change";
             this.btnChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChange.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,33 +102,33 @@
             // 
             this.tbOldPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOldPassword.Location = new System.Drawing.Point(167, 62);
+            this.tbOldPassword.Location = new System.Drawing.Point(167, 83);
             this.tbOldPassword.Name = "tbOldPassword";
             this.tbOldPassword.PasswordChar = '*';
             this.tbOldPassword.Size = new System.Drawing.Size(199, 20);
-            this.tbOldPassword.TabIndex = 4;
+            this.tbOldPassword.TabIndex = 2;
             this.tbOldPassword.UseSystemPasswordChar = true;
             // 
             // tbNewPassword
             // 
             this.tbNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNewPassword.Location = new System.Drawing.Point(167, 88);
+            this.tbNewPassword.Location = new System.Drawing.Point(167, 109);
             this.tbNewPassword.Name = "tbNewPassword";
             this.tbNewPassword.PasswordChar = '*';
             this.tbNewPassword.Size = new System.Drawing.Size(199, 20);
-            this.tbNewPassword.TabIndex = 5;
+            this.tbNewPassword.TabIndex = 3;
             this.tbNewPassword.UseSystemPasswordChar = true;
             // 
             // tbConfirmPassword
             // 
             this.tbConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbConfirmPassword.Location = new System.Drawing.Point(167, 114);
+            this.tbConfirmPassword.Location = new System.Drawing.Point(167, 135);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
             this.tbConfirmPassword.PasswordChar = '*';
             this.tbConfirmPassword.Size = new System.Drawing.Size(199, 20);
-            this.tbConfirmPassword.TabIndex = 6;
+            this.tbConfirmPassword.TabIndex = 4;
             this.tbConfirmPassword.UseSystemPasswordChar = true;
             // 
             // lbMain
@@ -142,36 +144,62 @@
             this.lbMain.TabIndex = 7;
             this.lbMain.Text = "Change Credentials";
             // 
-            // tbUserName
+            // tbOldUserName
             // 
-            this.tbUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbOldUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUserName.Location = new System.Drawing.Point(167, 37);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(199, 20);
-            this.tbUserName.TabIndex = 9;
+            this.tbOldUserName.Enabled = false;
+            this.tbOldUserName.Location = new System.Drawing.Point(167, 31);
+            this.tbOldUserName.Name = "tbOldUserName";
+            this.tbOldUserName.Size = new System.Drawing.Size(199, 20);
+            this.tbOldUserName.TabIndex = 0;
             // 
-            // lbUserName
+            // lbOldUserName
             // 
-            this.lbUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbOldUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbUserName.AutoSize = true;
-            this.lbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbUserName.Location = new System.Drawing.Point(74, 38);
-            this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(86, 16);
-            this.lbUserName.TabIndex = 8;
-            this.lbUserName.Text = "User Name : ";
+            this.lbOldUserName.AutoSize = true;
+            this.lbOldUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOldUserName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbOldUserName.Location = new System.Drawing.Point(50, 32);
+            this.lbOldUserName.Name = "lbOldUserName";
+            this.lbOldUserName.Size = new System.Drawing.Size(110, 16);
+            this.lbOldUserName.TabIndex = 8;
+            this.lbOldUserName.Text = "Old User Name : ";
+            // 
+            // tbNewUserName
+            // 
+            this.tbNewUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNewUserName.Location = new System.Drawing.Point(167, 57);
+            this.tbNewUserName.Name = "tbNewUserName";
+            this.tbNewUserName.Size = new System.Drawing.Size(199, 20);
+            this.tbNewUserName.TabIndex = 1;
+            // 
+            // lbNewUserName
+            // 
+            this.lbNewUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbNewUserName.AutoSize = true;
+            this.lbNewUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNewUserName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbNewUserName.Location = new System.Drawing.Point(44, 58);
+            this.lbNewUserName.Name = "lbNewUserName";
+            this.lbNewUserName.Size = new System.Drawing.Size(116, 16);
+            this.lbNewUserName.TabIndex = 10;
+            this.lbNewUserName.Text = "New User Name : ";
             // 
             // ChangePassword
             // 
+            this.AcceptButton = this.btnChange;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(378, 165);
-            this.Controls.Add(this.tbUserName);
-            this.Controls.Add(this.lbUserName);
+            this.ClientSize = new System.Drawing.Size(378, 186);
+            this.Controls.Add(this.tbNewUserName);
+            this.Controls.Add(this.lbNewUserName);
+            this.Controls.Add(this.tbOldUserName);
+            this.Controls.Add(this.lbOldUserName);
             this.Controls.Add(this.lbMain);
             this.Controls.Add(this.tbConfirmPassword);
             this.Controls.Add(this.tbNewPassword);
@@ -185,8 +213,9 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(394, 181);
             this.Name = "ChangePassword";
-            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Credentials";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ChangePassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,7 +232,9 @@
         private System.Windows.Forms.TextBox tbNewPassword;
         private System.Windows.Forms.TextBox tbConfirmPassword;
         private System.Windows.Forms.Label lbMain;
-        private System.Windows.Forms.TextBox tbUserName;
-        private System.Windows.Forms.Label lbUserName;
+        private System.Windows.Forms.TextBox tbOldUserName;
+        private System.Windows.Forms.Label lbOldUserName;
+        private System.Windows.Forms.TextBox tbNewUserName;
+        private System.Windows.Forms.Label lbNewUserName;
     }
 }

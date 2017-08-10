@@ -35,7 +35,6 @@ namespace GST_Billing
         private void MainWindow_Load(object sender, EventArgs e)
         {
             fillCustomerDataGrid();
-            fillProductDataGrid();
             fillInvoiceDataGrid();
 
             fillAutoCompleteCustomers();
@@ -56,6 +55,7 @@ namespace GST_Billing
             switch (selectedTab.Name)
             {
                 case "tabProducts":
+                    fillProductDataGrid();
                     fillAutoCompleteProducts();
                     break;
                 case "tabInvoice":
@@ -247,7 +247,7 @@ namespace GST_Billing
             if (dgvProducts.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvProducts.SelectedRows[0];
-                prodname = (string)row.Cells["Product Name"].Value;
+                prodname = (string)row.Cells["Item Name"].Value;
 
                 ProductDetails editProduct = new ProductDetails(prodname);
                 editProduct.ShowDialog();
@@ -262,7 +262,7 @@ namespace GST_Billing
             { 
                 string sqlstr = "DELETE FROM productDetails WHERE productName='" + (string)dgvProducts.SelectedRows[0].Cells[0].Value + "'";
             
-                DialogResult result = MessageBox.Show("Do you really want to delete this product?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Do you really want to delete this item?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -282,7 +282,7 @@ namespace GST_Billing
             string product = tbSearchProducts.Text;
             if (!String.IsNullOrEmpty(product) && !String.IsNullOrWhiteSpace(product))
             {
-                tableProduct.DefaultView.RowFilter = "[Product Name] LIKE '%" + product + "%'";
+                tableProduct.DefaultView.RowFilter = "[Item Name] LIKE '%" + product + "%'";
             }
         }
 
@@ -307,15 +307,15 @@ namespace GST_Billing
                 tableProduct = table.Tables[0];
             }
 
-            tableProduct.Columns["productName"].ColumnName = "Product Name";
-            tableProduct.Columns["productPrice"].ColumnName = "Product Price";
+            tableProduct.Columns["productName"].ColumnName = "Item Name";
+            tableProduct.Columns["productPrice"].ColumnName = "Price";
             tableProduct.Columns["hsnCode"].ColumnName = "HSN Code";
-            tableProduct.Columns["productUnit"].ColumnName = "Product Unit";
+            tableProduct.Columns["productUnit"].ColumnName = "Unit";
 
-            tableProduct.Columns["Product Name"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Item Name"].SetOrdinal(colIndex++);
             tableProduct.Columns["HSN Code"].SetOrdinal(colIndex++);
-            tableProduct.Columns["Product Price"].SetOrdinal(colIndex++);
-            tableProduct.Columns["Product Unit"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Price"].SetOrdinal(colIndex++);
+            tableProduct.Columns["Unit"].SetOrdinal(colIndex++);
 
             tableProduct.Columns.Remove("productId");
 
