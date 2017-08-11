@@ -59,9 +59,9 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(232, 106);
+            this.tbUserName.Location = new System.Drawing.Point(247, 106);
             this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(146, 20);
+            this.tbUserName.Size = new System.Drawing.Size(158, 20);
             this.tbUserName.TabIndex = 101;
             // 
             // lbPassword
@@ -76,10 +76,10 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(232, 149);
+            this.tbPassword.Location = new System.Drawing.Point(247, 149);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(146, 20);
+            this.tbPassword.Size = new System.Drawing.Size(158, 20);
             this.tbPassword.TabIndex = 102;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
@@ -236,6 +236,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(449, 286);
+            this.MinimumSize = new System.Drawing.Size(449, 286);
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
