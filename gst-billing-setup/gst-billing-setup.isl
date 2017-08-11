@@ -340,6 +340,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>GST_Billing.Primary_output</td><td>{EB39FE2E-5D16-43B0-95F3-12BBDA019CC0}</td><td>INSTALLDIR</td><td>2</td><td/><td>gst_billing.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>GST_Billing.Primary_output1</td><td>{6D127AF2-27E2-460B-9A4E-6138CE5E846E}</td><td>INSTALLDIR</td><td>2</td><td/><td>gst_billing.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{89A68664-419D-443A-A4E9-B63F650054E7}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1865,6 +1866,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>GST_Billing.Primary_output</td></row>
+		<row><td>AlwaysInstall</td><td>GST_Billing.Primary_output1</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 	</table>
 
@@ -1881,7 +1883,7 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\gst-billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
-		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
+		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output1</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2027,6 +2029,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>GST_Billing.Primary_output</td><td/><td/><td>_01BC9232_67E3_424E_B62E_29DFBE61615C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>GST_Billing.Primary_output1</td><td/><td/><td>_C2EBEE9E_CCEC_4D4E_9148_068ACCFE1BC3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_0A7CF375_0594_4181_9306_C1DD6AED9263_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -2695,7 +2698,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>740654284</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>1545952821</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
@@ -3796,8 +3799,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>740654284</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>740654284</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>1545952821</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>1545952821</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1280991157</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1280995702</td></row>
 	</table>
@@ -3908,9 +3911,9 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
 		<row><td>_Built1_128C833CD55A4B8598122472798ECE29.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
-		<row><td>_Built1_88EBABD9C0DF41FF86D54709463DAFE2.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
+		<row><td>_Built1_256D14BB06A44CFD80E1E9D9F05BF833.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
+		<row><td>_Built_446AC96A8F114130A952D80358DFF16B.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
 		<row><td>_Built_D110E8EB070D49C7AA78B871303110F3.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
-		<row><td>_Built_F8E2101CAE2942CF8BEEBFE43F10B78E.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4043,7 +4046,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{8D1957D5-D43F-42F4-A5D4-690312AD3225}</td></row>
 		<row><td>ISUSSignature</td><td>{17B59535-12D7-4B47-8C29-40A9C08C0DB1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes,viewDependencies,viewAppFiles,viewSystemSearch</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4580,8 +4583,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>gst_bi_1_gst_billing_setup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_F8E2101CAE2942CF8BEEBFE43F10B78E.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_88EBABD9C0DF41FF86D54709463DAFE2.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>gst_bi_1_gst_billing_setup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_446AC96A8F114130A952D80358DFF16B.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_256D14BB06A44CFD80E1E9D9F05BF833.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
