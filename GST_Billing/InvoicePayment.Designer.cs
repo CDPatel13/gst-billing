@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoicePayment));
             this.lbMain = new System.Windows.Forms.Label();
             this.lbInvoiceNo = new System.Windows.Forms.Label();
             this.lbCustomer = new System.Windows.Forms.Label();
@@ -180,6 +181,7 @@
             this.Controls.Add(this.lbCustomer);
             this.Controls.Add(this.lbInvoiceNo);
             this.Controls.Add(this.lbMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(300, 260);
             this.MinimumSize = new System.Drawing.Size(300, 260);

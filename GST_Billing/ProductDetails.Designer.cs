@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductDetails));
             this.tbProdHsnCode = new System.Windows.Forms.TextBox();
             this.lbProdHsnCode = new System.Windows.Forms.Label();
             this.tbProdUnit = new System.Windows.Forms.TextBox();
@@ -149,10 +150,12 @@
             this.Controls.Add(this.tbProdDes);
             this.Controls.Add(this.lbProdDes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ProductDetails";
             this.ShowInTaskbar = false;
-            this.Text = "Item Details";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Item Information";
             this.Load += new System.EventHandler(this.ProductDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.validatorTextBox)).EndInit();
             this.ResumeLayout(false);
