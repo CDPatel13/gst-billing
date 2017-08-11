@@ -61,7 +61,7 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -313,6 +313,7 @@
     <Content Include="bin\Debug\system.data.sqlite.dll" />
     <Content Include="bin\Release\GST_Billing.exe" />
     <Content Include="bin\Release\GST_Billing.pdb" />
+    <Content Include="Resources\LN.ico" />
     <Content Include="Resources\User-Accounts.ico" />
   </ItemGroup>
   <ItemGroup>

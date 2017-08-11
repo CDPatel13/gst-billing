@@ -55,7 +55,7 @@ namespace GST_Billing
 			{
 				setAdditionalCharges();
 				getInvoiceDetailsToEdit(invoiceToEdit);
-				disableControls();
+				enableDisableControls();
 			}
 
 			this.WindowState = FormWindowState.Maximized;
@@ -63,14 +63,12 @@ namespace GST_Billing
 			this.Refresh();
 		}
 
-		private void disableControls()
+		private void enableDisableControls()
 		{
 			gbBilling.Enabled = false;
 			tbInvoiceNum.Enabled = false;
 
-			cbBillAndShip.CheckedChanged -= cbBillAndShip_CheckedChanged;
 			cbBillAndShip.Checked = false;
-			cbBillAndShip.CheckedChanged += cbBillAndShip_CheckedChanged;
 		}
 
 		private void getInvoiceDetailsToEdit(int invoiceToEdit)
@@ -128,7 +126,30 @@ namespace GST_Billing
 
 			fillProductsForInvoice(invoiceId);
 			fillAdditionalChargesForInvoice(invoiceId);
+			fillChallanForInvoice(invoiceId);
+		}
 
+		private void fillChallanForInvoice(int invoiceId)
+		{
+			string sqlstrInvoice = "SELECT challanNo FROM invoiceChallanDetails WHERE invoiceId='" + invoiceId + "'";
+
+			DataSet ds = m1.selectData(sqlstrInvoice);
+			if (ds != null && ds.Tables[0].Rows.Count > 0)
+			{
+				challanNumbers.Clear();
+				foreach (DataRow row in ds.Tables[0].Rows)
+				{
+					challanNumbers.Add(row["challanNo"].ToString());
+				}
+			}
+			for(int index = 0; index < challanNumbers.Count; index++)
+			{
+				if(index > 0)
+				{
+					lbAddedChallan.Text += ",";
+				}
+				lbAddedChallan.Text += challanNumbers[index].ToString();
+			}
 		}
 
 		private void fillAdditionalChargesForInvoice(int invoiceId)
@@ -253,7 +274,6 @@ namespace GST_Billing
 			var row = dgvProducts.Rows[rowIndex];
 
 			// To avoid NullPointerException,
-			// TODO : use autocomplete when adding new rows
 			row.Cells["colUnit"].Value = row.Cells["colUnit"].Value == null ? String.Empty : row.Cells["colUnit"].Value.ToString();
 			row.Cells["colSerNo"].Value = row.Cells["colSerNo"].Value == null ? String.Empty : row.Cells["colSerNo"].Value.ToString();
 			row.Cells["colProDes"].Value = row.Cells["colProDes"].Value == null ? String.Empty : row.Cells["colProDes"].Value.ToString();
@@ -412,8 +432,6 @@ namespace GST_Billing
 			}
 		}
 
-
-
 		private void tbGst_TextChanged(object sender, EventArgs e)
 		{
 			if (tbSgst.Text.Length > 0 || tbCgst.Text.Length > 0)
@@ -530,9 +548,31 @@ namespace GST_Billing
 			tbShipCode.Text = baseModel.stateCodes[state];
 		}
 
-		private void tbShipCode_Leave(object sender, EventArgs e)
+		private void tbShipState_Leave(object sender, EventArgs e)
 		{
-			int code = !String.IsNullOrEmpty(tbShipCode.Text) ? int.Parse(tbShipCode.Text) : 1;
+			try
+			{
+				if(!String.IsNullOrWhiteSpace(tbShipState.Text))
+				{
+					string state = baseModel.ToPascalCase(tbShipState.Text);
+					tbShipCode.Text = baseModel.stateCodes[state];
+				}
+				else if(!String.IsNullOrWhiteSpace(tbShipCode.Text))
+				{
+					setShipStateFromCode();
+				}
+			}
+			catch(Exception ex)
+			{
+				tbShipState.Text = String.Empty;
+				tbShipState.SelectedIndex = -1;
+				tbShipCode.Clear();
+			}
+		}
+
+		private void setShipStateFromCode()
+		{
+			int code = !String.IsNullOrWhiteSpace(tbShipCode.Text) ? int.Parse(tbShipCode.Text) : 1;
 			string codeStr = String.Format("{0:D2}", code);
 			if (code > 0 && code < 37)
 			{
@@ -543,6 +583,28 @@ namespace GST_Billing
 			{
 				MessageBox.Show("State code must be between 1 and 36.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				tbShipState.SelectedIndex = 1;
+			}
+		}
+
+		private void tbShipCode_Leave(object sender, EventArgs e)
+		{
+			try
+			{ 
+				if (!String.IsNullOrWhiteSpace(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text))
+				{
+					setShipStateFromCode();	
+				}
+				else
+				{
+					string state = baseModel.ToPascalCase(tbShipState.Text);
+					tbShipCode.Text = baseModel.stateCodes[state];
+				}
+			}
+			catch(Exception ex)
+			{
+				tbShipState.Text = String.Empty;
+				tbShipState.SelectedIndex = -1;
+				tbShipCode.Clear();
 			}
 		}
 
@@ -780,8 +842,10 @@ namespace GST_Billing
 		private void dgvProducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
 			int serNo = 1;
+			string proDes = String.Empty;
 			foreach(DataGridViewRow row in dgvProducts.Rows)
 			{
+				//proDes = row.Cells[1].Value == null ? String.Empty : row.Cells[1].Value.ToString();
 				row.Cells["colSerNo"].Value = (serNo++).ToString();
 			}
 		}
@@ -801,14 +865,14 @@ namespace GST_Billing
 
 		private bool ValidateData()
 		{
-			bool invoiceNo = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
-			bool name = !String.IsNullOrEmpty(tbShipName.Text) && !String.IsNullOrWhiteSpace(tbShipName.Text);
-			bool address = !String.IsNullOrEmpty(tbShipAddress.Text) && !String.IsNullOrWhiteSpace(tbShipAddress.Text);
-			bool gstin = !String.IsNullOrEmpty(tbShipGstin.Text) && !String.IsNullOrWhiteSpace(tbShipGstin.Text);
-			bool state = !String.IsNullOrEmpty(tbShipState.Text) && !String.IsNullOrWhiteSpace(tbShipState.Text);
-			bool code = !String.IsNullOrEmpty(tbShipCode.Text) && !String.IsNullOrWhiteSpace(tbShipCode.Text);
-			bool city = !String.IsNullOrEmpty(tbShipCity.Text) && !String.IsNullOrWhiteSpace(tbShipCity.Text);
-			bool pin = !String.IsNullOrEmpty(tbShipPin.Text) && !String.IsNullOrWhiteSpace(tbShipPin.Text);
+			bool invoiceNo = !String.IsNullOrWhiteSpace(tbInvoiceNum.Text);
+			bool name = !String.IsNullOrWhiteSpace(tbShipName.Text);
+			bool address = !String.IsNullOrWhiteSpace(tbShipAddress.Text);
+			bool gstin = !String.IsNullOrWhiteSpace(tbShipGstin.Text) && tbShipGstin.Text.Length == 15;
+			bool state = !String.IsNullOrWhiteSpace(tbShipState.Text);
+			bool code = !String.IsNullOrWhiteSpace(tbShipCode.Text);
+			bool city = !String.IsNullOrWhiteSpace(tbShipCity.Text);
+			bool pin = !String.IsNullOrWhiteSpace(tbShipPin.Text);
 
 			bool result = true;
 
@@ -829,7 +893,7 @@ namespace GST_Billing
 			}
 			if (!gstin)
 			{
-				errorProviderTextBox.SetError(tbShipGstin, "Please enter consignee GSTIN.");
+				errorProviderTextBox.SetError(tbShipGstin, "Please enter consignee GSTIN(15 characters long).");
 				result = false;
 			}
 			if (!state)
@@ -903,5 +967,15 @@ namespace GST_Billing
 			isDirty = true;
 		}
 
+        private void dgvProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
+            string proDes = row.Cells[1].Value == null ? String.Empty : row.Cells[1].Value.ToString();
+
+            if (String.IsNullOrWhiteSpace(proDes) && !row.IsNewRow)
+            {
+                dgvProducts.Rows.Remove(row);
+            }
+        }
 	}
 }

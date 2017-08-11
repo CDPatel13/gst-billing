@@ -377,7 +377,7 @@ namespace GST_Billing
             bool name = !String.IsNullOrWhiteSpace(tbName.Text);
             bool address = !String.IsNullOrWhiteSpace(tbAddress.Text);
             bool phone = !String.IsNullOrWhiteSpace(tbPhoneNo.Text);
-            bool gstin = !String.IsNullOrWhiteSpace(tbGstin.Text);
+            bool gstin = !String.IsNullOrWhiteSpace(tbGstin.Text) && tbGstin.Text.Length == 15;
             bool state = !String.IsNullOrWhiteSpace(tbState.Text);
             bool code = !String.IsNullOrWhiteSpace(tbCode.Text);
             bool city = !String.IsNullOrWhiteSpace(tbCity.Text);
@@ -402,7 +402,7 @@ namespace GST_Billing
             }
             if (!gstin)
             {
-                errorProviderBilling.SetError(tbGstin, "Please enter customer GSTIN.");
+                errorProviderBilling.SetError(tbGstin, "Please enter customer GSTIN(15 characters long).");
                 result = false;
             }
             if (!state)

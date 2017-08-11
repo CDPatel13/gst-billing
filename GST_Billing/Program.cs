@@ -115,8 +115,8 @@ namespace GST_Billing
             }
             catch(Exception ex)
             {
-                MessageBox.Show("An unexpected error occured. Restarting the application.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Restart();
+                MessageBox.Show("An unexpected error occured. Please restart the application.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
     }
