@@ -25,7 +25,7 @@ namespace GST_Billing
             try
             {
                 InitializeComponent();
-                string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName,		
+                string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city, 		
                                 invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, 
                                 invoiceDetails.sgstPercent as sgstPercent, invoiceDetails.cgstPercent as cgstPercent, invoiceDetails.igstPercent as igstPercent,  invoiceDetails.termName as termName, 
                                 invoiceDetails.shipCode as shipCode, invoiceDetails.totalQnty as totalQnty, invoiceDetails.totalAmount as totalAmount, invoiceDetails.totaDiscount as totaDiscount, 
@@ -61,9 +61,31 @@ namespace GST_Billing
                     dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
                 }
 
-                sqlstr = "select chargeName, chargeAmount FROM additionalCharges WHERE invoiceId = " + invoiceId + "";
+                sqlstr = "select chargeName, CAST(chargeAmount as decimal) as chargeAmount FROM additionalCharges WHERE invoiceId = " + invoiceId + "";
                 InvoiceDetails dsAddCharges = m1.selectDataAdapter(sqlstr, 1);
+                
+                //System.Data.DataColumn newColumn = new System.Data.DataColumn("totalAdditionalCharge", typeof(System.String));                                
+                if (dsAddCharges.Tables[0].Rows.Count > 0)
+                {
+                    //object sumObject;
+                    //sumObject = dsAddCharges.Tables[0].Compute("Sum(chargeAmount)", string.Empty);
+                    //newColumn.DefaultValue = sumObject.ToString();
 
+                    var sumObject = dsAddCharges.Tables[0].AsEnumerable().Sum(x => Convert.ToDecimal(x["chargeAmount"]));
+                    foreach (DataRow row in dsVoucher.Tables[0].Rows)
+                    {
+                        row["totalAdditionalCharge"] = sumObject.ToString();
+                    }
+                    //dsVoucher.Tables[0].Columns["totalAdditionalCharge"].DefaultValue = sumObject.ToString();
+                }
+                else
+                {
+                    foreach (DataRow row in dsVoucher.Tables[0].Rows)
+                    {
+                        row["totalAdditionalCharge"] = "0";
+                    }
+                }
+                //dsVoucher.Tables[0].Columns.Add(newColumn);
 
                 ReportDocument cryRpt = new invoicePrint();
                 //cryRpt.Load("D:\\Nirav\\gst-billing\\GST_Billing\\invoicePrint.rpt");

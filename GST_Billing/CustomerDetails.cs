@@ -151,7 +151,7 @@ namespace GST_Billing
                 }
             }
             catch (Exception e1)
-            {
+            {       
                 MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

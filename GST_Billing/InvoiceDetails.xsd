@@ -75,6 +75,7 @@
               <xs:element name="igstPercent" msprop:Generator_ColumnVarNameInTable="columnigstPercent" msprop:Generator_ColumnPropNameInRow="igstPercent" msprop:Generator_ColumnPropNameInTable="igstPercentColumn" msprop:Generator_UserColumnName="igstPercent" type="xs:string" minOccurs="0" />
               <xs:element name="challanNo" msprop:Generator_ColumnVarNameInTable="columnchallanNo" msprop:Generator_ColumnPropNameInRow="challanNo" msprop:Generator_ColumnPropNameInTable="challanNoColumn" msprop:Generator_UserColumnName="challanNo" type="xs:string" minOccurs="0" />
               <xs:element name="termName" msprop:Generator_ColumnVarNameInTable="columntermName" msprop:Generator_ColumnPropNameInRow="termName" msprop:Generator_ColumnPropNameInTable="termNameColumn" msprop:Generator_UserColumnName="termName" type="xs:string" minOccurs="0" />
+              <xs:element name="totalAdditionalCharge" msprop:Generator_ColumnVarNameInTable="columntotalAdditionalCharge" msprop:Generator_ColumnPropNameInRow="totalAdditionalCharge" msprop:Generator_ColumnPropNameInTable="totalAdditionalChargeColumn" msprop:Generator_UserColumnName="totalAdditionalCharge" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
