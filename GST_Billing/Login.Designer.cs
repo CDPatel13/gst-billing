@@ -41,6 +41,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             this.lbUserName.AutoSize = true;
             this.lbUserName.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.Location = new System.Drawing.Point(197, 127);
+            this.lbUserName.Location = new System.Drawing.Point(135, 107);
             this.lbUserName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(91, 17);
@@ -58,7 +59,7 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(294, 126);
+            this.tbUserName.Location = new System.Drawing.Point(232, 106);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(146, 20);
             this.tbUserName.TabIndex = 101;
@@ -67,7 +68,7 @@
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Franklin Gothic Book", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.Location = new System.Drawing.Point(207, 170);
+            this.lbPassword.Location = new System.Drawing.Point(145, 150);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(81, 17);
             this.lbPassword.TabIndex = 106;
@@ -75,7 +76,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(294, 169);
+            this.tbPassword.Location = new System.Drawing.Point(232, 149);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(146, 20);
@@ -88,7 +89,7 @@
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Crimson;
             this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
-            this.btnOK.Location = new System.Drawing.Point(231, 214);
+            this.btnOK.Location = new System.Drawing.Point(169, 194);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 35);
             this.btnOK.TabIndex = 103;
@@ -103,7 +104,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Crimson;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(327, 214);
+            this.btnCancel.Location = new System.Drawing.Point(265, 194);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 35);
             this.btnCancel.TabIndex = 104;
@@ -118,12 +119,12 @@
             this.lbCompanyName.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.SetColumnSpan(this.lbCompanyName, 2);
             this.lbCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbCompanyName.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompanyName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCompanyName.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lbCompanyName.Location = new System.Drawing.Point(3, 3);
             this.lbCompanyName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbCompanyName.Name = "lbCompanyName";
-            this.lbCompanyName.Size = new System.Drawing.Size(446, 33);
+            this.lbCompanyName.Size = new System.Drawing.Size(427, 33);
             this.lbCompanyName.TabIndex = 114;
             this.lbCompanyName.Text = "LN Infosoft";
             this.lbCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,14 +133,13 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel1.SetColumnSpan(this.lbEmail, 2);
             this.lbEmail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbEmail.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbEmail.Location = new System.Drawing.Point(3, 39);
+            this.lbEmail.Location = new System.Drawing.Point(219, 61);
             this.lbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(446, 19);
+            this.lbEmail.Size = new System.Drawing.Size(211, 18);
             this.lbEmail.TabIndex = 115;
             this.lbEmail.Text = "Email : lninfosoft@gmail.com";
             this.lbEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,14 +148,13 @@
             // 
             this.lbContact.AutoSize = true;
             this.lbContact.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel1.SetColumnSpan(this.lbContact, 2);
             this.lbContact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbContact.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbContact.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lbContact.Location = new System.Drawing.Point(3, 61);
             this.lbContact.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbContact.Name = "lbContact";
-            this.lbContact.Size = new System.Drawing.Size(446, 18);
+            this.lbContact.Size = new System.Drawing.Size(210, 18);
             this.lbContact.TabIndex = 116;
             this.lbContact.Text = "Contact : +919879539134";
             this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,9 +165,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.lbContact, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lbEmail, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbCompanyName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbEmail, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -179,39 +178,56 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(452, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(433, 100);
             this.tableLayoutPanel1.TabIndex = 119;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(387, 82);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(-3, 233);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 18);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 117;
             this.label1.Text = "v. 1.0.0.0";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 100);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(194, 162);
+            this.pictureBox1.Size = new System.Drawing.Size(127, 127);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 121;
             this.pictureBox1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(427, 22);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "GST Billing Software";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Login
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 262);
+            this.ClientSize = new System.Drawing.Size(433, 248);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -219,8 +235,6 @@
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(468, 300);
-            this.MinimumSize = new System.Drawing.Size(468, 300);
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -249,6 +263,7 @@
         private System.Windows.Forms.Label lbContact;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
     }
 }

@@ -182,6 +182,7 @@
             // 
             this.tbGstin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbGstin.Location = new System.Drawing.Point(128, 162);
+            this.tbGstin.MaxLength = 15;
             this.tbGstin.Name = "tbGstin";
             this.tbGstin.Size = new System.Drawing.Size(237, 23);
             this.tbGstin.TabIndex = 9;
@@ -747,6 +748,7 @@
             this.tbShipGstin.Enabled = false;
             this.tbShipGstin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbShipGstin.Location = new System.Drawing.Point(128, 162);
+            this.tbShipGstin.MaxLength = 15;
             this.tbShipGstin.Name = "tbShipGstin";
             this.tbShipGstin.Size = new System.Drawing.Size(237, 23);
             this.tbShipGstin.TabIndex = 24;

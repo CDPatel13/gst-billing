@@ -386,6 +386,7 @@ namespace GST_Billing
                         dgvInvoice.Rows.RemoveAt(dgvInvoice.SelectedRows[0].Index);
                 }
             }
+            calculateTotalInvoiceAmount();
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)

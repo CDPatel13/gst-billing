@@ -750,6 +750,7 @@
             this.tbShipState.TabIndex = 7;
             this.tbShipState.SelectedIndexChanged += new System.EventHandler(this.cbShipState_SelectedIndexChanged);
             this.tbShipState.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
+            this.tbShipState.Leave += new System.EventHandler(this.tbShipState_Leave);
             // 
             // lbShipCode
             // 
@@ -901,8 +902,9 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvProducts.Size = new System.Drawing.Size(827, 205);
+            this.dgvProducts.Size = new System.Drawing.Size(881, 205);
             this.dgvProducts.TabIndex = 5;
+            this.dgvProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellEndEdit);
             this.dgvProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellValueChanged);
             this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
             this.dgvProducts.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProducts_RowsAdded);
@@ -998,9 +1000,9 @@
             this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpTotals.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpTotals.Controls.Add(this.lbTotalFinal, 8, 1);
             this.tlpTotals.Controls.Add(this.lbTotalIgst, 7, 1);
@@ -1027,7 +1029,7 @@
             this.tlpTotals.RowCount = 2;
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTotals.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTotals.Size = new System.Drawing.Size(827, 72);
+            this.tlpTotals.Size = new System.Drawing.Size(881, 72);
             this.tlpTotals.TabIndex = 7;
             // 
             // lbTotalFinal
@@ -1035,11 +1037,12 @@
             this.lbTotalFinal.AutoSize = true;
             this.lbTotalFinal.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalFinal.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFinal.Location = new System.Drawing.Point(803, 40);
-            this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalFinal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalFinal.ForeColor = System.Drawing.Color.Maroon;
+            this.lbTotalFinal.Location = new System.Drawing.Point(857, 37);
+            this.lbTotalFinal.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalFinal.Name = "lbTotalFinal";
-            this.lbTotalFinal.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalFinal.Size = new System.Drawing.Size(18, 26);
             this.lbTotalFinal.TabIndex = 20;
             this.lbTotalFinal.Text = "0";
             // 
@@ -1048,10 +1051,10 @@
             this.lbTotalIgst.AutoSize = true;
             this.lbTotalIgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalIgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalIgst.Location = new System.Drawing.Point(541, 40);
-            this.lbTotalIgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalIgst.Location = new System.Drawing.Point(631, 37);
+            this.lbTotalIgst.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalIgst.Name = "lbTotalIgst";
-            this.lbTotalIgst.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalIgst.Size = new System.Drawing.Size(18, 26);
             this.lbTotalIgst.TabIndex = 19;
             this.lbTotalIgst.Text = "0";
             // 
@@ -1063,7 +1066,7 @@
             this.lbSgstT.Location = new System.Drawing.Point(349, 9);
             this.lbSgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbSgstT.Name = "lbSgstT";
-            this.lbSgstT.Size = new System.Drawing.Size(64, 22);
+            this.lbSgstT.Size = new System.Drawing.Size(94, 22);
             this.lbSgstT.TabIndex = 6;
             this.lbSgstT.Text = "SGST";
             // 
@@ -1133,10 +1136,10 @@
             this.lbTotalQty.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalQty.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalQty.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalQty.Location = new System.Drawing.Point(78, 40);
-            this.lbTotalQty.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalQty.Location = new System.Drawing.Point(78, 37);
+            this.lbTotalQty.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalQty.Name = "lbTotalQty";
-            this.lbTotalQty.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalQty.Size = new System.Drawing.Size(18, 26);
             this.lbTotalQty.TabIndex = 9;
             this.lbTotalQty.Text = "0";
             // 
@@ -1146,10 +1149,10 @@
             this.lbTotalAmount.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalAmount.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalAmount.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalAmount.Location = new System.Drawing.Point(143, 40);
-            this.lbTotalAmount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalAmount.Location = new System.Drawing.Point(143, 37);
+            this.lbTotalAmount.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalAmount.Name = "lbTotalAmount";
-            this.lbTotalAmount.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalAmount.Size = new System.Drawing.Size(18, 26);
             this.lbTotalAmount.TabIndex = 10;
             this.lbTotalAmount.Text = "0";
             // 
@@ -1159,10 +1162,10 @@
             this.lbTotalDiscount.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalDiscount.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalDiscount.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalDiscount.Location = new System.Drawing.Point(215, 40);
-            this.lbTotalDiscount.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalDiscount.Location = new System.Drawing.Point(215, 37);
+            this.lbTotalDiscount.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalDiscount.Name = "lbTotalDiscount";
-            this.lbTotalDiscount.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalDiscount.Size = new System.Drawing.Size(18, 26);
             this.lbTotalDiscount.TabIndex = 11;
             this.lbTotalDiscount.Text = "0";
             // 
@@ -1172,10 +1175,10 @@
             this.lbTotalTaxVal.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalTaxVal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalTaxVal.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalTaxVal.Location = new System.Drawing.Point(322, 40);
-            this.lbTotalTaxVal.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalTaxVal.Location = new System.Drawing.Point(322, 37);
+            this.lbTotalTaxVal.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalTaxVal.Name = "lbTotalTaxVal";
-            this.lbTotalTaxVal.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalTaxVal.Size = new System.Drawing.Size(18, 26);
             this.lbTotalTaxVal.TabIndex = 12;
             this.lbTotalTaxVal.Text = "0";
             // 
@@ -1185,10 +1188,10 @@
             this.lbTotalSgst.BackColor = System.Drawing.SystemColors.Control;
             this.lbTotalSgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalSgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalSgst.Location = new System.Drawing.Point(395, 40);
-            this.lbTotalSgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalSgst.Location = new System.Drawing.Point(425, 37);
+            this.lbTotalSgst.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalSgst.Name = "lbTotalSgst";
-            this.lbTotalSgst.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalSgst.Size = new System.Drawing.Size(18, 26);
             this.lbTotalSgst.TabIndex = 13;
             this.lbTotalSgst.Text = "0";
             // 
@@ -1197,33 +1200,35 @@
             this.lbTotalCgst.AutoSize = true;
             this.lbTotalCgst.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbTotalCgst.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalCgst.Location = new System.Drawing.Point(468, 40);
-            this.lbTotalCgst.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lbTotalCgst.Location = new System.Drawing.Point(528, 37);
+            this.lbTotalCgst.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbTotalCgst.Name = "lbTotalCgst";
-            this.lbTotalCgst.Size = new System.Drawing.Size(18, 23);
+            this.lbTotalCgst.Size = new System.Drawing.Size(18, 26);
             this.lbTotalCgst.TabIndex = 15;
             this.lbTotalCgst.Text = "0";
             // 
             // lbTotalAll
             // 
             this.lbTotalAll.AutoSize = true;
-            this.lbTotalAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbTotalAll.Location = new System.Drawing.Point(568, 9);
+            this.lbTotalAll.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbTotalAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalAll.ForeColor = System.Drawing.Color.Maroon;
+            this.lbTotalAll.Location = new System.Drawing.Point(788, 9);
             this.lbTotalAll.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbTotalAll.Name = "lbTotalAll";
-            this.lbTotalAll.Size = new System.Drawing.Size(40, 17);
+            this.lbTotalAll.Size = new System.Drawing.Size(87, 22);
             this.lbTotalAll.TabIndex = 14;
-            this.lbTotalAll.Text = "Total";
+            this.lbTotalAll.Text = "Net Amount";
             // 
             // lbCgstT
             // 
             this.lbCgstT.AutoSize = true;
             this.lbCgstT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbCgstT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCgstT.Location = new System.Drawing.Point(422, 9);
+            this.lbCgstT.Location = new System.Drawing.Point(452, 9);
             this.lbCgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbCgstT.Name = "lbCgstT";
-            this.lbCgstT.Size = new System.Drawing.Size(64, 22);
+            this.lbCgstT.Size = new System.Drawing.Size(94, 22);
             this.lbCgstT.TabIndex = 16;
             this.lbCgstT.Text = "CGST";
             // 
@@ -1231,7 +1236,7 @@
             // 
             this.lbIgstT.AutoSize = true;
             this.lbIgstT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIgstT.Location = new System.Drawing.Point(495, 9);
+            this.lbIgstT.Location = new System.Drawing.Point(555, 9);
             this.lbIgstT.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.lbIgstT.Name = "lbIgstT";
             this.lbIgstT.Size = new System.Drawing.Size(39, 16);
@@ -1281,7 +1286,7 @@
             this.flpPanelButtons.Location = new System.Drawing.Point(0, 714);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
-            this.flpPanelButtons.Size = new System.Drawing.Size(827, 43);
+            this.flpPanelButtons.Size = new System.Drawing.Size(881, 43);
             this.flpPanelButtons.TabIndex = 99;
             // 
             // gbAddCharge
@@ -1404,7 +1409,7 @@
             this.tbSgst.Name = "tbSgst";
             this.tbSgst.Size = new System.Drawing.Size(30, 25);
             this.tbSgst.TabIndex = 9;
-            this.tbSgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
+            this.tbSgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbSgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbCgst
@@ -1430,7 +1435,7 @@
             this.tbCgst.Name = "tbCgst";
             this.tbCgst.Size = new System.Drawing.Size(30, 25);
             this.tbCgst.TabIndex = 10;
-            this.tbCgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
+            this.tbCgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbCgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // lbIgst
@@ -1456,7 +1461,7 @@
             this.tbIgst.Name = "tbIgst";
             this.tbIgst.Size = new System.Drawing.Size(30, 25);
             this.tbIgst.TabIndex = 11;
-            this.tbIgst.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
+            this.tbIgst.TextChanged += new System.EventHandler(this.tbGst_TextChanged);
             this.tbIgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
             // flpBillShip
@@ -1466,7 +1471,7 @@
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpBillShip.Location = new System.Drawing.Point(0, 100);
             this.flpBillShip.Name = "flpBillShip";
-            this.flpBillShip.Size = new System.Drawing.Size(827, 240);
+            this.flpBillShip.Size = new System.Drawing.Size(881, 240);
             this.flpBillShip.TabIndex = 1;
             // 
             // flpA
@@ -1475,7 +1480,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(827, 100);
+            this.flpA.Size = new System.Drawing.Size(881, 100);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1495,7 +1500,7 @@
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpGst.Location = new System.Drawing.Point(0, 340);
             this.flpGst.Name = "flpGst";
-            this.flpGst.Size = new System.Drawing.Size(827, 33);
+            this.flpGst.Size = new System.Drawing.Size(881, 33);
             this.flpGst.TabIndex = 2;
             // 
             // splitter3
@@ -1552,7 +1557,7 @@
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
             this.flpAddCharge.Name = "flpAddCharge";
-            this.flpAddCharge.Size = new System.Drawing.Size(827, 64);
+            this.flpAddCharge.Size = new System.Drawing.Size(881, 64);
             this.flpAddCharge.TabIndex = 26;
             // 
             // errorProviderTextBox
@@ -1565,7 +1570,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(861, 561);
+            this.ClientSize = new System.Drawing.Size(898, 561);
             this.Controls.Add(this.tlpTotals);
             this.Controls.Add(this.flpAddCharge);
             this.Controls.Add(this.dgvProducts);
