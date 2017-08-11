@@ -357,6 +357,8 @@ namespace GST_Billing {
             
             private global::System.Data.DataColumn columntotaDiscount;
             
+            private global::System.Data.DataColumn columntotalTaxColAmt;
+            
             private global::System.Data.DataColumn columntotalTaxAmount;
             
             private global::System.Data.DataColumn columntotalSGSTAmount;
@@ -748,6 +750,14 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn totalTaxColAmtColumn {
+                get {
+                    return this.columntotalTaxColAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn totalTaxAmountColumn {
                 get {
                     return this.columntotalTaxAmount;
@@ -999,6 +1009,7 @@ namespace GST_Billing {
                         string totalQnty, 
                         string totalAmount, 
                         string totaDiscount, 
+                        string totalTaxColAmt, 
                         string totalTaxAmount, 
                         string totalSGSTAmount, 
                         string totaCGSTAmount, 
@@ -1062,6 +1073,7 @@ namespace GST_Billing {
                         totalQnty,
                         totalAmount,
                         totaDiscount,
+                        totalTaxColAmt,
                         totalTaxAmount,
                         totalSGSTAmount,
                         totaCGSTAmount,
@@ -1145,6 +1157,7 @@ namespace GST_Billing {
                 this.columntotalQnty = base.Columns["totalQnty"];
                 this.columntotalAmount = base.Columns["totalAmount"];
                 this.columntotaDiscount = base.Columns["totaDiscount"];
+                this.columntotalTaxColAmt = base.Columns["totalTaxColAmt"];
                 this.columntotalTaxAmount = base.Columns["totalTaxAmount"];
                 this.columntotalSGSTAmount = base.Columns["totalSGSTAmount"];
                 this.columntotaCGSTAmount = base.Columns["totaCGSTAmount"];
@@ -1250,6 +1263,8 @@ namespace GST_Billing {
                 base.Columns.Add(this.columntotalAmount);
                 this.columntotaDiscount = new global::System.Data.DataColumn("totaDiscount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotaDiscount);
+                this.columntotalTaxColAmt = new global::System.Data.DataColumn("totalTaxColAmt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalTaxColAmt);
                 this.columntotalTaxAmount = new global::System.Data.DataColumn("totalTaxAmount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalTaxAmount);
                 this.columntotalSGSTAmount = new global::System.Data.DataColumn("totalSGSTAmount", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2055,6 +2070,22 @@ namespace GST_Billing {
                 }
                 set {
                     this[this.tableinvoiceBill.totaDiscountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string totalTaxColAmt {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceBill.totalTaxColAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totalTaxColAmt\' in table \'invoiceBill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceBill.totalTaxColAmtColumn] = value;
                 }
             }
             
@@ -2876,6 +2907,18 @@ namespace GST_Billing {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettotaDiscountNull() {
                 this[this.tableinvoiceBill.totaDiscountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstotalTaxColAmtNull() {
+                return this.IsNull(this.tableinvoiceBill.totalTaxColAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettotalTaxColAmtNull() {
+                this[this.tableinvoiceBill.totalTaxColAmtColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

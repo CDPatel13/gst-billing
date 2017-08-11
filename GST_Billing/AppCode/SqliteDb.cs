@@ -123,6 +123,7 @@ namespace GaneshLogistics.AppCode
 									totalQnty	DECIMAL(6,2),
 									totalAmount	DECIMAL(8,2),
 									totaDiscount	DECIMAL(8,2),
+                                    totalTaxColAmt  DECIMAL(8,2), 
 									totalTaxAmount	DECIMAL(8,2),
 									totalSGSTAmount	DECIMAL(8,2),
 									totaCGSTAmount	DECIMAL(8,2),

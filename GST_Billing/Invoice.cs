@@ -23,6 +23,7 @@ namespace GST_Billing
 		SqliteDb m1 = new SqliteDb();
 		bool isDirty = false;
 		int custId = 0;
+        double totaltaxColAmt = 0;
 		double sgstFinal = 0;
 		double cgstFinal = 0;
 		double igstFinal = 0;
@@ -309,6 +310,7 @@ namespace GST_Billing
 			double discount = 0;
 			double gstAmount = 0;
 			double taxableVal = 0;
+            totaltaxColAmt = 0;
 			foreach(DataGridViewRow row in dgvProducts.Rows)
 			{
 				quantity += row.Cells["colQty"].Value != null ? float.Parse(row.Cells["colQty"].Value.ToString()) : 0;
@@ -316,7 +318,7 @@ namespace GST_Billing
 				discount += row.Cells["colDiscount"].Value != null ? double.Parse(row.Cells["colDiscount"].Value.ToString()) : 0;
 				taxableVal += row.Cells["colTaxableVal"].Value != null ? double.Parse(row.Cells["colTaxableVal"].Value.ToString()) : 0;
 			}
-
+            totaltaxColAmt = taxableVal;
 			taxableVal += calculateTaxableValue();
 			gstAmount = calculateGST(taxableVal);
 			amount = Math.Round(amount, 2);
@@ -649,10 +651,10 @@ namespace GST_Billing
 
 				//, totaCGSTAmount, totalIGSTAmount
 				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-						"totalQnty, totalAmount, totaDiscount, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
 						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + userId + "', '" + tbPaymentTerms.SelectedItem + "', '" +
 						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
-						lbTotalDiscount.Text + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1)";
+                        lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1)";
 				int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
 				if (NoOfRows > 0)
