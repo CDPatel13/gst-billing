@@ -114,6 +114,22 @@ namespace GST_Billing
                 DataGridViewRow row = dgvCustomer.SelectedRows[0];
 
                 string sqlstr = "DELETE FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "'";
+                string sqlStrCustId = "SELECT custId FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "'";
+
+                DataSet ds = m1.selectData(sqlStrCustId);
+                if(ds!=null && ds.Tables[0].Rows.Count > 0)
+                {
+                    string custId = ds.Tables[0].Rows[0][0].ToString();
+                    sqlStrCustId = "SELECT invoiceNo FROM invoiceDetails WHERE custId='" + custId + "'";
+
+                    DataSet ds1 = m1.selectData(sqlStrCustId);
+                    if(ds1!=null && ds1.Tables[0].Rows.Count > 0)
+                    {
+                        MessageBox.Show("Customer can not be deleted as invoice for this customer exists.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
+
                 DialogResult result = MessageBox.Show("Do you really want to delete this customer?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)

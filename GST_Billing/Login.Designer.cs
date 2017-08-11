@@ -39,9 +39,9 @@
             this.lbEmail = new System.Windows.Forms.Label();
             this.lbContact = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,9 +59,9 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(232, 106);
+            this.tbUserName.Location = new System.Drawing.Point(247, 106);
             this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(146, 20);
+            this.tbUserName.Size = new System.Drawing.Size(158, 20);
             this.tbUserName.TabIndex = 101;
             // 
             // lbPassword
@@ -76,10 +76,10 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(232, 149);
+            this.tbPassword.Location = new System.Drawing.Point(247, 149);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(146, 20);
+            this.tbPassword.Size = new System.Drawing.Size(158, 20);
             this.tbPassword.TabIndex = 102;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
@@ -181,6 +181,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(433, 100);
             this.tableLayoutPanel1.TabIndex = 119;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(427, 22);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "GST Billing Software";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -205,19 +218,6 @@
             this.pictureBox1.TabIndex = 121;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(427, 22);
-            this.label2.TabIndex = 117;
-            this.label2.Text = "GST Billing Software";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Login
             // 
             this.AcceptButton = this.btnOK;
@@ -234,7 +234,10 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(449, 286);
+            this.MinimumSize = new System.Drawing.Size(449, 286);
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

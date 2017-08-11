@@ -222,7 +222,7 @@
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(94, 34);
             this.btnAddProduct.TabIndex = 0;
-            this.btnAddProduct.Text = "Add";
+            this.btnAddProduct.Text = "New";
             this.btnAddProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
@@ -332,7 +332,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(82, 20);
             this.dtpStartDate.TabIndex = 4;
-            this.dtpStartDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Value = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -496,7 +496,7 @@
             this.btnAddInvoice.Name = "btnAddInvoice";
             this.btnAddInvoice.Size = new System.Drawing.Size(94, 34);
             this.btnAddInvoice.TabIndex = 0;
-            this.btnAddInvoice.Text = "Add";
+            this.btnAddInvoice.Text = "New";
             this.btnAddInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddInvoice.UseVisualStyleBackColor = true;
             this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
@@ -680,7 +680,7 @@
             this.btnAddCust.Name = "btnAddCust";
             this.btnAddCust.Size = new System.Drawing.Size(94, 34);
             this.btnAddCust.TabIndex = 0;
-            this.btnAddCust.Text = "Add";
+            this.btnAddCust.Text = "New";
             this.btnAddCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddCust.UseVisualStyleBackColor = true;
             this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
@@ -788,7 +788,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "GST Billing";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);

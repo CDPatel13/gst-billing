@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompanyDetails));
             this.lbName = new System.Windows.Forms.Label();
             this.tbCompanyName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
@@ -466,13 +467,14 @@
             this.Controls.Add(this.lbName);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(771, 346);
             this.MinimumSize = new System.Drawing.Size(371, 299);
             this.Name = "CompanyDetails";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CompanyDetails";
+            this.Text = "Company Information";
             this.Load += new System.EventHandler(this.CompanyDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTextBox)).EndInit();
             this.ResumeLayout(false);
