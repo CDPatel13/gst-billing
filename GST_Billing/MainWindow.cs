@@ -428,6 +428,7 @@ namespace GST_Billing
             {
                 tableInvoice.DefaultView.RowFilter = conditionDate;
             }
+            calculateTotalInvoiceAmount();
         }
 
         private void btnClearInvoice_Click(object sender, EventArgs e)
@@ -535,6 +536,8 @@ namespace GST_Billing
             dgvInvoice.DataSource = bindingSourceInvoice;
 
             dgvInvoice.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            dgvInvoice.Sort(dgvInvoice.Columns[1], ListSortDirection.Ascending);
 
             calculateTotalInvoiceAmount();
         }

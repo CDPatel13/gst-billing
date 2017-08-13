@@ -13,6 +13,7 @@ namespace GST_Billing
     public partial class ChangePassword : Form
     {
         SqliteDb m1 = new SqliteDb();
+        string oldPassword = String.Empty;
         public ChangePassword()
         {
             InitializeComponent();
@@ -55,36 +56,79 @@ namespace GST_Billing
 
         private bool ValidateInputs()
         {
-            bool username = !String.IsNullOrWhiteSpace(tbOldUserName.Text);
+            bool username = !String.IsNullOrWhiteSpace(tbNewUserName.Text);
             bool oldpassword = !String.IsNullOrWhiteSpace(tbOldPassword.Text);
             bool newPassword = !String.IsNullOrWhiteSpace(tbNewPassword.Text);
             bool confirmPassword = !String.IsNullOrWhiteSpace(tbConfirmPassword.Text);
 
-            if (username && oldpassword && newPassword && confirmPassword)
+            bool result = true;
+
+            if(!username)
             {
-                if (tbNewPassword.Text == tbConfirmPassword.Text)
-                {
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Password does not match with confirm password!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                errorProvider1.SetError(tbNewUserName, "Please enter new username.");
+                result = false;
             }
-            else
+
+            if(tbOldPassword.Text != oldPassword)
             {
-                MessageBox.Show("Please fill all the details!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(tbOldPassword, "Please enter correct current password.");
+                result = false;
             }
-            return false;
+            if(!newPassword)
+            {
+                errorProvider1.SetError(tbNewPassword, "Password can not be empty.");
+                result = false;
+            }
+            if (!newPassword)
+            {
+                errorProvider1.SetError(tbConfirmPassword, "Password can not be empty.");
+                result = false;
+            }
+            if (tbNewPassword.Text != tbConfirmPassword.Text)
+            {
+                errorProvider1.SetError(tbConfirmPassword, "Passwords do not match.");
+                errorProvider1.SetError(tbNewPassword, "Passwords do not match.");
+                result = false;
+            }
+            return result;
         }
 
         private void ChangePassword_Load(object sender, EventArgs e)
         {
-            string sqlstr = "SELECT username FROM loginDetails";
+            string sqlstr = "SELECT username,password FROM loginDetails";
             DataSet ds = m1.selectData(sqlstr);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 tbOldUserName.Text = ds.Tables[0].Rows[0][0].ToString();
+                tbNewUserName.Text = tbOldUserName.Text;
+                oldPassword = ds.Tables[0].Rows[0][1].ToString();
+            }
+        }
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            bool username = !String.IsNullOrWhiteSpace(tbNewUserName.Text);
+            bool oldpassword = !String.IsNullOrWhiteSpace(tbOldPassword.Text);
+            bool newPassword = !String.IsNullOrWhiteSpace(tbNewPassword.Text);
+            bool confirmPassword = !String.IsNullOrWhiteSpace(tbConfirmPassword.Text);
+
+            bool result = true;
+
+            if (username)
+            {
+                errorProvider1.SetError(tbNewUserName, String.Empty);
+            }
+            if(oldpassword)
+            {
+                errorProvider1.SetError(tbOldPassword, String.Empty);
+            }
+            if(newPassword)
+            {
+                errorProvider1.SetError(tbNewPassword, String.Empty);
+            }
+            if(confirmPassword)
+            {
+                errorProvider1.SetError(tbConfirmPassword, String.Empty);
             }
         }
     }
