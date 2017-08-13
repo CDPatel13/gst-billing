@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoicePayment));
             this.lbMain = new System.Windows.Forms.Label();
             this.lbInvoiceNo = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.tbBillAmount = new System.Windows.Forms.TextBox();
             this.tbPending = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbMain
@@ -120,6 +123,7 @@
             this.tbPayment.Name = "tbPayment";
             this.tbPayment.Size = new System.Drawing.Size(100, 22);
             this.tbPayment.TabIndex = 0;
+            this.tbPayment.TextChanged += new System.EventHandler(this.tbPayment_TextChanged);
             this.tbPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPayment_KeyPress);
             // 
             // tbCustomer
@@ -162,6 +166,10 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // InvoicePayment
             // 
             this.AcceptButton = this.btnSave;
@@ -190,6 +198,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InvoicePayment";
             this.Load += new System.EventHandler(this.InvoicePayment_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +218,6 @@
         private System.Windows.Forms.TextBox tbBillAmount;
         private System.Windows.Forms.TextBox tbPending;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

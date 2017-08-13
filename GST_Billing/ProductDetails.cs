@@ -101,11 +101,12 @@ namespace GST_Billing
                 }
                 if (NoOfRows > 0)
                 {
-                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Failed to save details!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }

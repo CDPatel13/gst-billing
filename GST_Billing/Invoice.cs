@@ -44,13 +44,14 @@ namespace GST_Billing
 
 		private void Invoice_Load(object sender, EventArgs e)
 		{
+            tbPaymentTerms.DataSource = baseModel.paymentTerms.Values.ToList();
+            tbPaymentTerms.AutoCompleteMode = AutoCompleteMode.Suggest;
+            loadCustomerDetailsFromDatabase();
+
 			if(invoiceToEdit == 0)
 			{ 
-				loadCustomerDetailsFromDatabase();
-				tbPaymentTerms.DataSource = baseModel.paymentTerms.Values.ToList();
-				tbPaymentTerms.AutoCompleteMode = AutoCompleteMode.Suggest;
-				tbPaymentTerms.SelectedIndex = -1;
 				setAdditionalCharges();
+                tbPaymentTerms.SelectedIndex = -1;
 			}
 			else
 			{
@@ -58,6 +59,9 @@ namespace GST_Billing
 				getInvoiceDetailsToEdit(invoiceToEdit);
 				enableDisableControls();
 			}
+
+
+           
 
 			this.WindowState = FormWindowState.Maximized;
 			this.ResizeRedraw = true;
@@ -440,6 +444,8 @@ namespace GST_Billing
 			{
 				tbIgst.Enabled = false;
 				tbIgst.Clear();
+                igstFinal = 0;
+                lbTotalIgst.Text = igstFinal.ToString();
 			}
 			else if(tbIgst.Text.Length > 0)
 			{
@@ -450,6 +456,12 @@ namespace GST_Billing
 
 				tbSgst.Clear();
 				tbCgst.Clear();
+
+                sgstFinal = 0;
+                lbTotalSgst.Text = sgstFinal.ToString();
+
+                cgstFinal = 0;
+                lbTotalCgst.Text = cgstFinal.ToString();
 			}
 			else
 			{
@@ -457,6 +469,15 @@ namespace GST_Billing
 
 				tbSgst.Enabled = true;
 				tbCgst.Enabled = true;
+
+                sgstFinal = 0;
+                lbTotalSgst.Text = sgstFinal.ToString();
+
+                cgstFinal = 0;
+                lbTotalCgst.Text = cgstFinal.ToString();
+
+                igstFinal = 0;
+                lbTotalIgst.Text = igstFinal.ToString();
 			}
 
 			calculateTotals();
@@ -622,9 +643,9 @@ namespace GST_Billing
 			{
 				string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND IsActive = 1 ";
 				DataSet ds = m1.selectData(sqlstr);
-				if (ds.Tables[0].Rows.Count > 0)
+				if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit != 0)
 				{
-					DialogResult drDuplicateInsert = MessageBox.Show("Invoice no. : " + tbInvoiceNum.Text + " is present in Db.. Do you want to update it?"
+					DialogResult drDuplicateInsert = MessageBox.Show("Do you want to update Invoice : " + tbInvoiceNum.Text + " ?"
 						, "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 					switch (drDuplicateInsert)
 					{
@@ -645,6 +666,11 @@ namespace GST_Billing
 							return;
 					}
 				}
+                else if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit == 0)
+                {
+                    MessageBox.Show("Invoice No. " + tbInvoiceNum.Text + " is already in use. Please use another number.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
 				sqlstr = "select MAX(userId) from userDetails";
 				int userId = Convert.ToInt32(m1.scaler(sqlstr));
@@ -675,7 +701,7 @@ namespace GST_Billing
 						}
 					}
 
-					getListOfAdditionalCharges();
+                    //getListOfAdditionalCharges(); // CDP : Taken into validateAddCharges()
 					foreach (var item in listofAddCharges)
 					{                        
 						sqlstr = "INSERT INTO additionalCharges(invoiceId, chargeName, chargeAmount)" +
@@ -690,7 +716,7 @@ namespace GST_Billing
 						m1.Ins_Upd_Del(sqlstr);
 					}
 
-					MessageBox.Show("Invoice created successfully","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Invoice saved successfully","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 					btnPrint.Enabled = true;
 					isDirty = false;
@@ -796,20 +822,41 @@ namespace GST_Billing
 
 		private void getListOfAdditionalCharges()
 		{
-			if (!String.IsNullOrEmpty(lbAddCharge1.Text) && !String.IsNullOrEmpty(tbAddCharge1.Text))
+            if (!String.IsNullOrWhiteSpace(lbAddCharge1.Text) && !String.IsNullOrWhiteSpace(tbAddCharge1.Text) && !listofAddCharges.Exists(x => x.Item1 == lbAddCharge1.Text))
 			{
 				listofAddCharges.Add(Tuple.Create(lbAddCharge1.Text, tbAddCharge1.Text));
 			}
+            else if (listofAddCharges.Exists(x => x.Item1 == lbAddCharge1.Text))
+            {
+                Tuple<string, string> pair = listofAddCharges.Find(x => x.Item1 == lbAddCharge1.Text);
+                pair = new Tuple<string, string>(pair.Item1, tbAddCharge1.Text);
+                listofAddCharges.Remove(listofAddCharges.Find(x => x.Item1 == lbAddCharge1.Text));
+                listofAddCharges.Add(pair);
+            }
 
-			if (!String.IsNullOrEmpty(lbAddCharge2.Text) && !String.IsNullOrEmpty(tbAddCharge2.Text))
+            if (!String.IsNullOrWhiteSpace(lbAddCharge2.Text) && !String.IsNullOrWhiteSpace(tbAddCharge2.Text) && !listofAddCharges.Exists(x => x.Item1 == lbAddCharge2.Text))
 			{
 				listofAddCharges.Add(Tuple.Create(lbAddCharge2.Text, tbAddCharge2.Text));
 			}
+            else if (listofAddCharges.Exists(x => x.Item1 == lbAddCharge2.Text))
+            {
+                Tuple<string, string> pair = listofAddCharges.Find(x => x.Item1 == lbAddCharge2.Text);
+                pair = new Tuple<string, string>(pair.Item1, tbAddCharge2.Text);
+                listofAddCharges.Remove(listofAddCharges.Find(x => x.Item1 == lbAddCharge2.Text));
+                listofAddCharges.Add(pair);
+            }
 
-			if (!String.IsNullOrEmpty(lbAddCharge3.Text) && !String.IsNullOrEmpty(tbAddCharge3.Text))
+            if (!String.IsNullOrWhiteSpace(lbAddCharge3.Text) && !String.IsNullOrWhiteSpace(tbAddCharge3.Text) && !listofAddCharges.Exists(x => x.Item1 == lbAddCharge3.Text))
 			{
 				listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));
 			}
+            else if (listofAddCharges.Exists(x => x.Item1 == lbAddCharge3.Text))
+            {
+                Tuple<string, string> pair = listofAddCharges.Find(x => x.Item1 == lbAddCharge3.Text);
+                pair = new Tuple<string, string>(pair.Item1, tbAddCharge3.Text);
+                listofAddCharges.Remove(listofAddCharges.Find(x => x.Item1 == lbAddCharge3.Text));
+                listofAddCharges.Add(pair);
+            }
 
 		}
 
@@ -843,14 +890,26 @@ namespace GST_Billing
 
 		private void dgvProducts_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
-			int serNo = 1;
-			string proDes = String.Empty;
-			foreach(DataGridViewRow row in dgvProducts.Rows)
-			{
-				//proDes = row.Cells[1].Value == null ? String.Empty : row.Cells[1].Value.ToString();
-				row.Cells["colSerNo"].Value = (serNo++).ToString();
-			}
+            updateSerNoProducts();
 		}
+
+        private void updateSerNoProducts()
+        {
+            int serNo = 1;
+            string proDes = String.Empty;
+            foreach (DataGridViewRow row in dgvProducts.Rows)
+            {
+                if (serNo == dgvProducts.Rows.Count)
+                    break;
+                row.Cells["colSerNo"].Value = (serNo++).ToString();
+            }
+        }
+
+        private void dgvProducts_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            updateSerNoProducts();
+            calculateTotals();
+        }
 
 		private void Invoice_ResizeEnd(object sender, EventArgs e)
 		{
@@ -918,9 +977,54 @@ namespace GST_Billing
 				errorProviderTextBox.SetError(tbShipPin, "Please enter consignee pincode.");
 				result = false;
 			}
+            if (!listOfCustomers.Contains(tbBillName.Text))
+            {
+                errorProviderTextBox.SetError(tbBillName, "Customer does not exist. Please select correct customer.");
+                result = false;
+            }
+
+            result = result && validateProducts();
+
+            result = result && validateAddCharges();
 
 			return result;
 		}
+
+        private bool validateProducts()
+        {
+            string quantity;
+            int rowCnt = dgvProducts.Rows.Count;
+            foreach(DataGridViewRow row in dgvProducts.Rows)
+            {
+                if (rowCnt == 1)
+                    break;
+                quantity = row.Cells["colQty"].Value == null ? "0.00" : row.Cells["colQty"].Value.ToString();
+                if(quantity == "0.00")
+                {
+                    MessageBox.Show("Please remove products with 0(zero) quantity.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+                rowCnt--;
+            }
+
+            return true;
+        }
+
+        private bool validateAddCharges()
+        {
+            getListOfAdditionalCharges();
+
+            for(int i = 0;i < listofAddCharges.Count; i++)
+            {
+                Tuple<string,string> pair = listofAddCharges[i];
+                if(double.Parse(pair.Item2) == 0)
+                {
+                    listofAddCharges.Remove(pair);
+                }
+            }
+
+            return true;
+        }
 
 		private void tbAll_TextChanged(object sender, EventArgs e)
 		{
