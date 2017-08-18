@@ -37,8 +37,8 @@ namespace GST_Billing
 					else
 					{
 						this.Hide();
-						MainWindow window = new MainWindow();
-						window.Show();
+                        SelectFirm companySelect = new SelectFirm();
+                        companySelect.Show();
 					}
 				}
 				else
@@ -61,7 +61,7 @@ namespace GST_Billing
 		{
 			CompanyDetails newCompany = new CompanyDetails();
 			//TODO : Get company information from DB
-			if (String.IsNullOrEmpty(newCompany.CompanyName))
+			if (!newCompany.CompanyExists)
 			{
 				DialogResult result = MessageBox.Show("Please enter company details...", "Company Details Setup", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
 				if ((result == DialogResult.OK) && (newCompany.ShowDialog() == DialogResult.OK))

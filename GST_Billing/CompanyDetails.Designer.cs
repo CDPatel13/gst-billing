@@ -113,7 +113,7 @@
             this.tbEmail.Location = new System.Drawing.Point(514, 105);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(225, 23);
-            this.tbEmail.TabIndex = 2;
+            this.tbEmail.TabIndex = 6;
             // 
             // lbEmail
             // 
@@ -131,7 +131,7 @@
             this.tbContact.Location = new System.Drawing.Point(514, 134);
             this.tbContact.Name = "tbContact";
             this.tbContact.Size = new System.Drawing.Size(225, 23);
-            this.tbContact.TabIndex = 3;
+            this.tbContact.TabIndex = 7;
             this.tbContact.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.tbContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbContact_KeyPress);
             // 
@@ -151,7 +151,7 @@
             this.tbGstin.Location = new System.Drawing.Point(95, 193);
             this.tbGstin.Name = "tbGstin";
             this.tbGstin.Size = new System.Drawing.Size(225, 23);
-            this.tbGstin.TabIndex = 4;
+            this.tbGstin.TabIndex = 8;
             this.tbGstin.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // lbGstin
@@ -170,7 +170,7 @@
             this.btnSave.Location = new System.Drawing.Point(0, 279);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(755, 29);
-            this.btnSave.TabIndex = 14;
+            this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -192,7 +192,7 @@
             this.tbCode.MaxLength = 2;
             this.tbCode.Name = "tbCode";
             this.tbCode.Size = new System.Drawing.Size(225, 23);
-            this.tbCode.TabIndex = 6;
+            this.tbCode.TabIndex = 4;
             this.tbCode.Click += new System.EventHandler(this.tbCode_Click);
             this.tbCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.tbCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbContact_KeyPress);
@@ -256,7 +256,7 @@
             this.tbState.Location = new System.Drawing.Point(95, 134);
             this.tbState.Name = "tbState";
             this.tbState.Size = new System.Drawing.Size(225, 24);
-            this.tbState.TabIndex = 5;
+            this.tbState.TabIndex = 4;
             this.tbState.SelectedIndexChanged += new System.EventHandler(this.cbState_SelectedIndexChanged);
             this.tbState.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -266,7 +266,7 @@
             this.tbLandmark.Location = new System.Drawing.Point(95, 76);
             this.tbLandmark.Name = "tbLandmark";
             this.tbLandmark.Size = new System.Drawing.Size(225, 23);
-            this.tbLandmark.TabIndex = 18;
+            this.tbLandmark.TabIndex = 2;
             // 
             // lbLandmark
             // 
@@ -284,7 +284,7 @@
             this.tbCity.Location = new System.Drawing.Point(95, 105);
             this.tbCity.Name = "tbCity";
             this.tbCity.Size = new System.Drawing.Size(225, 23);
-            this.tbCity.TabIndex = 20;
+            this.tbCity.TabIndex = 3;
             // 
             // lbCity
             // 
@@ -302,7 +302,7 @@
             this.tbBankName.Location = new System.Drawing.Point(514, 192);
             this.tbBankName.Name = "tbBankName";
             this.tbBankName.Size = new System.Drawing.Size(225, 23);
-            this.tbBankName.TabIndex = 34;
+            this.tbBankName.TabIndex = 10;
             // 
             // lbBankName
             // 
@@ -320,7 +320,7 @@
             this.tbPanNo.Location = new System.Drawing.Point(514, 163);
             this.tbPanNo.Name = "tbPanNo";
             this.tbPanNo.Size = new System.Drawing.Size(225, 23);
-            this.tbPanNo.TabIndex = 33;
+            this.tbPanNo.TabIndex = 9;
             // 
             // lbPanNumber
             // 
@@ -338,7 +338,7 @@
             this.tbBranch.Location = new System.Drawing.Point(514, 221);
             this.tbBranch.Name = "tbBranch";
             this.tbBranch.Size = new System.Drawing.Size(225, 23);
-            this.tbBranch.TabIndex = 37;
+            this.tbBranch.TabIndex = 11;
             // 
             // lbBranch
             // 
@@ -356,7 +356,7 @@
             this.tbIfscCode.Location = new System.Drawing.Point(95, 251);
             this.tbIfscCode.Name = "tbIfscCode";
             this.tbIfscCode.Size = new System.Drawing.Size(225, 23);
-            this.tbIfscCode.TabIndex = 41;
+            this.tbIfscCode.TabIndex = 13;
             // 
             // lbIfscCode
             // 
@@ -374,7 +374,7 @@
             this.tbAccountNo.Location = new System.Drawing.Point(95, 222);
             this.tbAccountNo.Name = "tbAccountNo";
             this.tbAccountNo.Size = new System.Drawing.Size(225, 23);
-            this.tbAccountNo.TabIndex = 39;
+            this.tbAccountNo.TabIndex = 12;
             // 
             // lbAccountNo
             // 
@@ -392,7 +392,7 @@
             this.tbContactPerson.Location = new System.Drawing.Point(514, 250);
             this.tbContactPerson.Name = "tbContactPerson";
             this.tbContactPerson.Size = new System.Drawing.Size(225, 23);
-            this.tbContactPerson.TabIndex = 43;
+            this.tbContactPerson.TabIndex = 14;
             // 
             // lbPinCode
             // 
@@ -410,7 +410,7 @@
             this.tbPinCode.Location = new System.Drawing.Point(514, 76);
             this.tbPinCode.Name = "tbPinCode";
             this.tbPinCode.Size = new System.Drawing.Size(225, 23);
-            this.tbPinCode.TabIndex = 45;
+            this.tbPinCode.TabIndex = 5;
             // 
             // lbContact
             // 
@@ -428,6 +428,7 @@
             // 
             // CompanyDetails
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

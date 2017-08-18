@@ -139,6 +139,14 @@
             this.tbPaymentTerms = new System.Windows.Forms.ComboBox();
             this.flpAddCharge = new System.Windows.Forms.FlowLayoutPanel();
             this.errorProviderTextBox = new System.Windows.Forms.ErrorProvider(this.components);
+            this.invoiceDetails = new GST_Billing.InvoiceDetails();
+            this.invoiceDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lbPoNum = new System.Windows.Forms.Label();
+            this.tbPoNum = new System.Windows.Forms.TextBox();
+            this.lbPoDate = new System.Windows.Forms.Label();
+            this.tbPoDate = new System.Windows.Forms.DateTimePicker();
+            this.lbInvoiceType = new System.Windows.Forms.Label();
+            this.tbInvoiceType = new System.Windows.Forms.ComboBox();
             this.gbBilling.SuspendLayout();
             this.gbInvoice.SuspendLayout();
             this.tlpInvoice.SuspendLayout();
@@ -153,6 +161,8 @@
             this.flpGst.SuspendLayout();
             this.flpAddCharge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceDetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gbBilling
@@ -446,23 +456,27 @@
             // 
             this.gbInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbInvoice.Controls.Add(this.tbInvoiceType);
+            this.gbInvoice.Controls.Add(this.lbInvoiceType);
             this.gbInvoice.Controls.Add(this.tlpInvoice);
             this.gbInvoice.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.gbInvoice.Location = new System.Drawing.Point(3, 3);
             this.gbInvoice.Name = "gbInvoice";
-            this.gbInvoice.Size = new System.Drawing.Size(732, 91);
+            this.gbInvoice.Size = new System.Drawing.Size(732, 116);
             this.gbInvoice.TabIndex = 0;
             this.gbInvoice.TabStop = false;
-            this.gbInvoice.Text = "Tax Invoice";
+            this.gbInvoice.Text = "Invoice Details";
             // 
             // tlpInvoice
             // 
-            this.tlpInvoice.ColumnCount = 5;
-            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpInvoice.ColumnCount = 7;
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tlpInvoice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tlpInvoice.Controls.Add(this.tbChallanNumber, 3, 0);
             this.tlpInvoice.Controls.Add(this.lbChallan, 2, 0);
             this.tlpInvoice.Controls.Add(this.tbInvoiceDate, 1, 1);
@@ -472,13 +486,15 @@
             this.tlpInvoice.Controls.Add(this.btnAddChallan, 3, 1);
             this.tlpInvoice.Controls.Add(this.btnClearChallan, 4, 1);
             this.tlpInvoice.Controls.Add(this.lbAddedChallan, 2, 1);
-            this.tlpInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpInvoice.Location = new System.Drawing.Point(3, 22);
+            this.tlpInvoice.Controls.Add(this.lbPoNum, 5, 0);
+            this.tlpInvoice.Controls.Add(this.tbPoNum, 6, 0);
+            this.tlpInvoice.Controls.Add(this.lbPoDate, 5, 1);
+            this.tlpInvoice.Controls.Add(this.tbPoDate, 6, 1);
+            this.tlpInvoice.Location = new System.Drawing.Point(3, 47);
             this.tlpInvoice.Name = "tlpInvoice";
             this.tlpInvoice.RowCount = 2;
             this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpInvoice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpInvoice.Size = new System.Drawing.Size(726, 66);
             this.tlpInvoice.TabIndex = 4;
             // 
@@ -487,9 +503,9 @@
             this.tlpInvoice.SetColumnSpan(this.tbChallanNumber, 2);
             this.tbChallanNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbChallanNumber.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbChallanNumber.Location = new System.Drawing.Point(510, 3);
+            this.tbChallanNumber.Location = new System.Drawing.Point(312, 3);
             this.tbChallanNumber.Name = "tbChallanNumber";
-            this.tbChallanNumber.Size = new System.Drawing.Size(213, 25);
+            this.tbChallanNumber.Size = new System.Drawing.Size(200, 25);
             this.tbChallanNumber.TabIndex = 1;
             this.tbChallanNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
@@ -497,11 +513,11 @@
             // 
             this.lbChallan.AutoSize = true;
             this.lbChallan.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbChallan.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.lbChallan.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.lbChallan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbChallan.Location = new System.Drawing.Point(444, 0);
+            this.lbChallan.Location = new System.Drawing.Point(249, 0);
             this.lbChallan.Name = "lbChallan";
-            this.lbChallan.Size = new System.Drawing.Size(60, 33);
+            this.lbChallan.Size = new System.Drawing.Size(57, 33);
             this.lbChallan.TabIndex = 6;
             this.lbChallan.Text = "Challan";
             this.lbChallan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -513,10 +529,10 @@
             this.tbInvoiceDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbInvoiceDate.Font = new System.Drawing.Font("Arial", 10F);
             this.tbInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.tbInvoiceDate.Location = new System.Drawing.Point(148, 36);
+            this.tbInvoiceDate.Location = new System.Drawing.Point(106, 36);
             this.tbInvoiceDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.tbInvoiceDate.Name = "tbInvoiceDate";
-            this.tbInvoiceDate.Size = new System.Drawing.Size(211, 23);
+            this.tbInvoiceDate.Size = new System.Drawing.Size(97, 23);
             this.tbInvoiceDate.TabIndex = 2;
             this.tbInvoiceDate.ValueChanged += new System.EventHandler(this.tbAll_TextChanged);
             // 
@@ -526,7 +542,7 @@
             this.lbInvoiceDate.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbInvoiceDate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lbInvoiceDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbInvoiceDate.Location = new System.Drawing.Point(46, 33);
+            this.lbInvoiceDate.Location = new System.Drawing.Point(4, 33);
             this.lbInvoiceDate.Name = "lbInvoiceDate";
             this.lbInvoiceDate.Size = new System.Drawing.Size(96, 33);
             this.lbInvoiceDate.TabIndex = 3;
@@ -539,9 +555,9 @@
             this.lbInvoiceNo.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbInvoiceNo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lbInvoiceNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbInvoiceNo.Location = new System.Drawing.Point(23, 0);
+            this.lbInvoiceNo.Location = new System.Drawing.Point(37, 0);
             this.lbInvoiceNo.Name = "lbInvoiceNo";
-            this.lbInvoiceNo.Size = new System.Drawing.Size(119, 33);
+            this.lbInvoiceNo.Size = new System.Drawing.Size(63, 33);
             this.lbInvoiceNo.TabIndex = 0;
             this.lbInvoiceNo.Text = "Invoice Number";
             this.lbInvoiceNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -550,9 +566,9 @@
             // 
             this.tbInvoiceNum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbInvoiceNum.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInvoiceNum.Location = new System.Drawing.Point(148, 3);
+            this.tbInvoiceNum.Location = new System.Drawing.Point(106, 3);
             this.tbInvoiceNum.Name = "tbInvoiceNum";
-            this.tbInvoiceNum.Size = new System.Drawing.Size(211, 25);
+            this.tbInvoiceNum.Size = new System.Drawing.Size(97, 25);
             this.tbInvoiceNum.TabIndex = 0;
             this.tbInvoiceNum.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
             this.tbInvoiceNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
@@ -560,13 +576,13 @@
             // btnAddChallan
             // 
             this.btnAddChallan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddChallan.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddChallan.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddChallan.ForeColor = System.Drawing.Color.DarkOrange;
             this.btnAddChallan.Image = ((System.Drawing.Image)(resources.GetObject("btnAddChallan.Image")));
             this.btnAddChallan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddChallan.Location = new System.Drawing.Point(510, 36);
+            this.btnAddChallan.Location = new System.Drawing.Point(312, 36);
             this.btnAddChallan.Name = "btnAddChallan";
-            this.btnAddChallan.Size = new System.Drawing.Size(102, 27);
+            this.btnAddChallan.Size = new System.Drawing.Size(97, 27);
             this.btnAddChallan.TabIndex = 3;
             this.btnAddChallan.Text = "Add Challan";
             this.btnAddChallan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -580,9 +596,9 @@
             this.btnClearChallan.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnClearChallan.Image = ((System.Drawing.Image)(resources.GetObject("btnClearChallan.Image")));
             this.btnClearChallan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearChallan.Location = new System.Drawing.Point(618, 36);
+            this.btnClearChallan.Location = new System.Drawing.Point(415, 36);
             this.btnClearChallan.Name = "btnClearChallan";
-            this.btnClearChallan.Size = new System.Drawing.Size(105, 27);
+            this.btnClearChallan.Size = new System.Drawing.Size(97, 27);
             this.btnClearChallan.TabIndex = 4;
             this.btnClearChallan.Text = "Clear";
             this.btnClearChallan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -593,11 +609,11 @@
             // 
             this.lbAddedChallan.AutoSize = true;
             this.lbAddedChallan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbAddedChallan.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAddedChallan.Font = new System.Drawing.Font("Arial", 9F);
             this.lbAddedChallan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbAddedChallan.Location = new System.Drawing.Point(365, 33);
+            this.lbAddedChallan.Location = new System.Drawing.Point(209, 33);
             this.lbAddedChallan.Name = "lbAddedChallan";
-            this.lbAddedChallan.Size = new System.Drawing.Size(139, 33);
+            this.lbAddedChallan.Size = new System.Drawing.Size(97, 33);
             this.lbAddedChallan.TabIndex = 10;
             this.lbAddedChallan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbAddedChallan.TextChanged += new System.EventHandler(this.tbAll_TextChanged);
@@ -892,7 +908,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvProducts.Location = new System.Drawing.Point(0, 373);
+            this.dgvProducts.Location = new System.Drawing.Point(0, 395);
             this.dgvProducts.Name = "dgvProducts";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -1024,7 +1040,7 @@
             this.tlpTotals.Controls.Add(this.lbIgstT, 7, 0);
             this.tlpTotals.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpTotals.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.tlpTotals.Location = new System.Drawing.Point(0, 642);
+            this.tlpTotals.Location = new System.Drawing.Point(0, 664);
             this.tlpTotals.Name = "tlpTotals";
             this.tlpTotals.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.tlpTotals.RowCount = 2;
@@ -1284,7 +1300,7 @@
             this.flpPanelButtons.Controls.Add(this.btnPrint);
             this.flpPanelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flpPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.flpPanelButtons.Location = new System.Drawing.Point(0, 714);
+            this.flpPanelButtons.Location = new System.Drawing.Point(0, 736);
             this.flpPanelButtons.MinimumSize = new System.Drawing.Size(174, 43);
             this.flpPanelButtons.Name = "flpPanelButtons";
             this.flpPanelButtons.Size = new System.Drawing.Size(898, 43);
@@ -1343,6 +1359,13 @@
             this.lbAddCharge1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbAddCharge1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lbAddCharge1.FormattingEnabled = true;
+            this.lbAddCharge1.Items.AddRange(new object[] {
+            "Packing & Forwarding",
+            "Freight",
+            "Loading & Unloading",
+            "Insurance",
+            "Courier Charge",
+            "Other Charges"});
             this.lbAddCharge1.Location = new System.Drawing.Point(3, 3);
             this.lbAddCharge1.Name = "lbAddCharge1";
             this.lbAddCharge1.Size = new System.Drawing.Size(157, 24);
@@ -1353,6 +1376,13 @@
             this.lbAddCharge2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbAddCharge2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lbAddCharge2.FormattingEnabled = true;
+            this.lbAddCharge2.Items.AddRange(new object[] {
+            "Packing & Forwarding",
+            "Freight",
+            "Loading & Unloading",
+            "Insurance",
+            "Courier Charge",
+            "Other Charges"});
             this.lbAddCharge2.Location = new System.Drawing.Point(275, 3);
             this.lbAddCharge2.Name = "lbAddCharge2";
             this.lbAddCharge2.Size = new System.Drawing.Size(157, 24);
@@ -1373,6 +1403,13 @@
             this.lbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbAddCharge3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lbAddCharge3.FormattingEnabled = true;
+            this.lbAddCharge3.Items.AddRange(new object[] {
+            "Packing & Forwarding",
+            "Freight",
+            "Loading & Unloading",
+            "Insurance",
+            "Courier Charge",
+            "Other Charges"});
             this.lbAddCharge3.Location = new System.Drawing.Point(547, 3);
             this.lbAddCharge3.Name = "lbAddCharge3";
             this.lbAddCharge3.Size = new System.Drawing.Size(157, 24);
@@ -1470,7 +1507,7 @@
             this.flpBillShip.Controls.Add(this.gbBilling);
             this.flpBillShip.Controls.Add(this.gbShipping);
             this.flpBillShip.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpBillShip.Location = new System.Drawing.Point(0, 100);
+            this.flpBillShip.Location = new System.Drawing.Point(0, 122);
             this.flpBillShip.Name = "flpBillShip";
             this.flpBillShip.Size = new System.Drawing.Size(898, 240);
             this.flpBillShip.TabIndex = 1;
@@ -1481,7 +1518,7 @@
             this.flpA.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpA.Location = new System.Drawing.Point(0, 0);
             this.flpA.Name = "flpA";
-            this.flpA.Size = new System.Drawing.Size(898, 100);
+            this.flpA.Size = new System.Drawing.Size(898, 122);
             this.flpA.TabIndex = 0;
             // 
             // flpGst
@@ -1499,7 +1536,7 @@
             this.flpGst.Controls.Add(this.lbPaymentTerms);
             this.flpGst.Controls.Add(this.tbPaymentTerms);
             this.flpGst.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpGst.Location = new System.Drawing.Point(0, 340);
+            this.flpGst.Location = new System.Drawing.Point(0, 362);
             this.flpGst.Name = "flpGst";
             this.flpGst.Size = new System.Drawing.Size(898, 33);
             this.flpGst.TabIndex = 2;
@@ -1544,7 +1581,16 @@
             // 
             // tbPaymentTerms
             // 
+            this.tbPaymentTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tbPaymentTerms.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.tbPaymentTerms.FormattingEnabled = true;
+            this.tbPaymentTerms.Items.AddRange(new object[] {
+            "Immediately",
+            "Within 15 Days",
+            "Within 30 Days",
+            "Within 45 Days",
+            "Within 60 Days",
+            "Other"});
             this.tbPaymentTerms.Location = new System.Drawing.Point(600, 5);
             this.tbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.tbPaymentTerms.Name = "tbPaymentTerms";
@@ -1556,7 +1602,7 @@
             // 
             this.flpAddCharge.Controls.Add(this.gbAddCharge);
             this.flpAddCharge.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpAddCharge.Location = new System.Drawing.Point(0, 578);
+            this.flpAddCharge.Location = new System.Drawing.Point(0, 600);
             this.flpAddCharge.Name = "flpAddCharge";
             this.flpAddCharge.Size = new System.Drawing.Size(898, 64);
             this.flpAddCharge.TabIndex = 26;
@@ -1564,6 +1610,93 @@
             // errorProviderTextBox
             // 
             this.errorProviderTextBox.ContainerControl = this;
+            // 
+            // invoiceDetails
+            // 
+            this.invoiceDetails.DataSetName = "InvoiceDetails";
+            this.invoiceDetails.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoiceDetailsBindingSource
+            // 
+            this.invoiceDetailsBindingSource.DataSource = this.invoiceDetails;
+            this.invoiceDetailsBindingSource.Position = 0;
+            // 
+            // lbPoNum
+            // 
+            this.lbPoNum.AutoSize = true;
+            this.lbPoNum.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbPoNum.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.lbPoNum.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbPoNum.Location = new System.Drawing.Point(539, 0);
+            this.lbPoNum.Name = "lbPoNum";
+            this.lbPoNum.Size = new System.Drawing.Size(76, 33);
+            this.lbPoNum.TabIndex = 11;
+            this.lbPoNum.Text = "P.O. Number";
+            this.lbPoNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbPoNum
+            // 
+            this.tbPoNum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPoNum.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbPoNum.Location = new System.Drawing.Point(621, 3);
+            this.tbPoNum.Name = "tbPoNum";
+            this.tbPoNum.Size = new System.Drawing.Size(102, 23);
+            this.tbPoNum.TabIndex = 12;
+            this.tbPoNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
+            // 
+            // lbPoDate
+            // 
+            this.lbPoDate.AutoSize = true;
+            this.lbPoDate.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbPoDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbPoDate.Location = new System.Drawing.Point(549, 33);
+            this.lbPoDate.Name = "lbPoDate";
+            this.lbPoDate.Size = new System.Drawing.Size(66, 33);
+            this.lbPoDate.TabIndex = 13;
+            this.lbPoDate.Text = "P.O. Date";
+            this.lbPoDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbPoDate
+            // 
+            this.tbPoDate.CustomFormat = "dd/MM/yyyy";
+            this.tbPoDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPoDate.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbPoDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.tbPoDate.Location = new System.Drawing.Point(621, 36);
+            this.tbPoDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.tbPoDate.Name = "tbPoDate";
+            this.tbPoDate.Size = new System.Drawing.Size(102, 23);
+            this.tbPoDate.TabIndex = 14;
+            // 
+            // lbInvoiceType
+            // 
+            this.lbInvoiceType.AutoSize = true;
+            this.lbInvoiceType.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbInvoiceType.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.lbInvoiceType.Location = new System.Drawing.Point(3, 22);
+            this.lbInvoiceType.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.lbInvoiceType.Name = "lbInvoiceType";
+            this.lbInvoiceType.Size = new System.Drawing.Size(96, 16);
+            this.lbInvoiceType.TabIndex = 5;
+            this.lbInvoiceType.Text = "Invoice Type";
+            // 
+            // tbInvoiceType
+            // 
+            this.tbInvoiceType.DropDownHeight = 100;
+            this.tbInvoiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tbInvoiceType.Font = new System.Drawing.Font("Arial", 11F);
+            this.tbInvoiceType.FormattingEnabled = true;
+            this.tbInvoiceType.IntegralHeight = false;
+            this.tbInvoiceType.ItemHeight = 17;
+            this.tbInvoiceType.Items.AddRange(new object[] {
+            "Tax",
+            "Retail"});
+            this.tbInvoiceType.Location = new System.Drawing.Point(109, 17);
+            this.tbInvoiceType.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.tbInvoiceType.MaxDropDownItems = 2;
+            this.tbInvoiceType.Name = "tbInvoiceType";
+            this.tbInvoiceType.Size = new System.Drawing.Size(97, 25);
+            this.tbInvoiceType.TabIndex = 6;
             // 
             // Invoice
             // 
@@ -1592,6 +1725,7 @@
             this.gbBilling.ResumeLayout(false);
             this.gbBilling.PerformLayout();
             this.gbInvoice.ResumeLayout(false);
+            this.gbInvoice.PerformLayout();
             this.tlpInvoice.ResumeLayout(false);
             this.tlpInvoice.PerformLayout();
             this.gbShipping.ResumeLayout(false);
@@ -1610,6 +1744,8 @@
             this.flpGst.PerformLayout();
             this.flpAddCharge.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceDetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1717,6 +1853,14 @@
         private System.Windows.Forms.ComboBox lbAddCharge3;
         private System.Windows.Forms.TextBox tbAddCharge3;
         private System.Windows.Forms.ErrorProvider errorProviderTextBox;
+        private InvoiceDetails invoiceDetails;
+        private System.Windows.Forms.BindingSource invoiceDetailsBindingSource;
+        private System.Windows.Forms.Label lbPoNum;
+        private System.Windows.Forms.TextBox tbPoNum;
+        private System.Windows.Forms.Label lbPoDate;
+        private System.Windows.Forms.DateTimePicker tbPoDate;
+        private System.Windows.Forms.Label lbInvoiceType;
+        private System.Windows.Forms.ComboBox tbInvoiceType;
     }
 }
 
