@@ -70,8 +70,11 @@ namespace GST_Billing
 
         private void tsmiCompanyInfo_Click(object sender, EventArgs e)
         {
-            CompanyDetails companyInfo = new CompanyDetails();
-            companyInfo.ShowDialog();
+            //CompanyDetails companyInfo = new CompanyDetails();
+            //companyInfo.ShowDialog();
+
+            SelectFirm selection = new SelectFirm();
+            selection.ShowDialog();
         }
 
         private void tsmiChangePassword_Click(object sender, EventArgs e)

@@ -38,8 +38,8 @@ namespace GST_Billing
 					{
 						this.Hide();
                         SelectFirm companySelect = new SelectFirm();
-                        companySelect.Show();
-					}
+                        companySelect.Show(this);
+                  	}
 				}
 				else
 				{
