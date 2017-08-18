@@ -40,12 +40,13 @@
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnEditProduct = new System.Windows.Forms.Button();
+            this.btnClose3 = new System.Windows.Forms.Button();
             this.tabInvoice = new System.Windows.Forms.TabPage();
             this.dgvInvoice = new System.Windows.Forms.DataGridView();
             this.flpSearchInvoice = new System.Windows.Forms.FlowLayoutPanel();
             this.lbStartDate = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbEndDate = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.tbSearchInvoice = new System.Windows.Forms.TextBox();
             this.btnSearchInvoice = new System.Windows.Forms.Button();
@@ -60,6 +61,7 @@
             this.btnDeleteInvoice = new System.Windows.Forms.Button();
             this.btnEditInvoice = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
+            this.btnClose1 = new System.Windows.Forms.Button();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -71,11 +73,14 @@
             this.btnAddCust = new System.Windows.Forms.Button();
             this.btnDeleteCust = new System.Windows.Forms.Button();
             this.btnEditCust = new System.Windows.Forms.Button();
+            this.btnClose2 = new System.Windows.Forms.Button();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCompanyInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
@@ -151,7 +156,7 @@
             this.btnFindProduct.Name = "btnFindProduct";
             this.btnFindProduct.Size = new System.Drawing.Size(75, 29);
             this.btnFindProduct.TabIndex = 1;
-            this.btnFindProduct.Text = "Find";
+            this.btnFindProduct.Text = "&Find";
             this.btnFindProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFindProduct.UseVisualStyleBackColor = true;
             this.btnFindProduct.Click += new System.EventHandler(this.btnFindProduct_Click);
@@ -165,7 +170,7 @@
             this.btnClearProduct.Name = "btnClearProduct";
             this.btnClearProduct.Size = new System.Drawing.Size(75, 29);
             this.btnClearProduct.TabIndex = 2;
-            this.btnClearProduct.Text = "Clear";
+            this.btnClearProduct.Text = "C&lear";
             this.btnClearProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearProduct.UseVisualStyleBackColor = true;
             this.btnClearProduct.Click += new System.EventHandler(this.btnClearProduct_Click);
@@ -173,21 +178,22 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 6;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.btnPrintProduct, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnAddProduct, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnDeleteProduct, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnEditProduct, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnClose3, 5, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1254, 40);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
@@ -200,11 +206,11 @@
             this.btnPrintProduct.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintProduct.Image")));
             this.btnPrintProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrintProduct.Location = new System.Drawing.Point(303, 3);
+            this.btnPrintProduct.Location = new System.Drawing.Point(408, 3);
             this.btnPrintProduct.Name = "btnPrintProduct";
-            this.btnPrintProduct.Size = new System.Drawing.Size(94, 34);
+            this.btnPrintProduct.Size = new System.Drawing.Size(129, 34);
             this.btnPrintProduct.TabIndex = 3;
-            this.btnPrintProduct.Text = "Print";
+            this.btnPrintProduct.Text = "&Print (F4)";
             this.btnPrintProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintProduct.UseVisualStyleBackColor = true;
             this.btnPrintProduct.Visible = false;
@@ -218,11 +224,12 @@
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProduct.Image")));
+            this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddProduct.Location = new System.Drawing.Point(3, 3);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(94, 34);
+            this.btnAddProduct.Size = new System.Drawing.Size(129, 34);
             this.btnAddProduct.TabIndex = 0;
-            this.btnAddProduct.Text = "New";
+            this.btnAddProduct.Text = "&New (F2)";
             this.btnAddProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
@@ -235,11 +242,12 @@
             this.btnDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteProduct.Image")));
-            this.btnDeleteProduct.Location = new System.Drawing.Point(203, 3);
+            this.btnDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(273, 3);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(94, 34);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(129, 34);
             this.btnDeleteProduct.TabIndex = 1;
-            this.btnDeleteProduct.Text = "Delete";
+            this.btnDeleteProduct.Text = "&Delete (F10)";
             this.btnDeleteProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
@@ -252,14 +260,30 @@
             this.btnEditProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditProduct.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnEditProduct.Image")));
-            this.btnEditProduct.Location = new System.Drawing.Point(103, 3);
+            this.btnEditProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditProduct.Location = new System.Drawing.Point(138, 3);
             this.btnEditProduct.Name = "btnEditProduct";
-            this.btnEditProduct.Size = new System.Drawing.Size(94, 34);
+            this.btnEditProduct.Size = new System.Drawing.Size(129, 34);
             this.btnEditProduct.TabIndex = 2;
-            this.btnEditProduct.Text = "Edit";
+            this.btnEditProduct.Text = "&Edit (F3)";
             this.btnEditProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditProduct.UseVisualStyleBackColor = true;
             this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
+            // 
+            // btnClose3
+            // 
+            this.btnClose3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnClose3.ForeColor = System.Drawing.Color.Red;
+            this.btnClose3.Image = ((System.Drawing.Image)(resources.GetObject("btnClose3.Image")));
+            this.btnClose3.Location = new System.Drawing.Point(1176, 3);
+            this.btnClose3.Name = "btnClose3";
+            this.btnClose3.Size = new System.Drawing.Size(75, 34);
+            this.btnClose3.TabIndex = 7;
+            this.btnClose3.Text = "&Close";
+            this.btnClose3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose3.UseVisualStyleBackColor = true;
+            this.btnClose3.Click += new System.EventHandler(this.btnClose1_Click);
             // 
             // tabInvoice
             // 
@@ -289,13 +313,14 @@
             this.dgvInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInvoice.Size = new System.Drawing.Size(1254, 572);
             this.dgvInvoice.TabIndex = 7;
+            this.dgvInvoice.DoubleClick += new System.EventHandler(this.dgvInvoice_DoubleClick);
             // 
             // flpSearchInvoice
             // 
             this.flpSearchInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpSearchInvoice.Controls.Add(this.lbStartDate);
             this.flpSearchInvoice.Controls.Add(this.dtpStartDate);
-            this.flpSearchInvoice.Controls.Add(this.label1);
+            this.flpSearchInvoice.Controls.Add(this.lbEndDate);
             this.flpSearchInvoice.Controls.Add(this.dtpEndDate);
             this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
@@ -328,22 +353,22 @@
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStartDate.Location = new System.Drawing.Point(45, 8);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-            this.dtpStartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(82, 20);
             this.dtpStartDate.TabIndex = 4;
             this.dtpStartDate.Value = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             // 
-            // label1
+            // lbEndDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(133, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "To";
+            this.lbEndDate.AutoSize = true;
+            this.lbEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEndDate.Location = new System.Drawing.Point(133, 10);
+            this.lbEndDate.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lbEndDate.Name = "lbEndDate";
+            this.lbEndDate.Size = new System.Drawing.Size(22, 13);
+            this.lbEndDate.TabIndex = 5;
+            this.lbEndDate.Text = "To";
             // 
             // dtpEndDate
             // 
@@ -376,7 +401,7 @@
             this.btnSearchInvoice.Name = "btnSearchInvoice";
             this.btnSearchInvoice.Size = new System.Drawing.Size(75, 29);
             this.btnSearchInvoice.TabIndex = 1;
-            this.btnSearchInvoice.Text = "Find";
+            this.btnSearchInvoice.Text = "&Find";
             this.btnSearchInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchInvoice.UseVisualStyleBackColor = true;
             this.btnSearchInvoice.Click += new System.EventHandler(this.btnSearchInvoice_Click);
@@ -390,7 +415,7 @@
             this.btnClearInvoice.Name = "btnClearInvoice";
             this.btnClearInvoice.Size = new System.Drawing.Size(75, 29);
             this.btnClearInvoice.TabIndex = 2;
-            this.btnClearInvoice.Text = "Clear";
+            this.btnClearInvoice.Text = "C&lear";
             this.btnClearInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearInvoice.UseVisualStyleBackColor = true;
             this.btnClearInvoice.Click += new System.EventHandler(this.btnClearInvoice_Click);
@@ -447,22 +472,23 @@
             // 
             this.tlpInvoiceBtns.BackColor = System.Drawing.SystemColors.Control;
             this.tlpInvoiceBtns.ColumnCount = 6;
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpInvoiceBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpInvoiceBtns.Controls.Add(this.btnPrintInvoice, 3, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnAddInvoice, 0, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnDeleteInvoice, 2, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnEditInvoice, 1, 0);
             this.tlpInvoiceBtns.Controls.Add(this.btnPayment, 4, 0);
+            this.tlpInvoiceBtns.Controls.Add(this.btnClose1, 5, 0);
             this.tlpInvoiceBtns.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpInvoiceBtns.Location = new System.Drawing.Point(0, 0);
             this.tlpInvoiceBtns.Name = "tlpInvoiceBtns";
             this.tlpInvoiceBtns.RowCount = 1;
-            this.tlpInvoiceBtns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpInvoiceBtns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpInvoiceBtns.Size = new System.Drawing.Size(1254, 40);
             this.tlpInvoiceBtns.TabIndex = 5;
             // 
@@ -475,11 +501,11 @@
             this.btnPrintInvoice.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInvoice.Image")));
             this.btnPrintInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(303, 3);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(408, 3);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(94, 34);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(129, 34);
             this.btnPrintInvoice.TabIndex = 3;
-            this.btnPrintInvoice.Text = "Print";
+            this.btnPrintInvoice.Text = "&Print (F4)";
             this.btnPrintInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
             this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
@@ -492,11 +518,13 @@
             this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddInvoice.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnAddInvoice.Image")));
+            this.btnAddInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddInvoice.Location = new System.Drawing.Point(3, 3);
             this.btnAddInvoice.Name = "btnAddInvoice";
-            this.btnAddInvoice.Size = new System.Drawing.Size(94, 34);
+            this.btnAddInvoice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnAddInvoice.Size = new System.Drawing.Size(129, 34);
             this.btnAddInvoice.TabIndex = 0;
-            this.btnAddInvoice.Text = "New";
+            this.btnAddInvoice.Text = "&New (F2)";
             this.btnAddInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddInvoice.UseVisualStyleBackColor = true;
             this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
@@ -509,11 +537,12 @@
             this.btnDeleteInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteInvoice.Image")));
-            this.btnDeleteInvoice.Location = new System.Drawing.Point(203, 3);
+            this.btnDeleteInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteInvoice.Location = new System.Drawing.Point(273, 3);
             this.btnDeleteInvoice.Name = "btnDeleteInvoice";
-            this.btnDeleteInvoice.Size = new System.Drawing.Size(94, 34);
+            this.btnDeleteInvoice.Size = new System.Drawing.Size(129, 34);
             this.btnDeleteInvoice.TabIndex = 1;
-            this.btnDeleteInvoice.Text = "Delete";
+            this.btnDeleteInvoice.Text = "&Delete (F10)";
             this.btnDeleteInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteInvoice.UseVisualStyleBackColor = true;
             this.btnDeleteInvoice.Click += new System.EventHandler(this.btnDeleteInvoice_Click);
@@ -526,11 +555,12 @@
             this.btnEditInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditInvoice.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnEditInvoice.Image")));
-            this.btnEditInvoice.Location = new System.Drawing.Point(103, 3);
+            this.btnEditInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditInvoice.Location = new System.Drawing.Point(138, 3);
             this.btnEditInvoice.Name = "btnEditInvoice";
-            this.btnEditInvoice.Size = new System.Drawing.Size(94, 34);
+            this.btnEditInvoice.Size = new System.Drawing.Size(129, 34);
             this.btnEditInvoice.TabIndex = 2;
-            this.btnEditInvoice.Text = "Edit";
+            this.btnEditInvoice.Text = "&Edit (F3)";
             this.btnEditInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
@@ -541,14 +571,30 @@
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.ForeColor = System.Drawing.Color.DarkViolet;
             this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
-            this.btnPayment.Location = new System.Drawing.Point(403, 3);
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPayment.Location = new System.Drawing.Point(543, 3);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(94, 34);
+            this.btnPayment.Size = new System.Drawing.Size(129, 34);
             this.btnPayment.TabIndex = 4;
-            this.btnPayment.Text = "Payment";
+            this.btnPayment.Text = "Pa&yment (F6)";
             this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPayment.UseVisualStyleBackColor = true;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnClose1
+            // 
+            this.btnClose1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnClose1.ForeColor = System.Drawing.Color.Red;
+            this.btnClose1.Image = ((System.Drawing.Image)(resources.GetObject("btnClose1.Image")));
+            this.btnClose1.Location = new System.Drawing.Point(1176, 3);
+            this.btnClose1.Name = "btnClose1";
+            this.btnClose1.Size = new System.Drawing.Size(75, 34);
+            this.btnClose1.TabIndex = 5;
+            this.btnClose1.Text = "&Close";
+            this.btnClose1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose1.UseVisualStyleBackColor = true;
+            this.btnClose1.Click += new System.EventHandler(this.btnClose1_Click);
             // 
             // tabCustomer
             // 
@@ -609,7 +655,7 @@
             this.btnFindCustomer.Name = "btnFindCustomer";
             this.btnFindCustomer.Size = new System.Drawing.Size(75, 29);
             this.btnFindCustomer.TabIndex = 1;
-            this.btnFindCustomer.Text = "Find";
+            this.btnFindCustomer.Text = "&Find";
             this.btnFindCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFindCustomer.UseVisualStyleBackColor = true;
             this.btnFindCustomer.Click += new System.EventHandler(this.btnFindCustomer_Click);
@@ -623,7 +669,7 @@
             this.btnClearCustomer.Name = "btnClearCustomer";
             this.btnClearCustomer.Size = new System.Drawing.Size(75, 29);
             this.btnClearCustomer.TabIndex = 2;
-            this.btnClearCustomer.Text = "Clear";
+            this.btnClearCustomer.Text = "C&lear";
             this.btnClearCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearCustomer.UseVisualStyleBackColor = true;
             this.btnClearCustomer.Click += new System.EventHandler(this.btnClearCustomer_Click);
@@ -631,21 +677,22 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.btnPrintCust, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAddCust, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDeleteCust, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnEditCust, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnClose2, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1254, 40);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
@@ -658,11 +705,11 @@
             this.btnPrintCust.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnPrintCust.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintCust.Image")));
             this.btnPrintCust.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrintCust.Location = new System.Drawing.Point(303, 3);
+            this.btnPrintCust.Location = new System.Drawing.Point(408, 3);
             this.btnPrintCust.Name = "btnPrintCust";
-            this.btnPrintCust.Size = new System.Drawing.Size(94, 34);
+            this.btnPrintCust.Size = new System.Drawing.Size(129, 34);
             this.btnPrintCust.TabIndex = 3;
-            this.btnPrintCust.Text = "Print";
+            this.btnPrintCust.Text = "&Print (F4)";
             this.btnPrintCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintCust.UseVisualStyleBackColor = true;
             this.btnPrintCust.Visible = false;
@@ -676,11 +723,12 @@
             this.btnAddCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCust.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnAddCust.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCust.Image")));
+            this.btnAddCust.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddCust.Location = new System.Drawing.Point(3, 3);
             this.btnAddCust.Name = "btnAddCust";
-            this.btnAddCust.Size = new System.Drawing.Size(94, 34);
+            this.btnAddCust.Size = new System.Drawing.Size(129, 34);
             this.btnAddCust.TabIndex = 0;
-            this.btnAddCust.Text = "New";
+            this.btnAddCust.Text = "&New (F2)";
             this.btnAddCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddCust.UseVisualStyleBackColor = true;
             this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
@@ -693,11 +741,12 @@
             this.btnDeleteCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCust.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteCust.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCust.Image")));
-            this.btnDeleteCust.Location = new System.Drawing.Point(203, 3);
+            this.btnDeleteCust.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteCust.Location = new System.Drawing.Point(273, 3);
             this.btnDeleteCust.Name = "btnDeleteCust";
-            this.btnDeleteCust.Size = new System.Drawing.Size(94, 34);
+            this.btnDeleteCust.Size = new System.Drawing.Size(129, 34);
             this.btnDeleteCust.TabIndex = 1;
-            this.btnDeleteCust.Text = "Delete";
+            this.btnDeleteCust.Text = "&Delete (F10)";
             this.btnDeleteCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteCust.UseVisualStyleBackColor = true;
             this.btnDeleteCust.Click += new System.EventHandler(this.btnDeleteCust_Click);
@@ -710,14 +759,30 @@
             this.btnEditCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditCust.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditCust.Image = ((System.Drawing.Image)(resources.GetObject("btnEditCust.Image")));
-            this.btnEditCust.Location = new System.Drawing.Point(103, 3);
+            this.btnEditCust.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditCust.Location = new System.Drawing.Point(138, 3);
             this.btnEditCust.Name = "btnEditCust";
-            this.btnEditCust.Size = new System.Drawing.Size(94, 34);
+            this.btnEditCust.Size = new System.Drawing.Size(129, 34);
             this.btnEditCust.TabIndex = 2;
-            this.btnEditCust.Text = "Edit";
+            this.btnEditCust.Text = "&Edit (F3)";
             this.btnEditCust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditCust.UseVisualStyleBackColor = true;
             this.btnEditCust.Click += new System.EventHandler(this.btnEditCust_Click);
+            // 
+            // btnClose2
+            // 
+            this.btnClose2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnClose2.ForeColor = System.Drawing.Color.Red;
+            this.btnClose2.Image = ((System.Drawing.Image)(resources.GetObject("btnClose2.Image")));
+            this.btnClose2.Location = new System.Drawing.Point(1176, 3);
+            this.btnClose2.Name = "btnClose2";
+            this.btnClose2.Size = new System.Drawing.Size(75, 34);
+            this.btnClose2.TabIndex = 6;
+            this.btnClose2.Text = "&Close";
+            this.btnClose2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose2.UseVisualStyleBackColor = true;
+            this.btnClose2.Click += new System.EventHandler(this.btnClose1_Click);
             // 
             // tabMain
             // 
@@ -740,7 +805,8 @@
             this.menuStripMain.AutoSize = false;
             this.menuStripMain.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSettings});
+            this.tsmiSettings,
+            this.tsmiTools});
             this.menuStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStripMain.Location = new System.Drawing.Point(1085, 0);
             this.menuStripMain.Name = "menuStripMain";
@@ -778,6 +844,25 @@
             this.tsmiChangePassword.Text = "Change Credentials";
             this.tsmiChangePassword.Click += new System.EventHandler(this.tsmiChangePassword_Click);
             // 
+            // tsmiTools
+            // 
+            this.tsmiTools.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.calculatorToolStripMenuItem});
+            this.tsmiTools.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiTools.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.tsmiTools.Name = "tsmiTools";
+            this.tsmiTools.Size = new System.Drawing.Size(53, 21);
+            this.tsmiTools.Text = "Tools";
+            // 
+            // calculatorToolStripMenuItem
+            // 
+            this.calculatorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -793,6 +878,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             this.tabProducts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -852,7 +938,7 @@
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Label lbStartDate;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbEndDate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.Button btnPayment;
@@ -864,6 +950,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
         private System.Windows.Forms.ToolStripMenuItem tsmiCompanyInfo;
         private System.Windows.Forms.ToolStripMenuItem tsmiChangePassword;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTools;
+        private System.Windows.Forms.Button btnClose1;
+        private System.Windows.Forms.Button btnClose2;
+        private System.Windows.Forms.Button btnClose3;
+        private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
 
     }
 }

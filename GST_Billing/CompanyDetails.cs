@@ -21,6 +21,10 @@ namespace GST_Billing
         private string _companyAddress;
         private string _companyEmail;
         private string _companyContact;
+        private string p;
+        private bool _companyExists;
+
+        public Int64 companyId = 0;
 
         public string CompanyName
         {
@@ -46,29 +50,72 @@ namespace GST_Billing
             set { _companyContact = value; }
         }
 
+        public bool CompanyExists
+        {
+            get { return _companyExists; }
+            set { _companyExists = value; }
+        }
+
         public CompanyDetails()
         {
             InitializeComponent();
 
+            CompanyExists = checkCompanyExists();
+        }
+
+        private bool checkCompanyExists()
+        {
             string sqlstr = "SELECT * from userDetails";
             DataSet ds = m1.selectData(sqlstr);
 
-            autoCompleteStrings.Clear();
+            //autoCompleteStrings.Clear();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    autoCompleteStrings.Add((string)row["companyname"]);
-                }
-                tbCompanyName.AutoCompleteCustomSource = autoCompleteStrings;
+                return true;
+                //foreach (DataRow row in ds.Tables[0].Rows)
+                //{
+                //    autoCompleteStrings.Add((string)row["companyname"]);
+                //}
+                //tbCompanyName.AutoCompleteCustomSource = autoCompleteStrings;
 
-                this.CompanyName = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
-                this.CompanyAddress = Convert.ToString(ds.Tables[0].Rows[0]["address"]) + "," + 
-                                      Convert.ToString(ds.Tables[0].Rows[0]["landmark"]) + "," + 
-                                      Convert.ToString(ds.Tables[0].Rows[0]["city"]) + "," + 
-                                      Convert.ToString(ds.Tables[0].Rows[0]["state"]);
-                this.CompanyEmail = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
-                this.CompanyContact = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
+                //this.CompanyName = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
+                //this.CompanyAddress = Convert.ToString(ds.Tables[0].Rows[0]["address"]) + "," +
+                //                      Convert.ToString(ds.Tables[0].Rows[0]["landmark"]) + "," +
+                //                      Convert.ToString(ds.Tables[0].Rows[0]["city"]) + "," +
+                //                      Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                //this.CompanyEmail = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
+                //this.CompanyContact = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
+            }
+            return false;
+        }
+
+        public CompanyDetails(string companyName)
+        {
+            InitializeComponent();
+
+            string sqlstr = "SELECT * from userDetails WHERE companyname='"+ companyName +"'";
+            DataSet ds = m1.selectData(sqlstr);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                companyId = Convert.ToInt64(ds.Tables[0].Rows[0]["userId"]);
+                tbCompanyName.Text = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
+                tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
+                tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["landmark"]);
+                tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
+                tbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
+                tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
+                tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
+                tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
+                tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
+                tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["gstin"]);
+                tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["panno"]);
+                tbBankName.Text = Convert.ToString(ds.Tables[0].Rows[0]["bankname"]);
+                tbBranch.Text = Convert.ToString(ds.Tables[0].Rows[0]["branchname"]);
+                tbAccountNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["accountno"]);
+                tbIfscCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["ifsccode"]);
+                tbContactPerson.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
             }
         }
 
@@ -76,35 +123,13 @@ namespace GST_Billing
         {
 
             int NoOfRows = 0;
-            try
-            {
-                string sqlstr = "SELECT * FROM userDetails";
-                DataSet ds = m1.selectData(sqlstr);
-
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
-                {
-                    tbCompanyName.Text = Convert.ToString(ds.Tables[0].Rows[0]["companyname"]);
-                    tbContactPerson.Text = Convert.ToString(ds.Tables[0].Rows[0]["name"]);
-                    tbAddress.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
-                    tbLandmark.Text = Convert.ToString(ds.Tables[0].Rows[0]["landmark"]);
-                    tbCity.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
-                    tbState.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
-                    tbCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["code"]);
-                    tbPinCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["pincode"]);
-                    tbEmail.Text = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
-                    tbContact.Text = Convert.ToString(ds.Tables[0].Rows[0]["phoneNumber"]);
-                    tbGstin.Text = Convert.ToString(ds.Tables[0].Rows[0]["gstin"]);
-                    tbPanNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["panno"]);
-                    tbBankName.Text = Convert.ToString(ds.Tables[0].Rows[0]["bankname"]);
-                    tbBranch.Text = Convert.ToString(ds.Tables[0].Rows[0]["branchname"]);
-                    tbAccountNo.Text = Convert.ToString(ds.Tables[0].Rows[0]["accountno"]);
-                    tbIfscCode.Text = Convert.ToString(ds.Tables[0].Rows[0]["ifsccode"]);
-                }
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //}
+            //catch (Exception e1)
+            //{
+            //    MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         void textBox_TextChanged(object sender, System.EventArgs e)
@@ -152,26 +177,41 @@ namespace GST_Billing
             if (!validateData()) return;
             try
             {
-                string sqlstr = "SELECT * from userDetails";
-                DataSet ds = m1.selectData(sqlstr);
+                string sqlstr;
                 int NoOfRows = 0;
 
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                if (companyId > 0)
                 {
-                    NoOfRows = m1.Ins_Upd_Del("DELETE FROM userDetails");
+                    sqlstr = "SELECT * from userDetails WHERE userId='" + companyId + "'";
+                    DataSet ds = m1.selectData(sqlstr);
+
+                    DialogResult drDuplicateInsert = MessageBox.Show("Do you want to update Company : " + tbCompanyName.Text + " ?"
+                        , "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(drDuplicateInsert == DialogResult.Yes)
+                    { 
+                        sqlstr = "UPDATE userDetails set companyname='" + tbCompanyName.Text + "', name='" + tbContactPerson.Text + 
+                                 "', address='" + tbAddress.Text + "', landmark='" + tbLandmark.Text + "', city='" + tbCity.Text + 
+                                 "', state='" + tbState.SelectedItem + "', code='" + tbCode.Text + "', pincode='" + tbPinCode.Text + 
+                                 "', gstin='" + tbGstin.Text + "', email='" + tbEmail.Text + "', phoneNumber='" + tbContact.Text + 
+                                 "', panno='" + tbPanNo.Text + "', bankname='" + tbBankName.Text + "', branchname='" + tbBranch.Text + 
+                                 "', accountno='" + tbAccountNo.Text + "', ifsccode='" + tbIfscCode.Text + "' WHERE userId='" + companyId + "'";
+                        NoOfRows = m1.Ins_Upd_Del(sqlstr);
+                    }
                 }
-                sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
+                else
+                {
+                    sqlstr = "INSERT INTO userDetails(companyname, name, address, landmark, city, state, code, pincode, gstin, email, phoneNumber, panno, bankname, branchname, accountno, ifsccode)" +
                                 "VALUES('" + tbCompanyName.Text + "', '" + tbContactPerson.Text + "', '" + tbAddress.Text + "', '" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + tbState.SelectedItem + "','"
                                             + tbCode.Text + "', '" + tbPinCode.Text + "', '" + tbGstin.Text + "', '" + tbEmail.Text + "', '" + tbContact.Text + "', '" + tbPanNo.Text + "','"
                                             + tbBankName.Text + "', '" + tbBranch.Text + "', '" + tbAccountNo.Text + "', '" + tbIfscCode.Text + "')";
-                NoOfRows = m1.Ins_Upd_Del(sqlstr);
-
+                    NoOfRows = m1.Ins_Upd_Del(sqlstr);
+                }
                 if (NoOfRows > 0)
                 {
-                    this.CompanyName = tbCompanyName.Text;
-                    this.CompanyAddress = tbAddress.Text;
-                    this.CompanyEmail = tbEmail.Text;
-                    this.CompanyContact = tbContact.Text;
+                    //this.CompanyName = tbCompanyName.Text;
+                    //this.CompanyAddress = tbAddress.Text;
+                    //this.CompanyEmail = tbEmail.Text;
+                    //this.CompanyContact = tbContact.Text;
 
                     MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;

@@ -206,6 +206,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SelectFirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectFirm.Designer.cs">
+      <DependentUpon>SelectFirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StringCipher.cs" />
     <EmbeddedResource Include="AdditionalCharges.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -255,6 +261,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectFirm.resx">
+      <DependentUpon>SelectFirm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bin\Debug\GST_Billing.application" />
     <None Include="bin\Debug\GST_Billing.exe.config" />
     <None Include="bin\Debug\GST_Billing.exe.manifest" />

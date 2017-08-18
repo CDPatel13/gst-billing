@@ -1,13 +1,13 @@
 ﻿using GaneshLogistics.AppCode;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+//using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+//using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GST_Billing
@@ -44,24 +44,22 @@ namespace GST_Billing
 
 		private void Invoice_Load(object sender, EventArgs e)
 		{
-            tbPaymentTerms.DataSource = baseModel.paymentTerms.Values.ToList();
-            tbPaymentTerms.AutoCompleteMode = AutoCompleteMode.Suggest;
-            loadCustomerDetailsFromDatabase();
 
 			if(invoiceToEdit == 0)
 			{ 
-				setAdditionalCharges();
                 tbPaymentTerms.SelectedIndex = -1;
 			}
 			else
 			{
-				setAdditionalCharges();
 				getInvoiceDetailsToEdit(invoiceToEdit);
 				enableDisableControls();
 			}
 
-
-           
+            loadCustomerDetailsFromDatabase();
+            tbBillName.DataSource = listOfCustomers;
+            tbBillName.SelectedIndex = -1;
+            tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
 
 			this.WindowState = FormWindowState.Maximized;
 			this.ResizeRedraw = true;
@@ -544,10 +542,7 @@ namespace GST_Billing
 				listOfCustomers.Add(Convert.ToString(row["custname"]));
 			}
 			
-			tbBillName.DataSource = listOfCustomers;
-			tbBillName.SelectedIndex = -1;
-			tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
-			tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
+
 		}
 
 		private void syncBillingAndShipping()
@@ -672,13 +667,13 @@ namespace GST_Billing
                     return;
                 }
 
-				sqlstr = "select MAX(userId) from userDetails";
-				int userId = Convert.ToInt32(m1.scaler(sqlstr));
+                //sqlstr = "select MAX(userId) from userDetails";
+                //int userId = Convert.ToInt32(m1.scaler(sqlstr));
 
 				//, totaCGSTAmount, totalIGSTAmount
 				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
                         "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
-						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + userId + "', '" + tbPaymentTerms.SelectedItem + "', '" +
+						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + baseModel.CompanyId + "', '" + tbPaymentTerms.SelectedItem + "', '" +
 						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
                         lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1)";
 				int NoOfRows = m1.Ins_Upd_Del(sqlstr);
@@ -776,19 +771,22 @@ namespace GST_Billing
 			if (String.IsNullOrEmpty(lbAddedChallan.Text) && !String.IsNullOrEmpty(tbChallanNumber.Text))
 			{
 				lbAddedChallan.Text = tbChallanNumber.Text;
+                challanNumbers.Add(tbChallanNumber.Text);
 			}
-			else if(!challanNumbers.Contains(tbChallanNumber.Text))
+			else if(!challanNumbers.Contains(tbChallanNumber.Text) && !String.IsNullOrWhiteSpace(tbChallanNumber.Text))
 			{
-				lbAddedChallan.Text += "," + tbChallanNumber.Text;
+                if (challanNumbers.Count < 10)
+                {
+                    lbAddedChallan.Text += "," + tbChallanNumber.Text;
+                    challanNumbers.Add(tbChallanNumber.Text);
+                    lbAddedChallan.Text.TrimEnd(',');
+                }
+                else
+                {
+                    MessageBox.Show("Maximum 10 challans per invoice are allowed.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 			}
-			if(challanNumbers.Count < 10)
-			{
-				challanNumbers.Add(tbChallanNumber.Text);
-			}
-			else
-			{
-				MessageBox.Show("Maximum 10 challans per invoice are allowed.","Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			
 			tbChallanNumber.Clear();
 		}
 
@@ -918,6 +916,8 @@ namespace GST_Billing
 			tlpTotals.Size = new Size(this.Size.Width - 33, tlpTotals.Height);
 			gbInvoice.Size = new Size(this.Size.Width - 43, gbInvoice.Height);
 			gbAddCharge.Size = new Size(this.Size.Width - 43, gbAddCharge.Height);
+
+
 
 			Padding margin = flpPanelButtons.Controls[0].Margin;
 			margin.Left = (int)flpPanelButtons.Size.Width / 2 - flpPanelButtons.Controls[0].Width;

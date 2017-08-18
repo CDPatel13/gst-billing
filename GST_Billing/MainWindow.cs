@@ -362,6 +362,11 @@ namespace GST_Billing
 
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
+            addNewInvoice();
+        }
+
+        private void addNewInvoice()
+        {
             Invoice generateInvoice = new Invoice();
             DialogResult result = generateInvoice.ShowDialog();
 
@@ -370,9 +375,14 @@ namespace GST_Billing
 
         private void btnEditInvoice_Click(object sender, EventArgs e)
         {
+            editExistingInvoice();
+        }
+
+        private void editExistingInvoice()
+        {
             int invoiceToEdit = 0;
             string custName = String.Empty;
-            if(dgvInvoice.SelectedRows.Count > 0)
+            if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
@@ -386,6 +396,11 @@ namespace GST_Billing
         }
 
         private void btnDeleteInvoice_Click(object sender, EventArgs e)
+        {
+            deleteSelectedInvoice();
+        }
+
+        private void deleteSelectedInvoice()
         {
             if (dgvInvoice.SelectedRows.Count > 0)
             {
@@ -407,6 +422,11 @@ namespace GST_Billing
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
+            viewSelectedInvoice();
+        }
+
+        private void viewSelectedInvoice()
+        {
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
@@ -419,7 +439,7 @@ namespace GST_Billing
         private void btnSearchInvoice_Click(object sender, EventArgs e)
         {
             string conditionName = " AND [Customer Name] LIKE '%" + tbSearchInvoice.Text + "%'";
-            string conditionDate = "[Invoice Date] > #" + dtpStartDate.Value + "# AND [Invoice Date] < #" + dtpEndDate.Value + "#";
+            string conditionDate = "[Invoice Date] > '" + dtpStartDate.Value +"' AND [Invoice Date] < '" + dtpStartDate.Value + "'";
             if(!String.IsNullOrEmpty(tbSearchInvoice.Text) && !String.IsNullOrWhiteSpace(tbSearchInvoice.Text))
             {
                 tableInvoice.DefaultView.RowFilter = conditionDate + conditionName;
@@ -435,7 +455,8 @@ namespace GST_Billing
         {
             tbSearchInvoice.Clear();
             tableInvoice.DefaultView.RowFilter = String.Empty;
-            //fillInvoiceDataGrid();
+
+            calculateTotalInvoiceAmount();
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
@@ -560,5 +581,34 @@ namespace GST_Billing
         }
 
         #endregion
+
+        private void dgvInvoice_DoubleClick(object sender, EventArgs e)
+        {
+            viewSelectedInvoice();
+        }
+
+        private void btnClose1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.F2:
+                {
+                    addNewInvoice();
+                }
+                break;
+                case Keys.F3:
+                break;
+            }
+        }
+
+        private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process calculator = System.Diagnostics.Process.Start("calc.exe");
+        }
     }
 }
