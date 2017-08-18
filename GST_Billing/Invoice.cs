@@ -753,7 +753,7 @@ namespace GST_Billing
 
 			if(isDirty == false)
 			{ 
-				PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text);
+				PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, 1);
 				objPrintInvoice.MdiParent = this.MdiParent;
 				objPrintInvoice.Show();
 			}

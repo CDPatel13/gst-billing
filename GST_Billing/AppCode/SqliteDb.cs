@@ -108,6 +108,8 @@ namespace GaneshLogistics.AppCode
 									invoiceDate	TEXT NOT NULL,
 									custId		INTEGER NOT NULL,
 									userId		INTEGER NOT NULL,
+                                    poNo	    TEXT NOT NULL,
+                                    poDate	    TEXT NOT NULL,
 									termName	TEXT,
 									shipName	TEXT,
 									shipAddress	TEXT,

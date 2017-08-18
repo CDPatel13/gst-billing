@@ -410,7 +410,7 @@ namespace GST_Billing
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
-                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value);
+                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, 1);
                 objPrintInvoice.MdiParent = this.MdiParent;
                 objPrintInvoice.Show();
             }

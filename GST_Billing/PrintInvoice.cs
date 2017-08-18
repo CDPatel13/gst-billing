@@ -20,20 +20,29 @@ namespace GST_Billing
             InitializeComponent();
         }
 
-        public PrintInvoice(string invoiceNo)
+        public PrintInvoice(string invoiceNo, int invoiceType)
         {
             try
             {
                 InitializeComponent();
-                string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city, 		
-                                invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, invoiceDetails.totalTaxColAmt as totalTaxColAmt, 
-                                invoiceDetails.sgstPercent as sgstPercent, invoiceDetails.cgstPercent as cgstPercent, invoiceDetails.igstPercent as igstPercent,  invoiceDetails.termName as termName, 
+                string strInvoiceType = "";
+                if (invoiceType == 1)
+                {
+                    strInvoiceType = "Original Invoice";
+                }
+                else
+                {
+                    strInvoiceType = "Duplicate Invoice";
+                }
+                string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city,
+                                invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, invoiceDetails.totalTaxColAmt as totalTaxColAmt, invoiceDetails.poNo, invoiceDetails.poDate, 
+                                (invoiceDetails.sgstPercent || "" %"") AS sgstPercent, (invoiceDetails.cgstPercent || "" %"") AS cgstPercent, (invoiceDetails.igstPercent || "" %"") AS igstPercent, invoiceDetails.termName as termName, 
                                 invoiceDetails.shipCode as shipCode, invoiceDetails.totalQnty as totalQnty, invoiceDetails.totalAmount as totalAmount, invoiceDetails.totaDiscount as totaDiscount, 
                                 invoiceDetails.totalTaxAmount as totalTaxAmount, invoiceDetails.totalSGSTAmount as totalSGSTAmount, invoiceDetails.totaCGSTAmount as totaCGSTAmount,
                                 invoiceDetails.totalIGSTAmount as totalIGSTAmount, invoiceDetails.totalBillAmount as totalBillAmount, invoiceProductDetails.productName as productName,
                                 invoiceProductDetails.productCode as productCode, invoiceProductDetails.productQnty as productQnty, invoiceProductDetails.ProductUnit as ProductUnit,
                                 invoiceProductDetails.productUnitPrice as productUnitPrice, invoiceProductDetails.productAmount as productAmount, invoiceProductDetails.productDiscount as productDiscount,
-                                invoiceProductDetails.productTaxAmount as productTaxAmount, 
+                                invoiceProductDetails.productTaxAmount as productTaxAmount, customerDetails.custphoneNumber, 
                                 customerDetails.custname as custname, customerDetails.custstate as custstate, customerDetails.custPanno as custPanno, customerDetails.shipPanno as shipPanno, 
                                 customerDetails.custcode as custcode, customerDetails.custgstin as custgstin, userDetails.name as name, userDetails.companyname as companyname, userDetails.panno as panno, 
                                 userDetails.bankname as bankname, userDetails.branchname as branchname, userDetails.accountno as accountno, userDetails.ifsccode as ifsccode, 
@@ -59,6 +68,7 @@ namespace GST_Billing
                 for (int i = 0; i < dsVoucher.Tables[0].Rows.Count; i++)
                 {
                     dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
+                    dsVoucher.Tables[0].Rows[i]["invoiceType"] = strInvoiceType;
                 }
 
                 sqlstr = "select chargeName, CAST(chargeAmount as decimal) as chargeAmount FROM additionalCharges WHERE invoiceId = " + invoiceId + "";
