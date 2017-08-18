@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             this.lbOldPassword = new System.Windows.Forms.Label();
             this.lbPassword = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.lbOldUserName = new System.Windows.Forms.Label();
             this.tbNewUserName = new System.Windows.Forms.TextBox();
             this.lbNewUserName = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbOldPassword
@@ -105,9 +108,10 @@
             this.tbOldPassword.Location = new System.Drawing.Point(167, 83);
             this.tbOldPassword.Name = "tbOldPassword";
             this.tbOldPassword.PasswordChar = '*';
-            this.tbOldPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbOldPassword.Size = new System.Drawing.Size(195, 20);
             this.tbOldPassword.TabIndex = 2;
             this.tbOldPassword.UseSystemPasswordChar = true;
+            this.tbOldPassword.TextChanged += new System.EventHandler(this.tb_TextChanged);
             // 
             // tbNewPassword
             // 
@@ -116,9 +120,10 @@
             this.tbNewPassword.Location = new System.Drawing.Point(167, 109);
             this.tbNewPassword.Name = "tbNewPassword";
             this.tbNewPassword.PasswordChar = '*';
-            this.tbNewPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbNewPassword.Size = new System.Drawing.Size(195, 20);
             this.tbNewPassword.TabIndex = 3;
             this.tbNewPassword.UseSystemPasswordChar = true;
+            this.tbNewPassword.TextChanged += new System.EventHandler(this.tb_TextChanged);
             // 
             // tbConfirmPassword
             // 
@@ -127,9 +132,10 @@
             this.tbConfirmPassword.Location = new System.Drawing.Point(167, 135);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
             this.tbConfirmPassword.PasswordChar = '*';
-            this.tbConfirmPassword.Size = new System.Drawing.Size(199, 20);
+            this.tbConfirmPassword.Size = new System.Drawing.Size(195, 20);
             this.tbConfirmPassword.TabIndex = 4;
             this.tbConfirmPassword.UseSystemPasswordChar = true;
+            this.tbConfirmPassword.TextChanged += new System.EventHandler(this.tb_TextChanged);
             // 
             // lbMain
             // 
@@ -151,7 +157,7 @@
             this.tbOldUserName.Enabled = false;
             this.tbOldUserName.Location = new System.Drawing.Point(167, 31);
             this.tbOldUserName.Name = "tbOldUserName";
-            this.tbOldUserName.Size = new System.Drawing.Size(199, 20);
+            this.tbOldUserName.Size = new System.Drawing.Size(195, 20);
             this.tbOldUserName.TabIndex = 0;
             // 
             // lbOldUserName
@@ -173,8 +179,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNewUserName.Location = new System.Drawing.Point(167, 57);
             this.tbNewUserName.Name = "tbNewUserName";
-            this.tbNewUserName.Size = new System.Drawing.Size(199, 20);
+            this.tbNewUserName.Size = new System.Drawing.Size(195, 20);
             this.tbNewUserName.TabIndex = 1;
+            this.tbNewUserName.TextChanged += new System.EventHandler(this.tb_TextChanged);
             // 
             // lbNewUserName
             // 
@@ -188,6 +195,10 @@
             this.lbNewUserName.Size = new System.Drawing.Size(116, 16);
             this.lbNewUserName.TabIndex = 10;
             this.lbNewUserName.Text = "New User Name : ";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // ChangePassword
             // 
@@ -217,6 +228,7 @@
             this.Text = "Change Credentials";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ChangePassword_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +248,6 @@
         private System.Windows.Forms.Label lbOldUserName;
         private System.Windows.Forms.TextBox tbNewUserName;
         private System.Windows.Forms.Label lbNewUserName;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

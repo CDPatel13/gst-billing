@@ -66,7 +66,7 @@ namespace GST_Billing
 
         private void tbPayment_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
@@ -74,6 +74,25 @@ namespace GST_Billing
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
+            }
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbPayment_TextChanged(object sender, EventArgs e)
+        {
+            string paymentAmount = tbPayment.Text;
+            if(paymentAmount.IndexOf('-') > 0)
+            {
+                errorProvider1.SetError(tbPayment, "Sign (-) can only be used at start of string.");
+                btnSave.Enabled = false;
+            }
+            else
+            {
+                errorProvider1.SetError(tbPayment, String.Empty);
+                btnSave.Enabled = true;
             }
         }
     }

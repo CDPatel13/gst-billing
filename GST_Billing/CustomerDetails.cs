@@ -143,6 +143,7 @@ namespace GST_Billing
                 if (NoOfRows > 0)
                 {
                     MessageBox.Show("Details saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 else
                 {
