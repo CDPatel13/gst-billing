@@ -123,7 +123,7 @@ namespace GST_Billing
                                   "', shiplandmark='" + tbShipLandmark.Text + "', shipcity='" + tbShipCity.Text + "', shipstate='" + tbShipState.Text +
                                   "', shipcode='" + tbShipCode.Text + "', shippincode='" + tbShipPinCode.Text + "', shipemail='" + tbShipEmail.Text + "', shipphoneNumber='" + tbShipPhone.Text +
                                   "', shipgstin='" + tbShipGstin.Text + "', shipAadharNo='" + tbShipAadhar.Text + "', shipPanno='" + tbShipPanNumber.Text +
-                                  "', shippaymentTermName='" + tbShipPayment.Text + "' where custname='" + tbName.Text + "'";
+                                  "', shippaymentTermName='" + tbShipPayment.Text + "' WHERE custname='" + tbName.Text + "' AND userId='" + baseModel.CompanyId + "'";
                         NoOfRows = m1.Ins_Upd_Del(sqlstr);
                     }
                 }
@@ -132,12 +132,12 @@ namespace GST_Billing
                     sqlstr = "INSERT INTO customerDetails(custname, custContactPerson, custaddress, custlandmark, custcity, custstate, " +
                                 "custcode, custpincode, custemail, custphoneNumber, custgstin, custAadharNo, custPanno, custpaymentTermName, " +
                                 "shipname, shipContactPerson, shipaddress, shiplandmark, shipcity, shipstate, shipcode, shippincode, " +
-                                "shipemail, shipphoneNumber, shipgstin, shipAadharNo, shipPanno, shippaymentTermName)" +
+                                "shipemail, shipphoneNumber, shipgstin, shipAadharNo, shipPanno, shippaymentTermName, userId)" +
                              "VALUES('" + tbName.Text + "', '" + tbContact.Text + "', '" + tbAddress.Text + "','" + tbLandmark.Text + "', '" + tbCity.Text + "', '" + tbState.Text + "', '" + tbCode.Text + "', '"
                                          + tbPinCode.Text + "', '" + tbEmail.Text + "', '" + tbPhoneNo.Text + "','" + tbGstin.Text + "', '" + tbAadharNo.Text + "', '" + tbPanNo.Text + "', '" + tbPayment.Text + "', '"
                                         + tbShipName.Text + "', '" + tbShipContact.Text + "', '" + tbShipAddress.Text + "','" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipState.Text + "', '"
                                         + tbShipCode.Text + "', '" + tbShipPinCode.Text + "', '" + tbShipEmail.Text + "', '" + tbShipPhone.Text + "','" + tbShipGstin.Text + "', '" + tbShipAadhar.Text + "', '"
-                                        + tbShipPanNumber.Text + "', '" + tbShipPayment.Text + "')";
+                                        + tbShipPanNumber.Text + "', '" + tbShipPayment.Text + "', '" + baseModel.CompanyId + "')";
                     NoOfRows = m1.Ins_Upd_Del(sqlstr);
                 }
                 if (NoOfRows > 0)
@@ -199,7 +199,7 @@ namespace GST_Billing
                 tbShipPinCode.Text = tbPinCode.Text;
                 tbShipAadhar.Text = tbAadharNo.Text;
                 tbShipPanNumber.Text = tbPanNo.Text;
-                tbShipPayment.Text = tbPayment.Text;
+                tbShipPayment.SelectedIndex = tbPayment.SelectedIndex;
                 tbShipContact.Text = tbContact.Text;
             }
         }
@@ -236,7 +236,7 @@ namespace GST_Billing
 
         public DataSet customerExists(string name)
         {
-            string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "'";
+            string sqlstr = "SELECT * FROM customerDetails WHERE custname ='" + name + "' AND userId='" + baseModel.CompanyId + "'";
             DataSet ds = m1.selectData(sqlstr);
             if (ds.Tables[0].Rows.Count > 0)
                 return ds;
