@@ -65,6 +65,7 @@
             this.tbSelectedFirm.Name = "tbSelectedFirm";
             this.tbSelectedFirm.Size = new System.Drawing.Size(209, 22);
             this.tbSelectedFirm.TabIndex = 2;
+            this.tbSelectedFirm.SelectedIndexChanged += new System.EventHandler(this.tbSelectedFirm_SelectedIndexChanged);
             // 
             // tbSelectedYear
             // 

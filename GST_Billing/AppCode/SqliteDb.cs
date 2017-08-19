@@ -76,7 +76,7 @@ namespace GaneshLogistics.AppCode
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [customerDetails] (
 									custId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-									custname	TEXT NOT NULL UNIQUE,
+									custname	TEXT NOT NULL,
 									custContactPerson TEXT,
 									custaddress	TEXT NOT NULL,
 									custlandmark	TEXT,
@@ -112,16 +112,16 @@ namespace GaneshLogistics.AppCode
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceDetails] (
 									invoiceId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-									invoiceNo	TEXT NOT NULL UNIQUE,
+									invoiceNo	TEXT NOT NULL,
 									invoiceDate	TEXT NOT NULL,
 									custId		INTEGER NOT NULL,
 									userId		INTEGER NOT NULL,
-                                    poNo	    TEXT NOT NULL,
-                                    poDate	    TEXT NOT NULL,
+                                    poNo	    TEXT,
+                                    poDate	    TEXT,
 									termName	TEXT,
 									shipName	TEXT,
 									shipAddress	TEXT,
-									shipLandmark	TEXT,
+									shipLandmark TEXT,
 									shipCity	TEXT,
 									shipState	TEXT NOT NULL,
 									shipCode	 TEXT,
@@ -160,52 +160,28 @@ namespace GaneshLogistics.AppCode
 									productUnitPrice	DECIMAL(8,2) NOT NULL,
 									productAmount	DECIMAL(8,2),
 									productDiscount	DECIMAL(8,2),
-									productTaxAmount	DECIMAL(8,2),
-                                    financialYear	TEXT NOT NULL,
-                                    userId		INTEGER NOT NULL,
+									productTaxAmount	DECIMAL(8,2),                                    
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
-									ON DELETE NO ACTION
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
-									ON DELETE NO ACTION
-									ON UPDATE NO ACTION
+									ON UPDATE NO ACTION                                    
 								)");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [additionalCharges] (
 									chargeNo	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 									invoiceId	INTEGER NOT NULL,
 									chargeName	TEXT NOT NULL,
-									chargeAmount	DECIMAL(8,2) NOT NULL,
-                                    financialYear	TEXT NOT NULL,
-                                    userId		INTEGER NOT NULL,
+									chargeAmount	DECIMAL(8,2) NOT NULL,                                    
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
-									ON DELETE NO ACTION
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
-									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
                                 )");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceChallanDetails] (
 									challanId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 									invoiceId	INTEGER NOT NULL,
-									challanNo	TEXT NOT NULL,	 
-                                    financialYear	TEXT NOT NULL,
-                                    userId		INTEGER NOT NULL,                          
+									challanNo	TEXT NOT NULL,	                                 
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
-									ON DELETE NO ACTION
-									ON UPDATE NO ACTION,
-                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
-									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
 								)");
 

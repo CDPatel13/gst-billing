@@ -32,8 +32,9 @@ namespace GST_Billing
         private void btnAddFirm_Click(object sender, EventArgs e)
         {
             CompanyDetails company = new CompanyDetails();
+            this.Hide();
             company.ShowDialog();
-
+            this.Show();
             updateAutoCompleteFirms();
         }
 
@@ -66,27 +67,34 @@ namespace GST_Billing
 
         private void btnSelectFirm_Click(object sender, EventArgs e)
         {
-            string sqlstr = "SELECT * from userDetails WHERE companyname='"+ tbSelectedFirm.Text +"'";
-            DataSet ds = m1.selectData(sqlstr);
-            Int64 companyId = 0;
-
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            if (tbSelectedFirm.SelectedIndex == -1)
             {
-                companyId = Convert.ToInt64(ds.Tables[0].Rows[0]["userId"]);
-            }
-            BaseModel.Instance.CompanyId = companyId;
-            BaseModel.Instance.FinancialYear = tbSelectedYear.Text;
-            selected = true;
-
-            this.Hide();
-            if (!CheckOpened("GST Billing"))
-            {
-                window = new MainWindow();
-                window.Show();
+                MessageBox.Show("No company has been selected.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                window.Focus();
+                string sqlstr = "SELECT * from userDetails WHERE companyname='" + tbSelectedFirm.Text + "'";
+                DataSet ds = m1.selectData(sqlstr);
+                Int64 companyId = 0;
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    companyId = Convert.ToInt64(ds.Tables[0].Rows[0]["userId"]);
+                }
+                BaseModel.Instance.CompanyId = companyId;
+                BaseModel.Instance.FinancialYear = tbSelectedYear.Text;
+                selected = true;
+
+                this.Hide();
+                if (!CheckOpened("GST Billing"))
+                {
+                    window = new MainWindow();
+                    window.Show();
+                }
+                else
+                {
+                    window.Focus();
+                }
             }
         }
 
@@ -96,11 +104,14 @@ namespace GST_Billing
             {
                 Application.Exit();
             }
-            else 
+            else if (!CheckOpened("GST Billing"))
             {
-                //this.Hide();
-                MainWindow window = new MainWindow();
+                window = new MainWindow();
                 window.Show();
+            }
+            else
+            {
+                window.Focus();
             }
         }
 
@@ -115,6 +126,10 @@ namespace GST_Billing
                 }
             }
             return false;
+        }
+
+        private void tbSelectedFirm_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

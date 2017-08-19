@@ -85,7 +85,7 @@ namespace GST_Billing
 								   "totalTaxAmount, totalSGSTAmount, totaCGSTAmount, totalIGSTAmount, totalBillAmount," +
 								   "receivedAmount" +
 								   " FROM invoiceDetails" +
-								   " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId AND invoiceNo = '" + invoiceToEdit +"'";
+                                   " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId AND invoiceNo = '" + invoiceToEdit + "' AND invoiceDetails.userId='" + BaseModel.Instance.CompanyId + "' AND invoiceDetails.financialYear='" + BaseModel.Instance.FinancialYear + "' ";
 
 			DataSet ds = m1.selectData(sqlstrInvoice);
 			if(ds!=null && ds.Tables[0].Rows.Count > 0)
@@ -400,7 +400,7 @@ namespace GST_Billing
 		private void tb_TextChanged(object sender, EventArgs e)
 		{
 			TextBox tb = sender as TextBox;
-			string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"'";
+			string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"' AND userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if (ds != null && ds.Tables[0].Rows.Count > 0)
 			{
@@ -412,7 +412,7 @@ namespace GST_Billing
 
 		private void addProducts(AutoCompleteStringCollection collection)
 		{
-			string sqlstr = "SELECT productName FROM productDetails";
+			string sqlstr = "SELECT productName FROM productDetails where userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if(ds != null && ds.Tables[0].Rows.Count > 0)
 			{
@@ -490,7 +490,7 @@ namespace GST_Billing
 		private void getCustomerDetails(string customer)
 		{
 			custId = 0;
-			string sqlstr = "SELECT * FROM customerDetails where custname='" + customer + "'";
+			string sqlstr = "SELECT * FROM customerDetails where custname='" + customer + "' AND userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if (ds.Tables[0].Rows.Count > 0)
 			{
@@ -535,7 +535,7 @@ namespace GST_Billing
 
 		private void loadCustomerDetailsFromDatabase()
 		{
-			string sqlstr = "SELECT custname FROM customerDetails";
+			string sqlstr = "SELECT custname FROM customerDetails where userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			foreach(DataRow row in ds.Tables[0].Rows)
 			{
@@ -636,7 +636,7 @@ namespace GST_Billing
 			if (!ValidateData()) return;
 			try
 			{
-				string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND IsActive = 1 ";
+				string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND userId='" +BaseModel.Instance.CompanyId+ "' AND financialYear='" +BaseModel.Instance.FinancialYear+ "' AND IsActive = 1 ";
 				DataSet ds = m1.selectData(sqlstr);
 				if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit != 0)
 				{
@@ -645,16 +645,16 @@ namespace GST_Billing
 					switch (drDuplicateInsert)
 					{
 						case DialogResult.Yes:
-							sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+                            sqlstr = "DELETE FROM invoiceProductDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-							sqlstr = "DELETE FROM invoiceChallanDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+                            sqlstr = "DELETE FROM invoiceChallanDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-							sqlstr = "DELETE FROM additionalCharges WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+                            sqlstr = "DELETE FROM additionalCharges WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 
-							sqlstr = "DELETE FROM invoiceDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
+                            sqlstr = "DELETE FROM invoiceDetails WHERE invoiceId =" + Convert.ToInt32(ds.Tables[0].Rows[0]["invoiceId"]) + "";
 							m1.Ins_Upd_Del(sqlstr);
 							break;
 						case DialogResult.No:
@@ -671,11 +671,11 @@ namespace GST_Billing
                 //int userId = Convert.ToInt32(m1.scaler(sqlstr));
 
 				//, totaCGSTAmount, totalIGSTAmount
-				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-                        "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive)" +
-						"VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + baseModel.CompanyId + "', '" + tbPaymentTerms.SelectedItem + "', '" +
+				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, poNo, poDate, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive, financialYear)" +
+                        "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + BaseModel.Instance.CompanyId + "', '" + tbPoNum.Text + "','" + String.Format("{0:dd/MM/yyyy}", tbPoDate.Text) + "', '" + tbPaymentTerms.SelectedItem + "', '" +
 						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
-                        lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1)";
+                        lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1, '" + BaseModel.Instance.FinancialYear + "')";
 				int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
 				if (NoOfRows > 0)
@@ -725,7 +725,7 @@ namespace GST_Billing
 
 		private int getCustomerID(string name)
 		{
-			string sqlstr = "SELECT custId FROM customerDetails WHERE custname='"+ name + "'";
+			string sqlstr = "SELECT custId FROM customerDetails WHERE custname='"+ name + "' AND userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if(ds != null && ds.Tables[0].Rows.Count > 0)
 			{
