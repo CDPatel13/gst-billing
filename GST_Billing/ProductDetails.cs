@@ -55,7 +55,7 @@ namespace GST_Billing
 
         public DataSet productExists(string name)
         {
-            string sqlstr = "SELECT * FROM productDetails WHERE productName='" + name + "'";
+            string sqlstr = "SELECT * FROM productDetails WHERE productName='" + name + "' and userId='" + BaseModel.Instance.CompanyId + "' ";
             DataSet ds = m1.selectData(sqlstr);
             if (ds.Tables[0].Rows.Count > 0)
                 return ds;
@@ -89,14 +89,14 @@ namespace GST_Billing
                     if (result == DialogResult.Yes)
                     {
                         sqlstr = "UPDATE productDetails set productName='" + tbProdDes.Text + "', hsnCode='" + tbProdHsnCode.Text + "', productPrice='" + tbProdRate.Text +
-                                  "', productUnit='" + tbProdUnit.Text + "' WHERE productId='" + ds.Tables[0].Rows[0][0] + "'" ;
+                                  "', productUnit='" + tbProdUnit.Text + "' WHERE productId='" + ds.Tables[0].Rows[0][0] + "' AND userId= '" + BaseModel.Instance.CompanyId + "'" ;
                         NoOfRows = m1.Ins_Upd_Del(sqlstr);
                     }
                 }
                 else 
-                { 
-                    sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit)" +
-                                    "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdUnit.Text + "')";
+                {
+                    sqlstr = "INSERT INTO productDetails(productName, hsnCode, productPrice, productUnit, userId)" +
+                                    "VALUES('" + tbProdDes.Text + "', '" + tbProdHsnCode.Text + "', " + tbProdRate.Text + ", '" + tbProdUnit.Text + "', '" + BaseModel.Instance.CompanyId.ToString() + "' )";
                     NoOfRows = m1.Ins_Upd_Del(sqlstr);
                 }
                 if (NoOfRows > 0)

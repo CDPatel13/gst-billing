@@ -179,6 +179,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.Name = "SelectFirm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Company and F.Y.";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectFirm_FormClosed);
             this.Load += new System.EventHandler(this.SelectFirm_Load);

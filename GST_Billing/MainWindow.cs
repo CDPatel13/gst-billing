@@ -116,14 +116,14 @@ namespace GST_Billing
             {
                 DataGridViewRow row = dgvCustomer.SelectedRows[0];
 
-                string sqlstr = "DELETE FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "'";
-                string sqlStrCustId = "SELECT custId FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "'";
+                string sqlstr = "DELETE FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "' AND userId='" + BaseModel.Instance.CompanyId + "'";
+                string sqlStrCustId = "SELECT custId FROM customerDetails WHERE custname='" + (string)dgvCustomer.SelectedRows[0].Cells[0].Value + "' AND userId='" + BaseModel.Instance.CompanyId + "'";
 
                 DataSet ds = m1.selectData(sqlStrCustId);
                 if(ds!=null && ds.Tables[0].Rows.Count > 0)
                 {
                     string custId = ds.Tables[0].Rows[0][0].ToString();
-                    sqlStrCustId = "SELECT invoiceNo FROM invoiceDetails WHERE custId='" + custId + "'";
+                    sqlStrCustId = "SELECT invoiceNo FROM invoiceDetails WHERE custId='" + custId + "' AND userId='" + BaseModel.Instance.CompanyId + "'";
 
                     DataSet ds1 = m1.selectData(sqlStrCustId);
                     if(ds1!=null && ds1.Tables[0].Rows.Count > 0)
@@ -166,7 +166,7 @@ namespace GST_Billing
         private void fillCustomerDataGrid(DataSet table = null)
         {
             int colIndex = 0;
-            string sqlstr = "SELECT * FROM customerDetails";
+            string sqlstr = "SELECT * FROM customerDetails WHERE userId='" + BaseModel.Instance.CompanyId + "'";
 
             if (table == null)
             {
@@ -211,6 +211,7 @@ namespace GST_Billing
             tableCustomer.Columns["Customer Payment Terms"].SetOrdinal(colIndex++);
 
             tableCustomer.Columns.Remove("custId");
+            tableCustomer.Columns.Remove("userId");
             tableCustomer.Columns.Remove("shipname");
             tableCustomer.Columns.Remove("shipaddress");
             tableCustomer.Columns.Remove("shipContactPerson");
@@ -279,7 +280,7 @@ namespace GST_Billing
         {
             if(dgvProducts.SelectedRows.Count > 0)
             { 
-                string sqlstr = "DELETE FROM productDetails WHERE productName='" + (string)dgvProducts.SelectedRows[0].Cells[0].Value + "'";
+                string sqlstr = "DELETE FROM productDetails WHERE productName='" + (string)dgvProducts.SelectedRows[0].Cells[0].Value + "' and userId= '" + BaseModel.Instance.CompanyId+ "' ";
             
                 DialogResult result = MessageBox.Show("Do you really want to delete this item?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -314,7 +315,7 @@ namespace GST_Billing
         private void fillProductDataGrid(DataSet table = null)
         {
             int colIndex = 0;
-            string sqlstr = "SELECT * FROM productDetails";
+            string sqlstr = "SELECT * FROM productDetails where userId= '" +BaseModel.Instance.CompanyId+ "'";
 
             if (table == null)
             {
@@ -337,6 +338,7 @@ namespace GST_Billing
             tableProduct.Columns["Unit"].SetOrdinal(colIndex++);
 
             tableProduct.Columns.Remove("productId");
+            tableProduct.Columns.Remove("userId");
 
             bindingSourceProducts.DataSource = null;
             bindingSourceProducts.DataSource = tableProduct;
