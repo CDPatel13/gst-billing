@@ -74,6 +74,7 @@ namespace GST_Billing
             }
             catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 proceed = false;
             }
             return proceed;            
@@ -115,6 +116,7 @@ namespace GST_Billing
             }
             catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 MessageBox.Show("An unexpected error occured. Please restart the application.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }

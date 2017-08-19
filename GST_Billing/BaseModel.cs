@@ -15,6 +15,7 @@ namespace GST_Billing
         private double gstAmount;
         private double taxableVal;
         private Int64 companyId;
+        private string selectedCompany;
 
         static BaseModel _instance;
         private string finYear;
@@ -63,6 +64,12 @@ namespace GST_Billing
             }
 
             return result.Trim();
+        }
+
+        public string SelectedCompany
+        {
+            get { return selectedCompany; }
+            set { selectedCompany = value; }
         }
 
         public Int64 CompanyId

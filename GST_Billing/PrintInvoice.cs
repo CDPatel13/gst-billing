@@ -54,12 +54,12 @@ namespace GST_Billing
                         INNER JOIN invoiceProductDetails ON invoiceProductDetails.invoiceId = invoiceDetails.invoiceId 
                         INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId 
                         INNER JOIN userDetails ON userDetails.userId = invoiceDetails.userId                                                  
-                        WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.IsActive = 1 ";
+                        WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.userId ='" + BaseModel.Instance.CompanyId + "' AND invoiceDetails.financialYear='" + BaseModel.Instance.FinancialYear + "' AND invoiceDetails.IsActive = 1 ";
                 //LEFT JOIN additionalCharges ON additionalCharges.invoiceId = invoiceDetails.invoiceId
                 //additionalCharges.chargeName as chargeName, additionalCharges.chargeAmount as chargeAmount
                 InvoiceDetails dsVoucher = m1.selectDataAdapter(sqlstr1, 1);
 
-                string sqlstr = "select invoiceId from invoiceDetails WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.IsActive = 1 LIMIT 1";
+                string sqlstr = "select invoiceId from invoiceDetails WHERE invoiceDetails.invoiceNo ='" + invoiceNo + "' AND invoiceDetails.userId ='" + BaseModel.Instance.CompanyId + "' AND invoiceDetails.financialYear='" +BaseModel.Instance.FinancialYear+ "' AND invoiceDetails.IsActive = 1 LIMIT 1";
                 int invoiceId = Convert.ToInt32(m1.scaler(sqlstr));
 
                 sqlstr = "select GROUP_CONCAT(challanNo) FROM invoiceChallanDetails WHERE invoiceId = " + invoiceId + " ";

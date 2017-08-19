@@ -88,6 +88,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -146,12 +149,6 @@
     </Compile>
     <Compile Include="Invoice.Designer.cs">
       <DependentUpon>Invoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseModel.cs" />
     <Compile Include="InvoiceDetails.cs">
@@ -212,6 +209,12 @@
     <Compile Include="SelectFirm.Designer.cs">
       <DependentUpon>SelectFirm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectInvoicePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectInvoicePrint.Designer.cs">
+      <DependentUpon>SelectInvoicePrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="StringCipher.cs" />
     <EmbeddedResource Include="AdditionalCharges.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -228,9 +231,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Invoice.resx">
       <DependentUpon>Invoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicePayment.resx">
       <DependentUpon>InvoicePayment.cs</DependentUpon>
@@ -263,6 +263,9 @@
     </Compile>
     <EmbeddedResource Include="SelectFirm.resx">
       <DependentUpon>SelectFirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectInvoicePrint.resx">
+      <DependentUpon>SelectInvoicePrint.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\GST_Billing.application" />
     <None Include="bin\Debug\GST_Billing.exe.config" />
@@ -322,6 +325,7 @@
     <Content Include="bin\Debug\system.data.sqlite.dll" />
     <Content Include="bin\Release\GST_Billing.exe" />
     <Content Include="bin\Release\GST_Billing.pdb" />
+    <Content Include="icon_2.ico" />
     <Content Include="Resources\LN.ico" />
     <Content Include="Resources\User-Accounts.ico" />
   </ItemGroup>

@@ -83,6 +83,7 @@ namespace GST_Billing
                 }
                 BaseModel.Instance.CompanyId = companyId;
                 BaseModel.Instance.FinancialYear = tbSelectedYear.Text;
+                BaseModel.Instance.SelectedCompany = tbSelectedFirm.Text;
                 selected = true;
 
                 this.Hide();

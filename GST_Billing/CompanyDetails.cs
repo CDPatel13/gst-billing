@@ -21,12 +21,11 @@ namespace GST_Billing
         private string _companyAddress;
         private string _companyEmail;
         private string _companyContact;
-        private string p;
         private bool _companyExists;
 
         public Int64 companyId = 0;
 
-        public string CompanyName
+        public new string CompanyName
         {
             get { return _companyName; }
             set { _companyName = value; }
@@ -121,15 +120,6 @@ namespace GST_Billing
 
         private void CompanyDetails_Load(object sender, EventArgs e)
         {
-
-            int NoOfRows = 0;
-            //try
-            //{
-            //}
-            //catch (Exception e1)
-            //{
-            //    MessageBox.Show("Error :" + e1.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
 
         void textBox_TextChanged(object sender, System.EventArgs e)

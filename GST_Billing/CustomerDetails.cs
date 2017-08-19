@@ -85,6 +85,7 @@ namespace GST_Billing
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     tbStateBox.Text = String.Empty;
                     tbStateBox.SelectedIndex = -1;
                     gbBillShip.Controls[gbBillShip.Controls.IndexOf(tbStateBox) + 2].Text = String.Empty;

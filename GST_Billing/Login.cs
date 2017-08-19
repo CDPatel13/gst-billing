@@ -12,7 +12,6 @@ namespace GST_Billing
 {
 	public partial class Login : Form
 	{
-		bool companyExists = false;
 		SqliteDb m1 = new SqliteDb();
 		public Login()
 		{
@@ -64,23 +63,8 @@ namespace GST_Billing
 			if (!newCompany.CompanyExists)
 			{
 				DialogResult result = MessageBox.Show("Please enter company details...", "Company Details Setup", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-				if ((result == DialogResult.OK) && (newCompany.ShowDialog() == DialogResult.OK))
-				{
-					companyExists = true;
-					//this.lbCompanyName.Text = newCompany.CompanyName;
-					//this.lbCompanyAddress.Text = newCompany.CompanyAddress;
-					//this.lbCompanyEmail.Text = newCompany.CompanyEmail;
-					//this.lbCompanyContact.Text = newCompany.CompanyContact;
-				}
-			}
-			else
-			{
-				companyExists = true;
-				//this.lbCompanyName.Text = newCompany.CompanyName;
-				//this.lbCompanyAddress.Text = newCompany.CompanyAddress;
-				//this.lbCompanyEmail.Text = newCompany.CompanyEmail;
-				//this.lbCompanyContact.Text = newCompany.CompanyContact;
-			}
+                newCompany.ShowDialog();
+            }
 			this.ActiveControl = tbUserName;
 		}
 	}
