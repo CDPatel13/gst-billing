@@ -32,8 +32,9 @@ namespace GST_Billing
         private void btnAddFirm_Click(object sender, EventArgs e)
         {
             CompanyDetails company = new CompanyDetails();
+            this.Hide();
             company.ShowDialog();
-
+            this.Show();
             updateAutoCompleteFirms();
         }
 

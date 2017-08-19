@@ -59,7 +59,10 @@ namespace GST_Billing
                     fillAutoCompleteProducts();
                     break;
                 case "tabInvoice":
+                    fillInvoiceDataGrid();
+                    break;
                 case "tabCustomer":
+                    fillCustomerDataGrid();
                     fillAutoCompleteCustomers();
                     break;
                 default:
@@ -234,7 +237,7 @@ namespace GST_Billing
 
         private void fillAutoCompleteCustomers()
         {
-            string sqlstr = "SELECT custname from customerDetails";
+            string sqlstr = "SELECT custname from customerDetails WHERE userId='" + BaseModel.Instance.CompanyId + "'";
             DataSet ds = m1.selectData(sqlstr);
 
             autoCompleteStrings.Clear();
@@ -411,7 +414,7 @@ namespace GST_Billing
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
-                string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "'";
+                string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "' AND userId='" +BaseModel.Instance.CompanyId+ "' AND financialYear='" +BaseModel.Instance.FinancialYear+ "'";
                 DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 // TODO : Delete selected invoice from database
@@ -505,8 +508,8 @@ namespace GST_Billing
                                    "sgstPercent,cgstPercent,igstPercent,totalQnty,totalAmount,totaDiscount," +
                                    "totalTaxAmount,totalSGSTAmount,totaCGSTAmount,totalIGSTAmount,totalBillAmount," + 
                                    "receivedAmount" +
-                                   " FROM invoiceDetails" + 
-                                   " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId";
+                                   " FROM invoiceDetails" +
+                                   " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId AND invoiceDetails.userId='" +BaseModel.Instance.CompanyId+ "' AND invoiceDetails.financialYear='" +BaseModel.Instance.FinancialYear+ "'";
 
             DataSet ds = m1.selectData(sqlstrInvoice);
             tableInvoice = ds.Tables[0];
