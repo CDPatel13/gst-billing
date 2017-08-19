@@ -826,14 +826,14 @@
             this.tsmiSettings.ForeColor = System.Drawing.Color.DarkGreen;
             this.tsmiSettings.Name = "tsmiSettings";
             this.tsmiSettings.Size = new System.Drawing.Size(71, 21);
-            this.tsmiSettings.Text = "Settings";
+            this.tsmiSettings.Text = "&Settings";
             // 
             // tsmiCompanyInfo
             // 
             this.tsmiCompanyInfo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmiCompanyInfo.Name = "tsmiCompanyInfo";
             this.tsmiCompanyInfo.Size = new System.Drawing.Size(189, 22);
-            this.tsmiCompanyInfo.Text = "Company Info";
+            this.tsmiCompanyInfo.Text = "C&ompany";
             this.tsmiCompanyInfo.Click += new System.EventHandler(this.tsmiCompanyInfo_Click);
             // 
             // tsmiChangePassword
@@ -841,7 +841,7 @@
             this.tsmiChangePassword.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmiChangePassword.Name = "tsmiChangePassword";
             this.tsmiChangePassword.Size = new System.Drawing.Size(189, 22);
-            this.tsmiChangePassword.Text = "Change Credentials";
+            this.tsmiChangePassword.Text = "C&hange Credentials";
             this.tsmiChangePassword.Click += new System.EventHandler(this.tsmiChangePassword_Click);
             // 
             // tsmiTools
@@ -853,14 +853,14 @@
             this.tsmiTools.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.tsmiTools.Name = "tsmiTools";
             this.tsmiTools.Size = new System.Drawing.Size(53, 21);
-            this.tsmiTools.Text = "Tools";
+            this.tsmiTools.Text = "&Tools";
             // 
             // calculatorToolStripMenuItem
             // 
             this.calculatorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F);
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.calculatorToolStripMenuItem.Text = "Calc&ulator";
             this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // MainWindow

@@ -67,7 +67,11 @@ namespace GaneshLogistics.AppCode
 									productName	TEXT NOT NULL,
 									hsnCode		TEXT,
 									productPrice	DECIMAL(8,2) NOT NULL,
-									productUnit	TEXT
+									productUnit	TEXT,
+									userId		INTEGER NOT NULL,
+                                    FOREIGN KEY (userId) REFERENCES userDetails (userId)
+									ON DELETE NO ACTION
+									ON UPDATE NO ACTION
 								)");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [customerDetails] (
@@ -99,7 +103,11 @@ namespace GaneshLogistics.AppCode
 									shipgstin	TEXT NOT NULL,
 									shipAadharNo	TEXT,
 									shipPanno	TEXT,
-									shippaymentTermName TEXT
+									shippaymentTermName TEXT,
+                                    userId		INTEGER NOT NULL,
+                                    FOREIGN KEY (userId) REFERENCES userDetails (userId)
+									ON DELETE NO ACTION
+									ON UPDATE NO ACTION
 								)");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceDetails] (
@@ -133,6 +141,7 @@ namespace GaneshLogistics.AppCode
 									totalBillAmount	DECIMAL(8,2),
 									receivedAmount	DECIMAL(8,2),
 									IsActive	BIT(1) DEFAULT 1,
+                                    financialYear	TEXT NOT NULL,
 									FOREIGN KEY (userId) REFERENCES userDetails (userId)
 									ON DELETE NO ACTION
 									ON UPDATE NO ACTION,
@@ -152,8 +161,16 @@ namespace GaneshLogistics.AppCode
 									productAmount	DECIMAL(8,2),
 									productDiscount	DECIMAL(8,2),
 									productTaxAmount	DECIMAL(8,2),
+                                    financialYear	TEXT NOT NULL,
+                                    userId		INTEGER NOT NULL,
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
+									ON DELETE NO ACTION
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
+									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
 								)");
 
@@ -162,17 +179,33 @@ namespace GaneshLogistics.AppCode
 									invoiceId	INTEGER NOT NULL,
 									chargeName	TEXT NOT NULL,
 									chargeAmount	DECIMAL(8,2) NOT NULL,
+                                    financialYear	TEXT NOT NULL,
+                                    userId		INTEGER NOT NULL,
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
+									ON DELETE NO ACTION
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
+									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
-								)");
+                                )");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [invoiceChallanDetails] (
 									challanId	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 									invoiceId	INTEGER NOT NULL,
-									challanNo	TEXT NOT NULL,	                           
+									challanNo	TEXT NOT NULL,	 
+                                    financialYear	TEXT NOT NULL,
+                                    userId		INTEGER NOT NULL,                          
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (userId) REFERENCES invoiceDetails (userId)
+									ON DELETE NO ACTION
+									ON UPDATE NO ACTION,
+                                    FOREIGN KEY (financialYear) REFERENCES invoiceDetails (financialYear)
+									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
 								)");
 

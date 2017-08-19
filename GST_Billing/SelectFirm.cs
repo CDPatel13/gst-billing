@@ -14,6 +14,8 @@ namespace GST_Billing
     {
         AutoCompleteStringCollection autoCompleteStrings = new AutoCompleteStringCollection();
         SqliteDb m1 = new SqliteDb();
+        static bool selected = false;
+        static MainWindow window;
 
         public SelectFirm()
         {
@@ -74,15 +76,45 @@ namespace GST_Billing
             }
             BaseModel.Instance.CompanyId = companyId;
             BaseModel.Instance.FinancialYear = tbSelectedYear.Text;
+            selected = true;
 
             this.Hide();
-            MainWindow window = new MainWindow();
-            window.Show();
+            if (!CheckOpened("GST Billing"))
+            {
+                window = new MainWindow();
+                window.Show();
+            }
+            else
+            {
+                window.Focus();
+            }
         }
 
         private void SelectFirm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (!selected)
+            {
+                Application.Exit();
+            }
+            else 
+            {
+                //this.Hide();
+                MainWindow window = new MainWindow();
+                window.Show();
+            }
+        }
+
+        private bool CheckOpened(string name)
+        {
+            FormCollection fc = Application.OpenForms;
+            foreach (Form frm in fc)
+            {
+                if (frm.Text == name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
