@@ -34,8 +34,8 @@ namespace GST_Billing
             CompanyDetails company = new CompanyDetails();
             this.Hide();
             company.ShowDialog();
-            this.Show();
             updateAutoCompleteFirms();
+            this.Show();
         }
 
         private void updateAutoCompleteFirms()
@@ -60,9 +60,12 @@ namespace GST_Billing
         private void btnEditFirm_Click(object sender, EventArgs e)
         {
             CompanyDetails company = new CompanyDetails(tbSelectedFirm.Text);
+            this.Hide();
             company.ShowDialog();
-
+            
             updateAutoCompleteFirms();
+
+            this.Show();
         }
 
         private void btnSelectFirm_Click(object sender, EventArgs e)

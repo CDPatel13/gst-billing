@@ -76,11 +76,13 @@ namespace GST_Billing
 
         private void tsmiCompanyInfo_Click(object sender, EventArgs e)
         {
-            //CompanyDetails companyInfo = new CompanyDetails();
-            //companyInfo.ShowDialog();
-
             SelectFirm selection = new SelectFirm();
             selection.ShowDialog();
+
+            lbSelectedCompany.Text = BaseModel.Instance.SelectedCompany;
+            lbFinancialYear.Text = BaseModel.Instance.FinancialYear;
+
+            tabMain_SelectedIndexChanged(null, null);
         }
 
         private void tsmiChangePassword_Click(object sender, EventArgs e)
@@ -94,6 +96,11 @@ namespace GST_Billing
         #region Customer
 
         private void btnAddCust_Click(object sender, EventArgs e)
+        {
+            addNewCustomer();
+        }
+
+        private void addNewCustomer()
         {
             CustomerDetails customer = new CustomerDetails();
             customer.ShowDialog();
@@ -260,6 +267,11 @@ namespace GST_Billing
         #region Products
 
         private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            addNewProduct();
+        }
+
+        private void addNewProduct()
         {
             ProductDetails products = new ProductDetails();
             products.ShowDialog();
@@ -433,32 +445,24 @@ namespace GST_Billing
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-            viewSelectedInvoice();
-        }
-
-        private void viewSelectedInvoice()
-        {
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
-                int invoicetype = 0;
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-                    invoicetype = 1;
+                    PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, printInvoice.invoicePrintType);
+                    objPrintInvoice.MdiParent = this.MdiParent;
+                    objPrintInvoice.Show();
                 }
-
-                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, invoicetype);
-                objPrintInvoice.MdiParent = this.MdiParent;
-                objPrintInvoice.Show();
             }
         }
 
-        private void btnSearchInvoice_Click(object sender, EventArgs e)
+        private void btnFindInvoice_Click(object sender, EventArgs e)
         {
             string conditionName = " AND [Customer Name] LIKE '%" + tbSearchInvoice.Text + "%'";
-            string conditionDate = "[Invoice Date] > '" + dtpStartDate.Value +"' AND [Invoice Date] < '" + dtpStartDate.Value + "'";
+            string conditionDate = "[Invoice Date] > '" + dtpStartDate.Value +"' AND [Invoice Date] < '" + dtpEndDate.Value + "'";
             if(!String.IsNullOrEmpty(tbSearchInvoice.Text) && !String.IsNullOrWhiteSpace(tbSearchInvoice.Text))
             {
                 tableInvoice.DefaultView.RowFilter = conditionDate + conditionName;
@@ -603,7 +607,14 @@ namespace GST_Billing
 
         private void dgvInvoice_DoubleClick(object sender, EventArgs e)
         {
-            viewSelectedInvoice();
+            if (dgvInvoice.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvInvoice.SelectedRows[0];
+
+                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, 1);
+                objPrintInvoice.MdiParent = this.MdiParent;
+                objPrintInvoice.Show();
+            }
         }
 
         private void btnClose1_Click(object sender, EventArgs e)
@@ -617,10 +628,71 @@ namespace GST_Billing
             {
                 case Keys.F2:
                 {
-                    addNewInvoice();
+                    switch(tabMain.SelectedIndex)
+                    {
+                        case 0:
+                            addNewInvoice();
+                            break;
+                        case 1:
+                            addNewCustomer();
+                            break;
+                        case 2:
+                            addNewProduct();
+                            break;
+                    }
                 }
                 break;
                 case Keys.F3:
+                {
+                    switch (tabMain.SelectedIndex)
+                    {
+                        case 0:
+                            btnEditInvoice_Click(null, null);
+                            break;
+                        case 1:
+                            btnEditCust_Click(null, null);
+                            break;
+                        case 2:
+                            btnEditProduct_Click(null, null);
+                            break;
+                    }
+                }
+                break;
+                case Keys.F10:
+                {
+                    switch (tabMain.SelectedIndex)
+                    {
+                        case 0:
+                            btnDeleteInvoice_Click(null, null);
+                            break;
+                        case 1:
+                            btnDeleteCust_Click(null, null);
+                            break;
+                        case 2:
+                            btnDeleteProduct_Click(null, null);
+                            break;
+                    }
+                }
+                break;
+                case Keys.F4:
+                {
+                    switch (tabMain.SelectedIndex)
+                    {
+                        case 0:
+                            btnPrintInvoice_Click(null, null);
+                            break;
+                    }
+                }
+                break;
+                case Keys.F6:
+                {
+                    switch (tabMain.SelectedIndex)
+                    {
+                        case 0:
+                            btnPayment_Click(null, null);
+                            break;
+                    }
+                }
                 break;
             }
         }

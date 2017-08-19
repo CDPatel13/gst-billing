@@ -76,7 +76,7 @@
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(249, 30);
             this.btnGo.TabIndex = 3;
-            this.btnGo.Text = "Select";
+            this.btnGo.Text = "&Select";
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
@@ -92,6 +92,7 @@
             this.Controls.Add(this.lbMain);
             this.MaximizeBox = false;
             this.Name = "SelectInvoicePrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Invoice Print";
             this.ResumeLayout(false);
             this.PerformLayout();

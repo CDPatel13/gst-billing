@@ -32,6 +32,12 @@ namespace GST_Billing
 		public Invoice()
 		{
 			InitializeComponent();
+
+            loadCustomerDetailsFromDatabase();
+            tbBillName.DataSource = listOfCustomers;
+            tbBillName.SelectedIndex = -1;
+            tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
 		}
 
 		public Invoice(int invoiceToEdit)
@@ -39,11 +45,15 @@ namespace GST_Billing
 			// TODO: Complete member initialization
 			this.invoiceToEdit = invoiceToEdit;
 			InitializeComponent();
+
+            loadCustomerDetailsFromDatabase();
+            tbBillName.DataSource = listOfCustomers;
+            tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
 		}
 
 		private void Invoice_Load(object sender, EventArgs e)
 		{
-
 			if(invoiceToEdit == 0)
 			{ 
                 tbPaymentTerms.SelectedIndex = -1;
@@ -53,12 +63,6 @@ namespace GST_Billing
 				getInvoiceDetailsToEdit(invoiceToEdit);
 				enableDisableControls();
 			}
-
-            loadCustomerDetailsFromDatabase();
-            tbBillName.DataSource = listOfCustomers;
-            //tbBillName.SelectedIndex = -1;
-            tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
-            tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
 
 			this.WindowState = FormWindowState.Maximized;
 			this.ResizeRedraw = true;
@@ -112,10 +116,18 @@ namespace GST_Billing
 				tbShipState.Text = Convert.ToString(row["shipState"]);
 				tbShipPin.Text = Convert.ToString(row["shipPinCode"]);
 				tbShipGstin.Text = Convert.ToString(row["shipGstIn"]);
-				tbSgst.Text = Convert.ToString(row["sgstPercent"]);
+
+                tbSgst.TextChanged -= tbGst_TextChanged;
+                tbCgst.TextChanged -= tbGst_TextChanged;
+                tbIgst.TextChanged -= tbGst_TextChanged;
+                tbSgst.Text = Convert.ToString(row["sgstPercent"]);
 				tbCgst.Text = Convert.ToString(row["cgstPercent"]);
 				tbIgst.Text = Convert.ToString(row["igstPercent"]);
-				lbTotalQty.Text = Convert.ToString(row["totalQnty"]);
+                tbSgst.TextChanged += tbGst_TextChanged;
+                tbCgst.TextChanged += tbGst_TextChanged;
+                tbIgst.TextChanged += tbGst_TextChanged;
+                
+                lbTotalQty.Text = Convert.ToString(row["totalQnty"]);
 				lbTotalAmount.Text = Convert.ToString(row["totalAmount"]);
 				lbTotalDiscount.Text = Convert.ToString(row["totaDiscount"]);
 				lbTotalTaxVal.Text = Convert.ToString(row["totalTaxAmount"]);
@@ -439,22 +451,26 @@ namespace GST_Billing
 
 		private void tbGst_TextChanged(object sender, EventArgs e)
 		{
-			if (tbSgst.Text.Length > 0 || tbCgst.Text.Length > 0)
+            string igstPercent = String.IsNullOrWhiteSpace(tbIgst.Text) ? "0" : tbIgst.Text;
+            string sgstPercent = String.IsNullOrWhiteSpace(tbSgst.Text) ? "0" : tbSgst.Text;
+            string cgstPercent = String.IsNullOrWhiteSpace(tbCgst.Text) ? "0" : tbCgst.Text;
+
+			if ((tbSgst.Text.Length > 0 || tbCgst.Text.Length > 0) && (int.Parse(sgstPercent) > 0 || int.Parse(cgstPercent) > 0))
 			{
 				tbIgst.Enabled = false;
-				tbIgst.Clear();
+                tbIgst.Text = "0";
                 igstFinal = 0;
                 lbTotalIgst.Text = igstFinal.ToString();
 			}
-			else if(tbIgst.Text.Length > 0)
+            else if (tbIgst.Text.Length > 0 && int.Parse(igstPercent) > 0)
 			{
 				tbIgst.Enabled = true;
 
 				tbSgst.Enabled = false;
 				tbCgst.Enabled = false;
 
-				tbSgst.Clear();
-				tbCgst.Clear();
+				tbSgst.Text = "0";
+				tbCgst.Text = "0";
 
                 sgstFinal = 0;
                 lbTotalSgst.Text = sgstFinal.ToString();
@@ -751,16 +767,13 @@ namespace GST_Billing
 
 			if(isDirty == false)
 			{
-                int invoicetype = 0;
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-                    invoicetype = 1;
+				    PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
+				    objPrintInvoice.MdiParent = this.MdiParent;
+				    objPrintInvoice.Show();
                 }
-
-				PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, invoicetype);
-				objPrintInvoice.MdiParent = this.MdiParent;
-				objPrintInvoice.Show();
 			}
 			else
 			{
