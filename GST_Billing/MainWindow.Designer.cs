@@ -49,7 +49,7 @@
             this.lbEndDate = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.tbSearchInvoice = new System.Windows.Forms.TextBox();
-            this.btnSearchInvoice = new System.Windows.Forms.Button();
+            this.btnFindInvoice = new System.Windows.Forms.Button();
             this.btnClearInvoice = new System.Windows.Forms.Button();
             this.lbTotalAmount = new System.Windows.Forms.Label();
             this.lbAmountTotal = new System.Windows.Forms.Label();
@@ -126,6 +126,7 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(1254, 572);
             this.dgvProducts.TabIndex = 9;
+            this.dgvProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             // 
             // flowLayoutPanel3
             // 
@@ -316,6 +317,7 @@
             this.dgvInvoice.Size = new System.Drawing.Size(1254, 572);
             this.dgvInvoice.TabIndex = 7;
             this.dgvInvoice.DoubleClick += new System.EventHandler(this.dgvInvoice_DoubleClick);
+            this.dgvInvoice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             // 
             // flpSearchInvoice
             // 
@@ -325,7 +327,7 @@
             this.flpSearchInvoice.Controls.Add(this.lbEndDate);
             this.flpSearchInvoice.Controls.Add(this.dtpEndDate);
             this.flpSearchInvoice.Controls.Add(this.tbSearchInvoice);
-            this.flpSearchInvoice.Controls.Add(this.btnSearchInvoice);
+            this.flpSearchInvoice.Controls.Add(this.btnFindInvoice);
             this.flpSearchInvoice.Controls.Add(this.btnClearInvoice);
             this.flpSearchInvoice.Controls.Add(this.lbTotalAmount);
             this.flpSearchInvoice.Controls.Add(this.lbAmountTotal);
@@ -394,19 +396,19 @@
             this.tbSearchInvoice.Size = new System.Drawing.Size(294, 20);
             this.tbSearchInvoice.TabIndex = 0;
             // 
-            // btnSearchInvoice
+            // btnFindInvoice
             // 
-            this.btnSearchInvoice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSearchInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchInvoice.Image")));
-            this.btnSearchInvoice.Location = new System.Drawing.Point(549, 3);
-            this.btnSearchInvoice.Name = "btnSearchInvoice";
-            this.btnSearchInvoice.Size = new System.Drawing.Size(75, 29);
-            this.btnSearchInvoice.TabIndex = 1;
-            this.btnSearchInvoice.Text = "&Find";
-            this.btnSearchInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearchInvoice.UseVisualStyleBackColor = true;
-            this.btnSearchInvoice.Click += new System.EventHandler(this.btnSearchInvoice_Click);
+            this.btnFindInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFindInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnFindInvoice.Image")));
+            this.btnFindInvoice.Location = new System.Drawing.Point(549, 3);
+            this.btnFindInvoice.Name = "btnFindInvoice";
+            this.btnFindInvoice.Size = new System.Drawing.Size(75, 29);
+            this.btnFindInvoice.TabIndex = 1;
+            this.btnFindInvoice.Text = "&Find";
+            this.btnFindInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFindInvoice.UseVisualStyleBackColor = true;
+            this.btnFindInvoice.Click += new System.EventHandler(this.btnFindInvoice_Click);
             // 
             // btnClearInvoice
             // 
@@ -625,6 +627,7 @@
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomer.Size = new System.Drawing.Size(1254, 572);
             this.dgvCustomer.TabIndex = 8;
+            this.dgvCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             // 
             // flowLayoutPanel1
             // 
@@ -799,6 +802,7 @@
             this.tabMain.Size = new System.Drawing.Size(1264, 682);
             this.tabMain.TabIndex = 1;
             this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
+            this.tabMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             // 
             // menuStripMain
             // 
@@ -945,7 +949,7 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.FlowLayoutPanel flpSearchInvoice;
         private System.Windows.Forms.TextBox tbSearchInvoice;
-        private System.Windows.Forms.Button btnSearchInvoice;
+        private System.Windows.Forms.Button btnFindInvoice;
         private System.Windows.Forms.Button btnClearInvoice;
         private System.Windows.Forms.TableLayoutPanel tlpInvoiceBtns;
         private System.Windows.Forms.Button btnPrintInvoice;

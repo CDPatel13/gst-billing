@@ -16,6 +16,8 @@ namespace GST_Billing
             InitializeComponent();
         }
 
+        public int invoicePrintType = 0;
+
         private void btnGo_Click(object sender, EventArgs e)
         {
             if(!rbOriginal.Checked && !rbDuplicate.Checked)
@@ -24,11 +26,15 @@ namespace GST_Billing
             }
             else if(rbOriginal.Checked)
             {
-                this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+                this.invoicePrintType = 1;
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
             }
             else if(rbDuplicate.Checked)
             {
-                this.DialogResult = System.Windows.Forms.DialogResult.No;
+                this.invoicePrintType = 2;
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
             }
             else
             {

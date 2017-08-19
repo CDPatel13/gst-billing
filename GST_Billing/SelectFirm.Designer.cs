@@ -138,7 +138,7 @@
             this.btnAddFirm.Name = "btnAddFirm";
             this.btnAddFirm.Size = new System.Drawing.Size(105, 37);
             this.btnAddFirm.TabIndex = 0;
-            this.btnAddFirm.Text = "Add";
+            this.btnAddFirm.Text = "&Add";
             this.btnAddFirm.UseVisualStyleBackColor = true;
             this.btnAddFirm.Click += new System.EventHandler(this.btnAddFirm_Click);
             // 
@@ -150,7 +150,7 @@
             this.btnEditFirm.Name = "btnEditFirm";
             this.btnEditFirm.Size = new System.Drawing.Size(105, 37);
             this.btnEditFirm.TabIndex = 1;
-            this.btnEditFirm.Text = "Edit";
+            this.btnEditFirm.Text = "&Edit";
             this.btnEditFirm.UseVisualStyleBackColor = true;
             this.btnEditFirm.Click += new System.EventHandler(this.btnEditFirm_Click);
             // 
@@ -162,7 +162,7 @@
             this.btnSelectFirm.Name = "btnSelectFirm";
             this.btnSelectFirm.Size = new System.Drawing.Size(105, 37);
             this.btnSelectFirm.TabIndex = 2;
-            this.btnSelectFirm.Text = "Select";
+            this.btnSelectFirm.Text = "&Select";
             this.btnSelectFirm.UseVisualStyleBackColor = true;
             this.btnSelectFirm.Click += new System.EventHandler(this.btnSelectFirm_Click);
             // 
