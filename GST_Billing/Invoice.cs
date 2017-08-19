@@ -27,7 +27,6 @@ namespace GST_Billing
 		double sgstFinal = 0;
 		double cgstFinal = 0;
 		double igstFinal = 0;
-		double addChargeFinal = 0;
 		private int invoiceToEdit = 0;
 
 		public Invoice()
@@ -57,7 +56,7 @@ namespace GST_Billing
 
             loadCustomerDetailsFromDatabase();
             tbBillName.DataSource = listOfCustomers;
-            tbBillName.SelectedIndex = -1;
+            //tbBillName.SelectedIndex = -1;
             tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
             tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
 
@@ -83,7 +82,7 @@ namespace GST_Billing
 								   "invoiceDetails.shipState, invoiceDetails.shipPinCode, invoiceDetails.shipGstIn, " +
 								   "sgstPercent, cgstPercent,igstPercent, totalQnty, totalAmount, totaDiscount, " +
 								   "totalTaxAmount, totalSGSTAmount, totaCGSTAmount, totalIGSTAmount, totalBillAmount," +
-								   "receivedAmount" +
+								   "receivedAmount, poNo, poDate" +
 								   " FROM invoiceDetails" +
                                    " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId AND invoiceNo = '" + invoiceToEdit + "' AND invoiceDetails.userId='" + BaseModel.Instance.CompanyId + "' AND invoiceDetails.financialYear='" + BaseModel.Instance.FinancialYear + "' ";
 
@@ -92,6 +91,8 @@ namespace GST_Billing
 			{
 				DataRow row = ds.Tables[0].Rows[0];
 
+                tbPoDate.Value = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                tbPoNum.Text = Convert.ToString(row["poNo"]);
 				tbInvoiceNum.Text = Convert.ToString(row["invoiceNo"]);
 				tbInvoiceDate.Value = DateTime.ParseExact(row["invoiceDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 				tbBillName.Text = Convert.ToString(row["custname"]);
@@ -582,6 +583,7 @@ namespace GST_Billing
 			}
 			catch(Exception ex)
 			{
+                Console.WriteLine(ex.Message);
 				tbShipState.Text = String.Empty;
 				tbShipState.SelectedIndex = -1;
 				tbShipCode.Clear();
@@ -620,6 +622,7 @@ namespace GST_Billing
 			}
 			catch(Exception ex)
 			{
+                Console.WriteLine(ex.Message);
 				tbShipState.Text = String.Empty;
 				tbShipState.SelectedIndex = -1;
 				tbShipCode.Clear();
@@ -747,8 +750,15 @@ namespace GST_Billing
 			//btnSave_Click(sender, e);
 
 			if(isDirty == false)
-			{ 
-				PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, 1);
+			{
+                int invoicetype = 0;
+                SelectInvoicePrint printInvoice = new SelectInvoicePrint();
+                if (printInvoice.ShowDialog() == DialogResult.Yes)
+                {
+                    invoicetype = 1;
+                }
+
+				PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, invoicetype);
 				objPrintInvoice.MdiParent = this.MdiParent;
 				objPrintInvoice.Show();
 			}

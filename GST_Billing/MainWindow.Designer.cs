@@ -81,6 +81,8 @@
             this.tsmiChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbSelectedCompany = new System.Windows.Forms.Label();
+            this.lbFinancialYear = new System.Windows.Forms.Label();
             this.tabProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
@@ -859,9 +861,31 @@
             // 
             this.calculatorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F);
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.calculatorToolStripMenuItem.Text = "Calc&ulator";
             this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
+            // 
+            // lbSelectedCompany
+            // 
+            this.lbSelectedCompany.AutoSize = true;
+            this.lbSelectedCompany.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lbSelectedCompany.ForeColor = System.Drawing.Color.LightCoral;
+            this.lbSelectedCompany.Location = new System.Drawing.Point(350, 5);
+            this.lbSelectedCompany.Name = "lbSelectedCompany";
+            this.lbSelectedCompany.Size = new System.Drawing.Size(110, 14);
+            this.lbSelectedCompany.TabIndex = 8;
+            this.lbSelectedCompany.Text = "Selected Company";
+            // 
+            // lbFinancialYear
+            // 
+            this.lbFinancialYear.AutoSize = true;
+            this.lbFinancialYear.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lbFinancialYear.ForeColor = System.Drawing.Color.Salmon;
+            this.lbFinancialYear.Location = new System.Drawing.Point(650, 5);
+            this.lbFinancialYear.Name = "lbFinancialYear";
+            this.lbFinancialYear.Size = new System.Drawing.Size(81, 14);
+            this.lbFinancialYear.TabIndex = 8;
+            this.lbFinancialYear.Text = "Financial Year";
             // 
             // MainWindow
             // 
@@ -869,6 +893,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.menuStripMain);
+            this.Controls.Add(this.lbSelectedCompany);
+            this.Controls.Add(this.lbFinancialYear);
             this.Controls.Add(this.tabMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
@@ -898,6 +924,7 @@
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -955,6 +982,8 @@
         private System.Windows.Forms.Button btnClose2;
         private System.Windows.Forms.Button btnClose3;
         private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
+        private System.Windows.Forms.Label lbSelectedCompany;
+        private System.Windows.Forms.Label lbFinancialYear;
 
     }
 }

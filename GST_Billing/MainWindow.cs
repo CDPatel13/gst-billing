@@ -39,6 +39,9 @@ namespace GST_Billing
 
             fillAutoCompleteCustomers();
 
+            lbSelectedCompany.Text = BaseModel.Instance.SelectedCompany;
+            lbFinancialYear.Text = BaseModel.Instance.FinancialYear;
+
             if (dgvInvoice.RowCount > 0)
                 dgvInvoice.Rows[0].Selected = true;
         }
@@ -438,7 +441,15 @@ namespace GST_Billing
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
-                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, 1);
+
+                int invoicetype = 0;
+                SelectInvoicePrint printInvoice = new SelectInvoicePrint();
+                if (printInvoice.ShowDialog() == DialogResult.Yes)
+                {
+                    invoicetype = 1;
+                }
+
+                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, invoicetype);
                 objPrintInvoice.MdiParent = this.MdiParent;
                 objPrintInvoice.Show();
             }

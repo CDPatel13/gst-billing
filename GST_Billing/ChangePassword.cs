@@ -112,8 +112,6 @@ namespace GST_Billing
             bool newPassword = !String.IsNullOrWhiteSpace(tbNewPassword.Text);
             bool confirmPassword = !String.IsNullOrWhiteSpace(tbConfirmPassword.Text);
 
-            bool result = true;
-
             if (username)
             {
                 errorProvider1.SetError(tbNewUserName, String.Empty);
