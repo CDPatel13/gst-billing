@@ -126,6 +126,12 @@
     <Compile Include="AppCode\SqliteDb.cs" />
     <Compile Include="AppCode\Utility.cs" />
     <Compile Include="AppCode\VoucherItemDetail.cs" />
+    <Compile Include="challanPrint.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>challanPrint.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomerDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,12 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintChallan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintChallan.Designer.cs">
+      <DependentUpon>PrintChallan.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrintInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AdditionalCharges.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="challanPrint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>challanPrint.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintChallan.resx">
+      <DependentUpon>PrintChallan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintInvoice.resx">
       <DependentUpon>PrintInvoice.cs</DependentUpon>
