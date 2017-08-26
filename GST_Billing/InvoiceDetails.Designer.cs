@@ -1051,31 +1051,31 @@ namespace GST_Billing {
                         string shipPinCode, 
                         string shipPanno, 
                         string totalQnty, 
-                        string totalAmount, 
-                        string totaDiscount, 
-                        string totalTaxColAmt, 
-                        string totalTaxAmount, 
-                        string totalSGSTAmount, 
-                        string totaCGSTAmount, 
-                        string totalIGSTAmount, 
-                        string totalBillAmount, 
+                        decimal totalAmount, 
+                        decimal totaDiscount, 
+                        decimal totalTaxColAmt, 
+                        decimal totalTaxAmount, 
+                        decimal totalSGSTAmount, 
+                        decimal totaCGSTAmount, 
+                        decimal totalIGSTAmount, 
+                        decimal totalBillAmount, 
                         string productName, 
                         string productCode, 
                         string productQnty, 
                         string ProductUnit, 
-                        string productUnitPrice, 
-                        string productAmount, 
-                        string productDiscount, 
-                        string productTaxAmount, 
+                        decimal productUnitPrice, 
+                        decimal productAmount, 
+                        decimal productDiscount, 
+                        decimal productTaxAmount, 
                         string productId, 
-                        string chargeAmount, 
+                        decimal chargeAmount, 
                         string chargeName, 
                         string sgstPercent, 
                         string cgstPercent, 
                         string igstPercent, 
                         string challanNo, 
                         string termName, 
-                        string totalAdditionalCharge) {
+                        decimal totalAdditionalCharge) {
                 invoiceBillRow rowinvoiceBillRow = ((invoiceBillRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name,
@@ -1319,21 +1319,21 @@ namespace GST_Billing {
                 base.Columns.Add(this.columnshipPanno);
                 this.columntotalQnty = new global::System.Data.DataColumn("totalQnty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalQnty);
-                this.columntotalAmount = new global::System.Data.DataColumn("totalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalAmount = new global::System.Data.DataColumn("totalAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalAmount);
-                this.columntotaDiscount = new global::System.Data.DataColumn("totaDiscount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotaDiscount = new global::System.Data.DataColumn("totaDiscount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotaDiscount);
-                this.columntotalTaxColAmt = new global::System.Data.DataColumn("totalTaxColAmt", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalTaxColAmt = new global::System.Data.DataColumn("totalTaxColAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalTaxColAmt);
-                this.columntotalTaxAmount = new global::System.Data.DataColumn("totalTaxAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalTaxAmount = new global::System.Data.DataColumn("totalTaxAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalTaxAmount);
-                this.columntotalSGSTAmount = new global::System.Data.DataColumn("totalSGSTAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalSGSTAmount = new global::System.Data.DataColumn("totalSGSTAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalSGSTAmount);
-                this.columntotaCGSTAmount = new global::System.Data.DataColumn("totaCGSTAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotaCGSTAmount = new global::System.Data.DataColumn("totaCGSTAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotaCGSTAmount);
-                this.columntotalIGSTAmount = new global::System.Data.DataColumn("totalIGSTAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalIGSTAmount = new global::System.Data.DataColumn("totalIGSTAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalIGSTAmount);
-                this.columntotalBillAmount = new global::System.Data.DataColumn("totalBillAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalBillAmount = new global::System.Data.DataColumn("totalBillAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalBillAmount);
                 this.columnproductName = new global::System.Data.DataColumn("productName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductName);
@@ -1343,17 +1343,17 @@ namespace GST_Billing {
                 base.Columns.Add(this.columnproductQnty);
                 this.columnProductUnit = new global::System.Data.DataColumn("ProductUnit", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProductUnit);
-                this.columnproductUnitPrice = new global::System.Data.DataColumn("productUnitPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnproductUnitPrice = new global::System.Data.DataColumn("productUnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductUnitPrice);
-                this.columnproductAmount = new global::System.Data.DataColumn("productAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnproductAmount = new global::System.Data.DataColumn("productAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductAmount);
-                this.columnproductDiscount = new global::System.Data.DataColumn("productDiscount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnproductDiscount = new global::System.Data.DataColumn("productDiscount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductDiscount);
-                this.columnproductTaxAmount = new global::System.Data.DataColumn("productTaxAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnproductTaxAmount = new global::System.Data.DataColumn("productTaxAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductTaxAmount);
                 this.columnproductId = new global::System.Data.DataColumn("productId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductId);
-                this.columnchargeAmount = new global::System.Data.DataColumn("chargeAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnchargeAmount = new global::System.Data.DataColumn("chargeAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnchargeAmount);
                 this.columnchargeName = new global::System.Data.DataColumn("chargeName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnchargeName);
@@ -1367,7 +1367,7 @@ namespace GST_Billing {
                 base.Columns.Add(this.columnchallanNo);
                 this.columntermName = new global::System.Data.DataColumn("termName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntermName);
-                this.columntotalAdditionalCharge = new global::System.Data.DataColumn("totalAdditionalCharge", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntotalAdditionalCharge = new global::System.Data.DataColumn("totalAdditionalCharge", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalAdditionalCharge);
             }
             
@@ -2167,10 +2167,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalAmount {
+            public decimal totalAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2183,10 +2183,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totaDiscount {
+            public decimal totaDiscount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totaDiscountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totaDiscountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totaDiscount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2199,10 +2199,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalTaxColAmt {
+            public decimal totalTaxColAmt {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalTaxColAmtColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalTaxColAmtColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalTaxColAmt\' in table \'invoiceBill\' is DBNull.", e);
@@ -2215,10 +2215,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalTaxAmount {
+            public decimal totalTaxAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalTaxAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalTaxAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalTaxAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2231,10 +2231,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalSGSTAmount {
+            public decimal totalSGSTAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalSGSTAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalSGSTAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalSGSTAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2247,10 +2247,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totaCGSTAmount {
+            public decimal totaCGSTAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totaCGSTAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totaCGSTAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totaCGSTAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2263,10 +2263,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalIGSTAmount {
+            public decimal totalIGSTAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalIGSTAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalIGSTAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalIGSTAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2279,10 +2279,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalBillAmount {
+            public decimal totalBillAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalBillAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalBillAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalBillAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2359,10 +2359,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string productUnitPrice {
+            public decimal productUnitPrice {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.productUnitPriceColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.productUnitPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'productUnitPrice\' in table \'invoiceBill\' is DBNull.", e);
@@ -2375,10 +2375,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string productAmount {
+            public decimal productAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.productAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.productAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'productAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2391,10 +2391,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string productDiscount {
+            public decimal productDiscount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.productDiscountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.productDiscountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'productDiscount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2407,10 +2407,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string productTaxAmount {
+            public decimal productTaxAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.productTaxAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.productTaxAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'productTaxAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2439,10 +2439,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string chargeAmount {
+            public decimal chargeAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.chargeAmountColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.chargeAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'chargeAmount\' in table \'invoiceBill\' is DBNull.", e);
@@ -2551,10 +2551,10 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string totalAdditionalCharge {
+            public decimal totalAdditionalCharge {
                 get {
                     try {
-                        return ((string)(this[this.tableinvoiceBill.totalAdditionalChargeColumn]));
+                        return ((decimal)(this[this.tableinvoiceBill.totalAdditionalChargeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'totalAdditionalCharge\' in table \'invoiceBill\' is DBNull.", e);
