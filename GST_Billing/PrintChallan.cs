@@ -19,20 +19,11 @@ namespace GST_Billing
             InitializeComponent();
         }
 
-        public PrintChallan(string invoiceNo, int invoiceType)
+        public PrintChallan(string invoiceNo)
         {
             try
             {
                 InitializeComponent();
-                string strInvoiceType = "";
-                if (invoiceType == 1)
-                {
-                    strInvoiceType = "Original Challan";
-                }
-                else
-                {
-                    strInvoiceType = "Duplicate Challan";
-                }
                 string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city,
                                 invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, invoiceDetails.poNo, invoiceDetails.poDate, 
                                 invoiceDetails.shipCode as shipCode, invoiceDetails.totalQnty as totalQnty, invoiceProductDetails.productName as productName,
@@ -61,7 +52,6 @@ namespace GST_Billing
                 for (int i = 0; i < dsVoucher.Tables[0].Rows.Count; i++)
                 {
                     dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
-                    dsVoucher.Tables[0].Rows[i]["invoiceType"] = strInvoiceType;
                 }
                 
                 ReportDocument cryRpt = new challanPrint();                
