@@ -60,6 +60,7 @@ namespace GST_Billing
                 case "tabProducts":
                     fillProductDataGrid();
                     fillAutoCompleteProducts();
+                    dgvProducts.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                     break;
                 case "tabInvoice":
                     fillInvoiceDataGrid();
