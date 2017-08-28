@@ -30,9 +30,13 @@ namespace GST_Billing
                 {
                     strInvoiceType = "Original Invoice";
                 }
-                else
+                else if(invoiceType == 2)
                 {
                     strInvoiceType = "Duplicate Invoice";
+                }
+                else if(invoiceType == 3)
+                {
+                    strInvoiceType = "Triplicate Invoice";
                 }
                 string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city,
                                 invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.shipState as shipState, invoiceDetails.totalTaxColAmt as totalTaxColAmt, invoiceDetails.poNo, invoiceDetails.poDate, 

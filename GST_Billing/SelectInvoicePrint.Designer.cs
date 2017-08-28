@@ -32,6 +32,7 @@
             this.rbOriginal = new System.Windows.Forms.RadioButton();
             this.rbDuplicate = new System.Windows.Forms.RadioButton();
             this.btnGo = new System.Windows.Forms.Button();
+            this.rbTriplicate = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // lbMain
@@ -49,7 +50,7 @@
             this.rbOriginal.AutoSize = true;
             this.rbOriginal.Checked = true;
             this.rbOriginal.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
-            this.rbOriginal.Location = new System.Drawing.Point(25, 40);
+            this.rbOriginal.Location = new System.Drawing.Point(78, 40);
             this.rbOriginal.Name = "rbOriginal";
             this.rbOriginal.Size = new System.Drawing.Size(81, 20);
             this.rbOriginal.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.rbDuplicate.AutoSize = true;
             this.rbDuplicate.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
-            this.rbDuplicate.Location = new System.Drawing.Point(131, 40);
+            this.rbDuplicate.Location = new System.Drawing.Point(78, 66);
             this.rbDuplicate.Name = "rbDuplicate";
             this.rbDuplicate.Size = new System.Drawing.Size(92, 20);
             this.rbDuplicate.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             this.btnGo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnGo.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btnGo.Location = new System.Drawing.Point(0, 67);
+            this.btnGo.Location = new System.Drawing.Point(0, 123);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(249, 30);
             this.btnGo.TabIndex = 3;
@@ -80,12 +81,24 @@
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
+            // rbTriplicate
+            // 
+            this.rbTriplicate.AutoSize = true;
+            this.rbTriplicate.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
+            this.rbTriplicate.Location = new System.Drawing.Point(78, 92);
+            this.rbTriplicate.Name = "rbTriplicate";
+            this.rbTriplicate.Size = new System.Drawing.Size(90, 20);
+            this.rbTriplicate.TabIndex = 4;
+            this.rbTriplicate.Text = "Triplicate";
+            this.rbTriplicate.UseVisualStyleBackColor = true;
+            // 
             // SelectInvoicePrint
             // 
             this.AcceptButton = this.btnGo;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 97);
+            this.ClientSize = new System.Drawing.Size(249, 153);
+            this.Controls.Add(this.rbTriplicate);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.rbDuplicate);
             this.Controls.Add(this.rbOriginal);
@@ -105,5 +118,6 @@
         private System.Windows.Forms.RadioButton rbOriginal;
         private System.Windows.Forms.RadioButton rbDuplicate;
         private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.RadioButton rbTriplicate;
     }
 }
