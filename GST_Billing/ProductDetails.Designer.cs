@@ -65,7 +65,7 @@
             // 
             this.tbProdUnit.BackColor = System.Drawing.SystemColors.Window;
             this.tbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProdUnit.Location = new System.Drawing.Point(487, 41);
+            this.tbProdUnit.Location = new System.Drawing.Point(487, 70);
             this.tbProdUnit.Name = "tbProdUnit";
             this.tbProdUnit.Size = new System.Drawing.Size(250, 23);
             this.tbProdUnit.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             this.lbProdUnit.AutoSize = true;
             this.lbProdUnit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdUnit.Location = new System.Drawing.Point(445, 44);
+            this.lbProdUnit.Location = new System.Drawing.Point(445, 73);
             this.lbProdUnit.Name = "lbProdUnit";
             this.lbProdUnit.Size = new System.Drawing.Size(36, 16);
             this.lbProdUnit.TabIndex = 35;
@@ -83,7 +83,7 @@
             // tbProdRate
             // 
             this.tbProdRate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProdRate.Location = new System.Drawing.Point(107, 41);
+            this.tbProdRate.Location = new System.Drawing.Point(107, 70);
             this.tbProdRate.Name = "tbProdRate";
             this.tbProdRate.Size = new System.Drawing.Size(250, 23);
             this.tbProdRate.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             this.lbProdRate.AutoSize = true;
             this.lbProdRate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdRate.Location = new System.Drawing.Point(57, 44);
+            this.lbProdRate.Location = new System.Drawing.Point(57, 73);
             this.lbProdRate.Name = "lbProdRate";
             this.lbProdRate.Size = new System.Drawing.Size(44, 16);
             this.lbProdRate.TabIndex = 29;
@@ -104,8 +104,9 @@
             this.tbProdDes.BackColor = System.Drawing.SystemColors.Window;
             this.tbProdDes.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProdDes.Location = new System.Drawing.Point(107, 12);
+            this.tbProdDes.Multiline = true;
             this.tbProdDes.Name = "tbProdDes";
-            this.tbProdDes.Size = new System.Drawing.Size(250, 23);
+            this.tbProdDes.Size = new System.Drawing.Size(250, 52);
             this.tbProdDes.TabIndex = 0;
             // 
             // lbProdDes
@@ -136,7 +137,6 @@
             // 
             // ProductDetails
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 280);

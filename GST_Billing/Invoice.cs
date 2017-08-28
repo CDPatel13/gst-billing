@@ -38,6 +38,9 @@ namespace GST_Billing
             tbBillName.SelectedIndex = -1;
             tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
             tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            dgvProducts.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvProducts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 		}
 
 		public Invoice(int invoiceToEdit)
@@ -50,6 +53,9 @@ namespace GST_Billing
             tbBillName.DataSource = listOfCustomers;
             tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
             tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            dgvProducts.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvProducts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 		}
 
 		private void Invoice_Load(object sender, EventArgs e)
@@ -225,10 +231,10 @@ namespace GST_Billing
 					buffer[2] = Convert.ToString(row["productCode"]);
 					buffer[3] = Convert.ToString(row["productQnty"]);
 					buffer[4] = Convert.ToString(row["productUnit"]);
-					buffer[5] = Convert.ToString(row["productUnitPrice"]);
-					buffer[6] = Convert.ToString(row["productAmount"]);
-					buffer[7] = Convert.ToString(row["productDiscount"]);
-					buffer[8] = Convert.ToString(row["productTaxAmount"]);
+                    buffer[5] = Double.Parse(row["productUnitPrice"].ToString()).ToString("0.00##");
+					buffer[6] = Double.Parse(row["productAmount"].ToString()).ToString("0.00##");
+					buffer[7] = Double.Parse(row["productDiscount"].ToString()).ToString("0.00##");
+					buffer[8] = Double.Parse(row["productTaxAmount"].ToString()).ToString("0.00##");
 
 					dgvRow.CreateCells(dgvProducts, buffer);
 					dgvProducts.Rows.Add(dgvRow);
@@ -391,11 +397,12 @@ namespace GST_Billing
 				TextBox tb = e.Control as TextBox;
 				if(tb != null)
 				{
-					tb.AutoCompleteMode = AutoCompleteMode.Suggest;
-					tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
-					AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-					addProducts(collection);
+                    tb.Multiline = false;
+                    AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+                    addProducts(collection);
+					tb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 					tb.AutoCompleteCustomSource = collection;
+                    tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
 					tb.TextChanged += tb_TextChanged;
 				}
 			}
@@ -413,7 +420,7 @@ namespace GST_Billing
 		private void tb_TextChanged(object sender, EventArgs e)
 		{
 			TextBox tb = sender as TextBox;
-			string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='"+tb.Text+"' AND userId='" +BaseModel.Instance.CompanyId+ "'";
+			string sqlstr = "SELECT hsnCode, productPrice, productUnit FROM productDetails WHERE productName='" + tb.Text + "' AND userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if (ds != null && ds.Tables[0].Rows.Count > 0)
 			{
@@ -425,7 +432,7 @@ namespace GST_Billing
 
 		private void addProducts(AutoCompleteStringCollection collection)
 		{
-			string sqlstr = "SELECT productName FROM productDetails where userId='" +BaseModel.Instance.CompanyId+ "'";
+			string sqlstr = "SELECT productName FROM productDetails WHERE userId='" +BaseModel.Instance.CompanyId+ "'";
 			DataSet ds = m1.selectData(sqlstr);
 			if(ds != null && ds.Tables[0].Rows.Count > 0)
 			{
@@ -1105,6 +1112,13 @@ namespace GST_Billing
             {
                 dgvProducts.Rows.Remove(row);
             }
+        }
+
+        private void btnChallan_Click(object sender, EventArgs e)
+        {
+            PrintChallan challan = new PrintChallan(tbInvoiceNum.Text);
+            challan.MdiParent = this.MdiParent;
+            challan.Show();
         }
 	}
 }
