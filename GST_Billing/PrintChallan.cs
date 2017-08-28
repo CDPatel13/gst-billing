@@ -51,7 +51,8 @@ namespace GST_Billing
 
                 for (int i = 0; i < dsVoucher.Tables[0].Rows.Count; i++)
                 {
-                    dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
+                    //dsVoucher.Tables[0].Rows[i]["challanNo"] = challanNOs;
+                    dsVoucher.Tables[0].Rows[i]["challanNo"] = invoiceNo.ToString();
                 }
                 
                 ReportDocument cryRpt = new challanPrint();                
