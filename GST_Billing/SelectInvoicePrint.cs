@@ -20,7 +20,7 @@ namespace GST_Billing
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            if(!rbOriginal.Checked && !rbDuplicate.Checked)
+            if (!rbOriginal.Checked && !rbDuplicate.Checked && !rbTriplicate.Checked)
             {
                 MessageBox.Show("Please select at least one option.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -33,6 +33,12 @@ namespace GST_Billing
             else if(rbDuplicate.Checked)
             {
                 this.invoicePrintType = 2;
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
+            }
+            else if (rbTriplicate.Checked)
+            {
+                this.invoicePrintType = 3;
                 this.DialogResult = DialogResult.Yes;
                 this.Close();
             }
