@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace GST_Billing
 {
@@ -58,6 +59,8 @@ namespace GST_Billing
 
 		private void Login_Load(object sender, EventArgs e)
 		{
+            label1.Text = "v. " + Application.ProductVersion;
+
 			CompanyDetails newCompany = new CompanyDetails();
 			//TODO : Get company information from DB
 			if (!newCompany.CompanyExists)

@@ -52,7 +52,7 @@
 	<summary>
 		<codepage>1252</codepage>
 		<title>Installation Database</title>
-		<subject></subject>
+		<subject>GST Billing Software</subject>
 		<author>##ID_STRING2##</author>
 		<keywords>Installer,MSI,Database</keywords>
 		<comments>Contact:  Your local administrator</comments>
@@ -340,7 +340,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>GST_Billing.Primary_output</td><td>{EB39FE2E-5D16-43B0-95F3-12BBDA019CC0}</td><td>INSTALLDIR</td><td>2</td><td/><td>gst_billing.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>GST_Billing.Primary_output1</td><td>{66CB2988-B980-4475-89CC-77C8D3F86904}</td><td>INSTALLDIR</td><td>2</td><td/><td>gst_billing.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>GST_Billing.Primary_output1</td><td>{D4357546-68B8-436F-B735-86010B5D6A1B}</td><td>INSTALLDIR</td><td>2</td><td/><td>gst_billing.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{89A68664-419D-443A-A4E9-B63F650054E7}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1050,6 +1050,8 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>GST_Billing.Primary_output1</td></row>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1065,6 +1067,7 @@
 		<row><td>ISSelfRegisterCosting</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterCosting</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFiles</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFinalize</td><td/><td/></row>
+		<row><td>ISSetAllUsers</td><td>257</td><td>SetAllUsers.dll</td><td>SetAllUsers</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISUnSelfRegisterFiles</td><td/><td/></row>
 		<row><td>SetARPINSTALLLOCATION</td><td>51</td><td>ARPINSTALLLOCATION</td><td>[INSTALLDIR]</td><td/><td/></row>
 		<row><td>SetAllUsersProfileNT</td><td>51</td><td>ALLUSERSPROFILE</td><td>[%SystemRoot]\Profiles\All Users</td><td/><td/></row>
@@ -1172,7 +1175,6 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
-		<row><td>gst_bi_1_gst_billing_setup</td><td>gstbil_1_gst_billing</td><td>GST-BI~1|gst-billing-setup</td><td/><td>1</td><td/></row>
 		<row><td>gstbil_1_gst_billing</td><td>ProgramMenuFolder</td><td>GSTBIL~1|GST Billing</td><td/><td>1</td><td/></row>
 	</table>
 
@@ -1882,7 +1884,6 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\gst-billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
 		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output1</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
@@ -2029,7 +2030,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>GST_Billing.Primary_output</td><td/><td/><td>_01BC9232_67E3_424E_B62E_29DFBE61615C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>GST_Billing.Primary_output1</td><td/><td/><td>_D0953B23_5C07_48C8_989E_828786AC5BFF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>GST_Billing.Primary_output1</td><td/><td/><td>_7DF7250A_DAA6_4F09_9CB9_ED325885AA52_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_0A7CF375_0594_4181_9306_C1DD6AED9263_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -2100,6 +2101,7 @@
 	<table name="ISDependency">
 		<col key="yes" def="S50">ISDependency</col>
 		<col def="I2">Exclude</col>
+		<row><td>SYSTEM.DATA.SQLITE.DLL</td><td>0</td></row>
 	</table>
 
 	<table name="ISDisk1File">
@@ -2133,8 +2135,6 @@
 		<col key="yes" def="s255">ISMergeModule_</col>
 		<col key="yes" def="i2">Language_</col>
 		<row><td>AlwaysInstall</td><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td></row>
-		<row><td>AlwaysInstall</td><td>Microsoft_VC120_CRT_x64.05F0B5F5_44A8_3793_976B_A4F17AECF92C</td><td>0</td></row>
-		<row><td>AlwaysInstall</td><td>Microsoft_VC120_CRT_x86.194841A2_D0F2_3B96_9F71_05BA91BEA0FA</td><td>0</td></row>
 	</table>
 
 	<table name="ISFeatureSetupPrerequisites">
@@ -2258,8 +2258,6 @@
 		<col def="S255">Destination</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>CRNET.F007D36F_EB36_4495_A392_E3A3068B7322</td><td>0</td><td>SAP Crystal Reports runtime engine for .NET Framework 4</td><td/><td/></row>
-		<row><td>Microsoft_VC120_CRT_x64.05F0B5F5_44A8_3793_976B_A4F17AECF92C</td><td>0</td><td>Visual C++ 12.0 CRT (x64)</td><td/><td/></row>
-		<row><td>Microsoft_VC120_CRT_x86.194841A2_D0F2_3B96_9F71_05BA91BEA0FA</td><td>0</td><td>Visual C++ 12.0 CRT (x86)</td><td/><td/></row>
 	</table>
 
 	<table name="ISMergeModuleCfgValues">
@@ -2392,12 +2390,6 @@
 		<row><td>ProgramFilesFolder</td><td/><td/><td>1</td></row>
 		<row><td>SystemFolder</td><td/><td/><td>1</td></row>
 		<row><td>WindowsFolder</td><td/><td/><td>1</td></row>
-	</table>
-
-	<table name="ISPowerShellWrap">
-		<col key="yes" def="s72">Action_</col>
-		<col key="yes" def="s72">Name</col>
-		<col def="S0">Value</col>
 	</table>
 
 	<table name="ISProductConfiguration">
@@ -2702,7 +2694,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>1680168041</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1675240597</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
@@ -3803,9 +3795,13 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>1680168041</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>1680168041</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>-1675240597</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1675240597</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1280991157</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>GSTBIL~1|GST Billing</td><td>0</td><td/><td>-1675282293</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>GSTBIL~1|GST Billing</td><td>0</td><td/><td>-1675265909</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>GSTBIL~1|GST Billing</td><td>0</td><td/><td>-1675269493</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>GSTBIL~1|GST Billing</td><td>0</td><td/><td>-1675275605</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1280995702</td></row>
 	</table>
 
@@ -3873,6 +3869,12 @@
 		<col def="s255">Value</col>
 	</table>
 
+	<table name="ISWSEWrap">
+		<col key="yes" def="s72">Action_</col>
+		<col key="yes" def="s72">Name</col>
+		<col def="S0">Value</col>
+	</table>
+
 	<table name="ISXmlElement">
 		<col key="yes" def="s72">ISXmlElement</col>
 		<col def="s72">ISXmlFile_</col>
@@ -3914,10 +3916,14 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>NewShortcut1_9114E8D897A34E218274A6A86FFDBDEF.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
+		<row><td>NewShortcut1_D0225C4FC3644EB498650D3DB1CF4E25.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
+		<row><td>NewShortcut2_64F1A54C1EE64A2DAE0E105ED0897F66.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
+		<row><td>NewShortcut2_65242BAF6B2D468FB9B8F894B626FCF8.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
 		<row><td>_Built1_128C833CD55A4B8598122472798ECE29.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
 		<row><td>_Built1_256D14BB06A44CFD80E1E9D9F05BF833.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
-		<row><td>_Built_446AC96A8F114130A952D80358DFF16B.exe</td><td/><td>&lt;VSSolutionFolder&gt;\icon_2.ico</td><td>0</td></row>
 		<row><td>_Built_D110E8EB070D49C7AA78B871303110F3.exe</td><td/><td>&lt;VSSolutionFolder&gt;\GST_Billing\Resources\User-Accounts.ico</td><td>0</td></row>
+		<row><td>_Built_DED9CDD5F7D6457CAAAD2854A7B6A4D7.exe</td><td/><td>D:\Dotfuscated\GST_Billing.exe</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -3963,6 +3969,7 @@
 		<row><td>ISSelfRegisterCosting</td><td/><td>2201</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td/><td>5601</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td/><td>6601</td><td/><td/></row>
+		<row><td>ISSetAllUsers</td><td>Not Installed</td><td>10</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td/><td>2202</td><td/><td/></row>
 		<row><td>InstallFiles</td><td/><td>4000</td><td>InstallFiles</td><td/></row>
 		<row><td>InstallFinalize</td><td/><td>6600</td><td>InstallFinalize</td><td/></row>
@@ -3994,7 +4001,7 @@
 		<row><td>RegisterUser</td><td/><td>6000</td><td>RegisterUser</td><td/></row>
 		<row><td>RemoveDuplicateFiles</td><td/><td>3400</td><td>RemoveDuplicateFiles</td><td/></row>
 		<row><td>RemoveEnvironmentStrings</td><td/><td>3300</td><td>RemoveEnvironmentStrings</td><td/></row>
-		<row><td>RemoveExistingProducts</td><td/><td>1410</td><td>RemoveExistingProducts</td><td/></row>
+		<row><td>RemoveExistingProducts</td><td/><td>6601</td><td>RemoveExistingProducts</td><td/></row>
 		<row><td>RemoveFiles</td><td/><td>3500</td><td>RemoveFiles</td><td/></row>
 		<row><td>RemoveFolders</td><td/><td>3600</td><td>RemoveFolders</td><td/></row>
 		<row><td>RemoveIniValues</td><td/><td>3100</td><td>RemoveIniValues</td><td/></row>
@@ -4032,8 +4039,8 @@
 		<col def="S0">Value</col>
 		<row><td>ActiveLanguage</td><td>1033</td></row>
 		<row><td>Comments</td><td/></row>
-		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="de9f554a3bc05c12be9c31b998217995">
-UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
+		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="a4f66fafb30885f14d732b73e196bba0">
+RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Express</td></row>
 		<row><td>EnableSwidtag</td><td>1</td></row>
@@ -4050,7 +4057,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{8D1957D5-D43F-42F4-A5D4-690312AD3225}</td></row>
 		<row><td>ISUSSignature</td><td>{17B59535-12D7-4B47-8C29-40A9C08C0DB1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes,viewDependencies,viewAppFiles,viewSystemSearch</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes,viewDependencies,viewAppFiles,viewSystemSearch,viewRelease,viewUpgradePaths,viewUpdateService</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4062,7 +4069,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SaveAsSchema</td><td/></row>
 		<row><td>SccEnabled</td><td>0</td></row>
 		<row><td>SccPath</td><td/></row>
-		<row><td>SchemaVersion</td><td>774</td></row>
+		<row><td>SchemaVersion</td><td>776</td></row>
 		<row><td>Type</td><td>MSIE</td></row>
 	</table>
 
@@ -4080,6 +4087,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileCost</td><td/><td>900</td><td>FileCost</td><td/></row>
 		<row><td>FindRelatedProducts</td><td/><td>430</td><td>FindRelatedProducts</td><td/></row>
 		<row><td>ISPreventDowngrade</td><td>ISFOUNDNEWERPRODUCTVERSION</td><td>450</td><td>ISPreventDowngrade</td><td/></row>
+		<row><td>ISSetAllUsers</td><td>Not Installed</td><td>10</td><td/><td/></row>
 		<row><td>InstallWelcome</td><td>Not Installed</td><td>1210</td><td>InstallWelcome</td><td/></row>
 		<row><td>IsolateComponents</td><td/><td>950</td><td>IsolateComponents</td><td/></row>
 		<row><td>LaunchConditions</td><td>Not Installed</td><td>410</td><td>LaunchConditions</td><td/></row>
@@ -4423,7 +4431,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{D7390E3E-8426-4A37-AA51-7773E6C80C0F}</td><td/></row>
-		<row><td>ProductName</td><td>gst-billing-setup</td><td/></row>
+		<row><td>ProductName</td><td>GST Billing Software</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
@@ -4501,6 +4509,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="i2">InstallMode</col>
 		<row><td>FileKey1</td><td>GST_Billing.Primary_output</td><td/><td>gstbil_1_gst_billing</td><td>2</td></row>
 		<row><td>FileKey2</td><td>GST_Billing.Primary_output</td><td/><td>gst_bi_1_gst_billing_setup</td><td>2</td></row>
+		<row><td>NewShortcut1</td><td>GST_Billing.Primary_output1</td><td/><td>gstbil_1_gst_billing</td><td>2</td></row>
 		<row><td>_Built</td><td>GST_Billing.Primary_output</td><td/><td>gst_bi_1_gst_billing_setup</td><td>2</td></row>
 	</table>
 
@@ -4587,8 +4596,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>gst_bi_1_gst_billing_setup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_446AC96A8F114130A952D80358DFF16B.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>GST_Billing.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_256D14BB06A44CFD80E1E9D9F05BF833.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>NewShortcut1</td><td>gstbil_1_gst_billing</td><td>##ID_STRING6##</td><td>GST_Billing.Primary_output1</td><td>AlwaysInstall</td><td/><td/><td/><td>NewShortcut1_9114E8D897A34E218274A6A86FFDBDEF.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>NewShortcut2</td><td>DesktopFolder</td><td>##ID_STRING7##</td><td>GST_Billing.Primary_output1</td><td>AlwaysInstall</td><td/><td/><td/><td>NewShortcut2_65242BAF6B2D468FB9B8F894B626FCF8.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
@@ -5194,9 +5203,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISPathVariable</td><td>TestValue</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The test value of the path variable.</td></row>
 		<row><td>ISPathVariable</td><td>Type</td><td>N</td><td/><td/><td/><td/><td/><td>1;2;4;8</td><td>The type of the path variable.</td></row>
 		<row><td>ISPathVariable</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The value of the path variable.</td></row>
-		<row><td>ISPowerShellWrap</td><td>Action_</td><td>N</td><td/><td/><td>CustomAction</td><td>1</td><td>Identifier</td><td/><td>Foreign key into CustomAction table</td></row>
-		<row><td>ISPowerShellWrap</td><td>Name</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Property associated with this Action</td></row>
-		<row><td>ISPowerShellWrap</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Value associated with this Property</td></row>
 		<row><td>ISProductConfiguration</td><td>GeneratePackageCode</td><td>Y</td><td/><td/><td/><td/><td>Number</td><td>0;1</td><td>Indicates whether or not to generate a package code.</td></row>
 		<row><td>ISProductConfiguration</td><td>ISProductConfiguration</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>The name of the product configuration.</td></row>
 		<row><td>ISProductConfiguration</td><td>ProductConfigurationFlags</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Product configuration (release) flags.</td></row>
@@ -5434,6 +5440,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISVirtualShortcut</td><td>Name</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Property name</td></row>
 		<row><td>ISVirtualShortcut</td><td>Shortcut_</td><td>N</td><td/><td/><td>Shortcut</td><td>1</td><td>Identifier</td><td/><td>Foreign key into Shortcut table.</td></row>
 		<row><td>ISVirtualShortcut</td><td>Value</td><td>N</td><td/><td/><td/><td/><td/><td/><td>Property value</td></row>
+		<row><td>ISWSEWrap</td><td>Action_</td><td>N</td><td/><td/><td>CustomAction</td><td>1</td><td>Identifier</td><td/><td>Foreign key into CustomAction table</td></row>
+		<row><td>ISWSEWrap</td><td>Name</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Property associated with this Action</td></row>
+		<row><td>ISWSEWrap</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Value associated with this Property</td></row>
 		<row><td>ISXmlElement</td><td>Content</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Element contents</td></row>
 		<row><td>ISXmlElement</td><td>ISAttributes</td><td>Y</td><td/><td/><td/><td/><td>Number</td><td/><td>Internal XML element attributes</td></row>
 		<row><td>ISXmlElement</td><td>ISXmlElement</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Primary key, non-localized, internal token for Xml element</td></row>
