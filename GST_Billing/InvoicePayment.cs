@@ -11,7 +11,7 @@ namespace GST_Billing
 {
     public partial class InvoicePayment : Form
     {
-        private int invoiceToEdit;
+        private string invoiceToEdit;
         private string custName;
         private double amount;
         private double pending;
@@ -35,7 +35,7 @@ namespace GST_Billing
             InitializeComponent();
         }
 
-        public InvoicePayment(int invoiceToEdit, string custName, double amount, double pending)
+        public InvoicePayment(string invoiceToEdit, string custName, double amount, double pending)
         {
             // TODO: Complete member initialization
             this.invoiceToEdit = invoiceToEdit;
