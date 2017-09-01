@@ -53,7 +53,10 @@ namespace GaneshLogistics.AppCode
 									bankname	TEXT,
 									branchname	TEXT,
 									accountno	INTEGER,
-									ifsccode	TEXT
+									ifsccode	TEXT,
+                                    specializeIn TEXT,
+                                    addColumn1  TEXT,
+                                    addColumn2  TEXT
 								)");
 
 			CreateTableList.Add(@"CREATE TABLE IF NOT EXISTS [paymentTerms] (
@@ -69,6 +72,8 @@ namespace GaneshLogistics.AppCode
 									productPrice	DECIMAL(8,2) NOT NULL,
 									productUnit	TEXT,
 									userId		INTEGER NOT NULL,
+                                    addColumn1  TEXT,
+                                    addColumn2  TEXT,
                                     FOREIGN KEY (userId) REFERENCES userDetails (userId)
 									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
@@ -105,6 +110,8 @@ namespace GaneshLogistics.AppCode
 									shipPanno	TEXT,
 									shippaymentTermName TEXT,
                                     userId		INTEGER NOT NULL,
+                                    addColumn1  TEXT,
+                                    addColumn2  TEXT,
                                     FOREIGN KEY (userId) REFERENCES userDetails (userId)
 									ON DELETE NO ACTION
 									ON UPDATE NO ACTION
@@ -142,6 +149,8 @@ namespace GaneshLogistics.AppCode
 									receivedAmount	DECIMAL(8,2),
 									IsActive	BIT(1) DEFAULT 1,
                                     financialYear	TEXT NOT NULL,
+                                    addColumn1  TEXT,
+                                    addColumn2  TEXT,
 									FOREIGN KEY (userId) REFERENCES userDetails (userId)
 									ON DELETE NO ACTION
 									ON UPDATE NO ACTION,
@@ -160,7 +169,9 @@ namespace GaneshLogistics.AppCode
 									productUnitPrice	DECIMAL(8,2) NOT NULL,
 									productAmount	DECIMAL(8,2),
 									productDiscount	DECIMAL(8,2),
-									productTaxAmount	DECIMAL(8,2),                                    
+									productTaxAmount	DECIMAL(8,2),
+                                    addColumn1  TEXT,
+                                    addColumn2  TEXT,                                 
 									FOREIGN KEY(invoiceId) REFERENCES invoiceDetails ( invoiceId ) 
 									ON DELETE NO ACTION 
 									ON UPDATE NO ACTION                                    
