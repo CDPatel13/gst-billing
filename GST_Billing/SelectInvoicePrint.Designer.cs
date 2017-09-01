@@ -39,11 +39,12 @@
             // 
             this.lbMain.AutoSize = true;
             this.lbMain.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.lbMain.Location = new System.Drawing.Point(35, 9);
+            this.lbMain.Location = new System.Drawing.Point(75, 9);
             this.lbMain.Name = "lbMain";
-            this.lbMain.Size = new System.Drawing.Size(179, 18);
+            this.lbMain.Size = new System.Drawing.Size(91, 18);
             this.lbMain.TabIndex = 0;
-            this.lbMain.Text = "Select original/duplicate";
+            this.lbMain.Text = "Select Type";
+            this.lbMain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rbOriginal
             // 

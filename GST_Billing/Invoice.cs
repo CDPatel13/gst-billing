@@ -27,7 +27,7 @@ namespace GST_Billing
 		double sgstFinal = 0;
 		double cgstFinal = 0;
 		double igstFinal = 0;
-		private int invoiceToEdit = 0;
+		private string invoiceToEdit = String.Empty;
 
 		public Invoice()
 		{
@@ -43,7 +43,7 @@ namespace GST_Billing
             dgvProducts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 		}
 
-		public Invoice(int invoiceToEdit)
+		public Invoice(string invoiceToEdit)
 		{
 			// TODO: Complete member initialization
 			this.invoiceToEdit = invoiceToEdit;
@@ -60,7 +60,7 @@ namespace GST_Billing
 
 		private void Invoice_Load(object sender, EventArgs e)
 		{
-			if(invoiceToEdit == 0)
+			if(invoiceToEdit == String.Empty)
 			{ 
                 tbPaymentTerms.SelectedIndex = -1;
 			}
@@ -83,7 +83,7 @@ namespace GST_Billing
 			cbBillAndShip.Checked = false;
 		}
 
-		private void getInvoiceDetailsToEdit(int invoiceToEdit)
+		private void getInvoiceDetailsToEdit(string invoiceToEdit)
 		{
 			int invoiceId = 0;
 			string sqlstrInvoice = "SELECT custname, custaddress, custlandmark, custcity, custpincode, custgstin, custstate, custcode, " + 
@@ -664,7 +664,7 @@ namespace GST_Billing
 			{
 				string sqlstr = "SELECT * FROM invoiceDetails WHERE invoiceNo ='" + tbInvoiceNum.Text + "' AND userId='" +BaseModel.Instance.CompanyId+ "' AND financialYear='" +BaseModel.Instance.FinancialYear+ "' AND IsActive = 1 ";
 				DataSet ds = m1.selectData(sqlstr);
-				if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit != 0)
+				if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit != String.Empty)
 				{
 					DialogResult drDuplicateInsert = MessageBox.Show("Do you want to update Invoice : " + tbInvoiceNum.Text + " ?"
 						, "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -687,7 +687,7 @@ namespace GST_Billing
 							return;
 					}
 				}
-                else if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit == 0)
+                else if (ds.Tables[0].Rows.Count > 0 && invoiceToEdit == String.Empty)
                 {
                     MessageBox.Show("Invoice No. " + tbInvoiceNum.Text + " is already in use. Please use another number.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -740,6 +740,7 @@ namespace GST_Billing
 					MessageBox.Show("Invoice saved successfully","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 					btnPrint.Enabled = true;
+                    btnChallan.Enabled = true;
 					isDirty = false;
 				}
 			}

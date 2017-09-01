@@ -404,13 +404,13 @@ namespace GST_Billing
 
         private void editExistingInvoice()
         {
-            int invoiceToEdit = 0;
+            string invoiceToEdit = String.Empty;
             string custName = String.Empty;
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
-                invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
+                invoiceToEdit = row.Cells["Invoice No"].Value.ToString();
 
                 Invoice editInvoice = new Invoice(invoiceToEdit);
                 editInvoice.ShowDialog();
@@ -430,7 +430,7 @@ namespace GST_Billing
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
-                string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + Convert.ToInt64(dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value) + "' AND userId='" +BaseModel.Instance.CompanyId+ "' AND financialYear='" +BaseModel.Instance.FinancialYear+ "'";
+                string sqlstr = "DELETE FROM invoiceDetails WHERE invoiceNo='" + dgvInvoice.SelectedRows[0].Cells["Invoice No"].Value.ToString() + "' AND userId='" +BaseModel.Instance.CompanyId+ "' AND financialYear='" +BaseModel.Instance.FinancialYear+ "'";
                 DialogResult result = MessageBox.Show("Do you really want to delete this invoice?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 // TODO : Delete selected invoice from database
@@ -485,13 +485,13 @@ namespace GST_Billing
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            int invoiceToEdit = 0;
+            string invoiceToEdit = String.Empty;
             string custName = String.Empty;
             double paymentDone = 0;
             if (dgvInvoice.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
-                invoiceToEdit = Int32.Parse((string)row.Cells["Invoice No"].Value);
+                invoiceToEdit = row.Cells["Invoice No"].Value.ToString();
                 custName = (string)row.Cells["Customer Name"].Value;
                 double amount = double.Parse(row.Cells["Total Bill Amount"].Value.ToString());
                 double received = double.Parse(row.Cells["Received Amount Till Date"].Value.ToString());
