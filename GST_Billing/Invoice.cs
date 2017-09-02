@@ -38,6 +38,8 @@ namespace GST_Billing
             tbBillName.SelectedIndex = -1;
             tbBillName.AutoCompleteMode = AutoCompleteMode.Suggest;
             tbBillName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            tbPoDate.Format = DateTimePickerFormat.Custom;
+            tbPoDate.CustomFormat = " ";
 
             dgvProducts.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvProducts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -101,7 +103,14 @@ namespace GST_Billing
 			{
 				DataRow row = ds.Tables[0].Rows[0];
 
-                tbPoDate.Value = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                if (row["poDate"] != null && row["poDate"].ToString() != " ")
+                {
+                    tbPoDate.Value = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    tbPoDate.CustomFormat = " ";
+                }
                 tbPoNum.Text = Convert.ToString(row["poNo"]);
 				tbInvoiceNum.Text = Convert.ToString(row["invoiceNo"]);
 				tbInvoiceDate.Value = DateTime.ParseExact(row["invoiceDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -1120,6 +1129,12 @@ namespace GST_Billing
             PrintChallan challan = new PrintChallan(tbInvoiceNum.Text);
             challan.MdiParent = this.MdiParent;
             challan.Show();
+        }
+
+        private void tbPoDate_ValueChanged(object sender, EventArgs e)
+        {
+            tbPoDate.Format = DateTimePickerFormat.Custom;
+            tbPoDate.CustomFormat = "dd/MM/yyyy";
         }
 	}
 }
