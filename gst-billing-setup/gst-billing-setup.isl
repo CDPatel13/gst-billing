@@ -1884,7 +1884,6 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\gst-billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
 		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output1</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
@@ -4433,7 +4432,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{D7390E3E-8426-4A37-AA51-7773E6C80C0F}</td><td/></row>
 		<row><td>ProductName</td><td>GST Billing Software</td><td/></row>
-		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>2.1.0.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>

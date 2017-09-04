@@ -293,6 +293,8 @@
     <None Include="bin\Debug\GST_Billing.vshost.exe.config" />
     <None Include="bin\Debug\GST_Billing.vshost.exe.manifest" />
     <None Include="bin\Release\GST_Billing.exe.config" />
+    <None Include="Confuser.crproj" />
+    <None Include="confuserps.ps1" />
     <None Include="GST_Billing_TemporaryKey.pfx" />
     <None Include="InvoiceDetails.xsc">
       <DependentUpon>InvoiceDetails.xsd</DependentUpon>
@@ -411,6 +413,9 @@
     </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (powershell.exe -File "$(SolutionDir)$(ProjectName)\confuserps.ps1" $(TargetDir) $(TargetDir) $(TargetPath) $(ProjectDir)Confuser.crproj $(SolutionDir)$(ProjectName)\bin )</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
