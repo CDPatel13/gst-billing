@@ -94,7 +94,7 @@ namespace GST_Billing
 								   "invoiceDetails.shipState, invoiceDetails.shipPinCode, invoiceDetails.shipGstIn, " +
 								   "sgstPercent, cgstPercent,igstPercent, totalQnty, totalAmount, totaDiscount, " +
 								   "totalTaxAmount, totalSGSTAmount, totaCGSTAmount, totalIGSTAmount, totalBillAmount," +
-								   "receivedAmount, poNo, poDate" +
+								   "receivedAmount, poNo, poDate, refNo" +
 								   " FROM invoiceDetails" +
                                    " INNER JOIN customerDetails ON customerDetails.custId = invoiceDetails.custId AND invoiceNo = '" + invoiceToEdit + "' AND invoiceDetails.userId='" + BaseModel.Instance.CompanyId + "' AND invoiceDetails.financialYear='" + BaseModel.Instance.FinancialYear + "' ";
 
@@ -131,6 +131,7 @@ namespace GST_Billing
 				tbShipState.Text = Convert.ToString(row["shipState"]);
 				tbShipPin.Text = Convert.ToString(row["shipPinCode"]);
 				tbShipGstin.Text = Convert.ToString(row["shipGstIn"]);
+                tbShipGstin.Text = Convert.ToString(row["refNo"]);
 
                 tbSgst.TextChanged -= tbGst_TextChanged;
                 tbCgst.TextChanged -= tbGst_TextChanged;
@@ -739,10 +740,10 @@ namespace GST_Billing
 				//, totaCGSTAmount, totalIGSTAmount
                 calculateTotals();
 				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, poNo, poDate, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
-                        "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive, financialYear)" +
+                        "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive, financialYear, refNo)" +
                         "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + BaseModel.Instance.CompanyId + "', '" + tbPoNum.Text + "','" + String.Format("{0:dd/MM/yyyy}", tbPoDate.Text) + "', '" + tbPaymentTerms.SelectedItem + "', '" +
 						tbShipName.Text + "', '" + tbShipAddress.Text + "', '" + tbShipLandmark.Text + "', '" + tbShipCity.Text + "', '" + tbShipPin.Text + "', '" + tbShipGstin.Text + "', '" + tbShipState.SelectedItem + "', '" + tbShipCode.Text + "', '" + tbSgst.Text + "', '" + tbCgst.Text + "', '" + tbIgst.Text + "', '" + lbTotalQty.Text + "', '" + lbTotalAmount.Text + "', '" +
-                        lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1, '" + BaseModel.Instance.FinancialYear + "')";
+                        lbTotalDiscount.Text + "', '" + totaltaxColAmt + "', '" + lbTotalTaxVal.Text + "', '" + sgstFinal.ToString() + "', '" + cgstFinal.ToString() + "', '" + igstFinal.ToString() + "', '" + lbTotalFinal.Text + "', 0, 1, '" + BaseModel.Instance.FinancialYear + "', '" + tbRefNo.Text + "')";
 				int NoOfRows = m1.Ins_Upd_Del(sqlstr);
 
 				if (NoOfRows > 0)
@@ -916,6 +917,7 @@ namespace GST_Billing
                 listofAddCharges.Add(pair);
             }
 
+            // Removed Additional Charge #3 and Chenged it into Reference No.
             if (!String.IsNullOrWhiteSpace(lbAddCharge3.Text) && !String.IsNullOrWhiteSpace(tbAddCharge3.Text) && !listofAddCharges.Exists(x => x.Item1 == lbAddCharge3.Text))
 			{
 				listofAddCharges.Add(Tuple.Create(lbAddCharge3.Text, tbAddCharge3.Text));

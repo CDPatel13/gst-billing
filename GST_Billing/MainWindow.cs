@@ -518,7 +518,7 @@ namespace GST_Billing
         private void fillInvoiceDataGrid()
         {
             int colIndex = 0;
-            string sqlstrInvoice = "SELECT custname,invoiceNo,invoiceDate,termName,invoiceDetails.shipName," +
+            string sqlstrInvoice = "SELECT custname,invoiceNo,invoiceDate,termName,invoiceDetails.shipName, invoiceDetails.poDate, " +
                                    "invoiceDetails.shipAddress,invoiceDetails.shipLandmark,invoiceDetails.shipCity," + 
                                    "invoiceDetails.shipState,invoiceDetails.shipPinCode,invoiceDetails.shipGstIn," +
                                    "sgstPercent,cgstPercent,igstPercent,totalQnty,totalAmount,totaDiscount," +
@@ -531,6 +531,7 @@ namespace GST_Billing
             tableInvoice = ds.Tables[0];
 
             tableInvoice.Columns.Add("Invoice Date", typeof(DateTime));
+            tableInvoice.Columns.Add("P.O. Date", typeof(DateTime));
             
             tableInvoice.Columns["custname"].ColumnName = "Customer Name";
             tableInvoice.Columns["invoiceNo"].ColumnName = "Invoice No";
@@ -548,6 +549,7 @@ namespace GST_Billing
             tableInvoice.Columns["Customer Name"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Invoice No"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Invoice Date"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["P.O. Date"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total Quantity"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Amount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Discount"].SetOrdinal(colIndex++);
@@ -562,9 +564,11 @@ namespace GST_Billing
             foreach(DataRow row in tableInvoice.Rows)
             {
                 row["Invoice Date"] = DateTime.ParseExact(row["invoiceDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                row["P.O. Date"] = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             }
 
             tableInvoice.Columns.Remove("invoiceDate");
+            tableInvoice.Columns.Remove("poDate");
             tableInvoice.Columns.Remove("shipName");
             tableInvoice.Columns.Remove("shipAddress");
             tableInvoice.Columns.Remove("shipCity");
@@ -581,6 +585,7 @@ namespace GST_Billing
             dgvInvoice.DataSource = bindingSourceInvoice;
 
             dgvInvoice.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvInvoice.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
 
             dgvInvoice.Sort(dgvInvoice.Columns[1], ListSortDirection.Ascending);
 
