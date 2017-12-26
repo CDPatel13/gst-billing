@@ -373,10 +373,41 @@ namespace GST_Billing
 
 		private double calculateGST(double taxVal)
 		{
+            string igstPercent = String.IsNullOrWhiteSpace(tbIgst.Text) ? "0" : tbIgst.Text;
+            string sgstPercent = String.IsNullOrWhiteSpace(tbSgst.Text) ? "0" : tbSgst.Text;
+            string cgstPercent = String.IsNullOrWhiteSpace(tbCgst.Text) ? "0" : tbCgst.Text;
+
+			if ((tbSgst.Text.Length > 0 || tbCgst.Text.Length > 0) && (int.Parse(sgstPercent) > 0 || int.Parse(cgstPercent) > 0))
+			{
+                var sgst = !String.IsNullOrEmpty(tbSgst.Text) ? double.Parse(sgstPercent) : 0;
+                var cgst = !String.IsNullOrEmpty(tbCgst.Text) ? double.Parse(cgstPercent) : 0;
+
+                sgstFinal = Math.Round((sgst * taxVal) / 100, 2);
+                cgstFinal = Math.Round((cgst * taxVal) / 100, 2);
+
+                lbTotalSgst.Text = sgstFinal.ToString();
+                lbTotalCgst.Text = cgstFinal.ToString();
+
+                return sgstFinal + cgstFinal;
+			}
+            else if (tbIgst.Text.Length > 0 && int.Parse(igstPercent) > 0)
+            {
+                var igst = !String.IsNullOrEmpty(tbIgst.Text) ? double.Parse(igstPercent) : 0;
+                igstFinal = Math.Round((igst * taxVal) / 100, 2);
+
+                lbTotalIgst.Text = igstFinal.ToString();
+
+                return igstFinal;
+            }
+            else
+            {
+                return 0;
+            }
+/*
 			if(tbSgst.Enabled)
 			{
-				var sgst = !String.IsNullOrEmpty(tbSgst.Text) ? double.Parse(tbSgst.Text) : 0;
-				var cgst = !String.IsNullOrEmpty(tbCgst.Text) ? double.Parse(tbCgst.Text) : 0 ;
+                var sgst = !String.IsNullOrEmpty(tbSgst.Text) ? double.Parse(sgstPercent) : 0;
+                var cgst = !String.IsNullOrEmpty(tbCgst.Text) ? double.Parse(cgstPercent) : 0;
 
 				sgstFinal = Math.Round((sgst * taxVal) / 100, 2);
 				cgstFinal = Math.Round((cgst * taxVal) / 100, 2);
@@ -388,13 +419,13 @@ namespace GST_Billing
 			}
 			else
 			{
-				var igst = !String.IsNullOrEmpty(tbIgst.Text) ? double.Parse(tbIgst.Text) : 0;
+                var igst = !String.IsNullOrEmpty(tbIgst.Text) ? double.Parse(igstPercent) : 0;
 				igstFinal = Math.Round((igst * taxVal)/100, 2);
 
 				lbTotalIgst.Text = igstFinal.ToString();
 
 				return igstFinal;
-			}
+			}*/
 		}
 
 		private void dgvProducts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -706,6 +737,7 @@ namespace GST_Billing
                 //int userId = Convert.ToInt32(m1.scaler(sqlstr));
 
 				//, totaCGSTAmount, totalIGSTAmount
+                calculateTotals();
 				sqlstr = "INSERT INTO invoiceDetails(invoiceNo, invoiceDate, custId, userId, poNo, poDate, termName, shipName, shipAddress, shipLandmark, shipCity, shipPinCode, shipGstIn, shipState, shipCode, sgstPercent, cgstPercent, igstPercent, " +
                         "totalQnty, totalAmount, totaDiscount, totalTaxColAmt, totalTaxAmount, totalSGSTAmount,  totaCGSTAmount,  totalIGSTAmount, totalBillAmount, receivedAmount, IsActive, financialYear)" +
                         "VALUES('" + tbInvoiceNum.Text + "', '" + String.Format("{0:dd/MM/yyyy}", tbInvoiceDate.Text) + "', " + custId + ", '" + BaseModel.Instance.CompanyId + "', '" + tbPoNum.Text + "','" + String.Format("{0:dd/MM/yyyy}", tbPoDate.Text) + "', '" + tbPaymentTerms.SelectedItem + "', '" +

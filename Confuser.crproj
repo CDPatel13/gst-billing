@@ -1,9 +1,0 @@
-<project outputDir="D:\GST\GST_Billing\GST_Billing\obj\x86\Release" baseDir="D:\GST\GST_Billing\GST_Billing" xmlns="http://confuser.codeplex.com">
-  <module path="bin\Release\GST_Billing.exe">
-    <rule pattern="true" preset="aggressive" inherit="false">
-      <protection id="anti ildasm" />
-      <protection id="constants" />
-      <protection id="ctrl flow" />
-    </rule>
-  </module>
-</project>
