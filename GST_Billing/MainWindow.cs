@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
 using GaneshLogistics.AppCode;
 
@@ -706,6 +707,30 @@ namespace GST_Billing
         private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process calculator = System.Diagnostics.Process.Start("calc.exe");
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string dbName = "MyDatabase.sqlite";
+            string newDbName = "MyDatabase_" + DateTime.Today.ToShortDateString().Replace('/','_') + ".sqlite";
+            string copyFrom = String.Empty;
+            string copyTo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GST_Billing_Backup", newDbName);
+            
+            if (Directory.Exists(@"D:\GST"))
+            {
+                copyFrom = Path.Combine(@"D:\GST", dbName);
+            }
+            else
+            {
+                copyFrom = Path.Combine(@"C:\GST", dbName);
+            }
+
+            if(!Directory.Exists(Path.GetDirectoryName(copyTo)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(copyTo));
+            }
+
+            File.Copy(copyFrom, copyTo);
         }
     }
 }

@@ -83,6 +83,7 @@
             this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbSelectedCompany = new System.Windows.Forms.Label();
             this.lbFinancialYear = new System.Windows.Forms.Label();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
@@ -855,7 +856,8 @@
             // 
             this.tsmiTools.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calculatorToolStripMenuItem});
+            this.calculatorToolStripMenuItem,
+            this.backupToolStripMenuItem});
             this.tsmiTools.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmiTools.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.tsmiTools.Name = "tsmiTools";
@@ -866,7 +868,7 @@
             // 
             this.calculatorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F);
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.calculatorToolStripMenuItem.Text = "Calc&ulator";
             this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
@@ -891,6 +893,14 @@
             this.lbFinancialYear.Size = new System.Drawing.Size(81, 14);
             this.lbFinancialYear.TabIndex = 8;
             this.lbFinancialYear.Text = "Financial Year";
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backupToolStripMenuItem.Text = "&Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -989,6 +999,7 @@
         private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
         private System.Windows.Forms.Label lbSelectedCompany;
         private System.Windows.Forms.Label lbFinancialYear;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
 
     }
 }

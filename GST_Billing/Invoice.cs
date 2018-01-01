@@ -131,7 +131,7 @@ namespace GST_Billing
 				tbShipState.Text = Convert.ToString(row["shipState"]);
 				tbShipPin.Text = Convert.ToString(row["shipPinCode"]);
 				tbShipGstin.Text = Convert.ToString(row["shipGstIn"]);
-                tbShipGstin.Text = Convert.ToString(row["refNo"]);
+                tbRefNo.Text = Convert.ToString(row["refNo"]);
 
                 tbSgst.TextChanged -= tbGst_TextChanged;
                 tbCgst.TextChanged -= tbGst_TextChanged;
