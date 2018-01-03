@@ -519,10 +519,10 @@ namespace GST_Billing
         private void fillInvoiceDataGrid()
         {
             int colIndex = 0;
-            string sqlstrInvoice = "SELECT custname,invoiceNo,invoiceDate,termName,invoiceDetails.shipName, invoiceDetails.poDate, " +
+            string sqlstrInvoice = "SELECT custname,invoiceNo,invoiceDate, invoiceDetails.poNo, invoiceDetails.shipName, invoiceDetails.poDate, " +
                                    "invoiceDetails.shipAddress,invoiceDetails.shipLandmark,invoiceDetails.shipCity," + 
                                    "invoiceDetails.shipState,invoiceDetails.shipPinCode,invoiceDetails.shipGstIn," +
-                                   "sgstPercent,cgstPercent,igstPercent,totalQnty,totalAmount,totaDiscount," +
+                                   "sgstPercent,cgstPercent,igstPercent,totalQnty,totalAmount," +
                                    "totalTaxAmount,totalSGSTAmount,totaCGSTAmount,totalIGSTAmount,totalBillAmount," + 
                                    "receivedAmount" +
                                    " FROM invoiceDetails" +
@@ -536,30 +536,28 @@ namespace GST_Billing
             
             tableInvoice.Columns["custname"].ColumnName = "Customer Name";
             tableInvoice.Columns["invoiceNo"].ColumnName = "Invoice No";
+            tableInvoice.Columns["poNo"].ColumnName = "P.O. No";
             tableInvoice.Columns["totalQnty"].ColumnName = "Total Quantity";
             tableInvoice.Columns["totalAmount"].ColumnName = "Amount";
-            tableInvoice.Columns["totaDiscount"].ColumnName = "Discount";
             tableInvoice.Columns["totalTaxAmount"].ColumnName = "Taxable Amount";
             tableInvoice.Columns["totalSGSTAmount"].ColumnName = "Total SGST Amount";
             tableInvoice.Columns["totaCGSTAmount"].ColumnName = "Total CGST Amount";
             tableInvoice.Columns["totalIGSTAmount"].ColumnName = "Total IGST Amount";
             tableInvoice.Columns["totalBillAmount"].ColumnName = "Total Bill Amount";
-            tableInvoice.Columns["termName"].ColumnName = "Payment Terms";
             tableInvoice.Columns["receivedAmount"].ColumnName = "Received Amount Till Date";
 
             tableInvoice.Columns["Customer Name"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Invoice No"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Invoice Date"].SetOrdinal(colIndex++);
+            tableInvoice.Columns["P.O. No"].SetOrdinal(colIndex++);
             tableInvoice.Columns["P.O. Date"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total Quantity"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Amount"].SetOrdinal(colIndex++);
-            tableInvoice.Columns["Discount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Taxable Amount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total SGST Amount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total CGST Amount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total IGST Amount"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Total Bill Amount"].SetOrdinal(colIndex++);
-            tableInvoice.Columns["Payment Terms"].SetOrdinal(colIndex++);
             tableInvoice.Columns["Received Amount Till Date"].SetOrdinal(colIndex++);
 
             foreach(DataRow row in tableInvoice.Rows)
