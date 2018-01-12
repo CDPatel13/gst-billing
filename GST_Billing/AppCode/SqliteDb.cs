@@ -271,6 +271,8 @@ namespace GaneshLogistics.AppCode
                          {
                              cmd.CommandText = "ALTER TABLE invoiceDetails ADD COLUMN refNo TEXT";
                              cmd.ExecuteNonQuery();
+                             cmd.CommandText = "ALTER TABLE invoiceDetails ADD COLUMN transport TEXT";
+                             cmd.ExecuteNonQuery();
                          }
 
                          conn.Close();

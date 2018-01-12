@@ -72,6 +72,8 @@
             this.tbPoNum = new System.Windows.Forms.TextBox();
             this.lbPoDate = new System.Windows.Forms.Label();
             this.tbPoDate = new System.Windows.Forms.DateTimePicker();
+            this.tbRefNo = new System.Windows.Forms.TextBox();
+            this.lbRefNo = new System.Windows.Forms.Label();
             this.gbShipping = new System.Windows.Forms.GroupBox();
             this.tbShipPin = new System.Windows.Forms.TextBox();
             this.lbShipPin = new System.Windows.Forms.Label();
@@ -127,6 +129,8 @@
             this.lbAddCharge1 = new System.Windows.Forms.ComboBox();
             this.lbAddCharge2 = new System.Windows.Forms.ComboBox();
             this.tbAddCharge1 = new System.Windows.Forms.TextBox();
+            this.lbAddCharge3 = new System.Windows.Forms.ComboBox();
+            this.tbAddCharge3 = new System.Windows.Forms.TextBox();
             this.lbSgst = new System.Windows.Forms.Label();
             this.tbSgst = new System.Windows.Forms.TextBox();
             this.lbCgst = new System.Windows.Forms.Label();
@@ -143,12 +147,10 @@
             this.tbPaymentTerms = new System.Windows.Forms.ComboBox();
             this.flpAddCharge = new System.Windows.Forms.FlowLayoutPanel();
             this.errorProviderTextBox = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tbAddCharge3 = new System.Windows.Forms.TextBox();
-            this.lbAddCharge3 = new System.Windows.Forms.ComboBox();
-            this.lbRefNo = new System.Windows.Forms.Label();
-            this.tbRefNo = new System.Windows.Forms.TextBox();
             this.invoiceDetails = new GST_Billing.InvoiceDetails();
             this.invoiceDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbTransport = new System.Windows.Forms.TextBox();
+            this.lbTransport = new System.Windows.Forms.Label();
             this.gbBilling.SuspendLayout();
             this.gbInvoice.SuspendLayout();
             this.tlpInvoice.SuspendLayout();
@@ -492,6 +494,8 @@
             this.tlpInvoice.Controls.Add(this.tbPoDate, 6, 1);
             this.tlpInvoice.Controls.Add(this.tbRefNo, 6, 2);
             this.tlpInvoice.Controls.Add(this.lbRefNo, 5, 2);
+            this.tlpInvoice.Controls.Add(this.tbTransport, 4, 2);
+            this.tlpInvoice.Controls.Add(this.lbTransport, 3, 2);
             this.tlpInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpInvoice.Location = new System.Drawing.Point(3, 22);
             this.tlpInvoice.Name = "tlpInvoice";
@@ -667,6 +671,28 @@
             this.tbPoDate.Size = new System.Drawing.Size(102, 23);
             this.tbPoDate.TabIndex = 14;
             this.tbPoDate.ValueChanged += new System.EventHandler(this.tbPoDate_ValueChanged);
+            // 
+            // tbRefNo
+            // 
+            this.tbRefNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbRefNo.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbRefNo.Location = new System.Drawing.Point(621, 73);
+            this.tbRefNo.Name = "tbRefNo";
+            this.tbRefNo.Size = new System.Drawing.Size(102, 23);
+            this.tbRefNo.TabIndex = 21;
+            // 
+            // lbRefNo
+            // 
+            this.lbRefNo.AutoSize = true;
+            this.lbRefNo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbRefNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.lbRefNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbRefNo.Location = new System.Drawing.Point(528, 70);
+            this.lbRefNo.Name = "lbRefNo";
+            this.lbRefNo.Size = new System.Drawing.Size(87, 37);
+            this.lbRefNo.TabIndex = 15;
+            this.lbRefNo.Text = "Reference No.";
+            this.lbRefNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gbShipping
             // 
@@ -1470,6 +1496,32 @@
             this.tbAddCharge1.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
             this.tbAddCharge1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.column_KeyPress);
             // 
+            // lbAddCharge3
+            // 
+            this.lbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbAddCharge3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lbAddCharge3.FormattingEnabled = true;
+            this.lbAddCharge3.Items.AddRange(new object[] {
+            "Packing & Forwarding",
+            "Freight",
+            "Loading & Unloading",
+            "Insurance",
+            "Courier Charge",
+            "Other Charges"});
+            this.lbAddCharge3.Location = new System.Drawing.Point(547, 3);
+            this.lbAddCharge3.Name = "lbAddCharge3";
+            this.lbAddCharge3.Size = new System.Drawing.Size(157, 24);
+            this.lbAddCharge3.TabIndex = 4;
+            // 
+            // tbAddCharge3
+            // 
+            this.tbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddCharge3.Location = new System.Drawing.Point(710, 3);
+            this.tbAddCharge3.Name = "tbAddCharge3";
+            this.tbAddCharge3.Size = new System.Drawing.Size(105, 23);
+            this.tbAddCharge3.TabIndex = 5;
+            this.tbAddCharge3.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
+            // 
             // lbSgst
             // 
             this.lbSgst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1657,54 +1709,6 @@
             // 
             this.errorProviderTextBox.ContainerControl = this;
             // 
-            // tbAddCharge3
-            // 
-            this.tbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbAddCharge3.Location = new System.Drawing.Point(710, 3);
-            this.tbAddCharge3.Name = "tbAddCharge3";
-            this.tbAddCharge3.Size = new System.Drawing.Size(105, 23);
-            this.tbAddCharge3.TabIndex = 5;
-            this.tbAddCharge3.TextChanged += new System.EventHandler(this.tbAddCharge_TextChanged);
-            // 
-            // lbAddCharge3
-            // 
-            this.lbAddCharge3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbAddCharge3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.lbAddCharge3.FormattingEnabled = true;
-            this.lbAddCharge3.Items.AddRange(new object[] {
-            "Packing & Forwarding",
-            "Freight",
-            "Loading & Unloading",
-            "Insurance",
-            "Courier Charge",
-            "Other Charges"});
-            this.lbAddCharge3.Location = new System.Drawing.Point(547, 3);
-            this.lbAddCharge3.Name = "lbAddCharge3";
-            this.lbAddCharge3.Size = new System.Drawing.Size(157, 24);
-            this.lbAddCharge3.TabIndex = 4;
-            // 
-            // lbRefNo
-            // 
-            this.lbRefNo.AutoSize = true;
-            this.lbRefNo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbRefNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.lbRefNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbRefNo.Location = new System.Drawing.Point(528, 70);
-            this.lbRefNo.Name = "lbRefNo";
-            this.lbRefNo.Size = new System.Drawing.Size(87, 37);
-            this.lbRefNo.TabIndex = 15;
-            this.lbRefNo.Text = "Reference No.";
-            this.lbRefNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbRefNo
-            // 
-            this.tbRefNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbRefNo.Font = new System.Drawing.Font("Arial", 10F);
-            this.tbRefNo.Location = new System.Drawing.Point(621, 73);
-            this.tbRefNo.Name = "tbRefNo";
-            this.tbRefNo.Size = new System.Drawing.Size(102, 23);
-            this.tbRefNo.TabIndex = 21;
-            // 
             // invoiceDetails
             // 
             this.invoiceDetails.DataSetName = "InvoiceDetails";
@@ -1714,6 +1718,28 @@
             // 
             this.invoiceDetailsBindingSource.DataSource = this.invoiceDetails;
             this.invoiceDetailsBindingSource.Position = 0;
+            // 
+            // tbTransport
+            // 
+            this.tbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbTransport.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbTransport.Location = new System.Drawing.Point(415, 73);
+            this.tbTransport.Name = "tbTransport";
+            this.tbTransport.Size = new System.Drawing.Size(97, 23);
+            this.tbTransport.TabIndex = 23;
+            // 
+            // lbTransport
+            // 
+            this.lbTransport.AutoSize = true;
+            this.lbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTransport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.lbTransport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTransport.Location = new System.Drawing.Point(312, 70);
+            this.lbTransport.Name = "lbTransport";
+            this.lbTransport.Size = new System.Drawing.Size(97, 37);
+            this.lbTransport.TabIndex = 22;
+            this.lbTransport.Text = "Transport";
+            this.lbTransport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Invoice
             // 
@@ -1878,6 +1904,8 @@
         private System.Windows.Forms.TextBox tbAddCharge3;
         private System.Windows.Forms.TextBox tbRefNo;
         private System.Windows.Forms.Label lbRefNo;
+        private System.Windows.Forms.TextBox tbTransport;
+        private System.Windows.Forms.Label lbTransport;
     }
 }
 
