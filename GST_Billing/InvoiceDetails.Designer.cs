@@ -409,6 +409,10 @@ namespace GST_Billing {
             
             private global::System.Data.DataColumn columntermName;
             
+            private global::System.Data.DataColumn columntransport;
+            
+            private global::System.Data.DataColumn columnrefNo;
+            
             private global::System.Data.DataColumn columntotalAdditionalCharge;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -966,6 +970,22 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn transportColumn {
+                get {
+                    return this.columntransport;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn refNoColumn {
+                get {
+                    return this.columnrefNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn totalAdditionalChargeColumn {
                 get {
                     return this.columntotalAdditionalCharge;
@@ -1075,6 +1095,8 @@ namespace GST_Billing {
                         string igstPercent, 
                         string challanNo, 
                         string termName, 
+                        string transport, 
+                        string refNo, 
                         decimal totalAdditionalCharge) {
                 invoiceBillRow rowinvoiceBillRow = ((invoiceBillRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1143,6 +1165,8 @@ namespace GST_Billing {
                         igstPercent,
                         challanNo,
                         termName,
+                        transport,
+                        refNo,
                         totalAdditionalCharge};
                 rowinvoiceBillRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowinvoiceBillRow);
@@ -1231,6 +1255,8 @@ namespace GST_Billing {
                 this.columnigstPercent = base.Columns["igstPercent"];
                 this.columnchallanNo = base.Columns["challanNo"];
                 this.columntermName = base.Columns["termName"];
+                this.columntransport = base.Columns["transport"];
+                this.columnrefNo = base.Columns["refNo"];
                 this.columntotalAdditionalCharge = base.Columns["totalAdditionalCharge"];
             }
             
@@ -1367,6 +1393,10 @@ namespace GST_Billing {
                 base.Columns.Add(this.columnchallanNo);
                 this.columntermName = new global::System.Data.DataColumn("termName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntermName);
+                this.columntransport = new global::System.Data.DataColumn("transport", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransport);
+                this.columnrefNo = new global::System.Data.DataColumn("refNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrefNo);
                 this.columntotalAdditionalCharge = new global::System.Data.DataColumn("totalAdditionalCharge", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalAdditionalCharge);
             }
@@ -2551,6 +2581,38 @@ namespace GST_Billing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string transport {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceBill.transportColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transport\' in table \'invoiceBill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceBill.transportColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string refNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceBill.refNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'refNo\' in table \'invoiceBill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceBill.refNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal totalAdditionalCharge {
                 get {
                     try {
@@ -3343,6 +3405,30 @@ namespace GST_Billing {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettermNameNull() {
                 this[this.tableinvoiceBill.termNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstransportNull() {
+                return this.IsNull(this.tableinvoiceBill.transportColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettransportNull() {
+                this[this.tableinvoiceBill.transportColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsrefNoNull() {
+                return this.IsNull(this.tableinvoiceBill.refNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetrefNoNull() {
+                this[this.tableinvoiceBill.refNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
