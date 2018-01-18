@@ -453,7 +453,7 @@ namespace GST_Billing
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-                    PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, printInvoice.invoicePrintType);
+                    ParthInvoice objPrintInvoice = new ParthInvoice((string)row.Cells["Invoice No"].Value, printInvoice.invoicePrintType);
                     objPrintInvoice.MdiParent = this.MdiParent;
                     objPrintInvoice.Show();
                 }
@@ -612,7 +612,7 @@ namespace GST_Billing
             {
                 DataGridViewRow row = dgvInvoice.SelectedRows[0];
 
-                PrintInvoice objPrintInvoice = new PrintInvoice((string)row.Cells["Invoice No"].Value, 1);
+                ParthInvoice objPrintInvoice = new ParthInvoice((string)row.Cells["Invoice No"].Value, 1);
                 objPrintInvoice.MdiParent = this.MdiParent;
                 objPrintInvoice.Show();
             }

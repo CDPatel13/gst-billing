@@ -819,7 +819,7 @@ namespace GST_Billing
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-				    PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
+                    ParthInvoice objPrintInvoice = new ParthInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
 				    objPrintInvoice.MdiParent = this.MdiParent;
 				    objPrintInvoice.Show();
                 }
@@ -1158,7 +1158,7 @@ namespace GST_Billing
 
         private void btnChallan_Click(object sender, EventArgs e)
         {
-            PrintChallan challan = new PrintChallan(tbInvoiceNum.Text);
+            parthChallan challan = new parthChallan(tbInvoiceNum.Text);
             challan.MdiParent = this.MdiParent;
             challan.Show();
         }

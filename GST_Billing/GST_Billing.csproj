@@ -150,6 +150,30 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="IICChallan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IICChallan.Designer.cs">
+      <DependentUpon>IICChallan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IICInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IICInvoice.Designer.cs">
+      <DependentUpon>IICInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IICInvoicePrint1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IICInvoicePrint.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IIC_challan1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IIC_challan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Invoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +213,30 @@
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="parthChallan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="parthChallan.Designer.cs">
+      <DependentUpon>parthChallan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParthInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParthInvoice.Designer.cs">
+      <DependentUpon>ParthInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParthInvoicePrint1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParthInvoicePrint.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="parth_challan1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>parth_challan.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PrintChallan.cs">
       <SubType>Form</SubType>
@@ -245,6 +293,20 @@
     <EmbeddedResource Include="CompanyDetails.resx">
       <DependentUpon>CompanyDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IICChallan.resx">
+      <DependentUpon>IICChallan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IICInvoice.resx">
+      <DependentUpon>IICInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IICInvoicePrint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IICInvoicePrint1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IIC_challan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IIC_challan1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invoice.resx">
       <DependentUpon>Invoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +322,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="parthChallan.resx">
+      <DependentUpon>parthChallan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParthInvoice.resx">
+      <DependentUpon>ParthInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParthInvoicePrint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ParthInvoicePrint1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="parth_challan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>parth_challan1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintChallan.resx">
       <DependentUpon>PrintChallan.cs</DependentUpon>
