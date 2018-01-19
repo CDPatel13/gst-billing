@@ -33,7 +33,7 @@ namespace GST_Billing
                 {
                     strInvoiceType = "Duplicate Invoice";
                 }
-                else if(invoiceType == 3)
+                else if(invoiceType == 3) 
                 {
                     strInvoiceType = "Triplicate Invoice";
                 }
