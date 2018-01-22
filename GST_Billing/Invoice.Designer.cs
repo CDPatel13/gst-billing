@@ -74,6 +74,8 @@
             this.tbPoDate = new System.Windows.Forms.DateTimePicker();
             this.tbRefNo = new System.Windows.Forms.TextBox();
             this.lbRefNo = new System.Windows.Forms.Label();
+            this.tbTransport = new System.Windows.Forms.TextBox();
+            this.lbTransport = new System.Windows.Forms.Label();
             this.gbShipping = new System.Windows.Forms.GroupBox();
             this.tbShipPin = new System.Windows.Forms.TextBox();
             this.lbShipPin = new System.Windows.Forms.Label();
@@ -149,8 +151,6 @@
             this.errorProviderTextBox = new System.Windows.Forms.ErrorProvider(this.components);
             this.invoiceDetails = new GST_Billing.InvoiceDetails();
             this.invoiceDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbTransport = new System.Windows.Forms.TextBox();
-            this.lbTransport = new System.Windows.Forms.Label();
             this.gbBilling.SuspendLayout();
             this.gbInvoice.SuspendLayout();
             this.tlpInvoice.SuspendLayout();
@@ -693,6 +693,28 @@
             this.lbRefNo.TabIndex = 15;
             this.lbRefNo.Text = "Reference No.";
             this.lbRefNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbTransport
+            // 
+            this.tbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbTransport.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbTransport.Location = new System.Drawing.Point(415, 73);
+            this.tbTransport.Name = "tbTransport";
+            this.tbTransport.Size = new System.Drawing.Size(97, 23);
+            this.tbTransport.TabIndex = 23;
+            // 
+            // lbTransport
+            // 
+            this.lbTransport.AutoSize = true;
+            this.lbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTransport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.lbTransport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTransport.Location = new System.Drawing.Point(312, 70);
+            this.lbTransport.Name = "lbTransport";
+            this.lbTransport.Size = new System.Drawing.Size(97, 37);
+            this.lbTransport.TabIndex = 22;
+            this.lbTransport.Text = "Transport";
+            this.lbTransport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gbShipping
             // 
@@ -1718,28 +1740,6 @@
             // 
             this.invoiceDetailsBindingSource.DataSource = this.invoiceDetails;
             this.invoiceDetailsBindingSource.Position = 0;
-            // 
-            // tbTransport
-            // 
-            this.tbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbTransport.Font = new System.Drawing.Font("Arial", 10F);
-            this.tbTransport.Location = new System.Drawing.Point(415, 73);
-            this.tbTransport.Name = "tbTransport";
-            this.tbTransport.Size = new System.Drawing.Size(97, 23);
-            this.tbTransport.TabIndex = 23;
-            // 
-            // lbTransport
-            // 
-            this.lbTransport.AutoSize = true;
-            this.lbTransport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbTransport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.lbTransport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTransport.Location = new System.Drawing.Point(312, 70);
-            this.lbTransport.Name = "lbTransport";
-            this.lbTransport.Size = new System.Drawing.Size(97, 37);
-            this.lbTransport.TabIndex = 22;
-            this.lbTransport.Text = "Transport";
-            this.lbTransport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Invoice
             // 

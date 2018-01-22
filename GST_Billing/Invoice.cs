@@ -821,9 +821,18 @@ namespace GST_Billing
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-				    PrintInvoice objPrintInvoice = new PrintInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
-				    objPrintInvoice.MdiParent = this.MdiParent;
-				    objPrintInvoice.Show();
+                    if (baseModel.SelectedCompany.Contains("Parth"))
+                    {
+                        ParthInvoice objPrintInvoice = new ParthInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
+                        objPrintInvoice.MdiParent = this.MdiParent;
+                        objPrintInvoice.Show();
+                    }
+                    else if (baseModel.SelectedCompany.Contains("Industrial Instruments"))
+                    {
+                        IICInvoice objPrintInvoice = new IICInvoice(tbInvoiceNum.Text, printInvoice.invoicePrintType);
+                        objPrintInvoice.MdiParent = this.MdiParent;
+                        objPrintInvoice.Show();
+                    }
                 }
 			}
 			else
@@ -1161,9 +1170,18 @@ namespace GST_Billing
 
         private void btnChallan_Click(object sender, EventArgs e)
         {
-            PrintChallan challan = new PrintChallan(tbInvoiceNum.Text);
-            challan.MdiParent = this.MdiParent;
-            challan.Show();
+            if (baseModel.SelectedCompany.Contains("Parth"))
+            {
+                parthChallan challan = new parthChallan(tbInvoiceNum.Text);
+                challan.MdiParent = this.MdiParent;
+                challan.Show();
+            }
+            else if (baseModel.SelectedCompany.Contains("Industrial Instruments"))
+            {
+                IICChallan challan = new IICChallan(tbInvoiceNum.Text);
+                challan.MdiParent = this.MdiParent;
+                challan.Show();
+            }
         }
 
         private void tbPoDate_ValueChanged(object sender, EventArgs e)
