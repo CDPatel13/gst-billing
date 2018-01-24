@@ -30,7 +30,7 @@ namespace GST_Billing
                                 invoiceProductDetails.productCode as productCode, invoiceProductDetails.productQnty as productQnty, customerDetails.custphoneNumber, 
                                 customerDetails.custname as custname, customerDetails.custstate as custstate, customerDetails.custPanno as custPanno, customerDetails.shipPanno as shipPanno, 
                                 customerDetails.custcode as custcode, customerDetails.custgstin as custgstin, userDetails.name as name, userDetails.companyname as companyname, userDetails.panno as panno,                                 
-                                userDetails.email as email, userDetails.phoneNumber as phoneNumber, userDetails.gstin as gstin,  
+                                userDetails.email as email, userDetails.phoneNumber as phoneNumber, userDetails.gstin as gstin, invoiceProductDetails.ProductUnit as ProductUnit, 
                                 userDetails.code as code, (invoiceDetails.shipAddress || "", "" || invoiceDetails.shipLandmark || "", "" || invoiceDetails.shipCity || ""-"" || invoiceDetails.shipPinCode || "", "" || invoiceDetails.shipState) AS shipAddress,
                                 (customerDetails.custaddress || "", "" || customerDetails.custlandmark || "", "" || customerDetails.custcity || ""-"" || customerDetails.custpincode) AS custaddress,
                                 (userDetails.address || "", "" || userDetails.landmark || "", "" || userDetails.city || ""-"" || userDetails.pincode || "" , "" || userDetails.state) AS address, invoiceDetails.refNo as refNo, invoiceDetails.transport as transport

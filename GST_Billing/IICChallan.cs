@@ -25,7 +25,7 @@ namespace GST_Billing
             {
                 InitializeComponent();
                 string sqlstr1 = @"SELECT invoiceDetails.invoiceNo as invoiceNo, invoiceDetails.invoiceDate as invoiceDate, invoiceDetails.shipName as shipName, userDetails.city as city,
-                                invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.poNo, invoiceDetails.poDate, 
+                                invoiceDetails.shipGstIn as shipGstIn, invoiceDetails.poNo, invoiceDetails.poDate, invoiceProductDetails.ProductUnit as ProductUnit, 
                                 invoiceDetails.shipCode as shipCode, invoiceDetails.totalQnty as totalQnty, invoiceProductDetails.productName as productName,
                                 invoiceProductDetails.productCode as productCode, invoiceProductDetails.productQnty as productQnty, customerDetails.custphoneNumber, 
                                 customerDetails.custname as custname, customerDetails.custstate as custstate, customerDetails.custPanno as custPanno, customerDetails.shipPanno as shipPanno, 
