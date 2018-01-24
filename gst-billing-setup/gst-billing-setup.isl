@@ -1884,7 +1884,6 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>gst_billing.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>GST_BI~1.CON|GST_Billing.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Nirav\gst-billing\GST_Billing\bin\Debug\GST_Billing.exe.config</td><td>1</td><td/></row>
 		<row><td>gst_billing.primary_output</td><td>GST_Billing.Primary_output1</td><td>GST_Billing.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;GST_Billing&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
@@ -3796,7 +3795,7 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1280995702</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>-1675240597</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.GSTBilling.com</td><td>0</td><td/><td>145111212</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1675240597</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>GST Billing</td><td>0</td><td/><td>-1280991157</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>GSTBIL~1|GST Billing</td><td>0</td><td/><td>-1675282293</td></row>
@@ -4058,7 +4057,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{8D1957D5-D43F-42F4-A5D4-690312AD3225}</td></row>
 		<row><td>ISUSSignature</td><td>{17B59535-12D7-4B47-8C29-40A9C08C0DB1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes,viewDependencies,viewAppFiles,viewSystemSearch,viewRelease,viewUpgradePaths,viewUpdateService</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewShortcuts,viewObjects,viewProject,viewRealSetupDesign,viewSetupTypes,viewDependencies,viewAppFiles,viewSystemSearch,viewRelease,viewUpgradePaths,viewUpdateService,viewISToday</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>

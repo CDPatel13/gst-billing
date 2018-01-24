@@ -247,6 +247,37 @@ namespace GaneshLogistics.AppCode
 						con.Close();
 					}
 				}
+                else
+                {
+                    // TODO : Add refNo column in invoiceDetails
+                    bool columnExists = false;
+                    using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
+                    {
+                         conn.Open();
+                         var cmd = conn.CreateCommand();
+                         cmd.CommandText = string.Format("PRAGMA table_info({0})", "invoiceDetails");
+           
+                         var reader = cmd.ExecuteReader();
+                         int nameIndex = reader.GetOrdinal("Name");
+                         while (reader.Read())
+                         {
+                             if (reader.GetString(nameIndex).Equals("refNo"))
+                                 columnExists = true;
+                         }
+
+                         reader.Close();
+
+                         if (!columnExists)
+                         {
+                             cmd.CommandText = "ALTER TABLE invoiceDetails ADD COLUMN refNo TEXT";
+                             cmd.ExecuteNonQuery();
+                             cmd.CommandText = "ALTER TABLE invoiceDetails ADD COLUMN transport TEXT";
+                             cmd.ExecuteNonQuery();
+                         }
+
+                         conn.Close();
+                    }
+                }
 			}
 			catch (Exception ex)
 			{
