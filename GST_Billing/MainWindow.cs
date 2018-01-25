@@ -719,7 +719,10 @@ namespace GST_Billing
         private void backupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string dbName = "MyDatabase.sqlite";
-            string newDbName = "MyDatabase_" + DateTime.Today.ToShortDateString().Replace('/','_') + ".sqlite";
+            string timestamp = DateTime.Now.ToString().Replace('/', '_');
+            timestamp = timestamp.Replace(' ', '_');
+            timestamp = timestamp.Replace(':', '_');
+            string newDbName = "MyDatabase_" + timestamp + ".sqlite";
             string copyFrom = String.Empty;
             string copyTo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GST_Billing_Backup", newDbName);
             
@@ -737,7 +740,8 @@ namespace GST_Billing
                 Directory.CreateDirectory(Path.GetDirectoryName(copyTo));
             }
 
-            File.Copy(copyFrom, copyTo);
+            File.Copy(copyFrom, copyTo, true);
+            MessageBox.Show(String.Format("Backup created at {0}", copyTo));
         }
     }
 }
