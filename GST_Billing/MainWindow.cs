@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Globalization;
 using System.Windows.Forms;
 using GaneshLogistics.AppCode;
 
@@ -454,13 +455,13 @@ namespace GST_Billing
                 SelectInvoicePrint printInvoice = new SelectInvoicePrint();
                 if (printInvoice.ShowDialog() == DialogResult.Yes)
                 {
-                    if(lbSelectedCompany.Text.Contains("Parth"))
+                    if(CultureInfo.InvariantCulture.CompareInfo.IndexOf(lbSelectedCompany.Text, "parth", CompareOptions.IgnoreCase) >=0 )
                     { 
                         ParthInvoice objPrintInvoice = new ParthInvoice((string)row.Cells["Invoice No"].Value, printInvoice.invoicePrintType);
                         objPrintInvoice.MdiParent = this.MdiParent;
                         objPrintInvoice.Show();
                     }
-                    else if (lbSelectedCompany.Text.Contains("Industrial Instruments"))
+                    else if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(lbSelectedCompany.Text, "industrial Instruments", CompareOptions.IgnoreCase) >= 0)
                     {
                         IICInvoice objPrintInvoice = new IICInvoice((string)row.Cells["Invoice No"].Value, printInvoice.invoicePrintType);
                         objPrintInvoice.MdiParent = this.MdiParent;
@@ -572,7 +573,10 @@ namespace GST_Billing
             foreach(DataRow row in tableInvoice.Rows)
             {
                 row["Invoice Date"] = DateTime.ParseExact(row["invoiceDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                row["P.O. Date"] = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                if(row["poDate"] != null && row["poDate"].ToString() != " ")
+                { 
+                    row["P.O. Date"] = DateTime.ParseExact(row["poDate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
             }
 
             tableInvoice.Columns.Remove("invoiceDate");
